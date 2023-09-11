@@ -11,26 +11,27 @@ function Header() {
             <div className='flex gap-x-4 xl:gap-x-10 items-center 2xl:justify-between 2xl:w-[1620px]'>
                 <ul className='flex font-medium gap-x-4 xl:gap-x-10 whitespace-nowrap select-none'>
                     <li>
-                        <a href="www.google.com" target="_blank" rel="noopener noreferrer">
+                        <a href="https://talaba.kspi.uz/dashboard/login" target="_blank" rel="noopener noreferrer">
                             HEMS TIZIMI
                         </a>
                     </li>
                     <li>
-                        <a href="www.google.com" target="_blank" rel="noopener noreferrer">
+                        <a href="https://journal.kspi.uz" target="_blank" rel="noopener noreferrer">
                             Insitut jurnali
                         </a>
                     </li>
                     <li>
-                        <a href="www.google.com" target="_blank" rel="noopener noreferrer">
+                        <a href="https://conferences.kspi.uz" target="_blank" rel="noopener noreferrer">
                             Konferensilar
                         </a>
                     </li>
                     <li>
-                        <a href="www.google.com" target="_blank" rel="noopener noreferrer">
+                        <a href="https://ikkinchitalim.edu.uz" target="_blank" rel="noopener noreferrer">
                             Ikkinchi ta'lim
                         </a>
                     </li>
                     <li>
+                        {/* Page of Myself */}
                         <a href="www.google.com" target="_blank" rel="noopener noreferrer">
                             Ochiq ma'lumotlar
                         </a>
@@ -38,22 +39,22 @@ function Header() {
                 </ul>
                 <div className='flex gap-x-4 lg:gap-x-1 xl:gap-x-4 items-center'>
                     <span>
-                        <a href="www.google.com" target="_blank" rel="noopener noreferrer">
+                        <a href="https://t.me/kspi_official" target="_blank" rel="noopener noreferrer">
                             <BsTelegram />
                         </a>
                     </span>
                     <span>
-                        <a href="www.google.com" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.instagram.com/kspi_uz" target="_blank" rel="noopener noreferrer">
                             <AiFillInstagram className='text-[1.2rem]' />
                         </a>
                     </span>
                     <span>
-                        <a href="www.google.com" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.facebook.com/kspi.uz.56" target="_blank" rel="noopener noreferrer">
                             <BsFacebook />
                         </a>
                     </span>
                     <span>
-                        <a href="www.google.com" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.youtube.com/channel/UC6ThR8cLnJmdWDGDz9PR85Q/featured" target="_blank" rel="noopener noreferrer">
                             <BsYoutube className='text-[1.2rem]' />
                         </a>
                     </span>

@@ -5,6 +5,12 @@ function Navbar() {
     return (
         <div>
             <div className="bg-black text-white">
+                <NavLink className={`${isActive => isActive ? 'active' : ''}`} to="/">
+                    <span>
+                        <img src="www.google.com" alt="QDPI" />
+                    </span>
+                    Qo'qon davlat pedagogika insituti
+                </NavLink>
                 <ul className="flex gap-x-4">
                     <li>
                         <NavLink className={`${isActive => isActive ? 'active' : ''}`} to="/">
