@@ -2,7 +2,9 @@ import React from 'react'
 
 function VertualQabulxona() {
     return (
-        <div>VertualQabulxona</div>
+        <div>
+            VertualQabulxona
+        </div>
     )
 }
 
