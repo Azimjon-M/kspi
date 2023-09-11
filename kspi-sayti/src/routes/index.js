@@ -2,7 +2,7 @@ import React from "react";
 import Root from "../root/index";
 
 import Home from "../pages/Home";
-import About from "../pages/InsitutKengashi";
+import About from "../pages/Insitut/InsitutKengashi";
 
 export const routes = [
     {
