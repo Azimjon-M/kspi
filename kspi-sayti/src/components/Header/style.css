@@ -1,3 +1,14 @@
 .style-overflow-x {
-    scrollbar-width: thin;
+    overflow-x: auto;
+}
+.style-overflow-x::-webkit-scrollbar {
+    width: 1px;
+    height: 2px;
+}
+.style-overflow-x::-webkit-scrollbar-thumb {
+    width: 1px;
+    background-color: aliceblue;
+}
+.style-overflow-x::-webkit-scrollbar-track {
+    background-color: #012873;
 }
