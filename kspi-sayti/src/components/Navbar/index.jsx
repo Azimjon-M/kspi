@@ -8,12 +8,12 @@ function Navbar() {
                 <ul className="flex gap-x-4">
                     <li>
                         <NavLink className={`${isActive => isActive ? 'active' : ''}`} to="/">
-                            Home
+                            Institut
                         </NavLink>
                     </li>
                     <li>
                         <NavLink className={`${isActive => isActive ? 'active' : ''}`} to="/about">
-                            About
+                            Faoliyat
                         </NavLink>
                     </li>
                 </ul>
