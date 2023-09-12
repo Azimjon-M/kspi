@@ -9,7 +9,7 @@ function Header() {
     return (
         <div className='h-[40px] md:h-[50px] flex justify-start xl:justify-center bg-[#012873] text-white style-overflow-x overflow-x-auto px-5 2xl:px-0' >
             <div className='flex gap-x-4 xl:gap-x-10 items-center 2xl:justify-between 2xl:w-[1620px]'>
-                <ul className='flex font-medium gap-x-4 xl:gap-x-10 whitespace-nowrap select-none'>
+                <ul className='flex font-semibold gap-x-4 xl:gap-x-10 whitespace-nowrap select-none'>
                     <li>
                         <a href="https://talaba.kspi.uz/dashboard/login" target="_blank" rel="noopener noreferrer">
                             HEMS TIZIMI
