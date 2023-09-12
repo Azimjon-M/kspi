@@ -9,6 +9,10 @@ import 'swiper/css/navigation';
 
 import './style.css';
 
+import ImageQDPI from '../../assets/images/kspi-img.jpg'
+import ImageQDPI2 from '../../assets/images/kspi-img2.jpg'
+import ImageQDPI3 from '../../assets/images/kspi-img3.png'
+
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
@@ -31,15 +35,9 @@ function Carousel() {
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
         >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+        <SwiperSlide><img src={ImageQDPI} alt="QDPI" className='h-[500px!important] xl-[700px!important] ' /></SwiperSlide>
+        <SwiperSlide><img src={ImageQDPI2} alt="QDPI" className='h-[500px!important] xl-[700px!important] ' /></SwiperSlide>
+        <SwiperSlide><img src={ImageQDPI3} alt="QDPI" className='h-[500px!important] xl-[700px!important] ' /></SwiperSlide>
         </Swiper>
         </>
         );
