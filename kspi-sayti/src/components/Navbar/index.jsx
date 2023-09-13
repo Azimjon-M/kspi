@@ -81,6 +81,16 @@ function Navbar() {
                 setIsActive6(false)
                 setIsActive7(isActive7 => !isActive7)
                 break;
+            case 8:
+                setIsActive1(false)
+                setIsActive2(false)
+                setIsActive3(false)
+                setIsActive4(false)
+                setIsActive5(false)
+                setIsActive6(false)
+                setIsActive7(false)
+                setIsActive8(isActive8 => !isActive8)
+                break;
         
             default:
                 setIsActive1(false)
@@ -94,7 +104,7 @@ function Navbar() {
         }
     }
     return (
-        <div className="absolute top-[40px] md:top-[50px] left-0 w-full z-10 bg-[#000000] px-4 py-2">
+        <div className="absolute top-[40px] md:top-[50px] left-0 w-full z-10 bg-[rbga(0, 0, 0, 0)] px-4 py-2">
             <div className=" text-white flex justify-between items-center">
                 <Link className={`${isActive => isActive ? 'active' : ''} flex items-center w-[220px] gap-x-4`} to="/">
                     <span className="w-[45px] h-[40px]">
@@ -133,12 +143,12 @@ function Navbar() {
                         INTERAKTIV XIZMATLAR
                         <DownUp color='white' $totop={isActive7} />
                     </li>
-                    <li>
+                    <li onClick={() => {handleClickLi(8)}} className="cursor-pointer p-[9px]">
                         <AiOutlineSearch className="text-[1.5rem]" />
                     </li>
                 </ul>
-                <div className="flex items-center gap-x-0 lg:hidden">
-                    <div className="p-[9px]">
+                <div className="flex items-center lg:hidden">
+                    <div className="p-[9px] cursor-pointer" onClick={() => {handleClickLi(8)}}>
                         <AiOutlineSearch className="text-[1.5rem]" />
                     </div>
                     <div className="p-[11px]">

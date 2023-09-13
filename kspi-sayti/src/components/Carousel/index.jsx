@@ -19,26 +19,26 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 function Carousel() {
     return (
         <>
-        <Swiper
-        slidesPerView={1}
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-        }}
-        loop={true}
-        pagination={{
-            clickable: true,
-        }}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
-        >
-        <SwiperSlide><img className='h-[400px!important] xl:h-[700px!important]' src={ ImageQDPI } alt="QDPI" /></SwiperSlide>
-        <SwiperSlide><img className='h-[400px!important] xl:h-[700px!important]' src={ ImageQDPI2 } alt="QDPI" /></SwiperSlide>
-        <SwiperSlide><img className='h-[400px!important] xl:h-[700px!important]' src={ ImageQDPI3 } alt="QDPI" /></SwiperSlide>
-        </Swiper>
+            <Swiper
+                slidesPerView={1}
+                spaceBetween={30}
+                centeredSlides={true}
+                autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                }}
+                loop={true}
+                pagination={{
+                    clickable: true,
+                }}
+                navigation={true}
+                modules={[Autoplay, Pagination, Navigation]}
+                className="mySwiper"
+                >
+                    <SwiperSlide><img className='h-[calc(100vh-42px)!important] md:h-[calc(100vh-50px)!important] xl:h-[calc(100vh-50px)!important] brightness-50' src={ ImageQDPI } alt="QDPI" /></SwiperSlide>
+                    <SwiperSlide><img className='h-[calc(100vh-42px)!important] md:h-[calc(100vh-50px)!important] xl:h-[calc(100vh-50px)!important] brightness-50' src={ ImageQDPI2 } alt="QDPI" /></SwiperSlide>
+                    <SwiperSlide><img className='h-[calc(100vh-42px)!important] md:h-[calc(100vh-50px)!important] xl:h-[calc(100vh-50px)!important] brightness-50' src={ ImageQDPI3 } alt="QDPI" /></SwiperSlide>
+            </Swiper>
         </>
         );
     }
