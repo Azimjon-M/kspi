@@ -193,7 +193,7 @@ function Navbar() {
     ]
 
     return (
-        <div className="absolute top-[40px] md:top-[50px] left-0 w-full z-10 bg-[rbga(0, 0, 0, 0)] px-4 py-2">
+        <div className="absolute top-[40px] md:top-[50px] left-0 w-full z-10 bg-[rbga(0, 0, 0, 0)] px-4 py-2 border border-red-600">
             <div className=" text-white flex justify-between items-center">
                 <Link className={`${isActive => isActive ? 'active' : ''} flex items-center w-[220px] gap-x-4`} to="/">
                     <span className="w-[45px] h-[40px]">
@@ -216,6 +216,7 @@ function Navbar() {
                             )
                         })
                     }
+                    
                     <div className="flex items-center">
                         <div onClick={() => {handleClickLi(10)}}>
                             <span className="w-[50px!important] h-[30px!important]">

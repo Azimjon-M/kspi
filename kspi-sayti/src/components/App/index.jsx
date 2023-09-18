@@ -8,7 +8,7 @@ import Header from '../Header';
 function App() {
     let content = useRoutes(routes);
     return (
-        <div>
+        <div >
             <Header />
             {content}
         </div>
