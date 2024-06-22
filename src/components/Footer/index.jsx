@@ -25,7 +25,7 @@ const Footer = () => {
   });
 
   return (
-    <footer className="w-full h-auto relative flex flex-col text-white pt-3">
+    <footer className="w-full h-auto relative flex flex-col text-white pt-3 z-50">
       <div className="absolute top-0 left-0 w-full h-full">
         <ul className="background-footer w-full h-full bottom-0 absolute -z-10 overflow-hidden">
           <li></li>
