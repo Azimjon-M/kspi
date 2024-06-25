@@ -33,7 +33,7 @@ const Fakultet = () => {
     }, []);
 
     return (
-        <div className="flex flex-col justify-center items-center px-3">
+        <div className="flex flex-col justify-center items-center px-3 border border-red-600 lg:pb-8 pb-4">
             <h1 className="text-[22px] font-medium my-4">Fakultet</h1>
             {/* Mobil */}
             <div className="w-full lg:hidden">
@@ -51,7 +51,7 @@ const Fakultet = () => {
                                 {dataFakNom
                                     ?.filter(
                                         (nomzod) =>
-                                            nomzod.rektorat_id === item.id
+                                            nomzod.fakultet_id === item.id
                                     )
                                     .map((nomzod) => (
                                         <div
@@ -94,8 +94,8 @@ const Fakultet = () => {
                                     key={item.id}
                                     onClick={() => onClickLav(item.id)}
                                     className={`${
-                                        item.id === isActive && "bg-blue-400"
-                                    } w-full btn btn-ghost bg-gray-100 border hover:bg-blue-400 border-gray-400 shadow-md my-1 font-medium`}
+                                        item.id === isActive && "bg-green-300"
+                                    } w-full btn btn-ghost bg-gray-100 border hover:bg-green-400 border-gray-400 shadow-md my-1 font-medium`}
                                 >
                                     {item.name_uz}
                                 </button>

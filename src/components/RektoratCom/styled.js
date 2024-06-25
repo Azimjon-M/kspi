@@ -14,3 +14,6 @@ export const OverflowBox = styled.div`
         border-radius: 6px;
     }
 `
+export const ArrowShake = styled.div`
+    
+`
