@@ -46,7 +46,7 @@ const ExploreProgram = () => {
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
         {data.map((item) => (
           <div
-            className="card max-w-80 h-[450px] object-cover bg-base-100 shadow-md hover:shadow-xl hover:-translate-y-1 mx-auto transition-transform ease-in-out duration-300"
+            className="card max-w-80 h-[450px] object-cover bg-base-100 shadow-md hover:shadow-xl hover:-translate-y-1 mx-auto transition-transform ease-in-out duration-300 bg-white"
             key={item.id}
           >
             <figure className="relative">

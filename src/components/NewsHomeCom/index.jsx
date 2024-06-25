@@ -75,7 +75,7 @@ const NewsHome = () => {
                 className="p-4 max-w-sm md:max-w-3xl lg:max-w-4xl mx-auto group/item hover:cursor-pointer h-full"
                 data-aos="fade-right"
               >
-                <div className="flex rounded-lg h-full dark:bg-gray-800 shadow-md hover:shadow-lg flex-col group/edit">
+                <div className="flex rounded-lg h-full shadow-md hover:shadow-lg flex-col group/edit">
                   <div className="flex items-center mb-3 relative overflow-hidden">
                     <img
                       className="w-full rounded group-hover/item:scale-105 ease-in duration-300 ..."

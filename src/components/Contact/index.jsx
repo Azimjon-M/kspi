@@ -13,13 +13,13 @@ const ContactUs = () => {
     });
   }, []);
   return (
-    <div className="p-5 lg:p-10 flex justify-center md:min-h-[calc(100vh-565px)] lg:min-h-[calc(100vh-400px)]">
+    <div className="p-5 lg:p-10 flex justify-center md:min-h-[calc(100vh-565px)] lg:min-h-[calc(100vh-400px)] bg-white">
       <div className="w-[1000px]">
-        <h2 className=" text-xl md:text-4xl font-bold text-center text-[#004269] dark:text-white">
+        <h2 className=" text-xl md:text-4xl font-bold text-center text-[#004269]">
           <TextTranslate id="contactUs" />
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 md:my-10">
-          <div className="bg-white dark:bg-gray-900">
+          <div className="bg-white">
             <div className="py-2 lg:py-6 px-4 mx-auto max-w-screen-md">
               <h2 className="py-2 text-lg font-bold lg:mb-16 text-center text-[#004269] dark:text-gray-400 sm:text-xl">
                 <TextTranslate id="location" />
@@ -49,7 +49,7 @@ const ContactUs = () => {
               </div>
             </div>
           </div>
-          <section className="bg-white dark:bg-gray-900 py-6 px-4">
+          <section className="bg-white py-6 px-4">
             <iframe
               title="Map"
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3032.5210227216608!2d70.925123!3d40.5300768!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38baee945e333c8f%3A0xdbb4218e631b6996!2sKokand%20Pedagogical%20Institute!5e0!3m2!1sen!2s!4v1707112878107!5m2!1sen!2s"
