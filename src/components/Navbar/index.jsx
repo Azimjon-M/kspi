@@ -473,7 +473,7 @@ function Navbar() {
                       </Link>
                     </li>
                     <li className="text-[#004269] dark:text-white">
-                      <Link to="https://my.uzbmb.uz/" target="blank">
+                      <Link to="https://studyin-uzbekistan.uz/universities/53" target="blank">
                         <TextTranslate id="navDropAbiturient_6" />
                       </Link>
                     </li>
@@ -853,7 +853,7 @@ function Navbar() {
                         </Link>
                       </li>
                       <li className="my-4 leading-4 text-white dark:text-white">
-                        <Link to="https://my.uzbmb.uz/" target="blank">
+                        <Link to="https://studyin-uzbekistan.uz/universities/53" target="blank">
                           <TextTranslate id="navDropAbiturient_6" />
                         </Link>
                       </li>
