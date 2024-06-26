@@ -47,7 +47,7 @@ function Statistics() {
                         {item.talaba_title_uz}
                       </dt>
                       <dd className="order-first text-3xl font-semibold tracking-tight text-white">
-                        {isVisible && item.talaba_nomer}k+
+                        {isVisible && <CountUp end={item.talaba_nomer} duration={3} />}k+
                       </dd>
                     </div>
                     <div className="flex flex-col bg-[#1b4769] p-8">
@@ -55,7 +55,7 @@ function Statistics() {
                         {item.phd_title_uz}
                       </dt>
                       <dd className="order-first text-3xl font-semibold tracking-tight text-white">
-                        {isVisible && <CountUp end={171} duration={3} />}
+                        {isVisible && <CountUp end={item.phd_nomer} duration={3} />}
                       </dd>
                     </div>
                     <div className="flex flex-col bg-[#1b4769] p-8">
@@ -63,7 +63,7 @@ function Statistics() {
                         {item.oqituvchi_title_uz}
                       </dt>
                       <dd className="order-first text-3xl font-semibold tracking-tight text-white">
-                        {isVisible && <CountUp end={517} duration={3} />}
+                        {isVisible && <CountUp end={item.oqituvchi_nomer} duration={3} />}
                       </dd>
                     </div>
                     <div className="flex flex-col bg-[#1b4769] p-8">
@@ -71,7 +71,7 @@ function Statistics() {
                         {item.fan_doktiri_title_uz}
                       </dt>
                       <dd className="order-first text-3xl font-semibold tracking-tight text-white">
-                        {isVisible && <CountUp end={10} duration={3} />}
+                        {isVisible && <CountUp end={item.fan_doktiri_nomer} duration={3} />}
                       </dd>
                     </div>
                   </dl>
