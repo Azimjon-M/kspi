@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from "../../components/Navbar"
 import InstitutHaqidaCom from '../../components/InstitutHaqidaCom'
+import InstitutMalumotlariCom from '../../components/InstitutMalumotlariCom'
 import Footer from '../../components/Footer'
 
 const InstitutHaqida = () => {
@@ -8,6 +9,7 @@ const InstitutHaqida = () => {
     <div>
         <Navbar />
         <InstitutHaqidaCom />
+        <InstitutMalumotlariCom/>
         <Footer />
     </div>
   )
