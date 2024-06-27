@@ -43,7 +43,7 @@ const InstitutKengashiCom = () => {
         {data &&
           data.map((item) => {
             return (
-              <div>
+              <div key={item.id}>
                 <div className="card sm:card-side bg-base-100 shadow-xl w-full mx-auto mb-5">
                   <figure className="w-full sm:w-1/2 lg:w-1/3">
                     <img className="w-full" src={kotib} alt="kotib" />
