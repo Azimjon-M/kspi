@@ -160,6 +160,8 @@
     "tuzilmaShakli": "Institut tuzilmasining pdf shakli",
     "tuzilmaShakliYuklash": "Yuklab olish",
 
+    "yuklash": "Yuklab olish",
+
     "rekvizitlar": "Rekvizitlar",
     "nom": "Qo'qon davlat pedagogika instituti",
     "rekvizitlarInn": "INN",
@@ -453,6 +455,8 @@
     "tuzilmaShakli": "PDF-форма структуры организации",
     "tuzilmaShakliYuklash": "Скачать",
 
+    "yuklash": "Скачать",
+
     "rekvizitlar": "Детали",
     "nom": "Кокандский государственный педагогический институт",
     "rekvizitlarInn": "ИНН",
@@ -745,6 +749,8 @@
     "tuzilma": "Organization Structure",
     "tuzilmaShakli": "PDF Form of the Organization Structure",
     "tuzilmaShakliYuklash": "Download",
+
+    "yuklash": "Download",
 
     "rekvizitlar": "Details",
     "nom": "Qo'qon State Pedagogical Institute",
