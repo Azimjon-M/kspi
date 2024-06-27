@@ -3,8 +3,21 @@ import Breadcrumb from "../Breadcrumb";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import bilishDaraja from "../../assets/pdf/bilishDaraja.pdf";
 import TextTranslate from "../TextTranslate";
+// import APIMeyoriy from "../../services/abiturientMeyoriy";
 
 const AbiturientMeyoriyCom = () => {
+  // const [data, setData] = useState(null);
+
+  // useEffect(() => {
+  //   getData();
+  // }, []);
+
+  // const getData = () => {
+  //   APIMeyoriy.get()
+  //     .then((res) => setData(res.data))
+  //     .catch((err) => console.log(err));
+  // };
+
   return (
     <div className="px-5 xl:px-10 mb-5 lg:mb-0 md:min-h-[calc(100vh-565px)] lg:min-h-[calc(100vh-400px)]">
       <div className="border-b-2 border-[#004269] block w-full">

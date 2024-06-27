@@ -1,48 +1,24 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Breadcrumb from "../Breadcrumb";
 import { LuDownload } from "react-icons/lu";
-import qabulUz from "../../assets/docs/qabulUz.docx";
-import qabulRu from "../../assets/docs/qabulRu.docx";
-import anketaUzb from "../../assets/docs/anketaUzb.docx";
-import anketaRu from "../../assets/docs/anketaRu.docx";
-import anketaEng from "../../assets/docs/anketaEng.docx";
-import qabulEng from "../../assets/docs/qabulEng.docx";
 import TextTranslate from "../TextTranslate";
-
-const dataDocs = [
-  {
-    id: 1,
-    name: "Xorijiy talabalarni qabul qilish",
-    doc: qabulUz,
-  },
-  {
-    id: 2,
-    name: "ПРИЕМ ИНОСТРАННЫХ СТУДЕНТОВ",
-    doc: qabulRu,
-  },
-  {
-    id: 3,
-    name: "ADMISSION OF FOREIGN STUDENTS",
-    doc: qabulEng,
-  },
-  {
-    id: 4,
-    name: "Anketa (Uzb)",
-    doc: anketaUzb,
-  },
-  {
-    id: 5,
-    name: "Anketa (Rus)",
-    doc: anketaRu,
-  },
-  {
-    id: 6,
-    name: "Anketa (Eng)",
-    doc: anketaEng,
-  },
-];
+import APIXorijiyTalaba from "../../services/abiturientXorijiyTalaba";
+// import { useSelector } from "react-redux";
 
 function AbiturientXorijiyCom() {
+  const [data, setData] = useState(null);
+  // const Lang = useSelector((state) => state.reducerLang.isLang);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = () => {
+    APIXorijiyTalaba.get()
+      .then((res) => setData(res.data))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="px-5 xl:px-10">
       <div className="border-b-2 border-[#004269] block w-full">
@@ -76,9 +52,9 @@ function AbiturientXorijiyCom() {
               </tr>
             </thead>
             <tbody className="text-base">
-              {dataDocs &&
-                dataDocs.map((item) => {
-                  const { id, name, doc } = item;
+              {data &&
+                data.map((item) => {
+                  const { id, title, fayl } = item;
                   return (
                     <tr
                       key={id}
@@ -90,10 +66,10 @@ function AbiturientXorijiyCom() {
                       >
                         {id}
                       </th>
-                      <td className="px-2 md:px-6 py-4">{name}</td>
+                      <td className="px-2 md:px-6 py-4">{title}</td>
                       <td className="px-2 md:px-6 py-4 mx-auto flex justify-center items-center">
                         <a
-                          href={doc}
+                          href={fayl}
                           className="text-[#004269] dark:text-blue-500"
                           target="_blank"
                           rel="noopener noreferrer"
