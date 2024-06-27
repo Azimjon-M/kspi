@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Tabs,
   TabsHeader,
@@ -6,74 +6,64 @@ import {
   Tab,
   TabPanel,
 } from "@material-tailwind/react";
-// import APIGallery from "../../services/gallery";
-import thayot1 from "../../assets/images/1.JPG"
-import thayot2 from "../../assets/images/1.JPG"
-import thayot3 from "../../assets/images/1.JPG"
-import thayot4 from "../../assets/images/1.JPG"
-import tadbir1 from "../../assets/images/1.JPG"
-import tadbir2 from "../../assets/images/1.JPG"
-import tadbir3 from "../../assets/images/1.JPG"
-import tadbir4 from "../../assets/images/1.JPG"
-import ilmiy1 from "../../assets/images/1.JPG"
-import ilmiy2 from "../../assets/images/1.JPG"
-import ilmiy3 from "../../assets/images/1.JPG"
-import ilmiy4 from "../../assets/images/1.JPG"
-
+import APIGallery from "../../services/gallery";
+import APIGalleryTur from "../../services/galleryTur";
 import TextTranslate from "../TextTranslate/index";
-
 
 const Gallery = () => {
   const [activeTab, setActiveTab] = useState("ilmiy");
-  // const [data, setData] = useState(null);
-  // const [dataTur, setDataTur] = useState(null);
-  // console.log(dataTur);
-  // console.log(data);
+  const [data, setData] = useState([]);
+  const [dataTur, setDataTur] = useState([]);
+  const [pictures, setPictures] = useState([]);
 
-  // GET
-  // const getTur = async () => {
-  //   await APIGallery.getTur().then((res) => setDataTur(res.data));
-  // };
-  // const getData = async () => {
-  //   await APIGallery.get().then((res) => setData(res.data));
-  // };
-  // useEffect(() => {
-    // getTur();
-    // getData();
-  // });
+  // GET Gallery Types
+  const getTurData = async () => {
+    try {
+      const res = await APIGalleryTur.get();
+      setDataTur(res.data);
+    } catch (error) {
+      console.error("Error fetching gallery types:", error);
+    }
+  };
 
-  const pictures = [
-    {
-      label: <TextTranslate id="galleryTadbir" />,
-      value: "tadbirlar",
-      content: [
-        tadbir1,
-        tadbir2,
-        tadbir3,
-        tadbir4,
-      ],
-    },
-    {
-      label: <TextTranslate id="galleryIlmiy" />,
-      value: "ilmiy",
-      content: [
-        ilmiy1,
-        ilmiy2,
-        ilmiy3,
-        ilmiy4,
-      ],
-    },
-    {
-      label: <TextTranslate id="galleryTalaba" />,
-      value: "talabalar_hayoti",
-      content: [
-        thayot1,
-        thayot2,
-        thayot3,
-        thayot4,
-      ],
-    },
-  ];
+  // GET Gallery Data
+  const getData = async () => {
+    try {
+      const res = await APIGallery.get();
+      setData(res.data);
+    } catch (error) {
+      console.error("Error fetching gallery data:", error);
+    }
+  };
+
+  useEffect(() => {
+    getTurData();
+    getData();
+  }, []);
+
+  useEffect(() => {
+    // Combine gallery types with gallery data
+    if (dataTur?.length && data?.length) {
+      const combinedData = dataTur.map((tur) => ({
+        label: tur.tur_uz,
+        value: tur.id,
+        content: data
+          .filter((item) => item.tur_id === tur.id)
+          .map((item) => item.rasm),
+      }));
+      setPictures(combinedData);
+
+      // Set the default active tab to "Ilmiy hayot"
+      const ilmiyTab = combinedData?.find((tab) =>
+        tab.label.toLowerCase().includes("ilmiy")
+      );
+      if (ilmiyTab) {
+        setActiveTab(ilmiyTab.value);
+      } else if (combinedData?.length > 0) {
+        setActiveTab(combinedData[0].value);
+      }
+    }
+  }, [dataTur, data]);
 
   return (
     <div className="max-w-7xl mx-auto my-5 md:my-16">
@@ -89,10 +79,10 @@ const Gallery = () => {
         <TabsHeader className="bg-[#eaf3ffa2] mx-2">
           {pictures?.map(({ label, value }) => (
             <Tab
+              key={value} // Ensure key is unique
               className={`text-xl font-semibold text-[#004269] ${
                 activeTab === value ? "bg-white rounded" : ""
               }`}
-              key={value}
               value={value}
               onClick={() => setActiveTab(value)}
             >
@@ -114,7 +104,7 @@ const Gallery = () => {
               value={value}
               className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
             >
-              {content.slice(0, 8).map((imageUrl, index) => (
+              {content.slice(0, 4).map((imageUrl, index) => (
                 <img
                   key={index}
                   className="block h-full w-full object-cover object-center p-2 rounded-2xl hover:scale-105 ease-linear duration-300"

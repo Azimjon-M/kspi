@@ -1,6 +1,6 @@
 import axiosInstance from "./index";
 
-const ep = "home/gallery/";
+const ep = "home/galareya/";
 
 const get = () => axiosInstance.get(ep);
 
