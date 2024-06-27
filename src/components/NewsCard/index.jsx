@@ -37,7 +37,6 @@ const NewsCard = () => {
     loadNews();
   }, [id]);
 
-
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -77,27 +76,42 @@ const NewsCard = () => {
             >
               {news.rasm_1 && (
                 <SwiperSlide>
-                  <img src={news.rasm_1.replace(/^http:\/\//i, 'https://')} alt="news" />
+                  <img
+                    src={news.rasm_1.replace(/^http:\/\//i, "https://")}
+                    alt="news"
+                  />
                 </SwiperSlide>
               )}
               {news.rasm_2 && (
                 <SwiperSlide>
-                  <img src={news.rasm_2.replace(/^http:\/\//i, 'https://')} alt="news" />
+                  <img
+                    src={news.rasm_2.replace(/^http:\/\//i, "https://")}
+                    alt="news"
+                  />
                 </SwiperSlide>
               )}
               {news.rasm_3 && (
                 <SwiperSlide>
-                  <img src={news.rasm_3.replace(/^http:\/\//i, 'https://')} alt="news" />
+                  <img
+                    src={news.rasm_3.replace(/^http:\/\//i, "https://")}
+                    alt="news"
+                  />
                 </SwiperSlide>
               )}
               {news.rasm_4 && (
                 <SwiperSlide>
-                  <img src={news.rasm_4.replace(/^http:\/\//i, 'https://')} alt="news" />
+                  <img
+                    src={news.rasm_4.replace(/^http:\/\//i, "https://")}
+                    alt="news"
+                  />
                 </SwiperSlide>
               )}
               {news.rasm_5 && (
                 <SwiperSlide>
-                  <img src={news.rasm_5.replace(/^http:\/\//i, 'https://')} alt="news" />
+                  <img
+                    src={news.rasm_5.replace(/^http:\/\//i, "https://")}
+                    alt="news"
+                  />
                 </SwiperSlide>
               )}
             </Swiper>
@@ -113,27 +127,42 @@ const NewsCard = () => {
             >
               {news.rasm_1 && (
                 <SwiperSlide>
-                  <img src={news.rasm_1.replace(/^http:\/\//i, 'https://')} alt="news" />
+                  <img
+                    src={news.rasm_1.replace(/^http:\/\//i, "https://")}
+                    alt="news"
+                  />
                 </SwiperSlide>
               )}
               {news.rasm_2 && (
                 <SwiperSlide>
-                  <img src={news.rasm_2.replace(/^http:\/\//i, 'https://')} alt="news" />
+                  <img
+                    src={news.rasm_2.replace(/^http:\/\//i, "https://")}
+                    alt="news"
+                  />
                 </SwiperSlide>
               )}
               {news.rasm_3 && (
                 <SwiperSlide>
-                  <img src={news.rasm_3.replace(/^http:\/\//i, 'https://')} alt="news" />
+                  <img
+                    src={news.rasm_3.replace(/^http:\/\//i, "https://")}
+                    alt="news"
+                  />
                 </SwiperSlide>
               )}
               {news.rasm_4 && (
                 <SwiperSlide>
-                  <img src={news.rasm_4.replace(/^http:\/\//i, 'https://')} alt="news" />
+                  <img
+                    src={news.rasm_4.replace(/^http:\/\//i, "https://")}
+                    alt="news"
+                  />
                 </SwiperSlide>
               )}
               {news.rasm_5 && (
                 <SwiperSlide>
-                  <img src={news.rasm_5.replace(/^http:\/\//i, 'https://')} alt="news" />
+                  <img
+                    src={news.rasm_5.replace(/^http:\/\//i, "https://")}
+                    alt="news"
+                  />
                 </SwiperSlide>
               )}
             </Swiper>
@@ -141,8 +170,9 @@ const NewsCard = () => {
 
           {/* SUBTITLE */}
           <h2
-            className={`${news && news.subtitle_uz ? "" : "hidden"
-              } text-lg text-[#004269] xl:text-2xl 2xl:text-3xl font-bold text-center mt-3 mb-5`}
+            className={`${
+              news && news.subtitle_uz ? "" : "hidden"
+            } text-lg text-[#004269] xl:text-2xl 2xl:text-3xl font-bold text-center mt-3 mb-5`}
           >
             {news && news[`subtitle_${Lang}`]}
           </h2>
@@ -150,10 +180,56 @@ const NewsCard = () => {
           {/* PARAGRAPH */}
           <div className="px-2 mb-5">
             <div className="content-item">
-              <p className="mb-3" dangerouslySetInnerHTML={{ __html: news[`body_${Lang}`] }}>
-              </p>
+              <p
+                className="mb-3"
+                dangerouslySetInnerHTML={{ __html: news[`body_${Lang}`] }}
+              ></p>
               <div>
-                <a href={news?.fayl_1} target="blank" className="cursor-pointer">Yuklab olish ...</a>
+                {news?.fayl_1 && (
+                  <a
+                    href={news.fayl_1}
+                    target="blank"
+                    className="cursor-pointer"
+                  >
+                    <TextTranslate id="tuzilmaShakliYuklash" /> ...
+                  </a>
+                )}
+                {news?.fayl_2 && (
+                  <a
+                    href={news.fayl_2}
+                    target="blank"
+                    className="cursor-pointer"
+                  >
+                    <TextTranslate id="yuklash" /> ...
+                  </a>
+                )}
+                {news?.fayl_3 && (
+                  <a
+                    href={news.fayl_3}
+                    target="blank"
+                    className="cursor-pointer"
+                  >
+                    <TextTranslate id="yuklash" /> ...
+                  </a>
+                )}
+                {news?.fayl_4 && (
+                  <a
+                    href={news.fayl_4}
+                    target="blank"
+                    className="cursor-pointer"
+                  >
+                    <TextTranslate id="yuklash" /> ...
+                  </a>
+                )}
+                {news?.fayl_5 && (
+                  <a
+                    href={news.fayl_5}
+                    target="blank"
+                    className="cursor-pointer"
+                  >
+                    <TextTranslate id="yuklash" /> ...
+                  </a>
+                )}
               </div>
             </div>
           </div>

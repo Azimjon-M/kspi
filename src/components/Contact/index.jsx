@@ -1,11 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { FaSquarePhone } from "react-icons/fa6";
 import { MdMarkEmailUnread } from "react-icons/md";
-import { Link } from "react-router-dom";
 import TextTranslate from "../TextTranslate";
+import APIContact from "../../services/contact";
+import { useSelector } from "react-redux";
 
 const ContactUs = () => {
+  const [data, setData] = useState(null);
+  const Lang = useSelector((state) => state.reducerLang.isLang);
+
+  const getData = () => {
+    APIContact.get()
+      .then((res) => setData(res?.data))
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   useEffect(() => {
     const iframes = document.querySelectorAll("iframe");
     iframes.forEach((iframe) => {
@@ -19,36 +33,38 @@ const ContactUs = () => {
           <TextTranslate id="contactUs" />
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 md:my-10">
-          <div className="bg-white">
-            <div className="py-2 lg:py-6 px-4 mx-auto max-w-screen-md">
-              <h2 className="py-2 text-lg font-bold lg:mb-16 text-center text-[#004269] dark:text-gray-400 sm:text-xl">
-                <TextTranslate id="location" />
-              </h2>
-              <div>
-                <div className="flex items-center mb-5 md:mb-10">
-                  <FaMapLocationDot className="w-[40px] md:w-[60px] h-auto mr-4" />
-                  <p className="text-[#004269]">
-                    <TextTranslate id="address" />
-                  </p>
-                </div>
-                <div className="flex items-center mb-5 md:mb-10">
-                  <FaSquarePhone className="w-[40px] md:w-[60px] h-auto mr-4" />
-                  <p className="text-[#004269]">
-                    <Link href="tel:+998732493838">
-                      <TextTranslate id="ishonchTelefon" />: +998 73 249 38 38
-                    </Link>
-                  </p>
-                </div>
-                <div className="flex items-center">
-                  <MdMarkEmailUnread className="w-[40px] md:w-[60px] h-auto mr-4" />
-                  <p className="text-[#004269]">
-                    <Link href="mailto:kspi_info@edu.uz">kspi_info@edu.uz</Link><br />
-                    <Link href="mailto:info.kspi.uz">info.kspi.uz</Link>
-                  </p>
+          {data &&
+            data.map((item) => (
+              <div className="bg-white" key={item.id}>
+                <div className="py-2 lg:py-6 px-4 mx-auto max-w-screen-md">
+                  <h2 className="py-2 text-lg font-bold lg:mb-16 text-center text-[#004269] dark:text-gray-400 sm:text-xl">
+                    <TextTranslate id="location" />
+                  </h2>
+                  <div>
+                    <div className="flex items-center mb-5 md:mb-10">
+                      <FaMapLocationDot className="w-[40px] md:w-[60px] h-auto mr-4" />
+                      <p className="text-[#004269]">{item[`manzil_${Lang}`]}</p>
+                    </div>
+                    <div className="flex items-center mb-5 md:mb-10">
+                      <FaSquarePhone className="w-[40px] md:w-[60px] h-auto mr-4" />
+                      <p className="text-[#004269]">
+                        <a href={`tel:${item.telefon}`}>
+                          <TextTranslate id="ishonchTelefon" />: {item.telefon}
+                        </a>
+                      </p>
+                    </div>
+                    <div className="flex items-center">
+                      <MdMarkEmailUnread className="w-[40px] md:w-[60px] h-auto mr-4" />
+                      <p className="text-[#004269]">
+                        <a href={`mailto:${item.email_1}`}>{item.email_1}</a>
+                        <br />
+                        <a href={`mailto:${item.email_2}`}>{item.email_2}</a>
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
+            ))}
           <section className="bg-white py-6 px-4">
             <iframe
               title="Map"

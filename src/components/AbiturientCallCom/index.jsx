@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { LuPhoneCall } from "react-icons/lu";
-import callImg from "../../assets/images/1.JPG";
 import TextTranslate from "../TextTranslate";
 import APICall from "../../services/abiturientCall";
 import { useSelector } from "react-redux";
-import './style.css'
+import callImg from "../../assets/images/call.jpg"
 
 const AbiturientCallCom = () => {
   const [data, setData] = useState(null);

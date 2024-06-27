@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { RiComputerLine } from "react-icons/ri";
 import { GiBookshelf } from "react-icons/gi";
@@ -6,9 +6,30 @@ import { MdOutlineLiveTv } from "react-icons/md";
 import { PiChalkboardTeacherFill } from "react-icons/pi";
 import TextTranslate from "../TextTranslate";
 import { FaRegCalendarCheck, FaRegEye } from "react-icons/fa";
+import APILibrary from "../../services/interaktivLibrary";
+import APIMasofaviy from "../../services/interaktivMasofaviy";
+// import { useSelector } from "react-redux";
 
 function Interactive() {
+  const [data, setData] = useState(null);
+  const [dataSecond, setDataSecond] = useState(null);
+  // const Lang = useSelector((state) => state.reducerLang.isLang);
 
+  useEffect(() => {
+    getData();
+    getDataSecond();
+  }, []);
+
+  const getData = () => {
+    APILibrary.get()
+      .then((res) => setData(res.data))
+      .catch((err) => console.log(err));
+  };
+  const getDataSecond = () => {
+    APIMasofaviy.get()
+      .then((res) => setDataSecond(res.data))
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div>
@@ -27,27 +48,33 @@ function Interactive() {
               </Link>
             </li>
             <li className="w-full">
-              <Link
-                to={"https://unilibrary.uz/"}
-                target="blank"
-                className="flex flex-col justify-center items-center group md:my-9 my-3 w-full md:border-r border-[#ebebeb] text-center"
-              >
-                <GiBookshelf className="text-[40px] md:text-[50px] text-slate-300 group-hover:scale-125 group-hover:text-white transition-all duration-200 ease-linear" />
-                <h2 className="uppercase text-xs md:text-base mt-2 text-slate-200 font-bold">
-                  <TextTranslate id="intEKutubxona" />
-                </h2>
-              </Link>
+              {data &&
+                data.map((item) => (
+                  <Link
+                    to={item.link}
+                    target="blank"
+                    className="flex flex-col justify-center items-center group md:my-9 my-3 w-full md:border-r border-[#ebebeb] text-center"
+                  >
+                    <GiBookshelf className="text-[40px] md:text-[50px] text-slate-300 group-hover:scale-125 group-hover:text-white transition-all duration-200 ease-linear" />
+                    <h2 className="uppercase text-xs md:text-base mt-2 text-slate-200 font-bold">
+                      <TextTranslate id="intEKutubxona" />
+                    </h2>
+                  </Link>
+                ))}
             </li>
             <li className="w-full">
-              <Link
-                to="http://moodle.kspi.uz/doc/page/login.asp?_1707299150792"
-                className="flex flex-col justify-center items-center group md:my-9 my-3 w-full sm:border-r border-[#ebebeb] text-center"
-              >
-                <PiChalkboardTeacherFill className="text-[40px] md:text-[50px] text-slate-300 group-hover:scale-125 group-hover:text-white transition-all duration-200 ease-linear" />
-                <h2 className="uppercase text-xs md:text-base mt-2 text-slate-200 font-bold">
-                  <TextTranslate id="intMasofaviyTalim" />
-                </h2>
-              </Link>
+              {dataSecond &&
+                dataSecond.map((item) => (
+                  <Link
+                    to={item.link}
+                    className="flex flex-col justify-center items-center group md:my-9 my-3 w-full sm:border-r border-[#ebebeb] text-center"
+                  >
+                    <PiChalkboardTeacherFill className="text-[40px] md:text-[50px] text-slate-300 group-hover:scale-125 group-hover:text-white transition-all duration-200 ease-linear" />
+                    <h2 className="uppercase text-xs md:text-base mt-2 text-slate-200 font-bold">
+                      <TextTranslate id="intMasofaviyTalim" />
+                    </h2>
+                  </Link>
+                ))}
             </li>
             <li className="w-full">
               <Link
