@@ -4,6 +4,7 @@ import callImg from "../../assets/images/1.JPG";
 import TextTranslate from "../TextTranslate";
 import APICall from "../../services/abiturientCall";
 import { useSelector } from "react-redux";
+import './style.css'
 
 const AbiturientCallCom = () => {
   const [data, setData] = useState(null);

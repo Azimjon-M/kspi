@@ -13,6 +13,8 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import "./styles.css";
+// Import content-item styles
+import "./style.css";
 // import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 
@@ -36,7 +38,7 @@ const NewsCard = () => {
     };
     loadNews();
   }, [id]);
-  
+
 
   if (loading) {
     return <div>Loading...</div>;
@@ -141,170 +143,20 @@ const NewsCard = () => {
 
           {/* SUBTITLE */}
           <h2
-            className={`${
-              news && news.subtitle_uz ? "" : "hidden"
-            } text-lg text-[#004269] xl:text-2xl 2xl:text-3xl font-bold text-center mt-3 mb-5`}
+            className={`${news && news.subtitle_uz ? "" : "hidden"
+              } text-lg text-[#004269] xl:text-2xl 2xl:text-3xl font-bold text-center mt-3 mb-5`}
           >
             {news && news[`subtitle_${Lang}`]}
           </h2>
 
           {/* PARAGRAPH */}
           <div className="px-2 mb-5">
-            <div className="d-inline-block">
-              <p className="d-inline-block text-3xl border-2 border-[#004269] px-5 py-3 float-left mr-3">
-                {news &&
-                  news[`body_0_${Lang}`] &&
-                  news[`body_0_${Lang}`].slice(0, 1)}
+            <div className="content-item">
+              <p className="mb-3" dangerouslySetInnerHTML={{ __html: news[`body_${Lang}`] }}>
               </p>
-              <span className="text-md lg:text-lg xl:text-xl">
-                {news &&
-                  news[`body_0_${Lang}`] &&
-                  news[`body_0_${Lang}`].slice(1)}
-              </span>
-            </div>
-            <div className="text-md lg:text-lg xl:text-xl">
-              <p>
-                <span
-                  className={`${
-                    news && news[`body_1_${Lang}`] ? "ml-5" : "hidden"
-                  }`}
-                >
-                  {news &&
-                    news[`body_1_${Lang}`] &&
-                    news[`body_1_${Lang}`].slice(0, 1)}
-                </span>
-                {news &&
-                  news[`body_1_${Lang}`] &&
-                  news[`body_1_${Lang}`].slice(1)}
-              </p>
-            </div>
-            <div className="text-md lg:text-lg xl:text-xl">
-              <p>
-                <span
-                  className={`${
-                    news && news[`body_2_${Lang}`] ? "ml-5" : "hidden"
-                  }`}
-                >
-                  {news &&
-                    news[`body_2_${Lang}`] &&
-                    news[`body_2_${Lang}`].slice(0, 1)}
-                </span>
-                {news &&
-                  news[`body_2_${Lang}`] &&
-                  news[`body_2_${Lang}`].slice(1)}
-              </p>
-            </div>
-            <div className="text-md lg:text-lg xl:text-xl">
-              <p>
-                <span
-                  className={`${
-                    news && news[`body_3_${Lang}`] ? "ml-5" : "hidden"
-                  }`}
-                >
-                  {news &&
-                    news[`body_3_${Lang}`] &&
-                    news[`body_3_${Lang}`].slice(0, 1)}
-                </span>
-                {news &&
-                  news[`body_3_${Lang}`] &&
-                  news[`body_3_${Lang}`].slice(1)}
-              </p>
-            </div>
-            <div className="text-md lg:text-lg xl:text-xl">
-              <p>
-                <span
-                  className={`${
-                    news && news[`body_4_${Lang}`] ? "ml-5" : "hidden"
-                  }`}
-                >
-                  {news &&
-                    news[`body_4_${Lang}`] &&
-                    news[`body_4_${Lang}`].slice(0, 1)}
-                </span>
-                {news &&
-                  news[`body_4_${Lang}`] &&
-                  news[`body_4_${Lang}`].slice(1)}
-              </p>
-            </div>
-            <div className="text-md lg:text-lg xl:text-xl">
-              <p>
-                <span
-                  className={`${
-                    news && news[`body_5_${Lang}`] ? "ml-5" : "hidden"
-                  }`}
-                >
-                  {news &&
-                    news[`body_5_${Lang}`] &&
-                    news[`body_5_${Lang}`].slice(0, 1)}
-                </span>
-                {news &&
-                  news[`body_5_${Lang}`] &&
-                  news[`body_5_${Lang}`].slice(1)}
-              </p>
-            </div>
-            <div className="text-md lg:text-lg xl:text-xl">
-              <p>
-                <span
-                  className={`${
-                    news && news[`body_6_${Lang}`] ? "ml-5" : "hidden"
-                  }`}
-                >
-                  {news &&
-                    news[`body_6_${Lang}`] &&
-                    news[`body_6_${Lang}`].slice(0, 1)}
-                </span>
-                {news &&
-                  news[`body_6_${Lang}`] &&
-                  news[`body_6_${Lang}`].slice(1)}
-              </p>
-            </div>
-            <div className="text-md lg:text-lg xl:text-xl">
-              <p>
-                <span
-                  className={`${
-                    news && news[`body_7_${Lang}`] ? "ml-5" : "hidden"
-                  }`}
-                >
-                  {news &&
-                    news[`body_7_${Lang}`] &&
-                    news[`body_7_${Lang}`].slice(0, 1)}
-                </span>
-                {news &&
-                  news[`body_7_${Lang}`] &&
-                  news[`body_7_${Lang}`].slice(1)}
-              </p>
-            </div>
-            <div className="text-md lg:text-lg xl:text-xl">
-              <p>
-                <span
-                  className={`${
-                    news && news[`body_8_${Lang}`] ? "ml-5" : "hidden"
-                  }`}
-                >
-                  {news &&
-                    news[`body_8_${Lang}`] &&
-                    news[`body_8_${Lang}`].slice(0, 1)}
-                </span>
-                {news &&
-                  news[`body_8_${Lang}`] &&
-                  news[`body_8_${Lang}`].slice(1)}
-              </p>
-            </div>
-            <div className="text-md lg:text-lg xl:text-xl">
-              <p>
-                <span
-                  className={`${
-                    news && news[`body_9_${Lang}`] ? "ml-5" : "hidden"
-                  }`}
-                >
-                  {news &&
-                    news[`body_9_${Lang}`] &&
-                    news[`body_9_${Lang}`].slice(0, 1)}
-                </span>
-                {news &&
-                  news[`body_9_${Lang}`] &&
-                  news[`body_9_${Lang}`].slice(1)}
-              </p>
+              <div>
+                <a href={news?.fayl_1} target="blank" className="cursor-pointer">Yuklab olish ...</a>
+              </div>
             </div>
           </div>
         </div>
