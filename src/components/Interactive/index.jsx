@@ -51,6 +51,7 @@ function Interactive() {
               {data &&
                 data.map((item) => (
                   <Link
+                    key={item.id}
                     to={item.link}
                     target="blank"
                     className="flex flex-col justify-center items-center group md:my-9 my-3 w-full md:border-r border-[#ebebeb] text-center"
@@ -66,6 +67,7 @@ function Interactive() {
               {dataSecond &&
                 dataSecond.map((item) => (
                   <Link
+                    key={item.id}
                     to={item.link}
                     className="flex flex-col justify-center items-center group md:my-9 my-3 w-full sm:border-r border-[#ebebeb] text-center"
                   >

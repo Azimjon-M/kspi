@@ -1,5 +1,4 @@
-import { React, useState, useEffect } from "react";
-// import TextTranslate from "../TextTranslate";
+import React, { useState, useEffect, useRef } from "react";
 import CountUp from "react-countup";
 import VisibilitySensor from "react-visibility-sensor";
 import APIStatistics from "../../services/statistics";
@@ -9,6 +8,7 @@ function Statistics() {
   const [isVisible, setIsVisible] = useState(false);
   const [data, setData] = useState(null);
   const Lang = useSelector((state) => state.reducerLang.isLang);
+  const visibilitySensorRef = useRef(null); // Ref for VisibilitySensor
 
   useEffect(() => {
     getData();
@@ -27,10 +27,16 @@ function Statistics() {
   };
 
   return (
-    <div className="">
+    <div>
       {data &&
         data.map((item) => (
-          <VisibilitySensor onChange={handleVisibilityChange} key={item.id}>
+          <VisibilitySensor
+            key={item.id}
+            onChange={handleVisibilityChange}
+            partialVisibility={true}
+            delayedCall={true}
+            ref={visibilitySensorRef}
+          >
             <div className="g bg-[#F1F5F9] py-16">
               <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto max-w-2xl lg:max-w-none">
