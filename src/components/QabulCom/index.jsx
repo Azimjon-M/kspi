@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const QabulCom = () => {
   return (
@@ -14,12 +13,13 @@ const QabulCom = () => {
         <div className="font-semibold mb-3 text-center text-md">
           DTM saytiga kirib online hujjat topshirishingiz mumkin
         </div>
-        <Link
-          to="https://uzbmb.uz/page/qabul2023"
+        <a
+          href="https://my.uzbmb.uz/"
+          target="blank"
           className="btn bg-[#004269] hover:bg-[#004580] text-white"
         >
           Saytga o'tish
-        </Link>
+        </a>
       </div>
     </div>
   );

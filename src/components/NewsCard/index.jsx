@@ -13,8 +13,6 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import "./styles.css";
-// Import content-item styles
-import "./style.css";
 // import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 
