@@ -3,13 +3,14 @@ import { MdOutlineSubject } from "react-icons/md";
 import { RiNumbersFill } from "react-icons/ri";
 import { MdOutlineCreditScore } from "react-icons/md";
 import { GrCatalog } from "react-icons/gr";
-import bachlorImg from "../../assets/images/1.JPG";
 import { Link } from "react-router-dom";
 import TextTranslate from "../TextTranslate";
 import APIBakalavr from "../../services/abiturientBakalavr";
+import { useSelector } from "react-redux";
 
 function AbiturientBakalavrCom() {
   const [data, setData] = useState(null);
+  const Lang = useSelector((state) => state.reducerLang.isLang);
 
   useEffect(() => {
     getData();
@@ -30,13 +31,13 @@ function AbiturientBakalavrCom() {
                 className="text-center text-3xl sm:text-5xl md:text-7xl font-bold text-gray-100 text-shadow"
                 style={{ textShadow: "0 0 20px rgba(0,0,0, 1)" }}
               >
-                {item.title_uz}
+                {item[`title_${Lang}`]}
               </div>
               <p
                 className="text-gray-100 text-2xl text-center hidden md:block md:px-12 lg:px-32 xl:px-44 mt-5 leading-10 text-shadaw"
                 style={{ textShadow: "0 0 30px rgba(0,0,0, 1)" }}
               >
-                {item.body_uz}
+                {item[`body_${Lang}`]}
               </p>
             </div>
             <img src={item.rasm} className="w-full h-full" alt="" />
