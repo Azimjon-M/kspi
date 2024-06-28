@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const InstitutTuzilmasiCom = () => {
   const Lang = useSelector((state) => state.reducerLang.isLang);
   const [data, setData] = useState([]);
-console.log(data);
+  console.log(data);
   useEffect(() => {
     const getData = async () => {
       try {
@@ -42,31 +42,23 @@ console.log(data);
                 </h2>
               </div>
               <div className="mb-3">
-                <img
-                  className="w-full"
-                  src={item.rasm_1}
-                  alt="Institut tuzilmasi rasmi"
-                />
-                <img
-                  className="w-full"
-                  src={item.rasm_2}
-                  alt="Institut tuzilmasi rasmi"
-                />
-                <img
-                  className="w-full"
-                  src={item.rasm_3}
-                  alt="Institut tuzilmasi rasmi"
-                />
-                <img
-                  className="w-full"
-                  src={item.rasm_4}
-                  alt="Institut tuzilmasi rasmi"
-                />
-                <img
-                  className="w-full"
-                  src={item.rasm_5}
-                  alt="Institut tuzilmasi rasmi"
-                />
+                {[
+                  item.rasm_1,
+                  item.rasm_2,
+                  item.rasm_3,
+                  item.rasm_4,
+                  item.rasm_5,
+                ].map(
+                  (rasm, index) =>
+                    rasm && (
+                      <img
+                        key={index}
+                        className="w-full"
+                        src={rasm}
+                        alt={`Institut tuzilmasi rasmi ${index + 1}`}
+                      />
+                    )
+                )}
               </div>
               <div className="border-2 border-[#004269] flex items-center justify-between rounded p-2">
                 <div className="font-semibold md:text-lg lg:text-xl">
