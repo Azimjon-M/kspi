@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const InstitutTuzilmasiCom = () => {
   const Lang = useSelector((state) => state.reducerLang.isLang);
   const [data, setData] = useState([]);
-  console.log(data);
+
   useEffect(() => {
     const getData = async () => {
       try {
