@@ -11,10 +11,11 @@ import APIGalleryTur from "../../services/galleryTur";
 import TextTranslate from "../TextTranslate/index";
 
 const Gallery = () => {
-  const [activeTab, setActiveTab] = useState("ilmiy");
   const [data, setData] = useState([]);
   const [dataTur, setDataTur] = useState([]);
   const [pictures, setPictures] = useState([]);
+  const [initialActiveTab, setInitialActiveTab] = useState(null);
+  const [activeTab, setActiveTab] = useState(null);
 
   // GET Gallery Types
   const getTurData = async () => {
@@ -53,14 +54,12 @@ const Gallery = () => {
       }));
       setPictures(combinedData);
 
-      // Set the default active tab to "Ilmiy hayot"
-      const ilmiyTab = combinedData?.find((tab) =>
-        tab.label.toLowerCase().includes("ilmiy")
-      );
-      if (ilmiyTab) {
-        setActiveTab(ilmiyTab.value);
-      } else if (combinedData?.length > 0) {
-        setActiveTab(combinedData[0].value);
+      // Set the default active tab to the middle tab
+      if (combinedData.length > 0) {
+        const middleIndex = Math.floor(combinedData.length / 2);
+        const middleTabValue = combinedData[middleIndex].value;
+        setInitialActiveTab(middleTabValue);
+        setActiveTab(middleTabValue);
       }
     }
   }, [dataTur, data]);
@@ -75,47 +74,53 @@ const Gallery = () => {
           <TextTranslate id="galleryIqtibos" />
         </div>
       </div>
-      <Tabs id="custom-animation" value={activeTab} className="-z-10 md:py-10">
-        <TabsHeader className="bg-[#eaf3ffa2] mx-2">
-          {pictures?.map(({ label, value }) => (
-            <Tab
-              key={value} // Ensure key is unique
-              className={`text-xl font-semibold text-[#004269] ${
-                activeTab === value ? "bg-white rounded" : ""
-              }`}
-              value={value}
-              onClick={() => setActiveTab(value)}
-            >
-              {label}
-            </Tab>
-          ))}
-        </TabsHeader>
-        <TabsBody
-          className="z-0"
-          animate={{
-            initial: { y: 250 },
-            mount: { y: 0 },
-            unmount: { y: 250 },
-          }}
+      {initialActiveTab && (
+        <Tabs
+          id="custom-animation"
+          value={activeTab}
+          className="-z-10 md:py-10"
         >
-          {pictures?.map(({ value, content }) => (
-            <TabPanel
-              key={value}
-              value={value}
-              className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-            >
-              {content.slice(0, 4).map((imageUrl, index) => (
-                <img
-                  key={index}
-                  className="block h-full w-full object-cover object-center p-2 rounded-2xl hover:scale-105 ease-linear duration-300"
-                  src={imageUrl}
-                  alt="gallery"
-                />
-              ))}
-            </TabPanel>
-          ))}
-        </TabsBody>
-      </Tabs>
+          <TabsHeader className="bg-[#eaf3ffa2] mx-2">
+            {pictures?.map(({ label, value }) => (
+              <Tab
+                key={value}
+                className={`text-xl font-semibold text-[#004269] ${
+                  activeTab === value ? "bg-white rounded" : ""
+                }`}
+                value={value}
+                onClick={() => setActiveTab(value)}
+              >
+                {label}
+              </Tab>
+            ))}
+          </TabsHeader>
+          <TabsBody
+            className="z-0"
+            animate={{
+              initial: { y: 250 },
+              mount: { y: 0 },
+              unmount: { y: 250 },
+            }}
+          >
+            {pictures?.map(({ value, content }) => (
+              <TabPanel
+                key={value}
+                value={value}
+                className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+              >
+                {content.slice(0, 4).map((imageUrl, index) => (
+                  <img
+                    key={index}
+                    className="block h-full w-full object-cover object-center p-2 rounded-2xl hover:scale-105 ease-linear duration-300"
+                    src={imageUrl}
+                    alt="gallery"
+                  />
+                ))}
+              </TabPanel>
+            ))}
+          </TabsBody>
+        </Tabs>
+      )}
     </div>
   );
 };
