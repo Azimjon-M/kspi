@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import APIBaholashMezon from "../../services/baholashMezon";
+import APIQabulKvota from "../../services/qabulKvota";
 import { useSelector } from "react-redux";
 import { FaRegFilePdf } from "react-icons/fa6";
-import TextTranslate from "../TextTranslate";
 
 const QabulCom = () => {
   const [data, setData] = useState(null);
@@ -13,14 +12,14 @@ const QabulCom = () => {
   }, []);
 
   const getData = () => {
-    APIBaholashMezon.get()
+    APIQabulKvota.get()
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   };
   return (
     <div className="md:min-h-[calc(100vh-565px)] lg:min-h-[calc(100vh-400px)] max-w-7xl mx-auto px-4 xl:px-0">
       <h2 className="text-xl md:text-2xl text-center font-bold my-5 text-[#004269]">
-        <TextTranslate id="baholashMezon" />
+        Qabul kvotasi
       </h2>
       <div className="mb-5 lg:mb-7 xl:mb-10">
         {data?.length === 0 ? (
@@ -38,23 +37,11 @@ const QabulCom = () => {
                 <div className="mr-3">
                   <FaRegFilePdf className="w-[20px] h-auto text-black" />
                 </div>
-                {item[`title_${Lang}`]}
+                {item[`name_${Lang}`]}
               </a>
             </div>
           ))
         )}
-      </div>
-      <div className="flex flex-col items-center md:flex-row md:justify-between md:text-lg xl:text-2xl mb-5">
-        <div className="font-semibold mb-3 text-center text-md">
-          DTM saytiga kirib online hujjat topshirishingiz mumkin
-        </div>
-        <a
-          href="https://my.uzbmb.uz/"
-          target="blank"
-          className="btn bg-[#004269] hover:bg-[#004580] text-white"
-        >
-          Saytga o'tish
-        </a>
       </div>
     </div>
   );

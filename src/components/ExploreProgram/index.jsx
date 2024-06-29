@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import dasturUchun from "../../assets/images/1.JPG";
-import dasturUchun1 from "../../assets/images/1.JPG";
-import abiturient from "../../assets/images/1.JPG";
-import bakalavr from "../../assets/images/1.JPG";
+import dasturUchun from "../../assets/images/qoshma.jpg";
+import dasturUchun1 from "../../assets/images/oqish.jpg";
+import abiturient from "../../assets/images/magistr.jpg";
+import bakalavr from "../../assets/images/abiturient.jpg";
 import TextTranslate from "../TextTranslate/index";
 
 const ExploreProgram = () => {
@@ -64,6 +64,7 @@ const ExploreProgram = () => {
                 <Link
                   to={item.link}
                   className="border-[#004269] px-6 py-2 rounded-2xl text-white bg-[#004269]"
+                  target="blank"
                 >
                   <TextTranslate id="batafsil" />
                 </Link>
