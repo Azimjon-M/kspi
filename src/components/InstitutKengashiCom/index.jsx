@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Breadcrumb from "../Breadcrumb";
-import { Link } from "react-router-dom";
-import kotib from "../../assets/images/1.JPG";
 import TextTranslate from "../TextTranslate";
 import APIInstitutKengashi from "../../services/institutKengashi";
 
