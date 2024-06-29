@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Breadcrumb from "../Breadcrumb";
-import { Link } from "react-router-dom";
-import kotib from "../../assets/images/1.JPG";
 import TextTranslate from "../TextTranslate";
 import APIInstitutKengashi from "../../services/institutKengashi";
 
@@ -21,9 +19,6 @@ const InstitutKengashiCom = () => {
     };
     getData();
   }, []);
-
-  // o'chirishni unutmaaa!!!!!!!!!!!!!
-  console.log(data);
 
   return (
     <div className="px-5 py-3 md:px-10 mb-3 md:min-h-[calc(100vh-565px)] lg:min-h-[calc(100vh-400px)]">
