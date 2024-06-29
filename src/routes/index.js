@@ -23,6 +23,7 @@ import OquvRejalari from "../pages/Talabalar/Bakalavriyat/OquvRejalari";
 import FanDasturlari from "../pages/Talabalar/Bakalavriyat/FanDasturlari";
 import FanKatalogi from "../pages/Talabalar/Bakalavriyat/FanKatalogi";
 import AbiturientBakalavriat from "../pages/Abiturient/Bakalavryat";
+import QabulKvota from "../pages/Abiturient/Bakalavryat/QabulKvota";
 import AbiturientMagistratura from "../pages/Abiturient/Magistratura";
 import AbiturientCallMarkaz from "../pages/Abiturient/CallMarkaz";
 import AbiturientXorijiyTalaba from "../pages/Abiturient/HorijiyTalabalarQabul";
@@ -168,6 +169,10 @@ export const routes = [
       {
         element: <AbiturientBakalavriat />,
         path: "/abiturient-bakalavriat",
+      },
+      {
+        element: <QabulKvota />,
+        path: "/abiturient-bakalavriat/qabul-kvotalari",
       },
       {
         element: <AbiturientMagistratura />,
