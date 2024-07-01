@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://kspiapi.kspi.uz/",
-  // baseURL: "https://kspi.pythonanywhere.com/",
+  // baseURL: "https://kspiapi.kspi.uz/",
+  baseURL: "https://kspi.pythonanywhere.com/",
   headers: {
     // "Content-Type": "multipart/form-data",
     // Accept: "application/json",

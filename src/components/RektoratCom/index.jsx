@@ -36,7 +36,7 @@ const Rektorat = () => {
     }, []);
 
     return (
-        <div className="flex flex-col justify-center items-center px-3 border border-red-600 lg:pb-8 pb-4 py-4">
+        <div className="flex flex-col justify-center items-center px-3 lg:pb-8 pb-4 py-4">
             <h1 className="text-[24px] font-bold my-4 text-[#004269]">
                 Rektorat
             </h1>
@@ -71,11 +71,12 @@ const Rektorat = () => {
                                                 />
                                             </div>
                                             <h1>
-                                                {nomzod[`lavozim_${isLang}`]}
+                                                <b>Lavozim: </b> {nomzod[`lavozim_${isLang}`]}
                                             </h1>
-                                            <h1>{nomzod[`fish_${isLang}`]}</h1>
-                                            <h1>{nomzod[`unvon_${isLang}`]}</h1>
+                                            <h1><b>F.I.O: </b> {nomzod[`fish_${isLang}`]}</h1>
+                                            <h1><b>Unvon: </b> {nomzod[`unvon_${isLang}`]}</h1>
                                             <h1>
+                                                <b>Qabul soatlari: </b>
                                                 {
                                                     nomzod[
                                                         `qabul_soati_${isLang}`
@@ -83,10 +84,10 @@ const Rektorat = () => {
                                                 }
                                             </h1>
                                             <h1>
-                                                {nomzod[`biografiya_${isLang}`]}
+                                                <b>Biografya: </b> {nomzod[`biografiya_${isLang}`]}
                                             </h1>
-                                            <h1>{nomzod.tg_username}</h1>
-                                            <h1>+{nomzod.telefon_nomer}</h1>
+                                            <h1><b>Telegram: </b> {nomzod.tg_username}</h1>
+                                            <h1><b>Tel: </b> +{nomzod.telefon_nomer}</h1>
                                         </div>
                                     ))}
                             </div>
@@ -164,8 +165,6 @@ const Rektorat = () => {
                                                             `qabul_soati_${isLang}`
                                                         ]
                                                     }
-                                                    : Dushanba-Shanba, 10:00 -
-                                                    18:00
                                                 </h1>
                                             </div>
                                         </div>

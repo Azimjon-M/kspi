@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import APITuzilmaFakultet from "../../services/tFakultet";
 import { OverflowBox } from "./styled";
+import { useSelector } from "react-redux";
 
-const Fakultet = () => {
+const Rektorat = () => {
+    const isLang = useSelector((state) => state.reducerLang.isLang);
+
     const [dataFakLav, setDataFakLav] = useState([]);
     const [dataFakNom, setDataFakNom] = useState([]);
     const [isActive, setisActive] = useState(0);
@@ -33,8 +36,10 @@ const Fakultet = () => {
     }, []);
 
     return (
-        <div className="flex flex-col justify-center items-center px-3 border border-red-600 lg:pb-8 pb-4">
-            <h1 className="text-[22px] font-medium my-4">Fakultet</h1>
+        <div className="flex flex-col justify-center items-center px-3 lg:pb-8 pb-4 py-4">
+            <h1 className="text-[24px] font-bold my-4 text-[#004269]">
+                Fakultet
+            </h1>
             {/* Mobil */}
             <div className="w-full lg:hidden">
                 {dataFakLav?.length !== 0 ? (
@@ -45,7 +50,7 @@ const Fakultet = () => {
                         >
                             <input type="checkbox" name="my-accordion-2" />
                             <div className="collapse-title text-xl font-medium bg-base-200">
-                                {item.name_uz}
+                                {item[`name_${isLang}`]}
                             </div>
                             <div className="collapse-content border border-base-200">
                                 {dataFakNom
@@ -65,13 +70,24 @@ const Fakultet = () => {
                                                     alt="rahbar rasmi"
                                                 />
                                             </div>
-                                            <h1>{nomzod.lavozim_uz}</h1>
-                                            <h1>{nomzod.fish_uz}</h1>
-                                            <h1>{nomzod.unvon_uz}</h1>
-                                            <h1>{nomzod.qabul_soati_uz}</h1>
-                                            <h1>{nomzod.biografiya_ru}</h1>
-                                            <h1>{nomzod.tg_username}</h1>
-                                            <h1>+{nomzod.telefon_nomer}</h1>
+                                            <h1>
+                                                <b>Lavozim: </b> {nomzod[`lavozim_${isLang}`]}
+                                            </h1>
+                                            <h1><b>F.I.O: </b> {nomzod[`fish_${isLang}`]}</h1>
+                                            <h1><b>Unvon: </b> {nomzod[`unvon_${isLang}`]}</h1>
+                                            <h1>
+                                                <b>Qabul soatlari: </b>
+                                                {
+                                                    nomzod[
+                                                        `qabul_soati_${isLang}`
+                                                    ]
+                                                }
+                                            </h1>
+                                            <h1>
+                                                <b>Biografya: </b> {nomzod[`biografiya_${isLang}`]}
+                                            </h1>
+                                            <h1><b>Telegram: </b> {nomzod.tg_username}</h1>
+                                            <h1><b>Tel: </b> +{nomzod.telefon_nomer}</h1>
                                         </div>
                                     ))}
                             </div>
@@ -84,21 +100,23 @@ const Fakultet = () => {
                 )}
             </div>
             {/* /Mobil */}
+
             {/* Desctop */}
             <div className="hidden lg:flex lg:w-full lg:items-center lg:justify-center lg:gap-4 xl:gap-8 ">
-                <div className="p-1 border-2 border-blue-500 bg-blue-50 rounded-md">
-                    <OverflowBox className="w-[450px] h-[500px] p-4">
+                <div className="p-1 border-2 border-[#004269] rounded-md">
+                    <OverflowBox className="w-[380px] h-[500px] py-4 ps-8 pe-4">
                         {dataFakLav?.length !== 0 ? (
                             dataFakLav?.map((item) => (
-                                <button
+                                <h1
                                     key={item.id}
                                     onClick={() => onClickLav(item.id)}
                                     className={`${
-                                        item.id === isActive && "bg-green-300"
-                                    } w-full btn btn-ghost bg-gray-100 border hover:bg-green-400 border-gray-400 shadow-md my-1 font-medium`}
+                                        item.id === isActive &&
+                                        "text-[#004259] before:w-[8px] before:h-[8px] before:absolute before:top-[7px] before:left-[-18px] before:border-t-2 before:border-r-2 before:border-[#004269] before:rotate-[45deg] underline underline-offset-4 decoration-2 decoration-[#004269]"
+                                    } text-[18px] cursor-pointer relative active:translate-x-[2px] active:translate-y-[2px] mt-1 select-none`}
                                 >
-                                    {item.name_uz}
-                                </button>
+                                    {item[`name_${isLang}`]}
+                                </h1>
                             ))
                         ) : (
                             <div className="text-[18px] font-medium text-red-600">
@@ -107,8 +125,8 @@ const Fakultet = () => {
                         )}
                     </OverflowBox>
                 </div>
-                <div className="p-1 border-1 border-gray-50 bg-blue-50 shadow-lg rounded-md">
-                    <OverflowBox className="w-[500px] h-[500px] px-4 py-2">
+                <div className="shadow-xl border  rounded-md">
+                    <OverflowBox className="w-[550px] h-[508px] px-4 py-2">
                         {dataFakNom?.length !== 0 ? (
                             dataFakNom
                                 ?.filter(
@@ -119,35 +137,50 @@ const Fakultet = () => {
                                         key={nomzod.id}
                                         className="flex flex-col my-2"
                                     >
-                                        <div className="flex justify-start">
-                                            <img
-                                                className="rounded-md border w-[200px] h-[200px]"
-                                                src={nomzod.rasm}
-                                                alt="rahbar rasmi"
-                                            />
+                                        <div className="flex gap-4">
+                                            <div className="min-w-[200px] h-[200px] flex justify-start border rounded-md overflow-hidden">
+                                                <img
+                                                    className="w-full h-auto"
+                                                    src={nomzod.rasm}
+                                                    alt="rahbar rasmi"
+                                                />
+                                            </div>
+                                            <div>
+                                                <h1 className="font-semibold text-[22px] text-[#004369]">
+                                                    {
+                                                        nomzod[
+                                                            `lavozim_${isLang}`
+                                                        ]
+                                                    }
+                                                </h1>
+                                                <h1 className="font-medium text-[18px]">
+                                                    {nomzod[`fish_${isLang}`]}
+                                                </h1>
+                                                <h1 className="font-medium text-[18px]">
+                                                    {nomzod[`unvon_${isLang}`]}
+                                                </h1>
+                                                <h1 className="font-medium">
+                                                    {
+                                                        nomzod[
+                                                            `qabul_soati_${isLang}`
+                                                        ]
+                                                    }
+                                                </h1>
+                                            </div>
                                         </div>
-                                        <h1 className="font-semibold text-[22px] text-[#004369]">
-                                            {nomzod.lavozim_uz}
-                                        </h1>
-                                        <h1 className="font-medium text-[18px]">
-                                            {nomzod.fish_uz}
-                                        </h1>
-                                        <h1 className="font-medium text-[18px]">
-                                            {nomzod.unvon_uz}
-                                        </h1>
-                                        <h1 className="font-medium text-[18px]">
-                                            {nomzod.qabul_soati_uz}
-                                        </h1>
-                                        <h1 className="font-medium text-[18px]">
-                                            {nomzod.biografiya_ru}
-                                        </h1>
-                                        <h1>
-                                            <b>Telegram: </b>
-                                            {nomzod.tg_username}
-                                        </h1>
-                                        <h1>
-                                            <b>Tel: </b>+{nomzod.telefon_nomer}
-                                        </h1>
+                                        <div className="mt-4">
+                                            <h1 className="font-medium">
+                                                {nomzod[`biografiya_${isLang}`]}
+                                            </h1>
+                                            <h1>
+                                                <b>Telegram: </b>
+                                                {nomzod.tg_username}
+                                            </h1>
+                                            <h1>
+                                                <b>Tel: </b>+
+                                                {nomzod.telefon_nomer}
+                                            </h1>
+                                        </div>
                                     </div>
                                 ))
                         ) : (
@@ -163,4 +196,4 @@ const Fakultet = () => {
     );
 };
 
-export default Fakultet;
+export default Rektorat;
