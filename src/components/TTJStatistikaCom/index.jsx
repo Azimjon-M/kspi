@@ -12,7 +12,7 @@ function TTJStatistikaCom() {
     const getData = async () => {
       try {
         const response = await APITTJStatistika.get();
-        setData(response.data.reverse());
+        setData(response.data);
       } catch (error) {
         console.log(error);
       }
