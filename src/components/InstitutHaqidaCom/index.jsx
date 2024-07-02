@@ -33,7 +33,7 @@ const InstitutHaqidaCom = () => {
       {data &&
         data.map((item) => {
           return (
-            <div className="max-w-7xl mx-auto my-20">
+            <div key={item.id} className="max-w-7xl mx-auto my-20">
               <div>
                 <h1 className="text-3xl md:text-4xl font-bold font-source text-center text-[#004269]">
                   {item && item[`title_${Lang}`]}

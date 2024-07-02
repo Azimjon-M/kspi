@@ -45,7 +45,6 @@ function AbiturientBakalavrCom() {
         ))}
       <div className="max-w-7xl mx-5 xl:mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-5 -mt-8 sm:-mt-10 lg:-mt-28 mb-16">
         <Link
-          // to="/dtsvaMalaka"
           to="#"
           className="shadow-xl flex justify-center items-center md:h-60 py-5 rounded-lg bg-slate-200 group hover:bg-[#2A4D64] hover:scale-105 ease-in-out duration-300"
         >
@@ -57,7 +56,6 @@ function AbiturientBakalavrCom() {
           </div>
         </Link>
         <Link
-          // to="/oquvRejalari"
           to="#"
           className="shadow-xl flex justify-center items-center md:h-60 py-5 rounded-lg bg-slate-200 group hover:bg-[#2A4D64] hover:scale-105 ease-in-out duration-300"
         >
@@ -69,8 +67,7 @@ function AbiturientBakalavrCom() {
           </div>
         </Link>
         <Link
-          // to="/fanDasturlari"
-          to="#"
+          to="/abiturient-bakalavriat/qabul-kvotalari"
           className="shadow-xl flex justify-center items-center md:h-60 py-5 rounded-lg bg-slate-200 group hover:bg-[#2A4D64] hover:scale-105 ease-in-out duration-300"
         >
           <div>
@@ -80,10 +77,10 @@ function AbiturientBakalavrCom() {
             </p>
           </div>
         </Link>
-        <Link
-          // to="/fanKatalogi"
-          to="#"
+        <a
+          href="https://studyin-uzbekistan.uz/universities/53"
           className="shadow-xl flex justify-center items-center md:h-60 py-5 rounded-lg bg-slate-200 group hover:bg-[#2A4D64] hover:scale-105 ease-in-out duration-300"
+          target="blank"
         >
           <div>
             <GrCatalog className="text-7xl md:text-8xl mx-auto group-hover:text-slate-200" />
@@ -91,7 +88,7 @@ function AbiturientBakalavrCom() {
               <TextTranslate id="abiBakalavrLink4" />
             </p>
           </div>
-        </Link>
+        </a>
       </div>
     </div>
   );
