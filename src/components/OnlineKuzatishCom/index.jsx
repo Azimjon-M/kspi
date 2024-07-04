@@ -44,7 +44,7 @@ const OnlineKuzatishCom = () => {
                             key={items.id}
                             className="collapse collapse-arrow my-1"
                         >
-                            <input type="checkbox" name="my-accordion-2" />
+                            <input type="checkbox" name="my-accordion-2" checked />
                             <div className="collapse-title text-xl font-medium bg-base-200">
                                 {items[`name_${isLang}`]}
                             </div>
