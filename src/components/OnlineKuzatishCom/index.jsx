@@ -1,35 +1,115 @@
-import React, { useEffect, useState } from "react";
-import APIImthonOnlineKuzatish from "../../services/onlineKuzatish";
+import React, { useEffect, useState, useRef } from "react";
+// import APIImthonOnlineKuzatish from "../../services/onlineKuzatish";
 import { useSelector } from "react-redux";
 
 const OnlineKuzatishCom = () => {
     const isLang = useSelector((state) => state.reducerLang.isLang);
 
-    const [dataRekLav, setDataRekLav] = useState([]);
-    const [dataRekNom, setDataRekNom] = useState([]);
+    // const [dataRekLav, setDataRekLav] = useState([]);
+    // const [dataRekNom, setDataRekNom] = useState([]);
 
-    const getDataRekLav = async () => {
-        await APIImthonOnlineKuzatish.get()
-            .then((res) => {
-                console.log("Name: ", res.data);
-                setDataRekLav(res.data);
-            })
-            .catch((err) => console.log(err));
-    };
-    const getDataRekLNom = async () => {
-        await APIImthonOnlineKuzatish.getE()
-            .then((res) => {
-                setDataRekNom(res.data);
-                console.log("Link", res.data);
-            })
-            .catch((err) => console.log(err));
+    // const getDataRekLav = async () => {
+    //     await APIImthonOnlineKuzatish.get()
+    //         .then((res) => {
+    //             console.log("Name: ", res.data);
+    //             setDataRekLav(res.data);
+    //         })
+    //         .catch((err) => console.log(err));
+    // };
+    // const getDataRekLNom = async () => {
+    //     await APIImthonOnlineKuzatish.getE()
+    //         .then((res) => {
+    //             setDataRekNom(res.data);
+    //             console.log("Link", res.data);
+    //         })
+    //         .catch((err) => console.log(err));
+    // };
+
+    // useEffect(() => {
+    //     getDataRekLav();
+    // }, []);
+    // useEffect(() => {
+    //     getDataRekLNom();
+    // }, []);
+
+    let dataLav = [
+        {
+            id: 1,
+            name_uz: "Bilol uz",
+            name_ru: "Bilol uz",
+            name_en: "Bilol uz",
+        },
+        {
+            id: 2,
+            name_uz: "Hilol uz",
+            name_ru: "Hilol uz",
+            name_en: "Hilol uz",
+        },
+    ];
+
+    let dataLink = [
+        {
+            id: 1,
+            efirname_id: 1,
+            name_uz: "Halol",
+            name_ru: "Halol",
+            name_en: "Halol",
+            link: "http://45.150.24.134/Jismoniy%20d3.html",
+        },
+        {
+            id: 2,
+            efirname_id: 1,
+            name_uz: "Halol",
+            name_ru: "Halol",
+            name_en: "Halol",
+            link: "http://45.150.24.134/Jismoniy%20d3.html",
+        },
+        {
+            id: 3,
+            efirname_id: 1,
+            name_uz: "Halol",
+            name_ru: "Halol",
+            name_en: "Halol",
+            link: "http://45.150.24.134/Jismoniy%20d3.html",
+        },
+        {
+            id: 4,
+            efirname_id: 1,
+            name_uz: "Halol",
+            name_ru: "Halol",
+            name_en: "Halol",
+            link: "http://45.150.24.134/Jismoniy%20d3.html",
+        },
+        {
+            id: 5,
+            efirname_id: 2,
+            name_uz: "Halol",
+            name_ru: "Halol",
+            name_en: "Halol",
+            link: "http://45.150.24.134/Jismoniy%20d3.html",
+        },
+    ];
+
+    const [height, setHeight] = useState("200");
+    const videoContainerRef = useRef(null);
+
+    const resizeVideo = () => {
+        if (videoContainerRef.current) {
+            const width = videoContainerRef.current.offsetWidth;
+            const calculatedHeight = (780 / 1820) * width;
+            const yaxlid = String(Math.ceil(calculatedHeight));
+            setHeight(yaxlid);
+        }
     };
 
     useEffect(() => {
-        getDataRekLav();
-    }, []);
-    useEffect(() => {
-        getDataRekLNom();
+        resizeVideo(); // Initial call
+        window.addEventListener("resize", resizeVideo);
+
+        // Cleanup event listener on component unmount
+        return () => {
+            window.removeEventListener("resize", resizeVideo);
+        };
     }, []);
 
     return (
@@ -38,8 +118,8 @@ const OnlineKuzatishCom = () => {
                 Imthonlarni online kuzatish
             </h1>
             <div className="w-full p-2">
-                {dataRekLav?.length !== 0 ? (
-                    dataRekLav?.map((items) => (
+                {dataLav?.length !== 0 ? (
+                    dataLav?.map((items) => (
                         <div
                             key={items.id}
                             className="collapse collapse-arrow my-1"
@@ -49,20 +129,28 @@ const OnlineKuzatishCom = () => {
                                 {items[`name_${isLang}`]}
                             </div>
                             <div className="collapse-content border border-base-200">
-                                {dataRekNom
+                                {dataLink
                                     ?.filter(
-                                        (item) =>
-                                            item.efirname_id === items.id
+                                        (item) => item.efirname_id === items.id
                                     )
                                     .map((item) => (
-                                        <iframe
-                                            title={item.name_uz}
+                                        <div
+                                            id="video-container"
+                                            ref={videoContainerRef}
+                                            className={`h-[120px] sm:h-[263px] md:h-[318px] lg:h-[200px] xl:h-[270px] 2xl:h-[350px] w-full lg:w-[310px] xl:w-[390px] 2xl:w-[470px] lg:inline-block border mx-[2px] mt-2`}
+                                            onClick={console.log(`${height}px`)}
                                             key={item.id}
-                                            className="w-full h-[calc(auto+150px)] costom-noOverflow"
-                                            src="http://45.150.24.134/Jismoniy%20d3.html"
-                                            frameborder="0"
-                                            allowfullscreen
-                                        />
+                                        >
+                                            <h1 className="text-center font-medium my-1">{item[`name_${isLang}`]}</h1>
+                                            <iframe
+                                                title={item.name_uz}
+                                                key={item.id}
+                                                className="w-full h-full border border-red-600"
+                                                src={item.link}
+                                                frameborder="0"
+                                                allowfullscreen
+                                            />
+                                        </div>
                                     ))}
                             </div>
                         </div>
