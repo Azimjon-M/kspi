@@ -1,40 +1,48 @@
-import React, { useEffect, useState } from "react";
-import APIImthonOnlineKuzatish from "../../services/onlineKuzatish";
-import { useSelector } from "react-redux";
+import React, { useEffect, useRef} from "react";
+// import APIImthonOnlineKuzatish from "../../services/onlineKuzatish";
+// import { useSelector } from "react-redux";
 
 const OnlineKuzatishCom = () => {
-    const isLang = useSelector((state) => state.reducerLang.isLang);
-
-    const [dataRekLav, setDataRekLav] = useState([]);
-    const [dataRekNom, setDataRekNom] = useState([]);
-
-    const getDataRekLav = async () => {
-        await APIImthonOnlineKuzatish.get()
-            .then((res) => {
-                console.log("Name: ", res.data);
-                setDataRekLav(res.data);
-            })
-            .catch((err) => console.log(err));
-    };
-    const getDataRekLNom = async () => {
-        await APIImthonOnlineKuzatish.getE()
-            .then((res) => {
-                setDataRekNom(res.data);
-                console.log("Link", res.data);
-            })
-            .catch((err) => console.log(err));
-    };
+    const buttonRef = useRef(null);
 
     useEffect(() => {
-        getDataRekLav();
+        if (buttonRef.current) {
+            buttonRef.current.click();
+        }
     }, []);
-    useEffect(() => {
-        getDataRekLNom();
-    }, []);
+    // const isLang = useSelector((state) => state.reducerLang.isLang);
+
+    // const [dataRekLav, setDataRekLav] = useState([]);
+    // const [dataRekNom, setDataRekNom] = useState([]);
+
+    // const getDataRekLav = async () => {
+    //     await APIImthonOnlineKuzatish.get()
+    //         .then((res) => {
+    //             console.log("Name: ", res.data);
+    //             setDataRekLav(res.data);
+    //         })
+    //         .catch((err) => console.log(err));
+    // };
+    // const getDataRekLNom = async () => {
+    //     await APIImthonOnlineKuzatish.getE()
+    //         .then((res) => {
+    //             setDataRekNom(res.data);
+    //             console.log("Link", res.data);
+    //         })
+    //         .catch((err) => console.log(err));
+    // };
+
+    // useEffect(() => {
+    //     getDataRekLav();
+    // }, []);
+    // useEffect(() => {
+    //     getDataRekLNom();
+    // }, []);
 
     return (
         <div className="flex flex-col justify-center items-center px-3 lg:pb-8 pb-4 py-4">
-            <h1 className="text-[24px] font-bold my-4 text-[#004269]">
+            <a href="http://live.kspi.uz" ref={buttonRef}>Imthonlarni online kuzatish</a>
+            {/* <h1 className="text-[24px] font-bold my-4 text-[#004269]">
                 Imthonlarni online kuzatish
             </h1>
             <div className="w-full p-2">
@@ -82,7 +90,7 @@ const OnlineKuzatishCom = () => {
                         Malumot kiritilmagan!
                     </div>
                 )}
-            </div>
+            </div> */}
         </div>
     );
 };
