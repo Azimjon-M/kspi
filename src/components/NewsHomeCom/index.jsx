@@ -19,8 +19,11 @@ const NewsHome = () => {
       try {
         await APIYangilik.get()
           .then((res) => {
-            setFirstNews(res.data.reverse().slice(0, 1));
-            setNews(res.data.slice(1, 5));
+            const sortedData = res.data.sort((a, b) => {
+              return new Date(b.sana) - new Date(a.sana);
+          });
+            setFirstNews(sortedData.slice(0, 1));
+            setNews(sortedData.slice(1, 5));
           })
           .catch((err) => {
             console.log(err);
