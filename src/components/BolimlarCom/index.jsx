@@ -74,7 +74,7 @@ const Bolimlar = () => {
                                         >
                                             <div className="flex justify-center">
                                                 <img
-                                                    className="rounded-full border w-[120px] h-[120px]"
+                                                    className="rounded-full object-cover border w-[120px] h-[120px]"
                                                     src={nomzod.rasm}
                                                     alt="rahbar rasmi"
                                                 />
@@ -157,7 +157,7 @@ const Bolimlar = () => {
             {/* Desctop */}
             <div className="hidden lg:flex lg:w-full lg:items-center lg:justify-center lg:gap-4 xl:gap-8 ">
                 <div className="p-1 border-2 border-[#004269] rounded-md">
-                    <OverflowBox className="w-[380px] h-[500px] py-4 ps-8 pe-4">
+                    <OverflowBox className="w-[380px] xl:w-[420px] 2xl:w-[500px] h-[500px] py-4 ps-8 pe-4">
                         {dataBolLav?.length !== 0 ? (
                             dataBolLav?.map((item) => (
                                 <h1
@@ -179,7 +179,7 @@ const Bolimlar = () => {
                     </OverflowBox>
                 </div>
                 <div className="p-1 shadow-xl border rounded-md">
-                    <OverflowBox className="w-[550px] h-[500px] py-4 ps-8 pe-4">
+                    <OverflowBox className="w-[550px] xl:w-[650px] 2xl:w-[800px] h-[508px] px-4 py-2">
                         {dataBolNom?.length !== 0 ? (
                             dataBolNom
                                 ?.filter((item) => item.bolim_id === isActive)
@@ -191,7 +191,7 @@ const Bolimlar = () => {
                                         <div className="flex gap-4">
                                             <div className="min-w-[200px] h-[200px] flex justify-start border rounded-md overflow-hidden">
                                                 <img
-                                                    className="w-full h-auto"
+                                                    className="w-full h-auto object-cover"
                                                     src={nomzod.rasm}
                                                     alt="rahbar rasmi"
                                                 />

@@ -74,7 +74,7 @@ const Kafedra = () => {
                                         >
                                             <div className="flex justify-center">
                                                 <img
-                                                    className="rounded-full border w-[120px] h-[120px]"
+                                                    className="rounded-full border object-cover w-[120px] h-[120px]"
                                                     src={nomzod.rasm}
                                                     alt="rahbar rasmi"
                                                 />
@@ -157,7 +157,7 @@ const Kafedra = () => {
             {/* Desctop */}
             <div className="hidden lg:flex lg:w-full lg:items-center lg:justify-center lg:gap-4 xl:gap-8 ">
                 <div className="p-1 border-2 border-[#004269] rounded-md">
-                    <OverflowBox className="w-[380px] h-[500px] py-4 ps-8 pe-4">
+                    <OverflowBox className="w-[380px] xl:w-[420px] 2xl:w-[500px] h-[500px] py-4 ps-8 pe-4">
                         {dataKafLav?.length !== 0 ? (
                             dataKafLav?.map((item) => (
                                 <h1
@@ -179,7 +179,7 @@ const Kafedra = () => {
                     </OverflowBox>
                 </div>
                 <div className="p-1 shadow-xl border rounded-md">
-                    <OverflowBox className="w-[550px] h-[500px] py-4 ps-8 pe-4">
+                    <OverflowBox className="w-[550px] xl:w-[650px] 2xl:w-[800px] h-[508px] px-4 py-2">
                         {datakafNom?.length !== 0 ? (
                             datakafNom
                                 ?.filter((item) => item.kafedra_id === isActive)
@@ -191,7 +191,7 @@ const Kafedra = () => {
                                         <div className="flex gap-4">
                                             <div className="min-w-[200px] h-[200px] flex justify-start border rounded-md overflow-hidden">
                                                 <img
-                                                    className="w-full h-auto"
+                                                    className="w-full h-auto object-cover"
                                                     src={nomzod.rasm}
                                                     alt="rahbar rasmi"
                                                 />
