@@ -13,8 +13,11 @@ function BarchaElonlarCom() {
   useEffect(() => {
     const fetchdata = async () => {
       try {
-        const response = await APIElon.get();
-        setData(response.data.reverse());
+        const res = await APIElon.get();
+        const sortedData = res.data.sort((a, b) => {
+          return new Date(b.sana) - new Date(a.sana);
+      });
+        setData(sortedData);
       } catch (error) {
         console.log(error);
       }
