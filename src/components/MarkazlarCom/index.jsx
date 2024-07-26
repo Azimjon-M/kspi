@@ -136,9 +136,7 @@ const Markazlar = () => {
                                                     />
                                                 </div>
                                                 <h1 className="text-center font-medium text-[#004369] text-[13px] mt-1">
-                                                    {hodim[`fish_${isLang}`]}{" "}
-                                                    skdaiokdsa aiojdsao isd
-                                                    sajoi
+                                                    {hodim[`fish_${isLang}`]}
                                                 </h1>
                                             </div>
                                         ))}
@@ -259,8 +257,7 @@ const Markazlar = () => {
                                             />
                                         </div>
                                         <h1 className="text-center font-medium text-[#004369]">
-                                            {item[`fish_${isLang}`]} skdaiokdsa
-                                            aiojdsao isd sajoi
+                                            {item[`fish_${isLang}`]}
                                         </h1>
                                     </div>
                                 ))}
