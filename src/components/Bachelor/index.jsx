@@ -6,7 +6,7 @@ import { GrCatalog } from "react-icons/gr";
 import { Link } from "react-router-dom";
 import TextTranslate from "../TextTranslate";
 import { useSelector } from "react-redux";
-import APIMagistr from "../../services/talabalarMagistr";
+import APIBakalavr from "../../services/talabalarBakalavr";
 
 function Bachelor() {
   const [data, setData] = useState(null);
@@ -17,7 +17,7 @@ function Bachelor() {
   }, []);
 
   const getData = () => {
-    APIMagistr.get()
+    APIBakalavr.get()
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   };
