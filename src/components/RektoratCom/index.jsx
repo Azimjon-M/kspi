@@ -71,10 +71,17 @@ const Rektorat = () => {
                                                 />
                                             </div>
                                             <h1>
-                                                <b>Lavozim: </b> {nomzod[`lavozim_${isLang}`]}
+                                                <b>Lavozim: </b>{" "}
+                                                {nomzod[`lavozim_${isLang}`]}
                                             </h1>
-                                            <h1><b>F.I.O: </b> {nomzod[`fish_${isLang}`]}</h1>
-                                            <h1><b>Unvon: </b> {nomzod[`unvon_${isLang}`]}</h1>
+                                            <h1>
+                                                <b>F.I.O: </b>{" "}
+                                                {nomzod[`fish_${isLang}`]}
+                                            </h1>
+                                            <h1>
+                                                <b>Unvon: </b>{" "}
+                                                {nomzod[`unvon_${isLang}`]}
+                                            </h1>
                                             <h1>
                                                 <b>Qabul soatlari: </b>
                                                 {
@@ -84,10 +91,17 @@ const Rektorat = () => {
                                                 }
                                             </h1>
                                             <h1>
-                                                <b>Biografya: </b> {nomzod[`biografiya_${isLang}`]}
+                                                <b>Biografya: </b>{" "}
+                                                {nomzod[`biografiya_${isLang}`]}
                                             </h1>
-                                            <h1><b>Telegram: </b> {nomzod.tg_username}</h1>
-                                            <h1><b>Tel: </b> +{nomzod.telefon_nomer}</h1>
+                                            <h1>
+                                                <b>Telegram: </b>{" "}
+                                                {nomzod.tg_username}
+                                            </h1>
+                                            <h1>
+                                                <b>Tel: </b> +
+                                                {nomzod.telefon_nomer}
+                                            </h1>
                                         </div>
                                     ))}
                             </div>
@@ -111,9 +125,10 @@ const Rektorat = () => {
                                     key={item.id}
                                     onClick={() => onClickLav(item.id)}
                                     className={`${
-                                        item.id === isActive &&
-                                        "text-[#004259] before:w-[8px] before:h-[8px] before:absolute before:top-[7px] before:left-[-18px] before:border-t-2 before:border-r-2 before:border-[#004269] before:rotate-[45deg] underline underline-offset-4 decoration-2 decoration-[#004269]"
-                                    } text-[18px] cursor-pointer relative active:translate-x-[2px] active:translate-y-[2px] mt-1 select-none`}
+                                        item.id === isActive
+                                            ? "text-[#004259] font-semibold before:w-[8px] before:h-[8px] before:absolute before:top-[7px] before:left-[-18px] before:border-t-2 before:border-r-2 before:border-[#004269] before:rotate-[45deg] underline underline-offset-4 decoration-2 decoration-[#004269]"
+                                            : "text-gray-600"
+                                    } text-[18px]  cursor-pointer relative active:translate-x-[2px] active:translate-y-[2px] mt-1 select-none`}
                                 >
                                     {item[`name_${isLang}`]}
                                 </h1>
@@ -133,10 +148,7 @@ const Rektorat = () => {
                                     (item) => item.rektorat_id === isActive
                                 )
                                 .map((nomzod) => (
-                                    <div
-                                        key={nomzod.id}
-                                        className="my-2"
-                                    >
+                                    <div key={nomzod.id} className="my-2">
                                         <div className="flex gap-4">
                                             <div className="w-[40%] h-[200px] flex justify-start rounded-md overflow-hidden">
                                                 <img
