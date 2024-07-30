@@ -36,7 +36,7 @@ const Rektorat = () => {
     }, []);
 
     return (
-        <div className="flex flex-col justify-center items-center px-3 border border-red-600 lg:pb-8 pb-4 py-4">
+        <div className="flex flex-col justify-center items-center px-3 lg:pb-8 pb-4 py-4">
             <h1 className="text-[24px] font-bold my-4 text-[#004269]">
                 Rektorat
             </h1>
@@ -65,17 +65,18 @@ const Rektorat = () => {
                                         >
                                             <div className="flex justify-center">
                                                 <img
-                                                    className="rounded-full border w-[120px] h-[120px]"
+                                                    className="rounded-full border w-[120px] object-cover h-[120px]"
                                                     src={nomzod.rasm}
                                                     alt="rahbar rasmi"
                                                 />
                                             </div>
                                             <h1>
-                                                {nomzod[`lavozim_${isLang}`]}
+                                                <b>Lavozim: </b> {nomzod[`lavozim_${isLang}`]}
                                             </h1>
-                                            <h1>{nomzod[`fish_${isLang}`]}</h1>
-                                            <h1>{nomzod[`unvon_${isLang}`]}</h1>
+                                            <h1><b>F.I.O: </b> {nomzod[`fish_${isLang}`]}</h1>
+                                            <h1><b>Unvon: </b> {nomzod[`unvon_${isLang}`]}</h1>
                                             <h1>
+                                                <b>Qabul soatlari: </b>
                                                 {
                                                     nomzod[
                                                         `qabul_soati_${isLang}`
@@ -83,10 +84,10 @@ const Rektorat = () => {
                                                 }
                                             </h1>
                                             <h1>
-                                                {nomzod[`biografiya_${isLang}`]}
+                                                <b>Biografya: </b> {nomzod[`biografiya_${isLang}`]}
                                             </h1>
-                                            <h1>{nomzod.tg_username}</h1>
-                                            <h1>+{nomzod.telefon_nomer}</h1>
+                                            <h1><b>Telegram: </b> {nomzod.tg_username}</h1>
+                                            <h1><b>Tel: </b> +{nomzod.telefon_nomer}</h1>
                                         </div>
                                     ))}
                             </div>
@@ -103,7 +104,7 @@ const Rektorat = () => {
             {/* Desctop */}
             <div className="hidden lg:flex lg:w-full lg:items-center lg:justify-center lg:gap-4 xl:gap-8 ">
                 <div className="p-1 border-2 border-[#004269] rounded-md">
-                    <OverflowBox className="w-[380px] h-[500px] py-4 ps-8 pe-4">
+                    <OverflowBox className="w-[380px] xl:w-[420px] 2xl:w-[500px] h-[500px] py-4 ps-8 pe-4">
                         {dataRekLav?.length !== 0 ? (
                             dataRekLav?.map((item) => (
                                 <h1
@@ -125,7 +126,7 @@ const Rektorat = () => {
                     </OverflowBox>
                 </div>
                 <div className="shadow-xl border  rounded-md">
-                    <OverflowBox className="w-[550px] h-[508px] px-4 py-2">
+                    <OverflowBox className="w-[550px] xl:w-[650px] 2xl:w-[800px] h-[508px] px-4 py-2">
                         {dataRekNom?.length !== 0 ? (
                             dataRekNom
                                 ?.filter(
@@ -134,17 +135,17 @@ const Rektorat = () => {
                                 .map((nomzod) => (
                                     <div
                                         key={nomzod.id}
-                                        className="flex flex-col my-2"
+                                        className="my-2"
                                     >
                                         <div className="flex gap-4">
-                                            <div className="min-w-[200px] h-[200px] flex justify-start border rounded-md overflow-hidden">
+                                            <div className="w-[40%] h-[200px] flex justify-start rounded-md overflow-hidden">
                                                 <img
-                                                    className="w-full h-auto"
+                                                    className="w-full h-full object-cover"
                                                     src={nomzod.rasm}
                                                     alt="rahbar rasmi"
                                                 />
                                             </div>
-                                            <div>
+                                            <div className="w-[60%]">
                                                 <h1 className="font-semibold text-[22px] text-[#004369]">
                                                     {
                                                         nomzod[
@@ -164,8 +165,6 @@ const Rektorat = () => {
                                                             `qabul_soati_${isLang}`
                                                         ]
                                                     }
-                                                    : Dushanba-Shanba, 10:00 -
-                                                    18:00
                                                 </h1>
                                             </div>
                                         </div>
