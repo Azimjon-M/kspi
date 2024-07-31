@@ -9,7 +9,7 @@ const InstitutHaqida = () => {
     <div>
         <Navbar />
         <InstitutHaqidaCom />
-        <InstitutMalumotlariCom/>
+        <InstitutMalumotlariCom />
         <Footer />
     </div>
   )
