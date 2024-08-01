@@ -57,7 +57,7 @@ function InstitutMalumotlariCom() {
                       {item && item[`title_${Lang}`]}
                     </h3>
                     <p className="text-md md:text-xl mt-3">
-                      {item && item[`body_${Lang}`]}
+                      {item && item[`body_${Lang}`].slice(0, 800)}
                     </p>
                     {item.fayl && (
                       <div className="py-2">
