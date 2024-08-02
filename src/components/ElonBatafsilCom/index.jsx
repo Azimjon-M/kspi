@@ -172,7 +172,7 @@ function ElonBatafsilCom() {
           <h1 className="text-3xl font-bold">
             <TextTranslate id="elonBatafsilTadbirTafsilotlari" />:
           </h1>
-          <p className="text-lg">{data && data[`detail_${Lang}`]}</p>
+          <p className="text-lg" dangerouslySetInnerHTML={{ __html: data && data[`detail_${Lang}`] }}></p>
         </div>
       </div>
     </div>
