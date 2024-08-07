@@ -1,12 +1,10 @@
 import React from "react";
-import Navbar from "../../components/Navbar";
 import Carousel from "../../components/Carousel";
 import Interactive from "../../components/Interactive";
 import NewsHome from "../../components/NewsHomeCom";
 import StudentOpinion from "../../components/StudentOpinion";
 import Curriculum from "../../components/Curriculum";
 import ContactUs from "../../components/Contact";
-import Footer from "../../components/Footer";
 import Partners from "../../components/Partners";
 import WarmThoughts from "../../components/WarmThoughts";
 import ChatIcon from "../../components/Chat";
@@ -19,7 +17,6 @@ import Announcements from "../../components/Announcements";
 function Main() {
   return (
     <div>
-      <Navbar />
       <Carousel />
       <Interactive />
       <AboutUs />
@@ -33,7 +30,6 @@ function Main() {
       <Gallery />
       <Partners />
       <ContactUs />
-      <Footer />
       <ChatIcon />
     </div>
   );
