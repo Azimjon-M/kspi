@@ -7,7 +7,6 @@ const InstitutHaqida = () => {
     <div>
         <InstitutHaqidaCom />
         <InstitutMalumotlariCom/>
-        <Footer />
     </div>
   )
 }
