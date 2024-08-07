@@ -84,14 +84,12 @@ const InstitutKengashiCom = () => {
                   <h2 className="text-center font-semibold text-lg md:text-xl lg:text-2xl xl:text-3xl mb-3">
                     <TextTranslate id="kengashKotibMaqsad" />
                   </h2>
-                  <p className="text-md md:text-lg lg:text-xl xl:text-lg mb-5">
-                  {item && item[`kengash_vazifasi_${Lang}`]}
+                  <p className="text-md md:text-lg lg:text-xl xl:text-lg mb-5" dangerouslySetInnerHTML={{ __html: item[`kengash_vazifasi_${Lang}`] }}>
                   </p>
                   <h2 className="text-center font-semibold text-lg md:text-xl lg:text-2xl xl:text-3xl mb-3">
                     <TextTranslate id="kengashKotibKengash" />
                   </h2>
-                  <p className="text-md md:text-lg lg:text-xl xl:text-lg mb-3">
-                  {item && item[`kengash_haqida_${Lang}`]}
+                  <p className="text-md md:text-lg lg:text-xl xl:text-lg mb-3" dangerouslySetInnerHTML={{ __html: item[`kengash_haqida_${Lang}`] }}>
                   </p>
                 </div>
               </div>

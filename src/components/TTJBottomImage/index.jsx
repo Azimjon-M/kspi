@@ -1,5 +1,5 @@
 import React from "react";
-import ttjTalabalari from '../../assets/images/ttjTalabalari.jpg'
+import ttjTalabalari from '../../assets/images/ttjxona.jpg'
 
 function TTJBottomImage() {
   return (
