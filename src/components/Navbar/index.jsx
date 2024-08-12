@@ -9,7 +9,7 @@ import {
     setLangRu,
     setLangEn,
 } from "../../redux/moduls/language/action/";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import flag_1 from "../../assets/icons/flag-uz.png";
 import flag_2 from "../../assets/icons/flag-ru.png";
@@ -18,6 +18,7 @@ import TextTranslate from "../TextTranslate/index";
 
 function Navbar() {
     const location = useLocation();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const isLang = useSelector((state) => state.reducerLang.isLang);
 
@@ -25,21 +26,25 @@ function Navbar() {
     const [isActiveMenu, setIsActiveMenu] = useState(false);
     const [scrollY, setScrollY] = useState(false);
 
-    // const navigate = useNavigate();
+    const noSearch = location.pathname === "/qidiruv";
+
+    const queryParams = new URLSearchParams(location.search);
+    const query = queryParams.get("search") || "";
 
     // search
     const formik = useFormik({
         initialValues: {
-            searchText: "",
+            searchText: query ? query : "",
         },
         onSubmit: (values) => {
-            // navigate.push(`/search?query=${values.searchText}`);
-            // alert(JSON.stringify(values, null, 2));
-            // formik.resetForm();
+            if (values.searchText.length > 1) {
+                if (values.searchText !== query) {
+                    navigate(`/qidiruv?search=${values.searchText}`);
+                }
+            }
+            setIsActiveMenu(false);
         },
     });
-    // search
-
 
     const handleClickSearch = () => {
         if (isFocusedSearInp && formik.values.searchText) {
@@ -68,6 +73,7 @@ function Navbar() {
                 break;
         }
     };
+
     // Mobile Handler main no scroll
     useEffect(() => {
         if (isActiveMenu) {
@@ -205,7 +211,11 @@ function Navbar() {
                             </li>
                         </ul>
                         {/* HEADER SEARCH FORM */}
-                        <div className="flex items-center justify-center">
+                        <div
+                            className={`${
+                                noSearch && "hidden"
+                            } flex items-center justify-center`}
+                        >
                             <form onSubmit={formik.handleSubmit}>
                                 <label
                                     className="w-auto h-full flex items-center cursor-pointer"
@@ -585,7 +595,13 @@ function Navbar() {
                     {/* /Navigations */}
                     <div className="flex items-center md:gap-x-4">
                         {/* Search to lg */}
-                        <div className="hidden md:inline-block xl:hidden">
+                        <div
+                            className={`${
+                                noSearch
+                                    ? "hidden"
+                                    : "hidden md:inline-block xl:hidden"
+                            }`}
+                        >
                             {/* MOBILE SEARCH FORM */}
                             <form
                                 className="flex items-center justify-center px-4 py-2"
@@ -675,7 +691,7 @@ function Navbar() {
                 </div>
                 {/* /Language */}
                 {/* Search */}
-                <div className="md:hidden">
+                <div className={`${noSearch ? "hidden" : "md:hidden"}`}>
                     {/* MOBILE SEARCH FORM FROM DROPDON */}
                     <form
                         className="flex items-center justify-center px-4 py-2"
@@ -983,7 +999,6 @@ function Navbar() {
                 </div>
                 {/* /Header */}
             </div>
-            {/* /Mobile Drop */}
         </div>
     );
 }

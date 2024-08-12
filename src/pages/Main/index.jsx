@@ -14,25 +14,25 @@ import AboutUs from "../../components/AboutUs";
 import ExploreProgram from "../../components/ExploreProgram";
 import Announcements from "../../components/Announcements";
 
-function Main() {
-  return (
-    <div>
-      <Carousel />
-      <Interactive />
-      <AboutUs />
-      <Statistics />
-      <NewsHome />
-      <Announcements />
-      <StudentOpinion />
-      <WarmThoughts />
-      <Curriculum />
-      <ExploreProgram />
-      <Gallery />
-      <Partners />
-      <ContactUs />
-      <ChatIcon />
-    </div>
-  );
-}
+const Main = () => {
+    return (
+        <div>
+            <Carousel />
+            <Interactive />
+            <AboutUs />
+            <Statistics />
+            <NewsHome />
+            <Announcements />
+            <StudentOpinion />
+            <WarmThoughts />
+            <Curriculum />
+            <ExploreProgram />
+            <Gallery />
+            <Partners />
+            <ContactUs />
+            <ChatIcon />
+        </div>
+    );
+};
 
 export default Main;
