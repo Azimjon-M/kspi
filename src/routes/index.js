@@ -42,6 +42,7 @@ import BarchaElonlar from "../pages/BarchaElonlar";
 import ElonBatafsil from "../pages/ElonBatafsil";
 import SearchPage from "../pages/Search";
 
+// magistratura
 const routes = [
     {
         id: 1,
