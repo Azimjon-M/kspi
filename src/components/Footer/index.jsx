@@ -7,6 +7,7 @@ import { FaSquareFacebook } from "react-icons/fa6";
 import TextTranslate from "../TextTranslate/index";
 import Logo from "../../assets/icons/logo_kspi.png";
 import { useSelector } from "react-redux";
+import "./style.css"
 
 const Footer = () => {
     const isLang = useSelector((state) => state.reducerLang.isLang);

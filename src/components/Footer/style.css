@@ -1,0 +1,146 @@
+@import url(https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@100;200;300;400;500;600;800;900&display=swap);
+
+.font_source {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+@import url(https://fonts.googleapis.com/css2?family=Signika+Negative:wght@100;200;300;400;500;600;700&display=swap);
+
+body {
+  font-family: 'Signika Negative', sans-serif;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
+  }
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    border-radius: 50%;
+  }
+}
+
+.background-footer {
+  position: sticky;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  background: #002a45;
+  overflow: hidden;
+}
+.background-footer li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  animation: animate 19s linear infinite;
+}
+
+.background-footer li:nth-child(0) {
+  left: 66%;
+  width: 177px;
+  height: 177px;
+  bottom: -177px;
+  animation-delay: 1s;
+}
+.background-footer li:nth-child(1) {
+  left: 25%;
+  width: 174px;
+  height: 174px;
+  bottom: -174px;
+  animation-delay: 1s;
+}
+.background-footer li:nth-child(2) {
+  left: 66%;
+  width: 118px;
+  height: 118px;
+  bottom: -118px;
+  animation-delay: 7s;
+}
+.background-footer li:nth-child(3) {
+  left: 58%;
+  width: 112px;
+  height: 112px;
+  bottom: -112px;
+  animation-delay: 8s;
+}
+.background-footer li:nth-child(4) {
+  left: 57%;
+  width: 173px;
+  height: 173px;
+  bottom: -173px;
+  animation-delay: 20s;
+}
+.background-footer li:nth-child(5) {
+  left: 68%;
+  width: 136px;
+  height: 136px;
+  bottom: -136px;
+  animation-delay: 7s;
+}
+.background-footer li:nth-child(6) {
+  left: 24%;
+  width: 189px;
+  height: 189px;
+  bottom: -189px;
+  animation-delay: 21s;
+}
+.background-footer li:nth-child(7) {
+  left: 26%;
+  width: 137px;
+  height: 137px;
+  bottom: -137px;
+  animation-delay: 10s;
+}
+.background-footer li:nth-child(8) {
+  left: 70%;
+  width: 135px;
+  height: 135px;
+  bottom: -135px;
+  animation-delay: 12s;
+}
+.background-footer li:nth-child(9) {
+  left: 63%;
+  width: 150px;
+  height: 150px;
+  bottom: -150px;
+  animation-delay: 28s;
+}
+
+/* CK Editor */
+/* Global uslublar */
+.content-item {
+  font-size: 20px;
+}
+
+.content-item a {
+  color: #0069c2;
+  text-decoration: underline;
+}
+
+/* Kichik ekranlar (mobil qurilmalar) */
+@media (max-width: 600px) {
+  .content-item {
+      font-size: 16px;
+  }
+}
+
+/* O'rta ekranlar (planshetlar) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .content-item {
+      font-size: 18px;
+  }
+}
+
+/* Katta ekranlar (kompyuterlar) */
+@media (min-width: 1025px) {
+  .content-item {
+      font-size: 20px;
+  }
+}
