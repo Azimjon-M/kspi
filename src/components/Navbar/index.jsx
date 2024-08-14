@@ -527,7 +527,7 @@ function Navbar() {
                                         </li>
                                         <li className="text-[#004269] dark:text-white">
                                             <Link
-                                                to="https://studyin-uzbekistan.uz/universities/53"
+                                                to="https://xtqabul.kspi.uz/"
                                                 target="blank"
                                             >
                                                 <TextTranslate id="navDropAbiturient_6" />
@@ -1049,7 +1049,7 @@ function Navbar() {
                                                     onClick={
                                                         handleClickCloseMenu
                                                     }
-                                                    to="https://studyin-uzbekistan.uz/universities/53"
+                                                    to="https://xtqabul.kspi.uz/"
                                                     target="blank"
                                                 >
                                                     <TextTranslate id="navDropAbiturient_6" />
