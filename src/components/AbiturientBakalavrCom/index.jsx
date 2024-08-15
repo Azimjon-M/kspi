@@ -78,7 +78,7 @@ function AbiturientBakalavrCom() {
           </div>
         </Link>
         <a
-          href="https://studyin-uzbekistan.uz/universities/53"
+          href="https://xtqabul.kspi.uz/"
           className="shadow-xl flex justify-center items-center md:h-60 py-5 rounded-lg bg-slate-200 group hover:bg-[#2A4D64] hover:scale-105 ease-in-out duration-300"
           target="blank"
         >
