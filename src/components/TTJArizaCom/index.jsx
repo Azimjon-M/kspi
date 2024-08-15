@@ -4,7 +4,6 @@ import TextTranslate from "../TextTranslate";
 import APITTJAriza from "../../services/ttjAriza";
 
 import { LuCopyCheck } from "react-icons/lu";
-import { GoChecklist } from "react-icons/go";
 
 function TTJArizaCom() {
   const Lang = useSelector((state) => state.reducerLang.isLang);
@@ -32,31 +31,19 @@ function TTJArizaCom() {
         {data &&
           data.map((item) => {
             return (
-              <div
-                key={item.id}
-                className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 my-16"
-              >
-                <div className="text-center">
-                  <a
-                    href={item.link_1}
-                    className="inline-block bg-[#F2F2F2] rounded-full p-5 shadow-lg border border-sky-700 group hover:bg-sky-700"
-                  >
-                    <LuCopyCheck className="text-5xl text-sky-700 group-hover:text-sky-50" />
-                  </a>
-                  <p className="text-xl font-bold text-gray-600 mt-5">
+              <div key={item.id} className="max-w-7xl mx-auto my-16">
+                <div className="text-center flex flex-col-reverse md:flex-row justify-evenly items-center">
+                  <p className="text-xl font-bold text-gray-600 my-5">
                     {item && item[`link_1_title_${Lang}`]}
                   </p>
-                </div>
-                <div className="text-center mt-10 md:mt-0">
-                  <a
-                    href={item.link_2}
-                    className="inline-block bg-[#F2F2F2] rounded-full p-5 shadow-lg border border-sky-700 group hover:bg-sky-700"
-                  >
-                    <GoChecklist className="text-5xl text-sky-700 group-hover:text-sky-50" />
-                  </a>
-                  <p className="text-xl font-bold text-gray-600 mt-5">
-                    {item && item[`link_2_title_${Lang}`]}
-                  </p>
+                  <div>
+                    <a
+                      href={item.link_1}
+                      className="inline-block bg-[#F2F2F2] rounded-full p-5 shadow-lg border border-sky-700 group hover:bg-sky-700"
+                    >
+                      <LuCopyCheck className="text-5xl text-sky-700 group-hover:text-sky-50" />
+                    </a>
+                  </div>
                 </div>
               </div>
             );
