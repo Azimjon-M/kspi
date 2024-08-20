@@ -20,6 +20,7 @@ import OquvRejalari from "../pages/Talabalar/Bakalavriyat/OquvRejalari";
 import FanDasturlari from "../pages/Talabalar/Bakalavriyat/FanDasturlari";
 import FanKatalogi from "../pages/Talabalar/Bakalavriyat/FanKatalogi";
 import AbiturientBakalavriat from "../pages/Abiturient/Bakalavryat";
+import OtishBallari from "../pages/Abiturient/Bakalavryat/OtishBallari";
 import QabulKvota from "../pages/Abiturient/Bakalavryat/QabulKvota";
 import AbiturientMagistratura from "../pages/Abiturient/Magistratura";
 import AbiturientCallMarkaz from "../pages/Abiturient/CallMarkaz";
@@ -195,83 +196,88 @@ const routes = [
     },
     {
         id: 29,
+        element: OtishBallari,
+        path: "/abiturient-bakalavriat/o'tish-ballari",
+    },
+    {
+        id: 30,
         element: QabulKvota,
         path: "/abiturient-bakalavriat/qabul-kvotalari",
     },
     {
-        id: 30,
+        id: 31,
         element: AbiturientMagistratura,
         path: "/abiturient-magistratura",
     },
     {
-        id: 31,
+        id: 32,
         element: AbiturientCallMarkaz,
         path: "/call-markaz",
     },
     {
-        id: 32,
+        id: 33,
         element: AbiturientMeyoriy,
         path: "/abiturient-meyoriy",
     },
     {
-        id: 33,
+        id: 34,
         element: AbiturientXorijiyTalaba,
         path: "/abiturient-xorijiy-talabalar",
     },
 
     // Navbar Faoliyat
     {
-        id: 34,
+        id: 35,
         element: AkademikLitsey,
         path: "/akademik-litsey",
     },
     {
-        id: 35,
+        id: 36,
         element: IlmiyFaolyat,
         path: "/ilmiy-faoliyat",
     },
     {
-        id: 36,
+        id: 37,
         element: JamoatchilikKengashiFaol,
         path: "/jamoatchilik",
     },
     {
-        id: 37,
+        id: 38,
         element: MadMarFaolyat,
         path: "/madaniy",
     },
     {
-        id: 38,
+        id: 39,
         element: OquvUslubiyFaolyat,
         path: "/oquv-uslubiy",
     },
     {
-        id: 39,
+        id: 40,
         element: YoshlarBnIshlashMvaM,
         path: "/yoshlar-ishlash",
     },
     {
-        id: 40,
+        id: 41,
         element: Vakansiyalar,
         path: "/vakansiyalar",
     },
 
     // Barcha Elonlar
     {
-        id: 41,
+        id: 42,
         element: BarchaElonlar,
         path: "/barchaElonlar",
     },
 
     // Elon Batafsil
     {
-        id: 42,
+        id: 43,
         element: ElonBatafsil,
         path: "/elonBatafsil/:id",
     },
     // Search
     {
-        id: 43,
+        id: 44,
         element: SearchPage,
         path: "/qidiruv",
     },
