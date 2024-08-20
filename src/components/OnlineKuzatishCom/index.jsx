@@ -41,7 +41,7 @@ const OnlineKuzatishCom = () => {
 
     return (
         <div className="flex flex-col justify-center items-center px-3 lg:pb-8 pb-4 py-4">
-            <a href="http://live.kspi.uz" ref={buttonRef}>Imthonlarni online kuzatish</a>
+            <a href="http://live.kspi.uz" ref={buttonRef} target="blank">Imthonlarni online kuzatish</a>
             {/* <h1 className="text-[24px] font-bold my-4 text-[#004269]">
                 Imthonlarni online kuzatish
             </h1>
