@@ -45,7 +45,7 @@ function AbiturientBakalavrCom() {
         ))}
       <div className="max-w-7xl mx-5 xl:mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-5 -mt-8 sm:-mt-10 lg:-mt-28 mb-16">
         <Link
-          to="abiturient-bakalavriat/o'tish-ballari"
+          to="/abiturient-bakalavriat/o'tish-ballari"
           className="shadow-xl flex justify-center items-center md:h-60 py-5 rounded-lg bg-slate-200 group hover:bg-[#2A4D64] hover:scale-105 ease-in-out duration-300"
         >
           <div>
