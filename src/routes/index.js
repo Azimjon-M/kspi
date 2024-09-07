@@ -42,244 +42,266 @@ import Vakansiyalar from "../pages/Vakansiyalar";
 import BarchaElonlar from "../pages/BarchaElonlar";
 import ElonBatafsil from "../pages/ElonBatafsil";
 import SearchPage from "../pages/Search";
+import NormativHuj from "../pages/NormativHuj";
+import IchkiIdoraviyHuj from "../pages/IchkiIdoraviyHuj";
+import KorrupsyaHaqHabBerish from "../pages/KorrupsyaHaqHabBerish";
+import AuthorPage from "../pages/Author";
+
+import ID from "../components/Id"
 
 // magistratura
 const routes = [
     {
-        id: 1,
+        id: ID,
         element: Main,
         path: "/",
     },
     {
-        id: 2,
+        id: ID,
         element: News,
         path: "/yangiliklar",
     },
     {
-        id: 3,
+        id: ID,
         element: New,
         path: "/yangiliklar/:id",
     },
-
-    // Home Interactive xizmatlar
+    //-------Interactive xizmatlar---------
     {
-        id: 4,
+        id: ID,
         element: VirQabulxona,
         path: "/qabulxona",
     },
     {
-        id: 5,
+        id: ID,
         element: VideoMaruzalar,
         path: "/videomaruza",
     },
     {
-        id: 6,
+        id: ID,
         element: Qabul,
         path: "/qabul",
     },
     {
-        id: 7,
+        id: ID,
         element: OnlineKuzatish,
         path: "/kuzatish",
     },
     {
-        id: 8,
+        id: ID,
         element: Rekvizitlar,
         path: "/rekvizitlar",
     },
-
-    // Navbar Institut
+    //-------Institut---------
     {
-        id: 9,
+        id: ID,
         element: InstitutTuzilmasi,
         path: "/institut-tuzilma",
     },
     {
-        id: 10,
+        id: ID,
         element: InstitutKengashi,
         path: "/institut-kengashi",
     },
     {
-        id: 11,
+        id: ID,
         element: InstitutHaqida,
         path: "/institut-haqida",
     },
-
-    // Navbar Tuzilma
+    //-------Tuzilma---------
     {
-        id: 12,
+        id: ID,
         element: Rektorat,
         path: "/rektorat",
     },
     {
-        id: 13,
+        id: ID,
         element: Markazlar,
         path: "/markazlar",
     },
     {
-        id: 14,
+        id: ID,
         element: Kafedralar,
         path: "/kafedralar",
     },
     {
-        id: 15,
+        id: ID,
         element: Fakultetlar,
         path: "/fakultetlar",
     },
     {
-        id: 16,
+        id: ID,
         element: Bolimlar,
         path: "/bolimlar",
     },
     //-------Talabalar---------
     {
-        id: 17,
+        id: ID,
         element: Bakalavriyat,
         path: "/bakalavriyat",
     },
     {
-        id: 18,
+        id: ID,
         element: DTSvaMalaka,
         path: "/dtsvaMalaka",
     },
     {
-        id: 19,
+        id: ID,
         element: OquvRejalari,
         path: "/oquvRejalari",
     },
     {
-        id: 20,
+        id: ID,
         element: FanDasturlari,
         path: "/fanDasturlari",
     },
     {
-        id: 21,
+        id: ID,
         element: FanKatalogi,
         path: "/fanKatalogi",
     },
     {
-        id: 22,
+        id: ID,
         element: Magistratura,
         path: "/magistratura",
     },
     {
-        id: 23,
+        id: ID,
         element: MagistrDTSvaMalaka,
         path: "/magistrDTSvaMalaka",
     },
     {
-        id: 24,
+        id: ID,
         element: MagistrOquvRejalari,
         path: "/magistrOquvRejalari",
     },
     {
-        id: 25,
+        id: ID,
         element: MagistrFanDasturlari,
         path: "/magistrFanDasturlari",
     },
     {
-        id: 26,
+        id: ID,
         element: MagistrFanKatalogi,
         path: "/magistrFanKatalogi",
     },
     {
-        id: 27,
+        id: ID,
         element: TalabalarTurarJoyi,
         path: "/talabalarTurarJoyi",
     },
 
     // Navbar Abiturient
     {
-        id: 28,
+        id: ID,
         element: AbiturientBakalavriat,
         path: "/abiturient-bakalavriat",
     },
     {
-        id: 29,
+        id: ID,
         element: OtishBallari,
         path: "/abiturient-bakalavriat/o'tish-ballari",
     },
     {
-        id: 30,
+        id: ID,
         element: QabulKvota,
         path: "/abiturient-bakalavriat/qabul-kvotalari",
     },
     {
-        id: 31,
+        id: ID,
         element: AbiturientMagistratura,
         path: "/abiturient-magistratura",
     },
     {
-        id: 32,
+        id: ID,
         element: AbiturientCallMarkaz,
         path: "/call-markaz",
     },
     {
-        id: 33,
+        id: ID,
         element: AbiturientMeyoriy,
         path: "/abiturient-meyoriy",
     },
     {
-        id: 34,
+        id: ID,
         element: AbiturientXorijiyTalaba,
         path: "/abiturient-xorijiy-talabalar",
     },
-
-    // Navbar Faoliyat
+    //-------Faoliyat---------
     {
-        id: 35,
+        id: ID,
         element: AkademikLitsey,
         path: "/akademik-litsey",
     },
     {
-        id: 36,
+        id: ID,
         element: IlmiyFaolyat,
         path: "/ilmiy-faoliyat",
     },
     {
-        id: 37,
+        id: ID,
         element: JamoatchilikKengashiFaol,
         path: "/jamoatchilik",
     },
     {
-        id: 38,
+        id: ID,
         element: MadMarFaolyat,
         path: "/madaniy",
     },
     {
-        id: 39,
+        id: ID,
         element: OquvUslubiyFaolyat,
         path: "/oquv-uslubiy",
     },
     {
-        id: 40,
+        id: ID,
         element: YoshlarBnIshlashMvaM,
         path: "/yoshlar-ishlash",
     },
     {
-        id: 41,
+        id: ID,
         element: Vakansiyalar,
         path: "/vakansiyalar",
     },
-
+    {
+        id: ID,
+        element: NormativHuj,
+        path: "/faoliyat/normativ-hujjatlar",
+    },
+    {
+        id: ID,
+        element: IchkiIdoraviyHuj,
+        path: "/faoliyat/ichki-idoraviy-hujjatlar",
+    },
+    {
+        id: ID,
+        element: KorrupsyaHaqHabBerish,
+        path: "/faoliyat/korrupsya-haqida-habar-berish",
+    },
     // Barcha Elonlar
     {
-        id: 42,
+        id: ID,
         element: BarchaElonlar,
         path: "/barchaElonlar",
     },
 
     // Elon Batafsil
     {
-        id: 43,
+        id: ID,
         element: ElonBatafsil,
         path: "/elonBatafsil/:id",
     },
     // Search
     {
-        id: 44,
+        id: ID,
         element: SearchPage,
         path: "/qidiruv",
+    },
+    //-------Authors---------
+    {
+        id: ID,
+        element: AuthorPage,
+        path: "/authors",
     },
 ];
 

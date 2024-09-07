@@ -7,7 +7,8 @@ import { FaSquareFacebook } from "react-icons/fa6";
 import TextTranslate from "../TextTranslate/index";
 import Logo from "../../assets/icons/logo_kspi.png";
 import { useSelector } from "react-redux";
-import "./style.css"
+import ItPark from "../../assets/icons/ItPark.png";
+import "./style.css";
 
 const Footer = () => {
     const isLang = useSelector((state) => state.reducerLang.isLang);
@@ -164,17 +165,25 @@ const Footer = () => {
             </div>
 
             {/* Copyright */}
-            <div className="bg-[#113246] text-center md:flex md:justify-center px-2 py-2">
-                <p className="mr-3">
-                    <TextTranslate id="copyright" />
-                </p>
-                <Link to="/yangiliklar" className="cursor-pointer">
-                    <TextTranslate id="saytIshlabChiquvchi" />:{" "}
-                    <b>
-                        <TextTranslate id="copyrightPlace" />
-                    </b>
-                </Link>
-            </div>
+            <Link
+                to="/authors"
+                className="bg-[#113246] text-center md:flex md:justify-center px-2 py-2 z-50 underline underline-offset-2"
+            >
+                <div className="flex flex-col md:flex-row justify-center items-center text-white text-center py-4">
+                    <p>
+                        <TextTranslate id="footerContetn_1" />
+                    </p>
+                    <p className="flex flex-wrap justify-center items-center m-0">
+                        <TextTranslate id="footerContetn_2" />
+                        <img
+                            className="w-[20px] h-[20px] ms-2 me-[2px]"
+                            src={ItPark}
+                            alt="it park Logo"
+                        />{" "}
+                        IT PARK
+                    </p>
+                </div>
+            </Link>
         </footer>
     );
 };

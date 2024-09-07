@@ -25,6 +25,7 @@ function Navbar() {
     const [isFocusedSearInp, setFocusedSearInp] = useState(false);
     const [isActiveMenu, setIsActiveMenu] = useState(false);
     const [scrollY, setScrollY] = useState(false);
+    const [isDropF, setIsDropF] = useState(false);
 
     const noSearch = location.pathname === "/qidiruv";
 
@@ -78,6 +79,14 @@ function Navbar() {
         setIsActiveMenu(false);
     };
 
+    const onMouseEnter = () => {
+        setIsDropF(true);
+    };
+
+    const onMouseLeave = () => {
+        setIsDropF(false);
+    };
+
     // Mobile Handler main no scroll
     useEffect(() => {
         if (isActiveMenu) {
@@ -117,7 +126,7 @@ function Navbar() {
             }  left-0 flex flex-col justify-between w-full h-auto z-50 px-4 py-2 sm:px-4 md:px-8 md:py-4 xl:px-0 xl:py-0`}
         >
             <nav className="flex justify-between">
-                {/* Doimo bor */}
+                {/* Emblema QDPI */}
                 <Link to="/">
                     <div
                         className={`${
@@ -150,8 +159,10 @@ function Navbar() {
                         </p>
                     </div>
                 </Link>
-                {/* Header */}
+                {/* /Emblema QDPI */}
+                {/* Desktop Nav / Mobil menu btn */}
                 <div className="w-full flex items-end justify-center flex-col">
+                    {/* Header */}
                     <div className="hidden xl:flex xl:justify-between bg-[#004269] text-white px-[20px] rounded-bl-lg ">
                         <ul className="flex gap-x-[20px] text-[14px] font-medium 3xl:gap-x-[30px] 3xl:text-[16px]">
                             <li className="py-[4px]">
@@ -260,7 +271,8 @@ function Navbar() {
                         </div>
                     </div>
                     {/* /Header */}
-                    {/* Navigations institut */}
+
+                    {/* Desktop nav Links */}
                     <div className="hidden w-full h-full xl:flex xl:items-center xl:justify-end px-10 xl:pl-3 2xl:pl-10">
                         <ul
                             className={`${
@@ -381,6 +393,45 @@ function Navbar() {
                                             <Link to="/yoshlar-ishlash">
                                                 <TextTranslate id="navDropFaoliyat_6" />
                                             </Link>
+                                        </li>
+                                        <li className="text-[#004269] dark:text-white">
+                                            <div
+                                                onMouseEnter={onMouseEnter}
+                                                onMouseLeave={onMouseLeave}
+                                                className="dropdown dropdown-hover"
+                                            >
+                                                <div
+                                                    tabIndex={19}
+                                                    role="button"
+                                                    className="text-inherit"
+                                                >
+                                                    Karrupsyaga qarshi kurash
+                                                </div>
+                                                <ul
+                                                    tabIndex={19}
+                                                    className={` ${
+                                                        !isDropF && "hidden"
+                                                    } translate-x-[174px] translate-y-[36px] dropdown-content z-10 menu p-2 shadow bg-base-100 rounded-box w-52`}
+                                                >
+                                                    <li className="text-[#004269] dark:text-white">
+                                                        <Link to="/faoliyat/normativ-hujjatlar">
+                                                            Normativ hujjatlar
+                                                        </Link>
+                                                    </li>
+                                                    <li className="text-[#004269] dark:text-white">
+                                                        <Link to="/faoliyat/ichki-idoraviy-hujjatlar">
+                                                            Ichki idoraviy
+                                                            hujjatlar
+                                                        </Link>
+                                                    </li>
+                                                    <li className="text-[#004269] dark:text-white">
+                                                        <Link to="/faoliyat/korrupsya-haqida-habar-berish">
+                                                            Korrupsya haqida
+                                                            habar berish
+                                                        </Link>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </li>
                                     </ul>
                                 </div>
@@ -596,7 +647,9 @@ function Navbar() {
                             </li>
                         </ul>
                     </div>
-                    {/* /Navigations */}
+                    {/* /Desktop nav Links */}
+
+                    {/* mobil, ipad menu / search btn */}
                     <div className="flex items-center md:gap-x-4">
                         {/* Search to lg */}
                         <div
@@ -654,9 +707,12 @@ function Navbar() {
                         </button>
                         {/* /Menu */}
                     </div>
+                    {/* /mobil, ipad menu / search btn */}
                 </div>
+                {/* / Desktop Nav / Mobil menu btn */}
             </nav>
-            {/* Mobile Drop */}
+
+            {/* mobil drop menu */}
             <div
                 className={`${
                     isActiveMenu
@@ -865,6 +921,52 @@ function Navbar() {
                                                 >
                                                     <TextTranslate id="navDropFaoliyat_6" />
                                                 </Link>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <div
+                                                        role="button"
+                                                        className="text-inherit"
+                                                    >
+                                                        Karrupsyaga qarshi
+                                                        kurash
+                                                    </div>
+                                                    <ul className="ms-4 md:ms-6">
+                                                        <li className="text-white">
+                                                            <Link
+                                                                onClick={
+                                                                    handleClickCloseMenu
+                                                                }
+                                                                to="/faoliyat/normativ-hujjatlar"
+                                                            >
+                                                                Normativ
+                                                                hujjatlar
+                                                            </Link>
+                                                        </li>
+                                                        <li className="text-white">
+                                                            <Link
+                                                                onClick={
+                                                                    handleClickCloseMenu
+                                                                }
+                                                                to="/faoliyat/ichki-idoraviy-hujjatlar"
+                                                            >
+                                                                Ichki idoraviy
+                                                                hujjatlar
+                                                            </Link>
+                                                        </li>
+                                                        <li className="text-white">
+                                                            <Link
+                                                                onClick={
+                                                                    handleClickCloseMenu
+                                                                }
+                                                                to="/faoliyat/korrupsya-haqida-habar-berish"
+                                                            >
+                                                                Korrupsya haqida
+                                                                habar berish
+                                                            </Link>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </li>
                                         </ul>
                                     </div>
@@ -1129,6 +1231,7 @@ function Navbar() {
                 </div>
                 {/* /Header */}
             </div>
+            {/* /mobil drop menu */}
         </div>
     );
 }

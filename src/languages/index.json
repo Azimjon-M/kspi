@@ -284,7 +284,13 @@
 
     "vakansiyaTitle": "Bo'sh ish o'rinlari",
     "vakansiyaNoJob": "Hozirda hech qanday ish o'rni mavjud emas.!",
-    "vakansiyaMalakaviyTalab": "Malakaviy talablar"
+    "vakansiyaMalakaviyTalab": "Malakaviy talablar",
+
+    "footerContetn_1": "Barcha huquqlar QDPI IT PARK tomonidan himoyalangan © 2024.",
+    "footerContetn_2": "Ishlab chqaruvchi",
+    "authorTitle": "ISHLAB CHQARUVCHILAR",
+    "authorSubTitle_1": "Front-End dasturchilar",
+    "authorSubTitle_2": "Back-End API dasturchi"
   },
   "ru": {
     "saytTestRejimida": "Сайт находится в тестовом режиме!",
@@ -582,7 +588,13 @@
 
     "vakansiyaTitle": "Вакансии",
     "vakansiyaNoJob": "В данный момент нет доступных вакансий.",
-    "vakansiyaMalakaviyTalab": "Квалификационные требования"
+    "vakansiyaMalakaviyTalab": "Квалификационные требования",
+
+    "footerContetn_1": "Все права защищены QDPI IT PARK © 2024.",
+    "footerContetn_2": "Разработчик",
+    "authorTitle": "ПРОИЗВОДИТЕЛИ",
+    "authorSubTitle_1": "Фронт-Енд разработчики",
+    "authorSubTitle_2": "Серверный API-разработчик"
   },
   "en": {
     "saytTestRejimida": "The site is in test mode.!",
@@ -880,6 +892,12 @@
 
     "vakansiyaTitle": "Job vacancies",
     "vakansiyaNoJob": "Currently, there are no available job vacancies.",
-    "vakansiyaMalakaviyTalab": "Qualification requirements"
+    "vakansiyaMalakaviyTalab": "Qualification requirements",
+
+    "footerContetn_1": "All rights reserved by QDPI IT PARK © 2024.",
+    "footerContetn_2": "Developer",
+    "authorTitle": "MANUFACTURERS",
+    "authorSubTitle_1": "Front-End developers",
+    "authorSubTitle_2": "Back-End API Developer"
   }
 }
