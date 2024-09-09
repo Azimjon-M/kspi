@@ -190,7 +190,6 @@ const routes = [
         element: TalabalarTurarJoyi,
         path: "/talabalarTurarJoyi",
     },
-
     // Navbar Abiturient
     {
         id: ID,
