@@ -47,7 +47,7 @@ const Kafedra = () => {
     return (
         <div className="flex flex-col justify-center items-center px-3 lg:pb-8 pb-4 py-4">
             <h1 className="text-[24px] font-bold my-4 text-[#004269]">
-                Kaferalar
+                Kafedralar
             </h1>
             {/* Mobil */}
             <div className="w-full lg:hidden">

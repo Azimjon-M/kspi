@@ -204,6 +204,8 @@
     "abiBakalavrLink3": "Qabul kvotasi",
     "abiBakalavrLink4": "Xorijiy fuqaro",
 
+    "abiBakalavrOtishBallar": "Qoʻqon davlat pedagogika instituti taʼlim yoʻnalishlari, taʼlim shakli va tillar kesimida 2024-yilgi oʻtish ballari",
+
     "abiXorijiyTalaba": "Xorijiy talabalarni qabul qilish hujjatlari",
     "abiXorijiyTalabaBreadcrumb": "Xorijiy talabalarni qabul qilish",
     "abiXorijiyTalabaHujjat": "HUJJAT NOMI",
@@ -282,7 +284,13 @@
 
     "vakansiyaTitle": "Bo'sh ish o'rinlari",
     "vakansiyaNoJob": "Hozirda hech qanday ish o'rni mavjud emas.!",
-    "vakansiyaMalakaviyTalab": "Malakaviy talablar"
+    "vakansiyaMalakaviyTalab": "Malakaviy talablar",
+
+    "footerContetn_1": "Barcha huquqlar QDPI IT PARK tomonidan himoyalangan © 2024.",
+    "footerContetn_2": "Ishlab chqaruvchi",
+    "authorTitle": "ISHLAB CHQARUVCHILAR",
+    "authorSubTitle_1": "Front-End dasturchilar",
+    "authorSubTitle_2": "Back-End API dasturchi"
   },
   "ru": {
     "saytTestRejimida": "Сайт находится в тестовом режиме!",
@@ -500,6 +508,8 @@
     "abiBakalavrLink3": "Квота поступления",
     "abiBakalavrLink4": "Иностранные граждане",
 
+    "abiBakalavrOtishBallar": "Проходные баллы на 2024 год по образовательным направлениям, форме обучения и языкам в Кокандском государственном педагогическом институте",
+
     "abiXorijiyTalaba": "Документы для поступления иностранных студентов",
     "abiXorijiyTalabaBreadcrumb": "Поступление иностранных студентов",
     "abiXorijiyTalabaHujjat": "НАЗВАНИЕ ДОКУМЕНТА",
@@ -578,7 +588,13 @@
 
     "vakansiyaTitle": "Вакансии",
     "vakansiyaNoJob": "В данный момент нет доступных вакансий.",
-    "vakansiyaMalakaviyTalab": "Квалификационные требования"
+    "vakansiyaMalakaviyTalab": "Квалификационные требования",
+
+    "footerContetn_1": "Все права защищены QDPI IT PARK © 2024.",
+    "footerContetn_2": "Разработчик",
+    "authorTitle": "ПРОИЗВОДИТЕЛИ",
+    "authorSubTitle_1": "Фронт-Енд разработчики",
+    "authorSubTitle_2": "Серверный API-разработчик"
   },
   "en": {
     "saytTestRejimida": "The site is in test mode.!",
@@ -796,6 +812,8 @@
     "abiBakalavrLink3": "Admission quota",
     "abiBakalavrLink4": "Foreign citizens",
 
+    "abiBakalavrOtishBallar": "Kokand State Pedagogical Institute passing scores for 2024 in educational areas, form of education and languages",
+
     "abiXorijiyTalaba": "Admission documents for foreign students",
     "abiXorijiyTalabaBreadcrumb": "Admission of foreign students",
     "abiXorijiyTalabaHujjat": "DOCUMENT NAME",
@@ -874,6 +892,12 @@
 
     "vakansiyaTitle": "Job vacancies",
     "vakansiyaNoJob": "Currently, there are no available job vacancies.",
-    "vakansiyaMalakaviyTalab": "Qualification requirements"
+    "vakansiyaMalakaviyTalab": "Qualification requirements",
+
+    "footerContetn_1": "All rights reserved by QDPI IT PARK © 2024.",
+    "footerContetn_2": "Developer",
+    "authorTitle": "MANUFACTURERS",
+    "authorSubTitle_1": "Front-End developers",
+    "authorSubTitle_2": "Back-End API Developer"
   }
 }

@@ -9,7 +9,7 @@ import {
     setLangRu,
     setLangEn,
 } from "../../redux/moduls/language/action/";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import flag_1 from "../../assets/icons/flag-uz.png";
 import flag_2 from "../../assets/icons/flag-ru.png";
@@ -18,28 +18,34 @@ import TextTranslate from "../TextTranslate/index";
 
 function Navbar() {
     const location = useLocation();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const isLang = useSelector((state) => state.reducerLang.isLang);
 
     const [isFocusedSearInp, setFocusedSearInp] = useState(false);
     const [isActiveMenu, setIsActiveMenu] = useState(false);
     const [scrollY, setScrollY] = useState(false);
+    const [isDropF, setIsDropF] = useState(false);
 
-    // const navigate = useNavigate();
+    const noSearch = location.pathname === "/qidiruv";
+
+    const queryParams = new URLSearchParams(location.search);
+    const query = queryParams.get("search") || "";
 
     // search
     const formik = useFormik({
         initialValues: {
-            searchText: "",
+            searchText: query ? query : "",
         },
         onSubmit: (values) => {
-            // navigate.push(`/search?query=${values.searchText}`);
-            // alert(JSON.stringify(values, null, 2));
-            // formik.resetForm();
+            if (values.searchText.length > 1) {
+                if (values.searchText !== query) {
+                    navigate(`/qidiruv?search=${values.searchText}`);
+                }
+            }
+            setIsActiveMenu(false);
         },
     });
-    // search
-
 
     const handleClickSearch = () => {
         if (isFocusedSearInp && formik.values.searchText) {
@@ -68,6 +74,19 @@ function Navbar() {
                 break;
         }
     };
+
+    const handleClickCloseMenu = () => {
+        setIsActiveMenu(false);
+    };
+
+    const onMouseEnter = () => {
+        setIsDropF(true);
+    };
+
+    const onMouseLeave = () => {
+        setIsDropF(false);
+    };
+
     // Mobile Handler main no scroll
     useEffect(() => {
         if (isActiveMenu) {
@@ -107,7 +126,7 @@ function Navbar() {
             }  left-0 flex flex-col justify-between w-full h-auto z-50 px-4 py-2 sm:px-4 md:px-8 md:py-4 xl:px-0 xl:py-0`}
         >
             <nav className="flex justify-between">
-                {/* Doimo bor */}
+                {/* Emblema QDPI */}
                 <Link to="/">
                     <div
                         className={`${
@@ -140,8 +159,10 @@ function Navbar() {
                         </p>
                     </div>
                 </Link>
-                {/* Header */}
+                {/* /Emblema QDPI */}
+                {/* Desktop Nav / Mobil menu btn */}
                 <div className="w-full flex items-end justify-center flex-col">
+                    {/* Header */}
                     <div className="hidden xl:flex xl:justify-between bg-[#004269] text-white px-[20px] rounded-bl-lg ">
                         <ul className="flex gap-x-[20px] text-[14px] font-medium 3xl:gap-x-[30px] 3xl:text-[16px]">
                             <li className="py-[4px]">
@@ -205,7 +226,11 @@ function Navbar() {
                             </li>
                         </ul>
                         {/* HEADER SEARCH FORM */}
-                        <div className="flex items-center justify-center">
+                        <div
+                            className={`${
+                                noSearch && "hidden"
+                            } flex items-center justify-center`}
+                        >
                             <form onSubmit={formik.handleSubmit}>
                                 <label
                                     className="w-auto h-full flex items-center cursor-pointer"
@@ -246,7 +271,8 @@ function Navbar() {
                         </div>
                     </div>
                     {/* /Header */}
-                    {/* Navigations institut */}
+
+                    {/* Desktop nav Links */}
                     <div className="hidden w-full h-full xl:flex xl:items-center xl:justify-end px-10 xl:pl-3 2xl:pl-10">
                         <ul
                             className={`${
@@ -367,6 +393,45 @@ function Navbar() {
                                             <Link to="/yoshlar-ishlash">
                                                 <TextTranslate id="navDropFaoliyat_6" />
                                             </Link>
+                                        </li>
+                                        <li className="text-[#004269] dark:text-white">
+                                            <div
+                                                onMouseEnter={onMouseEnter}
+                                                onMouseLeave={onMouseLeave}
+                                                className="dropdown dropdown-hover"
+                                            >
+                                                <div
+                                                    tabIndex={19}
+                                                    role="button"
+                                                    className="text-inherit"
+                                                >
+                                                    Karrupsyaga qarshi kurash
+                                                </div>
+                                                <ul
+                                                    tabIndex={19}
+                                                    className={` ${
+                                                        !isDropF && "hidden"
+                                                    } translate-x-[174px] translate-y-[36px] dropdown-content z-10 menu p-2 shadow bg-base-100 rounded-box w-52`}
+                                                >
+                                                    <li className="text-[#004269] dark:text-white">
+                                                        <Link to="/faoliyat/normativ-hujjatlar">
+                                                            Normativ hujjatlar
+                                                        </Link>
+                                                    </li>
+                                                    <li className="text-[#004269] dark:text-white">
+                                                        <Link to="/faoliyat/ichki-idoraviy-hujjatlar">
+                                                            Ichki idoraviy
+                                                            hujjatlar
+                                                        </Link>
+                                                    </li>
+                                                    <li className="text-[#004269] dark:text-white">
+                                                        <Link to="/faoliyat/korrupsya-haqida-habar-berish">
+                                                            Korrupsya haqida
+                                                            habar berish
+                                                        </Link>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </li>
                                     </ul>
                                 </div>
@@ -513,7 +578,7 @@ function Navbar() {
                                         </li>
                                         <li className="text-[#004269] dark:text-white">
                                             <Link
-                                                to="https://studyin-uzbekistan.uz/universities/53"
+                                                to="https://xtqabul.kspi.uz/"
                                                 target="blank"
                                             >
                                                 <TextTranslate id="navDropAbiturient_6" />
@@ -582,10 +647,18 @@ function Navbar() {
                             </li>
                         </ul>
                     </div>
-                    {/* /Navigations */}
+                    {/* /Desktop nav Links */}
+
+                    {/* mobil, ipad menu / search btn */}
                     <div className="flex items-center md:gap-x-4">
                         {/* Search to lg */}
-                        <div className="hidden md:inline-block xl:hidden">
+                        <div
+                            className={`${
+                                noSearch
+                                    ? "hidden"
+                                    : "hidden md:inline-block xl:hidden"
+                            }`}
+                        >
                             {/* MOBILE SEARCH FORM */}
                             <form
                                 className="flex items-center justify-center px-4 py-2"
@@ -634,9 +707,12 @@ function Navbar() {
                         </button>
                         {/* /Menu */}
                     </div>
+                    {/* /mobil, ipad menu / search btn */}
                 </div>
+                {/* / Desktop Nav / Mobil menu btn */}
             </nav>
-            {/* Mobile Drop */}
+
+            {/* mobil drop menu */}
             <div
                 className={`${
                     isActiveMenu
@@ -675,7 +751,7 @@ function Navbar() {
                 </div>
                 {/* /Language */}
                 {/* Search */}
-                <div className="md:hidden">
+                <div className={`${noSearch ? "hidden" : "md:hidden"}`}>
                     {/* MOBILE SEARCH FORM FROM DROPDON */}
                     <form
                         className="flex items-center justify-center px-4 py-2"
@@ -701,7 +777,10 @@ function Navbar() {
                     <div className="flex justify-start pt-4 px-6 sm:px-14">
                         <ul className="flex flex-col items-start gap-x-8 text-white font-semibold 2xl:text-[20px] 3xl:gap-x-12 3xl:text-[22px] ">
                             <li className="py-[3px] border-b-[1px] border-blue-300">
-                                <Link to="/yangiliklar">
+                                <Link
+                                    onClick={handleClickCloseMenu}
+                                    to="/yangiliklar"
+                                >
                                     <TextTranslate id="navYangiliklar" />
                                 </Link>
                             </li>
@@ -718,27 +797,52 @@ function Navbar() {
                                     <div className="collapse-content">
                                         <ul>
                                             <li className="text-white dark:text-white">
-                                                <Link to="/institut-kengashi">
+                                                <Link
+                                                    onClick={
+                                                        handleClickCloseMenu
+                                                    }
+                                                    to="/institut-kengashi"
+                                                >
                                                     <TextTranslate id="navDropInstitut_1" />
                                                 </Link>
                                             </li>
                                             <li className="text-white dark:text-white">
-                                                <Link to="/institut-haqida">
+                                                <Link
+                                                    onClick={
+                                                        handleClickCloseMenu
+                                                    }
+                                                    to="/institut-haqida"
+                                                >
                                                     <TextTranslate id="navDropInstitut_2" />
                                                 </Link>
                                             </li>
                                             <li className="text-white dark:text-white">
-                                                <Link to="/institut-tuzilma">
+                                                <Link
+                                                    onClick={
+                                                        handleClickCloseMenu
+                                                    }
+                                                    to="/institut-tuzilma"
+                                                >
                                                     <TextTranslate id="navDropInstitut_3" />
                                                 </Link>
                                             </li>
                                             <li className="text-white dark:text-white">
-                                                <Link to="/rekvizitlar">
+                                                <Link
+                                                    onClick={
+                                                        handleClickCloseMenu
+                                                    }
+                                                    to="/rekvizitlar"
+                                                >
                                                     <TextTranslate id="navDropInstitut_4" />
                                                 </Link>
                                             </li>
                                             <li className="text-white dark:text-white">
-                                                <Link to="/qabulxona">
+                                                <Link
+                                                    onClick={
+                                                        handleClickCloseMenu
+                                                    }
+                                                    to="/qabulxona"
+                                                >
                                                     <TextTranslate id="navDropInstitut_5" />
                                                 </Link>
                                             </li>
@@ -759,34 +863,110 @@ function Navbar() {
                                     <div className="collapse-content max-w-[280px]">
                                         <ul>
                                             <li className="my-4 leading-4 text-white dark:text-white">
-                                                <Link to="/jamoatchilik">
+                                                <Link
+                                                    onClick={
+                                                        handleClickCloseMenu
+                                                    }
+                                                    to="/jamoatchilik"
+                                                >
                                                     <TextTranslate id="navDropFaoliyat_1" />
                                                 </Link>
                                             </li>
                                             <li className="my-4 leading-4 text-white dark:text-white">
-                                                <Link to="/madaniy">
+                                                <Link
+                                                    onClick={
+                                                        handleClickCloseMenu
+                                                    }
+                                                    to="/madaniy"
+                                                >
                                                     <TextTranslate id="navDropFaoliyat_2" />
                                                 </Link>
                                             </li>
                                             <li className="my-4 leading-4 text-white dark:text-white">
-                                                <Link to="/oquv-uslubiy">
+                                                <Link
+                                                    onClick={
+                                                        handleClickCloseMenu
+                                                    }
+                                                    to="/oquv-uslubiy"
+                                                >
                                                     <TextTranslate id="navDropFaoliyat_3" />
                                                 </Link>
                                             </li>
                                             <li className="my-4 leading-4 text-white dark:text-white">
-                                                <Link to="/akademik-litsey">
+                                                <Link
+                                                    onClick={
+                                                        handleClickCloseMenu
+                                                    }
+                                                    to="/akademik-litsey"
+                                                >
                                                     <TextTranslate id="navDropFaoliyat_4" />
                                                 </Link>
                                             </li>
                                             <li className="my-4 leading-4 text-white dark:text-white">
-                                                <Link to="/ilmiy-faoliyat">
+                                                <Link
+                                                    onClick={
+                                                        handleClickCloseMenu
+                                                    }
+                                                    to="/ilmiy-faoliyat"
+                                                >
                                                     <TextTranslate id="navDropFaoliyat_5" />
                                                 </Link>
                                             </li>
                                             <li className="my-4 leading-4 text-white dark:text-white">
-                                                <Link to="/yoshlar-ishlash">
+                                                <Link
+                                                    onClick={
+                                                        handleClickCloseMenu
+                                                    }
+                                                    to="/yoshlar-ishlash"
+                                                >
                                                     <TextTranslate id="navDropFaoliyat_6" />
                                                 </Link>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <div
+                                                        role="button"
+                                                        className="text-inherit"
+                                                    >
+                                                        Karrupsyaga qarshi
+                                                        kurash
+                                                    </div>
+                                                    <ul className="ms-4 md:ms-6">
+                                                        <li className="text-white">
+                                                            <Link
+                                                                onClick={
+                                                                    handleClickCloseMenu
+                                                                }
+                                                                to="/faoliyat/normativ-hujjatlar"
+                                                            >
+                                                                Normativ
+                                                                hujjatlar
+                                                            </Link>
+                                                        </li>
+                                                        <li className="text-white">
+                                                            <Link
+                                                                onClick={
+                                                                    handleClickCloseMenu
+                                                                }
+                                                                to="/faoliyat/ichki-idoraviy-hujjatlar"
+                                                            >
+                                                                Ichki idoraviy
+                                                                hujjatlar
+                                                            </Link>
+                                                        </li>
+                                                        <li className="text-white">
+                                                            <Link
+                                                                onClick={
+                                                                    handleClickCloseMenu
+                                                                }
+                                                                to="/faoliyat/korrupsya-haqida-habar-berish"
+                                                            >
+                                                                Korrupsya haqida
+                                                                habar berish
+                                                            </Link>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </li>
                                         </ul>
                                     </div>
@@ -805,27 +985,52 @@ function Navbar() {
                                     <div className="collapse-content max-w-[280px]">
                                         <ul>
                                             <li className="my-4 leading-4 text-white dark:text-white">
-                                                <Link to="/rektorat">
+                                                <Link
+                                                    onClick={
+                                                        handleClickCloseMenu
+                                                    }
+                                                    to="/rektorat"
+                                                >
                                                     <TextTranslate id="navDropTuzilma_1" />
                                                 </Link>
                                             </li>
                                             <li className="my-4 leading-4 text-white dark:text-white">
-                                                <Link to="/fakultetlar">
+                                                <Link
+                                                    onClick={
+                                                        handleClickCloseMenu
+                                                    }
+                                                    to="/fakultetlar"
+                                                >
                                                     <TextTranslate id="navDropTuzilma_2" />
                                                 </Link>
                                             </li>
                                             <li className="my-4 leading-4 text-white dark:text-white">
-                                                <Link to="/kafedralar">
+                                                <Link
+                                                    onClick={
+                                                        handleClickCloseMenu
+                                                    }
+                                                    to="/kafedralar"
+                                                >
                                                     <TextTranslate id="navDropTuzilma_3" />
                                                 </Link>
                                             </li>
                                             <li className="my-4 leading-4 text-white dark:text-white">
-                                                <Link to="/bolimlar">
+                                                <Link
+                                                    onClick={
+                                                        handleClickCloseMenu
+                                                    }
+                                                    to="/bolimlar"
+                                                >
                                                     <TextTranslate id="navDropTuzilma_4" />
                                                 </Link>
                                             </li>
                                             <li className="my-4 leading-4 text-white dark:text-white">
-                                                <Link to="/markazlar">
+                                                <Link
+                                                    onClick={
+                                                        handleClickCloseMenu
+                                                    }
+                                                    to="/markazlar"
+                                                >
                                                     <TextTranslate id="navDropTuzilma_5" />
                                                 </Link>
                                             </li>
@@ -846,17 +1051,32 @@ function Navbar() {
                                     <div className="collapse-content max-w-[280px]">
                                         <ul>
                                             <li className="my-4 leading-4 text-white dark:text-white">
-                                                <Link to="/bakalavriyat">
+                                                <Link
+                                                    onClick={
+                                                        handleClickCloseMenu
+                                                    }
+                                                    to="/bakalavriyat"
+                                                >
                                                     <TextTranslate id="navDropTalabalar_1" />
                                                 </Link>
                                             </li>
                                             <li className="my-4 leading-4 text-white dark:text-white">
-                                                <Link to="">
+                                                <Link
+                                                    onClick={
+                                                        handleClickCloseMenu
+                                                    }
+                                                    to="/magistratura"
+                                                >
                                                     <TextTranslate id="navDropTalabalar_2" />
                                                 </Link>
                                             </li>
                                             <li className="my-4 leading-4 text-white dark:text-white">
-                                                <Link to="/talabalarTurarJoyi">
+                                                <Link
+                                                    onClick={
+                                                        handleClickCloseMenu
+                                                    }
+                                                    to="/talabalarTurarJoyi"
+                                                >
                                                     <TextTranslate id="navDropTalabalar_3" />
                                                 </Link>
                                             </li>
@@ -877,33 +1097,61 @@ function Navbar() {
                                     <div className="collapse-content max-w-[280px]">
                                         <ul>
                                             <li className="my-4 leading-4 text-white dark:text-white">
-                                                <Link to="/abiturient-bakalavriat">
+                                                <Link
+                                                    onClick={
+                                                        handleClickCloseMenu
+                                                    }
+                                                    to="/abiturient-bakalavriat"
+                                                >
                                                     <TextTranslate id="navDropAbiturient_1" />
                                                 </Link>
                                             </li>
                                             <li className="my-4 leading-4 text-white dark:text-white">
-                                                <Link to="/abiturient-magistratura">
+                                                <Link
+                                                    onClick={
+                                                        handleClickCloseMenu
+                                                    }
+                                                    to="/abiturient-magistratura"
+                                                >
                                                     <TextTranslate id="navDropAbiturient_2" />
                                                 </Link>
                                             </li>
                                             <li className="my-4 leading-4 text-white dark:text-white">
-                                                <Link to="/abiturient-xorijiy-talabalar">
+                                                <Link
+                                                    onClick={
+                                                        handleClickCloseMenu
+                                                    }
+                                                    to="/abiturient-xorijiy-talabalar"
+                                                >
                                                     <TextTranslate id="navDropAbiturient_3" />
                                                 </Link>
                                             </li>
                                             <li className="my-4 leading-4 text-white dark:text-white">
-                                                <Link to="/call-markaz">
+                                                <Link
+                                                    onClick={
+                                                        handleClickCloseMenu
+                                                    }
+                                                    to="/call-markaz"
+                                                >
                                                     <TextTranslate id="navDropAbiturient_4" />
                                                 </Link>
                                             </li>
                                             <li className="my-4 leading-4 text-white dark:text-white">
-                                                <Link to="/abiturient-meyoriy">
+                                                <Link
+                                                    onClick={
+                                                        handleClickCloseMenu
+                                                    }
+                                                    to="/abiturient-meyoriy"
+                                                >
                                                     <TextTranslate id="navDropAbiturient_5" />
                                                 </Link>
                                             </li>
                                             <li className="my-4 leading-4 text-white dark:text-white">
                                                 <Link
-                                                    to="https://studyin-uzbekistan.uz/universities/53"
+                                                    onClick={
+                                                        handleClickCloseMenu
+                                                    }
+                                                    to="https://xtqabul.kspi.uz/"
                                                     target="blank"
                                                 >
                                                     <TextTranslate id="navDropAbiturient_6" />
@@ -983,7 +1231,7 @@ function Navbar() {
                 </div>
                 {/* /Header */}
             </div>
-            {/* /Mobile Drop */}
+            {/* /mobil drop menu */}
         </div>
     );
 }
