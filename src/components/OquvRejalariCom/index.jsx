@@ -38,8 +38,8 @@ const OquvRejalariCom = () => {
       <h1 className="text-4xl font-bold text-[#004269] text-center">
         <TextTranslate id="oquvRejalar" />
       </h1>
-      <div className="md:flex mt-4 md:mt-8">
-        <ul className="space-y-4 text-sm font-medium text-gray-500 dark:text-gray-400 md:me-4 mb-4 md:mb-0">
+      <div className="md:grid grid-cols-12 mt-4 md:mt-8">
+        <ul className="col-span-2 space-y-4 text-sm font-medium text-gray-500 dark:text-gray-400 md:me-4 mb-4 md:mb-0">
           {dataTur.map((item) => (
             <li key={item.id}>
               <button
@@ -56,7 +56,7 @@ const OquvRejalariCom = () => {
             </li>
           ))}
         </ul>
-        <div>
+        <div className="col-span-10">
           {filteredData.map((item, index) => (
             <div
               key={item.id}
