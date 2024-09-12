@@ -57,9 +57,7 @@ const OquvRejalariCom = () => {
           ))}
         </ul>
         <div className="col-span-10">
-          {filteredData.map((item, index) => (
             <div
-              key={item.id}
               className="p-6 bg-gray-50 text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg w-full"
             >
               <div className="relative shadow-md overflow-x-auto rounded-lg">
@@ -79,6 +77,7 @@ const OquvRejalariCom = () => {
                     </tr>
                   </thead>
                   <tbody className="text-base">
+                  {filteredData.map((item, index) => (
                     <tr
                       key={item.id}
                       className="odd:bg-white even:bg-gray-50 border-b dark:border-gray-700 hover:bg-gray-200"
@@ -102,11 +101,11 @@ const OquvRejalariCom = () => {
                         </a>
                       </td>
                     </tr>
+                ))}
                   </tbody>
                 </table>
               </div>
             </div>
-          ))}
         </div>
       </div>
     </div>

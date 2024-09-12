@@ -14,7 +14,10 @@ const MagistrOquvRejalariCom = () => {
 
   const fetchData = useCallback(async () => {
     try {
-      const [resTur, res] = await Promise.all([APIMOquvRejaTur.get(), APIMOquvReja.get()]);
+      const [resTur, res] = await Promise.all([
+        APIMOquvRejaTur.get(),
+        APIMOquvReja.get(),
+      ]);
       setDataTur(resTur.data);
       setData(res.data);
     } catch (error) {
@@ -57,28 +60,30 @@ const MagistrOquvRejalariCom = () => {
           ))}
         </ul>
         <div className="col-span-10">
-          {filteredData.map((item, index) => (
-            <div
-              key={item.id}
-              className="p-6 bg-gray-50 text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg w-full"
-            >
-              <div className="relative shadow-md overflow-x-auto rounded-lg">
-                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                  <thead className="md:text-base text-white uppercase bg-blue-500 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                      <th scope="col" className="pl-2 md:pl-6 py-4">№</th>
-                      <th scope="col" className="px-2 md:px-6 py-4">
-                        <TextTranslate id="DTSvaMalakaHujjatNomi" />
-                      </th>
-                      <th scope="col" className="px-2 md:px-6 py-4 hidden md:block">
-                        <TextTranslate id="DTSvaMalakaSana" />
-                      </th>
-                      <th scope="col" className="px-2 md:px-6 py-4">
-                        <TextTranslate id="DTSvaMalakaBatafsil" />
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="text-base">
+          <div className="p-6 bg-gray-50 text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg w-full">
+            <div className="relative shadow-md overflow-x-auto rounded-lg">
+              <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead className="md:text-base text-white uppercase bg-blue-500 dark:bg-gray-700 dark:text-gray-400">
+                  <tr>
+                    <th scope="col" className="pl-2 md:pl-6 py-4">
+                      №
+                    </th>
+                    <th scope="col" className="px-2 md:px-6 py-4">
+                      <TextTranslate id="DTSvaMalakaHujjatNomi" />
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-2 md:px-6 py-4 hidden md:block"
+                    >
+                      <TextTranslate id="DTSvaMalakaSana" />
+                    </th>
+                    <th scope="col" className="px-2 md:px-6 py-4">
+                      <TextTranslate id="DTSvaMalakaBatafsil" />
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="text-base">
+                  {filteredData.map((item, index) => (
                     <tr
                       key={item.id}
                       className="odd:bg-white even:bg-gray-50 border-b dark:border-gray-700 hover:bg-gray-200"
@@ -89,8 +94,12 @@ const MagistrOquvRejalariCom = () => {
                       >
                         {index + 1}
                       </th>
-                      <td className="px-2 md:px-6 py-4">{item[`name_${Lang}`]}</td>
-                      <td className="px-2 md:px-6 py-4 hidden md:block">{item.sana}</td>
+                      <td className="px-2 md:px-6 py-4">
+                        {item[`name_${Lang}`]}
+                      </td>
+                      <td className="px-2 md:px-6 py-4 hidden md:block">
+                        {item.sana}
+                      </td>
                       <td className="px-2 md:px-6 py-4">
                         <a
                           href={item.fayl}
@@ -102,11 +111,11 @@ const MagistrOquvRejalariCom = () => {
                         </a>
                       </td>
                     </tr>
-                  </tbody>
-                </table>
-              </div>
+                  ))}
+                </tbody>
+              </table>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </div>
