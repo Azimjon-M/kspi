@@ -3,17 +3,18 @@ import Breadcrumb from "../../components/Breadcrumb";
 import TextTranslate from "../../components/TextTranslate";
 import { LuDownload } from "react-icons/lu";
 import normativHuj from "../../services/normativHuj";
+import { useSelector } from "react-redux";
 
 const NormativHuj = () => {
     const [data, setData] = useState(null);
-    // const Lang = useSelector((state) => state.reducerLang.isLang);
-    
-    const getData = () => {
-        normativHuj.get()
-        .then((res) => setData(res.data))
-        .catch((err) => console.log(err));
-    };
+    const isLang = useSelector((state) => state.reducerLang.isLang);
 
+    const getData = () => {
+        normativHuj
+            .get()
+            .then((res) => setData(res.data))
+            .catch((err) => console.log(err));
+    };
     useEffect(() => {
         getData();
     }, []);
@@ -56,35 +57,32 @@ const NormativHuj = () => {
                         </thead>
                         <tbody className="text-base">
                             {data &&
-                                data.map((item) => {
-                                    const { id, title, fayl } = item;
-                                    return (
-                                        <tr
-                                            key={id}
-                                            className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 hover:bg-gray-200"
+                                data.map((item, idx) => (
+                                    <tr
+                                        key={item.id}
+                                        className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 hover:bg-gray-200"
+                                    >
+                                        <th
+                                            scope="row"
+                                            className="pl-2 md:pl-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                                         >
-                                            <th
-                                                scope="row"
-                                                className="pl-2 md:pl-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                            {idx+1}
+                                        </th>
+                                        <td className="px-2 md:px-6 py-4">
+                                            {`${item[`name_${isLang}`]}`}
+                                        </td>
+                                        <td className="px-2 md:px-6 py-4 mx-auto flex justify-center items-center">
+                                            <a
+                                                href={item.fayl}
+                                                className="text-[#004269] dark:text-blue-500"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
                                             >
-                                                {id}
-                                            </th>
-                                            <td className="px-2 md:px-6 py-4">
-                                                {title}
-                                            </td>
-                                            <td className="px-2 md:px-6 py-4 mx-auto flex justify-center items-center">
-                                                <a
-                                                    href={fayl}
-                                                    className="text-[#004269] dark:text-blue-500"
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                >
-                                                    <LuDownload className="text-xl" />
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
+                                                <LuDownload className="text-xl" />
+                                            </a>
+                                        </td>
+                                    </tr>
+                                ))}
                         </tbody>
                     </table>
                 </div>
