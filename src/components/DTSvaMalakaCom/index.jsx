@@ -96,8 +96,8 @@ function DTSvaMalakaCom() {
   return (
     <div className="max-w-7xl mx-auto py-16">
       <TableComponent titleId="dTSvaMalakaTalablari" data={filteredDTS} Lang={Lang} />
-      <TableComponent titleId="dTSvaMalakaTalablari" data={filteredKurs1} Lang={Lang} />
-      <TableComponent titleId="dTSvaMalakaTalablari" data={filteredKurs2} Lang={Lang} />
+      <TableComponent titleId="1kursMT" data={filteredKurs1} Lang={Lang} />
+      <TableComponent titleId="1kursMT" data={filteredKurs2} Lang={Lang} />
     </div>
   );
 }
