@@ -3,7 +3,7 @@ import TextTranslate from "../TextTranslate";
 import { MdOutlineLibraryBooks } from "react-icons/md";
 import { BsJournalCheck } from "react-icons/bs";
 import { GiMaterialsScience } from "react-icons/gi";
-import { GrCatalog } from "react-icons/gr";
+// import { GrCatalog } from "react-icons/gr";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import APIMagistr from "../../services/talabalarMagistr" 
@@ -44,7 +44,7 @@ function MagistraturaCom() {
             <img src={item.rasm} className="w-full max-h-[1333px]" alt="" />
           </div>
         ))}
-      <div className="max-w-7xl mx-5 xl:mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-5 -mt-8 sm:-mt-10 lg:-mt-28 mb-16">
+      <div className="max-w-7xl mx-5 xl:mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-5 -mt-8 sm:-mt-10 lg:-mt-28 mb-16">
         <Link
           to="/magistrDTSvaMalaka"
           className="shadow-xl flex justify-center items-center md:h-60 py-5 rounded-lg bg-slate-200 group hover:bg-[#2A4D64] hover:scale-105 transition-transform"
@@ -78,7 +78,7 @@ function MagistraturaCom() {
             </p>
           </div>
         </Link>
-        <Link
+        {/* <Link
           to="/magistrFanKatalogi"
           className="shadow-xl flex justify-center items-center md:h-60 py-5 rounded-lg bg-slate-200 group hover:bg-[#2A4D64] hover:scale-105 transition-transform"
         >
@@ -88,7 +88,7 @@ function MagistraturaCom() {
               <TextTranslate id="fanKatalogi" />
             </p>
           </div>
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

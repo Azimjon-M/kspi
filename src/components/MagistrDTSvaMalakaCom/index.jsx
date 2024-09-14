@@ -5,50 +5,61 @@ import { useSelector } from "react-redux";
 import APImDtsvaMalaka from "../../services/mDtsvaMalaka";
 
 function MagistrDTSvaMalakaCom() {
-  const Lang = useSelector((state) => state.reducerLang.isLang);
-  const [data, setData] = useState([]);
+    const Lang = useSelector((state) => state.reducerLang.isLang);
+    const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const res = await APImDtsvaMalaka.get();
-        const sortedData = res.data.sort((a, b) => {
-          return new Date(b.sana) - new Date(a.sana);
-        });
-        setData(sortedData);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getData();
-  }, []);
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                const res = await APImDtsvaMalaka.get();
+                const sortedData = res.data.sort((a, b) => {
+                    return new Date(b.sana) - new Date(a.sana);
+                });
+                const filtredData1 = sortedData.filter(
+                    (item) => item.name_uz.slice(0, 3) === "DTS"
+                );
+                const filtredData2 = sortedData.filter(
+                    (item) => item.name_uz.slice(0, 3) !== "DTS"
+                );
+                const newData = [...filtredData1, ...filtredData2 ];
+                console.log(newData);
+                
+                setData(newData);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        getData();
+    }, []);
 
-  return (
-    <div className="max-w-7xl mx-auto py-16">
-      <h1 className="text-md md: text-4xl font-bold text-[#004269] text-center">
-        <TextTranslate id="dTSvaMalakaTalablari" />
-      </h1>
-      <div className="relative shadow-md overflow-x-auto sm:rounded-lg mx-5 mt-10">
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="md:text-base text-white uppercase bg-[#377DFF] dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              <th scope="col" className="pl-2 md:pl-6 py-4">
-                №
-              </th>
-              <th scope="col" className="px-2 md:px-6 py-4">
-                <TextTranslate id="DTSvaMalakaHujjatNomi" />
-              </th>
-              <th scope="col" className="px-2 md:px-6 py-4 hidden md:block">
-                <TextTranslate id="DTSvaMalakaSana" />
-              </th>
-              <th scope="col" className="px-2 md:px-6 py-4">
-                <TextTranslate id="DTSvaMalakaBatafsil" />
-              </th>
-            </tr>
-          </thead>
-          <tbody className="text-base">
-            {data &&
-              data.map((item, index) => {
+    return (
+        <div className="max-w-7xl mx-auto py-16">
+            <h1 className="text-md md: text-4xl font-bold text-[#004269] text-center">
+                <TextTranslate id="dTSvaMalakaTalablari" />
+            </h1>
+            <div className="relative shadow-md overflow-x-auto sm:rounded-lg mx-5 mt-10">
+                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead className="md:text-base text-white uppercase bg-[#377DFF] dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" className="pl-2 md:pl-6 py-4">
+                                №
+                            </th>
+                            <th scope="col" className="px-2 md:px-6 py-4">
+                                <TextTranslate id="DTSvaMalakaHujjatNomi" />
+                            </th>
+                            <th
+                                scope="col"
+                                className="px-2 md:px-6 py-4 hidden md:block"
+                            >
+                                <TextTranslate id="DTSvaMalakaSana" />
+                            </th>
+                            <th scope="col" className="px-2 md:px-6 py-4">
+                                <TextTranslate id="DTSvaMalakaBatafsil" />
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody className="text-base">
+                        {data?.map((item, index) => {
                 return (
                   <tr
                     key={item.id}
@@ -78,11 +89,11 @@ function MagistrDTSvaMalakaCom() {
                   </tr>
                 );
               })}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    );
 }
 
 export default MagistrDTSvaMalakaCom;
