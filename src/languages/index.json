@@ -221,7 +221,11 @@
     "abiCall": "Qo'qon davlat pedagogika institutida 2024/2025 o'quv yili uchun qabul jarayonlari davom etmoqda",
     "abiCallRaqamlar": "Call markazi raqamlari",
 
-    "dTSvaMalakaTalablari": "DTS va malaka talablari",
+    "dTSvaMalakaTalablari": "DTS talablari",
+    "1kursMT": "Malaka talablari",
+    "2kursMT": "",
+    "3kursMT": "",
+
     "oquvRejalar": "O'quv rejalari",
     "fanDasturlari": "Fan dasturlari",
     "fanKatalogi": "Fan katalogi",
@@ -525,7 +529,10 @@
     "abiCall": "Процесс приема на учебный год 2024/2025 продолжается в Кокандском государственном педагогическом институте",
     "abiCallRaqamlar": "Номера Центра обращений",
 
-    "dTSvaMalakaTalablari": "ДТС и квалификационные требования",
+    "dTSvaMalakaTalablari": "Требования ГОС (Государственные образовательные стандарты).",
+    "1kursMT": "Квалификационные требования",
+    "2kursMT": "",
+    "3kursMT": "",
     "oquvRejalar": "Планы обучения",
     "fanDasturlari": "Научные программы",
     "fanKatalogi": "Научный каталог",
@@ -829,7 +836,10 @@
     "abiCall": "Admission process for the 2024/2025 academic year is ongoing at the Kokand State Pedagogical Institute",
     "abiCallRaqamlar": "Call center numbers",
 
-    "dTSvaMalakaTalablari": "DTS and qualification requirements",
+    "dTSvaMalakaTalablari": "State Educational Standards (SES) requirements.",
+    "1kursMT": "Qualification requirements",
+    "2kursMT": "",
+    "3kursMT": "",
     "oquvRejalar": "Study plans",
     "fanDasturlari": "Science programs",
     "fanKatalogi": "Science catalog",
