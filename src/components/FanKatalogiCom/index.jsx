@@ -2,13 +2,35 @@ import React from "react";
 import TextTranslate from "../TextTranslate";
 import { LuDownload } from "react-icons/lu";
 import DTSvaMalakaPDF from "../../assets/pdf/DTSvaMalaka2020.pdf";
+import Katalog2021 from "../../assets/pdf/Katalog_2024.pdf"
+import Katalog2022 from "../../assets/pdf/Katalog_2022.pdf"
+import Katalog2023 from "../../assets/pdf/Katalog_2023.pdf"
+import Katalog2024 from "../../assets/pdf/Katalog_2024.pdf"
 
 const dataPDF = [
   {
     id: 1,
-    sana: "07.09.2023",
-    name: "Oliy ta'limning davlat ta'lim standarti 2020",
-    pdf: "../../assets/pdf/DTSvaMalaka2020.pdf",
+    sana: "09.14.2024",
+    name: "Oliy ta'limning davlat ta'lim standarti 2021",
+    pdf: Katalog2021,
+  },
+  {
+    id: 2,
+    sana: "09.14.2024",
+    name: "Oliy ta'limning davlat ta'lim standarti 2022",
+    pdf: Katalog2022,
+  },
+  {
+    id: 3,
+    sana: "09.14.2024",
+    name: "Oliy ta'limning davlat ta'lim standarti 2023",
+    pdf: Katalog2023,
+  },
+  {
+    id: 4,
+    sana: "09.14.2024",
+    name: "Oliy ta'limning davlat ta'lim standarti 2024",
+    pdf: Katalog2024,
   },
 ];
 
