@@ -222,8 +222,8 @@
     "abiCallRaqamlar": "Call markazi raqamlari",
 
     "dTSvaMalakaTalablari": "DTS talablari",
-    "1kursMT": "Malaka talablari",
-    "2kursMT": "",
+    "1kursMT": "Malaka talablari 1-kurs",
+    "2kursMT": "Malaka talablari 2-kurs",
     "3kursMT": "",
 
     "oquvRejalar": "O'quv rejalari",
@@ -530,8 +530,8 @@
     "abiCallRaqamlar": "Номера Центра обращений",
 
     "dTSvaMalakaTalablari": "Требования ГОС (Государственные образовательные стандарты).",
-    "1kursMT": "Квалификационные требования",
-    "2kursMT": "",
+    "1kursMT": "Требования к квалификации для 1-го курса",
+    "2kursMT": "Требования к квалификации для 2-го курса",
     "3kursMT": "",
     "oquvRejalar": "Планы обучения",
     "fanDasturlari": "Научные программы",
@@ -837,8 +837,8 @@
     "abiCallRaqamlar": "Call center numbers",
 
     "dTSvaMalakaTalablari": "State Educational Standards (SES) requirements.",
-    "1kursMT": "Qualification requirements",
-    "2kursMT": "",
+    "1kursMT": "Qualification Requirements for 1st year",
+    "2kursMT": "Qualification Requirements for 2nd year",
     "3kursMT": "",
     "oquvRejalar": "Study plans",
     "fanDasturlari": "Science programs",
