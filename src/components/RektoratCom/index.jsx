@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import APITuzilmaRectorat from "../../services/tRektorat";
 import { OverflowBox } from "./styled";
 import { useSelector } from "react-redux";
+import TextTranslate from "../../components/TextTranslate";
 
 const Rektorat = () => {
     const isLang = useSelector((state) => state.reducerLang.isLang);
@@ -71,19 +72,35 @@ const Rektorat = () => {
                                                 />
                                             </div>
                                             <h1>
-                                                <b>Lavozim: </b>{" "}
+                                                <b>
+                                                    <TextTranslate id="tuzLav" />
+                                                    :
+                                                </b>
+                                                {` `}
                                                 {nomzod[`lavozim_${isLang}`]}
                                             </h1>
                                             <h1>
-                                                <b>F.I.O: </b>{" "}
+                                                <b>
+                                                    <TextTranslate id="tuzFio" />
+                                                    :
+                                                </b>
+                                                {` `}
                                                 {nomzod[`fish_${isLang}`]}
                                             </h1>
                                             <h1>
-                                                <b>Unvon: </b>{" "}
+                                                <b>
+                                                    <TextTranslate id="tuzUnvon" />
+                                                    :
+                                                </b>
+                                                {` `}
                                                 {nomzod[`unvon_${isLang}`]}
                                             </h1>
                                             <h1>
-                                                <b>Qabul soatlari: </b>
+                                                <b>
+                                                    <TextTranslate id="tuzQabul" />
+                                                    :
+                                                </b>
+                                                {` `}
                                                 {
                                                     nomzod[
                                                         `qabul_soati_${isLang}`
@@ -91,16 +108,27 @@ const Rektorat = () => {
                                                 }
                                             </h1>
                                             <h1>
-                                                <b>Biografya: </b>{" "}
+                                                <b>
+                                                    <TextTranslate id="tuzBio" />
+                                                    :
+                                                </b>
+                                                {` `}
                                                 {nomzod[`biografiya_${isLang}`]}
                                             </h1>
                                             <h1>
-                                                <b>Telegram: </b>{" "}
+                                                <b>
+                                                    <TextTranslate id="tuzTg" />
+                                                    :
+                                                </b>
+                                                {` `}
                                                 {nomzod.tg_username}
                                             </h1>
                                             <h1>
-                                                <b>Tel: </b> +
-                                                {nomzod.telefon_nomer}
+                                                <b>
+                                                    <TextTranslate id="tuzTel" />
+                                                    :
+                                                </b>
+                                                {` `}+{nomzod.telefon_nomer}
                                             </h1>
                                         </div>
                                     ))}
@@ -166,12 +194,27 @@ const Rektorat = () => {
                                                     }
                                                 </h1>
                                                 <h1 className="font-medium text-[18px]">
+                                                    <b>
+                                                        <TextTranslate id="tuzFio" />
+                                                        :
+                                                    </b>
+                                                    {` `}
                                                     {nomzod[`fish_${isLang}`]}
                                                 </h1>
                                                 <h1 className="font-medium text-[18px]">
+                                                    <b>
+                                                        <TextTranslate id="tuzUnvon" />
+                                                        :
+                                                    </b>
+                                                    {` `}
                                                     {nomzod[`unvon_${isLang}`]}
                                                 </h1>
                                                 <h1 className="font-medium">
+                                                    <b>
+                                                        <TextTranslate id="tuzQabul" />
+                                                        :
+                                                    </b>
+                                                    {` `}
                                                     {
                                                         nomzod[
                                                             `qabul_soati_${isLang}`
@@ -182,15 +225,27 @@ const Rektorat = () => {
                                         </div>
                                         <div className="mt-4">
                                             <h1 className="font-medium">
+                                                <b>
+                                                    <TextTranslate id="tuzBio" />
+                                                    :
+                                                </b>
+                                                {` `}
                                                 {nomzod[`biografiya_${isLang}`]}
                                             </h1>
                                             <h1>
-                                                <b>Telegram: </b>
+                                                <b>
+                                                    <TextTranslate id="tuzTg" />
+                                                    :
+                                                </b>
+                                                {` `}
                                                 {nomzod.tg_username}
                                             </h1>
                                             <h1>
-                                                <b>Tel: </b>+
-                                                {nomzod.telefon_nomer}
+                                                <b>
+                                                    <TextTranslate id="tuzTel" />
+                                                    :
+                                                </b>
+                                                {` `}+{nomzod.telefon_nomer}
                                             </h1>
                                         </div>
                                     </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import APITuzilmaFakultet from "../../services/tKafedra";
 import { OverflowBox } from "../RektoratCom/styled";
 import { useSelector } from "react-redux";
+import TextTranslate from "../TextTranslate";
 
 const Kafedra = () => {
     const isLang = useSelector((state) => state.reducerLang.isLang);
@@ -74,25 +75,41 @@ const Kafedra = () => {
                                         >
                                             <div className="flex justify-center">
                                                 <img
-                                                    className="rounded-full border object-cover w-[120px] h-[120px]"
+                                                    className="rounded-full border w-[120px] object-cover h-[120px]"
                                                     src={nomzod.rasm}
                                                     alt="rahbar rasmi"
                                                 />
                                             </div>
                                             <h1>
-                                                <b>Lavozim: </b>{" "}
+                                                <b>
+                                                    <TextTranslate id="tuzLav" />
+                                                    :
+                                                </b>
+                                                {` `}
                                                 {nomzod[`lavozim_${isLang}`]}
                                             </h1>
                                             <h1>
-                                                <b>F.I.O: </b>{" "}
+                                                <b>
+                                                    <TextTranslate id="tuzFio" />
+                                                    :
+                                                </b>
+                                                {` `}
                                                 {nomzod[`fish_${isLang}`]}
                                             </h1>
                                             <h1>
-                                                <b>Unvon: </b>{" "}
+                                                <b>
+                                                    <TextTranslate id="tuzUnvon" />
+                                                    :
+                                                </b>
+                                                {` `}
                                                 {nomzod[`unvon_${isLang}`]}
                                             </h1>
                                             <h1>
-                                                <b>Qabul soatlari: </b>
+                                                <b>
+                                                    <TextTranslate id="tuzQabul" />
+                                                    :
+                                                </b>
+                                                {` `}
                                                 {
                                                     nomzod[
                                                         `qabul_soati_${isLang}`
@@ -100,16 +117,27 @@ const Kafedra = () => {
                                                 }
                                             </h1>
                                             <h1>
-                                                <b>Biografya: </b>{" "}
+                                                <b>
+                                                    <TextTranslate id="tuzBio" />
+                                                    :
+                                                </b>
+                                                {` `}
                                                 {nomzod[`biografiya_${isLang}`]}
                                             </h1>
                                             <h1>
-                                                <b>Telegram: </b>{" "}
+                                                <b>
+                                                    <TextTranslate id="tuzTg" />
+                                                    :
+                                                </b>
+                                                {` `}
                                                 {nomzod.tg_username}
                                             </h1>
                                             <h1>
-                                                <b>Tel: </b> +
-                                                {nomzod.telefon_nomer}
+                                                <b>
+                                                    <TextTranslate id="tuzTel" />
+                                                    :
+                                                </b>
+                                                {` `}+{nomzod.telefon_nomer}
                                             </h1>
                                         </div>
                                     ))}
@@ -163,9 +191,9 @@ const Kafedra = () => {
                                     onClick={() => onClickLav(item.id)}
                                     className={`${
                                         item.id === isActive
-                                        ? "text-[#004259] font-semibold before:w-[8px] before:h-[8px] before:absolute before:top-[7px] before:left-[-18px] before:border-t-2 before:border-r-2 before:border-[#004269] before:rotate-[45deg] underline underline-offset-4 decoration-2 decoration-[#004269]"
-                                        : "text-gray-600"
-                                } text-[18px] cursor-pointer relative active:translate-x-[2px] active:translate-y-[2px] mt-1 select-none`}
+                                            ? "text-[#004259] font-semibold before:w-[8px] before:h-[8px] before:absolute before:top-[7px] before:left-[-18px] before:border-t-2 before:border-r-2 before:border-[#004269] before:rotate-[45deg] underline underline-offset-4 decoration-2 decoration-[#004269]"
+                                            : "text-gray-600"
+                                    } text-[18px] cursor-pointer relative active:translate-x-[2px] active:translate-y-[2px] mt-1 select-none`}
                                 >
                                     {item[`name_${isLang}`]}
                                 </h1>
@@ -183,19 +211,16 @@ const Kafedra = () => {
                             datakafNom
                                 ?.filter((item) => item.kafedra_id === isActive)
                                 .map((nomzod) => (
-                                    <div
-                                        key={nomzod.id}
-                                        className="flex flex-col my-2"
-                                    >
+                                    <div key={nomzod.id} className="my-2">
                                         <div className="flex gap-4">
-                                            <div className="min-w-[200px] h-[200px] flex justify-start border rounded-md overflow-hidden">
+                                            <div className="w-[40%] h-[200px] flex justify-start rounded-md overflow-hidden">
                                                 <img
-                                                    className="w-full h-auto object-cover"
+                                                    className="w-full h-full object-cover"
                                                     src={nomzod.rasm}
                                                     alt="rahbar rasmi"
                                                 />
                                             </div>
-                                            <div>
+                                            <div className="w-[60%]">
                                                 <h1 className="font-semibold text-[22px] text-[#004369]">
                                                     {
                                                         nomzod[
@@ -204,12 +229,27 @@ const Kafedra = () => {
                                                     }
                                                 </h1>
                                                 <h1 className="font-medium text-[18px]">
+                                                    <b>
+                                                        <TextTranslate id="tuzFio" />
+                                                        :
+                                                    </b>
+                                                    {` `}
                                                     {nomzod[`fish_${isLang}`]}
                                                 </h1>
                                                 <h1 className="font-medium text-[18px]">
+                                                    <b>
+                                                        <TextTranslate id="tuzUnvon" />
+                                                        :
+                                                    </b>
+                                                    {` `}
                                                     {nomzod[`unvon_${isLang}`]}
                                                 </h1>
                                                 <h1 className="font-medium">
+                                                    <b>
+                                                        <TextTranslate id="tuzQabul" />
+                                                        :
+                                                    </b>
+                                                    {` `}
                                                     {
                                                         nomzod[
                                                             `qabul_soati_${isLang}`
@@ -220,15 +260,27 @@ const Kafedra = () => {
                                         </div>
                                         <div className="mt-4">
                                             <h1 className="font-medium">
+                                                <b>
+                                                    <TextTranslate id="tuzBio" />
+                                                    :
+                                                </b>
+                                                {` `}
                                                 {nomzod[`biografiya_${isLang}`]}
                                             </h1>
                                             <h1>
-                                                <b>Telegram: </b>
+                                                <b>
+                                                    <TextTranslate id="tuzTg" />
+                                                    :
+                                                </b>
+                                                {` `}
                                                 {nomzod.tg_username}
                                             </h1>
                                             <h1>
-                                                <b>Tel: </b>+
-                                                {nomzod.telefon_nomer}
+                                                <b>
+                                                    <TextTranslate id="tuzTel" />
+                                                    :
+                                                </b>
+                                                {` `}+{nomzod.telefon_nomer}
                                             </h1>
                                         </div>
                                     </div>

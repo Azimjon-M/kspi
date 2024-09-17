@@ -6,7 +6,10 @@ import APImDtsvaMalaka from "../../services/mDtsvaMalaka";
 
 function MagistrDTSvaMalakaCom() {
     const Lang = useSelector((state) => state.reducerLang.isLang);
-    const [data, setData] = useState([]);
+
+    const [dts, setDts] = useState([]);
+    const [one, setOne] = useState([]);
+    const [twoo, setTwoo] = useState([]);
 
     useEffect(() => {
         const getData = async () => {
@@ -15,16 +18,18 @@ function MagistrDTSvaMalakaCom() {
                 const sortedData = res.data.sort((a, b) => {
                     return new Date(b.sana) - new Date(a.sana);
                 });
-                const filtredData1 = sortedData.filter(
-                    (item) => item.name_uz.slice(0, 3) === "DTS"
+                const filtredData1 = sortedData.filter((item) =>
+                    item.name_uz.replace(/\s+/g, "").endsWith("DTS")
                 );
-                const filtredData2 = sortedData.filter(
-                    (item) => item.name_uz.slice(0, 3) !== "DTS"
+                const filtredData2 = sortedData.filter((item) =>
+                    item.name_uz.replace(/\s+/g, "").endsWith("(1-kurs)")
                 );
-                const newData = [...filtredData1, ...filtredData2 ];
-                console.log(newData);
-                
-                setData(newData);
+                const filtredData3 = sortedData.filter((item) =>
+                    item.name_uz.replace(/\s+/g, "").endsWith("(2-kurs)")
+                );
+                setDts(filtredData1);
+                setOne(filtredData2);
+                setTwoo(filtredData3);
             } catch (error) {
                 console.log(error);
             }
@@ -59,36 +64,154 @@ function MagistrDTSvaMalakaCom() {
                         </tr>
                     </thead>
                     <tbody className="text-base">
-                        {data?.map((item, index) => {
-                return (
-                  <tr
-                    key={item.id}
-                    className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 hover:bg-gray-200"
-                  >
-                    <th
-                      scope="row"
-                      className="pl-2 md:pl-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                    >
-                      {index + 1}
-                    </th>
-                    <td className="px-2 md:px-6 py-4">
-                      {item && item[`name_${Lang}`]}
-                    </td>
-                    <td className="px-2 md:px-6 py-4 hidden md:block">
-                      {item.sana}
-                    </td>
-                    <td className="px-2 md:px-6 py-41">
-                      <a
-                        href={item.fayl}
-                        className="text-blue-600 dark:text-blue-500"
-                        target="blank"
-                      >
-                        <LuDownload className="text-xl" />
-                      </a>
-                    </td>
-                  </tr>
-                );
-              })}
+                        {dts?.map((item, index) => {
+                            return (
+                                <tr
+                                    key={item.id}
+                                    className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 hover:bg-gray-200"
+                                >
+                                    <th
+                                        scope="row"
+                                        className="pl-2 md:pl-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                    >
+                                        {index + 1}
+                                    </th>
+                                    <td className="px-2 md:px-6 py-4">
+                                        {item && item[`name_${Lang}`]}
+                                    </td>
+                                    <td className="px-2 md:px-6 py-4 hidden md:block">
+                                        {item.sana}
+                                    </td>
+                                    <td className="px-2 md:px-6 py-41">
+                                        <a
+                                            href={item.fayl}
+                                            className="text-blue-600 dark:text-blue-500"
+                                            target="blank"
+                                        >
+                                            <LuDownload className="text-xl" />
+                                        </a>
+                                    </td>
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </table>
+            </div>
+
+            <h1 className="text-md md: text-4xl font-bold text-[#004269] text-center mt-8">
+                <TextTranslate id="1kursMT" />
+            </h1>
+            <div className="relative shadow-md overflow-x-auto sm:rounded-lg mx-5 mt-10">
+                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead className="md:text-base text-white uppercase bg-[#377DFF] dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" className="pl-2 md:pl-6 py-4">
+                                №
+                            </th>
+                            <th scope="col" className="px-2 md:px-6 py-4">
+                                <TextTranslate id="DTSvaMalakaHujjatNomi" />
+                            </th>
+                            <th
+                                scope="col"
+                                className="px-2 md:px-6 py-4 hidden md:block"
+                            >
+                                <TextTranslate id="DTSvaMalakaSana" />
+                            </th>
+                            <th scope="col" className="px-2 md:px-6 py-4">
+                                <TextTranslate id="DTSvaMalakaBatafsil" />
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody className="text-base">
+                        {one?.map((item, index) => {
+                            return (
+                                <tr
+                                    key={item.id}
+                                    className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 hover:bg-gray-200"
+                                >
+                                    <th
+                                        scope="row"
+                                        className="pl-2 md:pl-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                    >
+                                        {index + 1}
+                                    </th>
+                                    <td className="px-2 md:px-6 py-4">
+                                        {item && item[`name_${Lang}`]}
+                                    </td>
+                                    <td className="px-2 md:px-6 py-4 hidden md:block">
+                                        {item.sana}
+                                    </td>
+                                    <td className="px-2 md:px-6 py-41">
+                                        <a
+                                            href={item.fayl}
+                                            className="text-blue-600 dark:text-blue-500"
+                                            target="blank"
+                                        >
+                                            <LuDownload className="text-xl" />
+                                        </a>
+                                    </td>
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </table>
+            </div>
+
+            <h1 className="text-md md: text-4xl font-bold text-[#004269] text-center mt-8">
+                <TextTranslate id="2kursMT" />
+            </h1>
+            <div className="relative shadow-md overflow-x-auto sm:rounded-lg mx-5 mt-10">
+                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead className="md:text-base text-white uppercase bg-[#377DFF] dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" className="pl-2 md:pl-6 py-4">
+                                №
+                            </th>
+                            <th scope="col" className="px-2 md:px-6 py-4">
+                                <TextTranslate id="DTSvaMalakaHujjatNomi" />
+                            </th>
+                            <th
+                                scope="col"
+                                className="px-2 md:px-6 py-4 hidden md:block"
+                            >
+                                <TextTranslate id="DTSvaMalakaSana" />
+                            </th>
+                            <th scope="col" className="px-2 md:px-6 py-4">
+                                <TextTranslate id="DTSvaMalakaBatafsil" />
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody className="text-base">
+                        {twoo?.map((item, index) => {
+                            return (
+                                <tr
+                                    key={item.id}
+                                    className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 hover:bg-gray-200"
+                                >
+                                    <th
+                                        scope="row"
+                                        className="pl-2 md:pl-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                    >
+                                        {index + 1}
+                                    </th>
+                                    <td className="px-2 md:px-6 py-4">
+                                        {item && item[`name_${Lang}`]}
+                                    </td>
+                                    <td className="px-2 md:px-6 py-4 hidden md:block">
+                                        {item.sana}
+                                    </td>
+                                    <td className="px-2 md:px-6 py-41">
+                                        <a
+                                            href={item.fayl}
+                                            className="text-blue-600 dark:text-blue-500"
+                                            target="blank"
+                                        >
+                                            <LuDownload className="text-xl" />
+                                        </a>
+                                    </td>
+                                </tr>
+                            );
+                        })}
                     </tbody>
                 </table>
             </div>
