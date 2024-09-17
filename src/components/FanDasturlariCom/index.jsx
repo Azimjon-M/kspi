@@ -1,112 +1,129 @@
-import React, { useState, useEffect, useMemo, useCallback } from "react";
-import APIBFanDasturlari from "../../services/bFanDasturlari";
-import APIBFanDasturlariTur from "../../services/bFanDasturlariTur";
-import { useSelector } from "react-redux";
-import TextTranslate from "../TextTranslate";
-import { PiStudentFill } from "react-icons/pi";
-import { LuDownload } from "react-icons/lu";
+import React, { useState, useEffect } from 'react';
+import APIBFanDasturlari from '../../services/bFanDasturlari';
+import APIBFanDasturlariKurs from '../../services/bFanDasturlariKurs';
+import APIBFanDasturlariTur from '../../services/bFanDasturlariTur';
+import APIBFanDasturlariYonalish from '../../services/bFanDasturlariYonalish';
 
 const FanDasturlariCom = () => {
-  const Lang = useSelector((state) => state.reducerLang.isLang);
-  const [showContent, setShowContent] = useState(1);
-  const [data, setData] = useState([]);
-  const [dataTur, setDataTur] = useState([]);
+  const [kurslar, setKurslar] = useState([]);
+  const [yonalishlar, setYonalishlar] = useState([]);
+  const [turlar, setTurlar] = useState([]);
+  const [fanDasturlar, setFanDasturlar] = useState([]);
 
-  const fetchData = useCallback(async () => {
-    try {
-      const [resTur, res] = await Promise.all([APIBFanDasturlariTur.get(), APIBFanDasturlari.get()]);
-      setDataTur(resTur.data);
-      setData(res.data);
-    } catch (error) {
-      console.error("Error fetching data: ", error);
-    }
+  const [selectedKurs, setSelectedKurs] = useState('');
+  const [selectedYonalish, setSelectedYonalish] = useState('');
+  const [selectedTur, setSelectedTur] = useState('');
+
+  // Fetch all Kurslar on initial load
+  useEffect(() => {
+    APIBFanDasturlariKurs.get()
+      .then(response => setKurslar(response.data))
+      .catch(error => console.error('Error fetching kurslar:', error));
   }, []);
 
+  // Fetch Yonalishlar when a Kurs is selected
   useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+    if (selectedKurs) {
+      APIBFanDasturlariYonalish.get()
+        .then(response => {
+          const filteredYonalishlar = response.data.filter(item => item.fan_dastur_kurs_id === parseInt(selectedKurs));
+          setYonalishlar(filteredYonalishlar);
+        })
+        .catch(error => {
+          console.error('Error fetching yonalishlar:', error);
+          setYonalishlar([]);  // Clear out yonalishlar if there's an error
+        });
+    } else {
+      setYonalishlar([]);  // Reset yonalishlar when no kurs is selected
+    }
+  }, [selectedKurs]);
 
-  const handleClick = useCallback((id) => setShowContent(id), []);
+  // Fetch Turlar when a Yonalish is selected
+  useEffect(() => {
+    if (selectedYonalish) {
+      APIBFanDasturlariTur.get()
+        .then(response => setTurlar(response.data.filter(item => item.fan_dastur_yonalish_id === parseInt(selectedYonalish))))
+        .catch(error => console.error('Error fetching turlar:', error));
+    }
+  }, [selectedYonalish]);
 
-  const filteredData = useMemo(
-    () => data.filter((item) => item.fan_dastur_turi_id === showContent),
-    [data, showContent]
-  );
+  // Fetch Fan Dasturlar when a Tur is selected
+  useEffect(() => {
+    if (selectedTur) {
+      APIBFanDasturlari.get()
+        .then(response => setFanDasturlar(response.data.filter(item => item.fan_dastur_turi_id === parseInt(selectedTur))))
+        .catch(error => console.error('Error fetching fan dasturlar:', error));
+    }
+  }, [selectedTur]);
 
   return (
-    <div className="max-w-7xl md:mx-auto py-10 mx-4 md:min-h-[calc(100vh-565px)] lg:min-h-[calc(100vh-400px)]">
-      <h1 className="text-4xl font-bold text-[#004269] text-center">
-        <TextTranslate id="oquvRejalar" />
-      </h1>
-      <div className="md:grid grid-cols-12 mt-4 md:mt-8">
-        <ul className="col-span-2 space-y-4 text-sm font-medium text-gray-500 dark:text-gray-400 md:me-4 mb-4 md:mb-0">
-          {dataTur.map((item) => (
-            <li key={item.id}>
-              <button
-                onClick={() => handleClick(item.id)}
-                className={`${
-                  showContent === item.id
-                    ? "bg-blue-500 text-white"
-                    : "bg-gray-50"
-                } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-              >
-                <PiStudentFill className="w-4 h-4 me-2" />
-                <p>{item[`name_${Lang}`]}</p>
-              </button>
-            </li>
-          ))}
-        </ul>
-        <div className="col-span-10">
-            <div
-              className="p-6 bg-gray-50 text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg w-full"
-            >
-              <div className="relative shadow-md overflow-x-auto rounded-lg">
-                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                  <thead className="md:text-base text-white uppercase bg-blue-500 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                      <th scope="col" className="pl-2 md:pl-6 py-4">№</th>
-                      <th scope="col" className="px-2 md:px-6 py-4">
-                        <TextTranslate id="DTSvaMalakaHujjatNomi" />
-                      </th>
-                      <th scope="col" className="px-2 md:px-6 py-4 hidden md:block">
-                        <TextTranslate id="DTSvaMalakaSana" />
-                      </th>
-                      <th scope="col" className="px-2 md:px-6 py-4">
-                        <TextTranslate id="DTSvaMalakaBatafsil" />
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="text-base">
-                  {filteredData.map((item, index) => (
-                    <tr
-                      key={item.id}
-                      className="odd:bg-white even:bg-gray-50 border-b dark:border-gray-700 hover:bg-gray-200"
-                    >
-                      <th
-                        scope="row"
-                        className="pl-2 md:pl-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                      >
-                        {index + 1}
-                      </th>
-                      <td className="px-2 md:px-6 py-4">{item[`name_${Lang}`]}</td>
-                      <td className="px-2 md:px-6 py-4 hidden md:block">{item.sana}</td>
-                      <td className="px-2 md:px-6 py-4">
-                        <a
-                          href={item.fayl}
-                          className="text-blue-600 dark:text-blue-500"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <LuDownload className="text-xl" />
-                        </a>
-                      </td>
-                    </tr>
-                ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold text-center mb-8">Fan Dastur</h1>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        {/* Kurs Selection */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Kurs:</label>
+          <select 
+            className="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2"
+            value={selectedKurs} 
+            onChange={e => setSelectedKurs(e.target.value)}
+          >
+            <option value="">Select Kurs</option>
+            {kurslar.map(kurs => (
+              <option key={kurs.id} value={kurs.id}>{kurs.name_uz}</option>
+            ))}
+          </select>
         </div>
+
+        {/* Yonalish Selection */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Yonalish:</label>
+          <select 
+            className="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2" 
+            value={selectedYonalish} 
+            onChange={e => setSelectedYonalish(e.target.value)} 
+            disabled={!selectedKurs}
+          >
+            <option value="">Select Yonalish</option>
+            {yonalishlar.map(yonalish => (
+              <option key={yonalish.id} value={yonalish.id}>{yonalish.name_uz}</option>
+            ))}
+          </select>
+        </div>
+
+        {/* Tur Selection */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Tur:</label>
+          <select 
+            className="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2" 
+            value={selectedTur} 
+            onChange={e => setSelectedTur(e.target.value)} 
+            disabled={!selectedYonalish}
+          >
+            <option value="">Select Tur</option>
+            {turlar.map(tur => (
+              <option key={tur.id} value={tur.id}>{tur.name_uz}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      {/* Fan Dastur List */}
+      <div className="bg-white shadow-md rounded-md p-6">
+        <h2 className="text-2xl font-bold mb-4">Fan Dastur List</h2>
+        {fanDasturlar.length > 0 ? (
+          <ul className="space-y-2">
+            {fanDasturlar.map(fan => (
+              <li key={fan.id} className="bg-gray-100 rounded-md p-3 flex justify-between items-center">
+                <a href={fan.fayl} className="text-indigo-600 font-medium hover:underline">{fan.name_uz}</a>
+                <span className="text-gray-500">{fan.sana}</span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-gray-500">No fan dasturlar available</p>
+        )}
       </div>
     </div>
   );
