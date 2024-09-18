@@ -3,42 +3,51 @@ import APIBFanDasturlari from '../../services/bFanDasturlari';
 import APIBFanDasturlariKurs from '../../services/bFanDasturlariKurs';
 import APIBFanDasturlariTur from '../../services/bFanDasturlariTur';
 import APIBFanDasturlariYonalish from '../../services/bFanDasturlariYonalish';
+import APIBFanDasturlariTalimTur from '../../services/bFanDasturlariTalimTur';
 
 const FanDasturlariCom = () => {
   const [kurslar, setKurslar] = useState([]);
   const [yonalishlar, setYonalishlar] = useState([]);
   const [turlar, setTurlar] = useState([]);
   const [fanDasturlar, setFanDasturlar] = useState([]);
+  const [talimTurlar, setTalimTurlar] = useState([]);
 
   const [selectedKurs, setSelectedKurs] = useState('');
+  const [selectedTalimTur, setSelectedTalimTur] = useState('');
   const [selectedYonalish, setSelectedYonalish] = useState('');
   const [selectedTur, setSelectedTur] = useState('');
 
-  // Fetch all Kurslar on initial load
   useEffect(() => {
     APIBFanDasturlariKurs.get()
       .then(response => setKurslar(response.data))
       .catch(error => console.error('Error fetching kurslar:', error));
   }, []);
 
-  // Fetch Yonalishlar when a Kurs is selected
   useEffect(() => {
     if (selectedKurs) {
+      APIBFanDasturlariTalimTur.get()
+        .then(response => setTalimTurlar(response.data.filter(item => item.fan_dastur_kurs_id === parseInt(selectedKurs))))
+        .catch(error => console.error('Error fetching turlar:', error));
+    }
+  }, [selectedKurs]);
+
+  useEffect(() => {
+    if (selectedTalimTur) {
       APIBFanDasturlariYonalish.get()
         .then(response => {
-          const filteredYonalishlar = response.data.filter(item => item.fan_dastur_kurs_id === parseInt(selectedKurs));
+          const filteredYonalishlar = response.data.filter(item => item.fan_dastur_talim_turi_id === parseInt(selectedTalimTur));
           setYonalishlar(filteredYonalishlar);
         })
         .catch(error => {
           console.error('Error fetching yonalishlar:', error);
-          setYonalishlar([]);  // Clear out yonalishlar if there's an error
+          setYonalishlar([]); 
         });
     } else {
-      setYonalishlar([]);  // Reset yonalishlar when no kurs is selected
+      setYonalishlar([]);
     }
-  }, [selectedKurs]);
+  }, [selectedTalimTur]);
 
-  // Fetch Turlar when a Yonalish is selected
+
   useEffect(() => {
     if (selectedYonalish) {
       APIBFanDasturlariTur.get()
@@ -47,7 +56,7 @@ const FanDasturlariCom = () => {
     }
   }, [selectedYonalish]);
 
-  // Fetch Fan Dasturlar when a Tur is selected
+
   useEffect(() => {
     if (selectedTur) {
       APIBFanDasturlari.get()
@@ -60,7 +69,7 @@ const FanDasturlariCom = () => {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold text-center mb-8">Fan Dastur</h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
         {/* Kurs Selection */}
         <div>
           <label className="block text-sm font-medium text-gray-700">Kurs:</label>
@@ -69,9 +78,25 @@ const FanDasturlariCom = () => {
             value={selectedKurs} 
             onChange={e => setSelectedKurs(e.target.value)}
           >
-            <option value="">Select Kurs</option>
+            <option value="">Kursni tanlang</option>
             {kurslar.map(kurs => (
               <option key={kurs.id} value={kurs.id}>{kurs.name_uz}</option>
+            ))}
+          </select>
+        </div>
+
+        {/* Talim turi Selection */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Ta'lim turi:</label>
+          <select 
+            className="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2"
+            value={selectedTalimTur} 
+            onChange={e => setSelectedTalimTur(e.target.value)}
+            disabled={!selectedKurs}
+          >
+            <option value="">Ta'lim turini tanlang</option>
+            {talimTurlar.map(talimTur => (
+              <option key={talimTur.id} value={talimTur.id}>{talimTur.name_uz}</option>
             ))}
           </select>
         </div>
@@ -83,9 +108,9 @@ const FanDasturlariCom = () => {
             className="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2" 
             value={selectedYonalish} 
             onChange={e => setSelectedYonalish(e.target.value)} 
-            disabled={!selectedKurs}
+            disabled={!selectedTalimTur}
           >
-            <option value="">Select Yonalish</option>
+            <option value="">Yo'nalishni tanlang</option>
             {yonalishlar.map(yonalish => (
               <option key={yonalish.id} value={yonalish.id}>{yonalish.name_uz}</option>
             ))}
@@ -101,7 +126,7 @@ const FanDasturlariCom = () => {
             onChange={e => setSelectedTur(e.target.value)} 
             disabled={!selectedYonalish}
           >
-            <option value="">Select Tur</option>
+            <option value="">Turni tanlang</option>
             {turlar.map(tur => (
               <option key={tur.id} value={tur.id}>{tur.name_uz}</option>
             ))}
@@ -111,7 +136,7 @@ const FanDasturlariCom = () => {
 
       {/* Fan Dastur List */}
       <div className="bg-white shadow-md rounded-md p-6">
-        <h2 className="text-2xl font-bold mb-4">Fan Dastur List</h2>
+        <h2 className="text-2xl text-center font-bold mb-4">Fan dasturlari ro'yxati</h2>
         {fanDasturlar.length > 0 ? (
           <ul className="space-y-2">
             {fanDasturlar.map(fan => (
@@ -122,7 +147,7 @@ const FanDasturlariCom = () => {
             ))}
           </ul>
         ) : (
-          <p className="text-gray-500">No fan dasturlar available</p>
+          <p className="text-gray-500 text-center">Ma'lumot topilmadi :(</p>
         )}
       </div>
     </div>
