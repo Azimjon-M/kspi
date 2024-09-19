@@ -26,8 +26,22 @@ const FanDasturlariCom = () => {
   useEffect(() => {
     if (selectedKurs) {
       APIBFanDasturlariTalimTur.get()
-        .then(response => setTalimTurlar(response.data.filter(item => item.fan_dastur_kurs_id === parseInt(selectedKurs))))
-        .catch(error => console.error('Error fetching turlar:', error));
+        .then(response => {
+          const filteredTalimTurlar = response.data.filter(item => item.fan_dastur_kurs_id === parseInt(selectedKurs));
+          setTalimTurlar(filteredTalimTurlar);
+          setSelectedTalimTur(''); // Ta'lim turini bo'shatish
+          setSelectedYonalish(''); // Yo'nalishni bo'shatish
+          setTurlar([]); // Turlarni tozalash
+          setSelectedTur(''); // Turni bo'shatish
+        })
+        .catch(error => console.error('Error fetching talim turlar:', error));
+    } else {
+      setTalimTurlar([]);
+      setSelectedTalimTur('');
+      setSelectedYonalish('');
+      setYonalishlar([]);
+      setTurlar([]);
+      setSelectedTur('');
     }
   }, [selectedKurs]);
 
@@ -37,36 +51,46 @@ const FanDasturlariCom = () => {
         .then(response => {
           const filteredYonalishlar = response.data.filter(item => item.fan_dastur_talim_turi_id === parseInt(selectedTalimTur));
           setYonalishlar(filteredYonalishlar);
+          setSelectedYonalish(''); // Yo'nalishni bo'shatish
+          setTurlar([]); // Turlarni tozalash
+          setSelectedTur(''); // Turni bo'shatish
         })
-        .catch(error => {
-          console.error('Error fetching yonalishlar:', error);
-          setYonalishlar([]); 
-        });
+        .catch(error => console.error('Error fetching yonalishlar:', error));
     } else {
       setYonalishlar([]);
+      setSelectedYonalish('');
+      setTurlar([]);
+      setSelectedTur('');
     }
   }, [selectedTalimTur]);
-
 
   useEffect(() => {
     if (selectedYonalish) {
       APIBFanDasturlariTur.get()
-        .then(response => setTurlar(response.data.filter(item => item.fan_dastur_yonalish_id === parseInt(selectedYonalish))))
+        .then(response => {
+          const filteredTurlar = response.data.filter(item => item.fan_dastur_yonalish_id === parseInt(selectedYonalish));
+          setTurlar(filteredTurlar);
+          setSelectedTur(''); // Turni bo'shatish
+        })
         .catch(error => console.error('Error fetching turlar:', error));
+    } else {
+      setTurlar([]);
+      setSelectedTur('');
     }
   }, [selectedYonalish]);
-
 
   useEffect(() => {
     if (selectedTur) {
       APIBFanDasturlari.get()
         .then(response => setFanDasturlar(response.data.filter(item => item.fan_dastur_turi_id === parseInt(selectedTur))))
         .catch(error => console.error('Error fetching fan dasturlar:', error));
+    } else {
+      setFanDasturlar([]);
     }
   }, [selectedTur]);
 
   return (
-    <div className="container mx-auto px-4 py-8 md:min-h-[calc(100vh-565px)] lg:min-h-[calc(100vh-400px)]">
+    <div className="max-w-7xl mx-auto px-4 py-8 md:min-h-[calc(100vh-565px)] lg:min-h-[calc(100vh-400px)]">
       <h1 className="text-3xl font-bold text-center mb-8">Fan Dastur</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
@@ -103,7 +127,7 @@ const FanDasturlariCom = () => {
 
         {/* Yonalish Selection */}
         <div>
-          <label className="block text-sm font-medium text-gray-700">Yonalish:</label>
+          <label className="block text-sm font-medium text-gray-700">Yo'nalish:</label>
           <select 
             className="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2" 
             value={selectedYonalish} 
@@ -141,7 +165,7 @@ const FanDasturlariCom = () => {
           <ul className="space-y-2">
             {fanDasturlar.map(fan => (
               <li key={fan.id} className="bg-gray-100 rounded-md p-3 flex justify-between items-center">
-                <a href={fan.fayl} className="text-indigo-600 font-medium hover:underline">{fan.name_uz}</a>
+                <a href={fan.fayl} target="_blank" rel="noopener noreferrer" className="text-indigo-600 font-medium hover:underline">{fan.name_uz}</a>
                 <span className="text-gray-500">{fan.sana}</span>
               </li>
             ))}
