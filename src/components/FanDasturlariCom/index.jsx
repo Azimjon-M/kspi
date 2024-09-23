@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import TextTranslate from "../TextTranslate";
 import APIBFanDasturlari from '../../services/bFanDasturlari';
 import APIBFanDasturlariKurs from '../../services/bFanDasturlariKurs';
@@ -7,6 +8,7 @@ import APIBFanDasturlariYonalish from '../../services/bFanDasturlariYonalish';
 import APIBFanDasturlariTalimTur from '../../services/bFanDasturlariTalimTur';
 
 const FanDasturlariCom = () => {
+  const Lang = useSelector((state) => state.reducerLang.isLang);
   const [kurslar, setKurslar] = useState([]);
   const [yonalishlar, setYonalishlar] = useState([]);
   const [turlar, setTurlar] = useState([]);
@@ -97,63 +99,63 @@ const FanDasturlariCom = () => {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
         {/* Kurs Selection */}
         <div>
-          <label className="block text-sm font-medium text-gray-700"><TextTranslate id="selectKurs" />:</label>
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><TextTranslate id="selectKurs" />:</label>
           <select 
-            className="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2"
+            className="bg-gray-50 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg active:shadow-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             value={selectedKurs} 
             onChange={e => setSelectedKurs(e.target.value)}
           >
             <option value=""><TextTranslate id="inSelectKurs" /></option>
             {kurslar.map(kurs => (
-              <option key={kurs.id} value={kurs.id}>{kurs.name_uz}</option>
+              <option key={kurs.id} value={kurs.id}>{kurs[`name_${Lang}`]}</option>
             ))}
           </select>
         </div>
 
         {/* Talim turi Selection */}
         <div>
-          <label className="block text-sm font-medium text-gray-700"><TextTranslate id="selectTalimTur" />:</label>
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><TextTranslate id="selectTalimTur" />:</label>
           <select 
-            className="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2"
+            className="bg-gray-50 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg active:shadow-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             value={selectedTalimTur} 
             onChange={e => setSelectedTalimTur(e.target.value)}
             disabled={!selectedKurs}
           >
             <option value=""><TextTranslate id="inSelectTalimTur" /></option>
             {talimTurlar.map(talimTur => (
-              <option key={talimTur.id} value={talimTur.id}>{talimTur.name_uz}</option>
+              <option key={talimTur.id} value={talimTur.id}>{talimTur[`name_${Lang}`]}</option>
             ))}
           </select>
         </div>
 
         {/* Yonalish Selection */}
         <div>
-          <label className="block text-sm font-medium text-gray-700"><TextTranslate id="selectYonalish" />:</label>
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><TextTranslate id="selectYonalish" />:</label>
           <select 
-            className="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2" 
+            className="bg-gray-50 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg active:shadow-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
             value={selectedYonalish} 
             onChange={e => setSelectedYonalish(e.target.value)} 
             disabled={!selectedTalimTur}
           >
             <option value=""><TextTranslate id="inSelectYonalish" /></option>
             {yonalishlar.map(yonalish => (
-              <option key={yonalish.id} value={yonalish.id}>{yonalish.name_uz}</option>
+              <option key={yonalish.id} value={yonalish.id}>{yonalish[`name_${Lang}`]}</option>
             ))}
           </select>
         </div>
 
         {/* Tur Selection */}
         <div>
-          <label className="block text-sm font-medium text-gray-700"><TextTranslate id="selectTur" />:</label>
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><TextTranslate id="selectTur" />:</label>
           <select 
-            className="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2" 
+            className="bg-gray-50 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg active:shadow-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
             value={selectedTur} 
             onChange={e => setSelectedTur(e.target.value)} 
             disabled={!selectedYonalish}
           >
             <option value=""><TextTranslate id="inSelectTur" /></option>
             {turlar.map(tur => (
-              <option key={tur.id} value={tur.id}>{tur.name_uz}</option>
+              <option key={tur.id} value={tur.id}>{tur[`name_${Lang}`]}</option>
             ))}
           </select>
         </div>
@@ -165,8 +167,8 @@ const FanDasturlariCom = () => {
         {fanDasturlar.length > 0 ? (
           <ul className="space-y-2">
             {fanDasturlar.map(fan => (
-              <li key={fan.id} className="bg-gray-100 rounded-md p-3 flex justify-between items-center">
-                <a href={fan.fayl} target="_blank" rel="noopener noreferrer" className="text-indigo-600 font-medium hover:underline">{fan.name_uz}</a>
+              <li key={fan.id} className="bg-gray-100 rounded-md py-3 px-8 flex justify-between items-center">
+                <a href={fan.fayl} target="_blank" rel="noopener noreferrer" className="text-indigo-600 font-medium hover:underline">{fan[`name_${Lang}`]}</a>
                 <span className="text-gray-500">{fan.sana}</span>
               </li>
             ))}
