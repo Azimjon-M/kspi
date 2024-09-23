@@ -1,645 +1,181 @@
-import React, { useState } from "react";
-import TextTranslate from "../TextTranslate";
-import { PiStudentFill } from "react-icons/pi";
-import { LuDownload } from "react-icons/lu";
-import DTSvaMalakaPDF from "../../assets/pdf/DTSvaMalaka2020.pdf";
+import React, { useState, useEffect } from 'react';
+import APIBFanDasturlari from '../../services/mFanDasturlari';
+import APIBFanDasturlariKurs from '../../services/mFanDasturlariKurs';
+import APIBFanDasturlariTur from '../../services/mFanDasturlariTur';
+import APIBFanDasturlariYonalish from '../../services/mFanDasturlariYonalish';
+// import APIBFanDasturlariTalimTur from '../../services/bFanDasturlariTalimTur';
 
-const data1PDF = [
-  {
-    id: 1,
-    sana: "07.09.2023",
-    name: "Oliy ta'limning davlat ta'lim standarti 2020",
-    pdf: "../../assets/pdf/DTSvaMalaka2020.pdf",
-  },
-  {
-    id: 2,
-    sana: "07.09.2023",
-    name: "Oliy ta'limning davlat ta'lim standarti 2021",
-    pdf: "../../assets/pdf/DTSvaMalaka2020.pdf",
-  },
-  {
-    id: 3,
-    sana: "07.09.2023",
-    name: "60110300-Maktabgacha ta'lim psixologiyasi va pedagogikasi malaka talablari",
-    pdf: "../../assets/pdf/DTSvaMalaka2020.pdf",
-  },
-  {
-    id: 4,
-    sana: "07.09.2023",
-    name: "60112000-Chaqiriqqacha harbiy ta'lim malaka talablari",
-    pdf: "../../assets/pdf/DTSvaMalaka2020.pdf",
-  },
-  {
-    id: 5,
-    sana: "07.09.2023",
-    name: "60110100-Pedagogika(Qo'shimcha tarbiya fani o'qituvchisi) malaka talablari",
-    pdf: "../../assets/pdf/DTSvaMalaka2020.pdf",
-  },
-  {
-    id: 6,
-    sana: "07.09.2023",
-    name: "60110200-Maktabgacha ta'lim malaka talablari",
-    pdf: "../../assets/pdf/DTSvaMalaka2020.pdf",
-  },
-  {
-    id: 7,
-    sana: "07.09.2023",
-    name: "60110600-Matematika va informatika malaka talablari",
-    pdf: "../../assets/pdf/DTSvaMalaka2020.pdf",
-  },
-  {
-    id: 8,
-    sana: "07.09.2023",
-    name: "60110700-Fizika va astronomiya malaka talablari",
-    pdf: "../../assets/pdf/DTSvaMalaka2020.pdf",
-  },
-  {
-    id: 9,
-    sana: "07.09.2023",
-    name: "60110800-Kimyo malaka talablari",
-    pdf: "../../assets/pdf/DTSvaMalaka2020.pdf",
-  },
-  {
-    id: 10,
-    sana: "07.09.2023",
-    name: "60110300-Biologiya malaka talablari",
-    pdf: "../../assets/pdf/DTSvaMalaka2020.pdf",
-  },
-  {
-    id: 11,
-    sana: "07.09.2023",
-    name: "60111000-Geografiya va iqtisodiy bilim asoslari malaka talablari",
-    pdf: "../../assets/pdf/DTSvaMalaka2020.pdf",
-  },
-  {
-    id: 12,
-    sana: "07.09.2023",
-    name: "60111100-Tarix malaka talablari",
-    pdf: "../../assets/pdf/DTSvaMalaka2020.pdf",
-  },
-  {
-    id: 13,
-    sana: "07.09.2023",
-    name: "60111200-Tasviriy san'at va muxandislik grafikasi malaka talablari",
-    pdf: "../../assets/pdf/DTSvaMalaka2020.pdf",
-  },
-  {
-    id: 14,
-    sana: "07.09.2023",
-    name: "60111300-Musiqa ta'lim malaka talablari",
-    pdf: "../../assets/pdf/DTSvaMalaka2020.pdf",
-  },
-  {
-    id: 15,
-    sana: "07.09.2023",
-    name: "60111400-O'zbek tili adabiyoti malaka talablari",
-    pdf: "../../assets/pdf/DTSvaMalaka2020.pdf",
-  },
-];
+const MagFanDAsturlari = () => {
+  const [kurslar, setKurslar] = useState([]);
+  const [yonalishlar, setYonalishlar] = useState([]);
+  const [turlar, setTurlar] = useState([]);
+  const [fanDasturlar, setFanDasturlar] = useState([]);
+  // const [talimTurlar, setTalimTurlar] = useState([]);
 
-const data2PDF = [
-  {
-    id: 1,
-    sana: "07.09.2023",
-    name: "Oliy ta'limning davlat ta'lim standarti 2020",
-    pdf: "../../assets/pdf/DTSvaMalaka2020.pdf",
-  },
-  {
-    id: 2,
-    sana: "07.09.2023",
-    name: "Oliy ta'limning davlat ta'lim standarti 2021",
-    pdf: "../../assets/pdf/DTSvaMalaka2020.pdf",
-  },
-  {
-    id: 3,
-    sana: "07.09.2023",
-    name: "60110300-Maktabgacha ta'lim psixologiyasi va pedagogikasi malaka talablari",
-    pdf: "../../assets/pdf/DTSvaMalaka2020.pdf",
-  },
-];
+  const [selectedKurs, setSelectedKurs] = useState('');
+  // const [selectedTalimTur, setSelectedTalimTur] = useState('');
+  const [selectedYonalish, setSelectedYonalish] = useState('');
+  const [selectedTur, setSelectedTur] = useState('');
 
-const data3PDF = [
-  {
-    id: 1,
-    sana: "07.09.2023",
-    name: "Oliy ta'limning davlat ta'lim standarti 2020",
-    pdf: "../../assets/pdf/DTSvaMalaka2020.pdf",
-  },
-  {
-    id: 2,
-    sana: "07.09.2023",
-    name: "Oliy ta'limning davlat ta'lim standarti 2021",
-    pdf: "../../assets/pdf/DTSvaMalaka2020.pdf",
-  },
-  {
-    id: 3,
-    sana: "07.09.2023",
-    name: "60110300-Maktabgacha ta'lim psixologiyasi va pedagogikasi malaka talablari",
-    pdf: "../../assets/pdf/DTSvaMalaka2020.pdf",
-  },
-  {
-    id: 4,
-    sana: "07.09.2023",
-    name: "60110300-Maktabgacha ta'lim psixologiyasi va pedagogikasi malaka talablari",
-    pdf: "../../assets/pdf/DTSvaMalaka2020.pdf",
-  },
-  {
-    id: 5,
-    sana: "07.09.2023",
-    name: "60110300-Maktabgacha ta'lim psixologiyasi va pedagogikasi malaka talablari",
-    pdf: "../../assets/pdf/DTSvaMalaka2020.pdf",
-  },
-];
+  useEffect(() => {
+    APIBFanDasturlariKurs.get()
+      .then(response => setKurslar(response.data))
+      .catch(error => console.error('Error fetching kurslar:', error));
+  }, []);
 
-function FanDasturlariCom() {
-  const [showContent, setShowContent] = useState(1);
+  // useEffect(() => {
+  //   if (selectedKurs) {
+  //     APIBFanDasturlariTalimTur.get()
+  //       .then(response => {
+  //         // const filteredTalimTurlar = response.data.filter(item => item.fan_dastur_kurs_id === parseInt(selectedKurs));
+  //         // setTalimTurlar(filteredTalimTurlar);
+  //         setSelectedTalimTur(''); // Ta'lim turini bo'shatish
+  //         setSelectedYonalish(''); // Yo'nalishni bo'shatish
+  //         setTurlar([]); // Turlarni tozalash
+  //         setSelectedTur(''); // Turni bo'shatish
+  //       })
+  //       .catch(error => console.error('Error fetching talim turlar:', error));
+  //   } else {
+  //     // setTalimTurlar([]);
+  //     setSelectedTalimTur('');
+  //     setSelectedYonalish('');
+  //     setYonalishlar([]);
+  //     setTurlar([]);
+  //     setSelectedTur('');
+  //   }
+  // }, [selectedKurs]);
 
-  const handleClick = (idx) => {
-    setShowContent(idx);
-  };
+  useEffect(() => {
+    if (selectedKurs) {
+      APIBFanDasturlariYonalish.get()
+        .then(response => {
+          const filteredYonalishlar = response.data.filter(item => item.fan_dastur_kurs_id === parseInt(selectedKurs));
+          setYonalishlar(filteredYonalishlar);
+          setSelectedYonalish(''); // Yo'nalishni bo'shatish
+          setTurlar([]); // Turlarni tozalash
+          setSelectedTur(''); // Turni bo'shatish
+        })
+        .catch(error => console.error('Error fetching yonalishlar:', error));
+    } else {
+      setYonalishlar([]);
+      setSelectedYonalish('');
+      setTurlar([]);
+      setSelectedTur('');
+    }
+  }, [selectedKurs]);
+
+  useEffect(() => {
+    if (selectedYonalish) {
+      APIBFanDasturlariTur.get()
+        .then(response => {
+          const filteredTurlar = response.data.filter(item => item.fan_dastur_yonalish_id === parseInt(selectedYonalish));
+          setTurlar(filteredTurlar);
+          setSelectedTur(''); // Turni bo'shatish
+        })
+        .catch(error => console.error('Error fetching turlar:', error));
+    } else {
+      setTurlar([]);
+      setSelectedTur('');
+    }
+  }, [selectedYonalish]);
+
+  useEffect(() => {
+    if (selectedTur) {
+      APIBFanDasturlari.get()
+        .then(response => setFanDasturlar(response.data.filter(item => item.fan_dastur_turi_id === parseInt(selectedTur))))
+        .catch(error => console.error('Error fetching fan dasturlar:', error));
+    } else {
+      setFanDasturlar([]);
+    }
+  }, [selectedTur]);
 
   return (
-    <div className="max-w-7xl xl:mx-auto py-10 mx-4 md:min-h-[calc(100vh-565px)] lg:min-h-[calc(100vh-400px)]">
-      <h1 className="text-md text-4xl font-bold text-[#004269] text-center">
-        <TextTranslate id="fanDasturlari" />
-      </h1>
-      <div className="md:flex mt-4 md:mt-8">
-        <ul className="flex-column space-y space-y-4 text-sm font-medium text-gray-500 dark:text-gray-400 md:me-4 mb-4 md:mb-0">
-          <li>
-            <button
-              onClick={() => handleClick(1)}
-              className={`${
-                showContent === 1 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="pedagogika" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleClick(2)}
-              className={`${
-                showContent === 2 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="maktabgachaTalim" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleClick(3)}
-              className={`${
-                showContent === 3 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="maktabgachaTTP" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleClick(3)}
-              className={`${
-                showContent === 4 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="boshlangichtalim" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleClick(3)}
-              className={`${
-                showContent === 5 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="matematikaVaInformatika" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleClick(3)}
-              className={`${
-                showContent === 6 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="fizikaVaAstronomiya" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleClick(3)}
-              className={`${
-                showContent === 7 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="kimyo" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleClick(3)}
-              className={`${
-                showContent === 8 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="biologiya" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleClick(3)}
-              className={`${
-                showContent === 9 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="geografiyaVaIBA" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleClick(3)}
-              className={`${
-                showContent === 10 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="tarix" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleClick(3)}
-              className={`${
-                showContent === 11 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="tasviriySanatVaMG" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleClick(3)}
-              className={`${
-                showContent === 11 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="musiqaTalimi" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleClick(3)}
-              className={`${
-                showContent === 11 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="ozbekTiliVaAdabiyoti" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleClick(3)}
-              className={`${
-                showContent === 12 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="роднойязик" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleClick(3)}
-              className={`${
-                showContent === 13 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="русскийязикВИГ" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleClick(3)}
-              className={`${
-                showContent === 14 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="XorijiyTilVaAdabiyoti" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleClick(3)}
-              className={`${
-                showContent === 15 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="MilliyGoyaVaHA" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleClick(3)}
-              className={`${
-                showContent === 16 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="jismoniyMadaniyat" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleClick(3)}
-              className={`${
-                showContent === 17 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="texnologikTalim" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleClick(3)}
-              className={`${
-                showContent === 18 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="maktabMenejmenti" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleClick(3)}
-              className={`${
-                showContent === 19 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="maktabgachaVaBTXT" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleClick(3)}
-              className={`${
-                showContent === 20 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="mP(Logopediya)" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleClick(3)}
-              className={`${
-                showContent === 21 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="mP(Oligofrenopedagogika)" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleClick(3)}
-              className={`${
-                showContent === 23 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="mP(Surdopedagogika)" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleClick(3)}
-              className={`${
-                showContent === 24 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="amaliyPsixologiya" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleClick(3)}
-              className={`${
-                showContent === 25 ? "bg-blue-500 text-white" : "bg-gray-50"
-              } inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white`}
-            >
-              <PiStudentFill className="w-4 h-4 me-2" />
-              <TextTranslate id="fakultetlararo" />
-            </button>
-          </li>
-        </ul>
+    <div className="max-w-7xl mx-auto px-4 py-8 md:min-h-[calc(100vh-565px)] lg:min-h-[calc(100vh-400px)]">
+      <h1 className="text-3xl font-bold text-center mb-8">Fan Dastur</h1>
+
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        {/* Kurs Selection */}
         <div>
-          <div
-            className={`${
-              showContent === 1 ? "" : "hidden"
-            } p-6 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg w-full`}
+          <label className="block text-sm font-medium text-gray-700">Kurs:</label>
+          <select 
+            className="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2"
+            value={selectedKurs} 
+            onChange={e => setSelectedKurs(e.target.value)}
           >
-            <div className="relative shadow-md overflow-x-auto rounded-lg">
-              <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead className="md:text-base text-white uppercase bg-blue-500 dark:bg-gray-700 dark:text-gray-400">
-                  <tr>
-                    <th scope="col" className="pl-2 md:pl-6 py-4">
-                      №
-                    </th>
-                    <th scope="col" className="px-2 md:px-6 py-4">
-                      <TextTranslate id="DTSvaMalakaHujjatNomi" />
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-2 md:px-6 py-4 hidden md:block"
-                    >
-                      <TextTranslate id="DTSvaMalakaSana" />
-                    </th>
-                    <th scope="col" className="px-2 md:px-6 py-4">
-                      <TextTranslate id="DTSvaMalakaBatafsil" />
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="text-base">
-                  {data1PDF &&
-                    data1PDF.map((item) => {
-                      const { id, sana, name } = item;
-                      return (
-                        <tr
-                          key={id}
-                          className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 hover:bg-gray-200"
-                        >
-                          <th
-                            scope="row"
-                            className="pl-2 md:pl-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                          >
-                            {id}
-                          </th>
-                          <td className="px-2 md:px-6 py-4">{name}</td>
-                          <td className="px-2 md:px-6 py-4 hidden md:block">
-                            {sana}
-                          </td>
-                          <td className="px-2 md:px-6 py-41">
-                            <a
-                              href={DTSvaMalakaPDF}
-                              className="text-blue-600 dark:text-blue-500"
-                              target="blank"
-                            >
-                              <LuDownload className="text-xl" />
-                            </a>
-                          </td>
-                        </tr>
-                      );
-                    })}
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div
-            className={`${
-              showContent === 2 ? "" : "hidden"
-            } p-6 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg w-full`}
-          >
-            <div className="relative shadow-md overflow-x-auto rounded-lg">
-              <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead className="md:text-base text-white uppercase bg-blue-500 dark:bg-gray-700 dark:text-gray-400">
-                  <tr>
-                    <th scope="col" className="pl-2 md:pl-6 py-4">
-                      №
-                    </th>
-                    <th scope="col" className="px-2 md:px-6 py-4">
-                      Hujjat nomi
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-2 md:px-6 py-4 hidden md:block"
-                    >
-                      Sana
-                    </th>
-                    <th scope="col" className="px-2 md:px-6 py-4">
-                      Batafsil
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="text-base">
-                  {data2PDF &&
-                    data2PDF.map((item) => {
-                      const { id, sana, name } = item;
-                      return (
-                        <tr
-                          key={id}
-                          className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 hover:bg-gray-200"
-                        >
-                          <th
-                            scope="row"
-                            className="pl-2 md:pl-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                          >
-                            {id}
-                          </th>
-                          <td className="px-2 md:px-6 py-4">{name}</td>
-                          <td className="px-2 md:px-6 py-4 hidden md:block">
-                            {sana}
-                          </td>
-                          <td className="px-2 md:px-6 py-41">
-                            <a
-                              href={DTSvaMalakaPDF}
-                              className="text-blue-600 dark:text-blue-500"
-                              target="blank"
-                            >
-                              <LuDownload className="text-xl" />
-                            </a>
-                          </td>
-                        </tr>
-                      );
-                    })}
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div
-            className={`${
-              showContent === 3 ? "" : "hidden"
-            } p-6 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg w-full`}
-          >
-            <div className="relative shadow-md overflow-x-auto rounded-lg">
-              <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead className="md:text-base text-white uppercase bg-blue-500 dark:bg-gray-700 dark:text-gray-400">
-                  <tr>
-                    <th scope="col" className="pl-2 md:pl-6 py-4">
-                      №
-                    </th>
-                    <th scope="col" className="px-2 md:px-6 py-4">
-                      Hujjat nomi
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-2 md:px-6 py-4 hidden md:block"
-                    >
-                      Sana
-                    </th>
-                    <th scope="col" className="px-2 md:px-6 py-4">
-                      Batafsil
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="text-base">
-                  {data3PDF &&
-                    data3PDF.map((item) => {
-                      const { id, sana, name } = item;
-                      return (
-                        <tr
-                          key={id}
-                          className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 hover:bg-gray-200"
-                        >
-                          <th
-                            scope="row"
-                            className="pl-2 md:pl-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                          >
-                            {id}
-                          </th>
-                          <td className="px-2 md:px-6 py-4">{name}</td>
-                          <td className="px-2 md:px-6 py-4 hidden md:block">
-                            {sana}
-                          </td>
-                          <td className="px-2 md:px-6 py-41">
-                            <a
-                              href={DTSvaMalakaPDF}
-                              className="text-blue-600 dark:text-blue-500"
-                              target="blank"
-                            >
-                              <LuDownload className="text-xl" />
-                            </a>
-                          </td>
-                        </tr>
-                      );
-                    })}
-                </tbody>
-              </table>
-            </div>
-          </div>
+            <option value="">Kursni tanlang</option>
+            {kurslar.map(kurs => (
+              <option key={kurs.id} value={kurs.id}>{kurs.name_uz}</option>
+            ))}
+          </select>
         </div>
+
+        {/* Talim turi Selection */}
+        {/* <div>
+          <label className="block text-sm font-medium text-gray-700">Ta'lim turi:</label>
+          <select 
+            className="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2"
+            value={selectedTalimTur} 
+            onChange={e => setSelectedTalimTur(e.target.value)}
+            disabled={!selectedKurs}
+          >
+            <option value="">Ta'lim turini tanlang</option>
+            {talimTurlar.map(talimTur => (
+              <option key={talimTur.id} value={talimTur.id}>{talimTur.name_uz}</option>
+            ))}
+          </select>
+        </div> */}
+
+        {/* Yonalish Selection */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Yo'nalish:</label>
+          <select 
+            className="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2" 
+            value={selectedYonalish} 
+            onChange={e => setSelectedYonalish(e.target.value)} 
+            disabled={!selectedKurs}
+          >
+            <option value="">Yo'nalishni tanlang</option>
+            {yonalishlar.map(yonalish => (
+              <option key={yonalish.id} value={yonalish.id}>{yonalish.name_uz}</option>
+            ))}
+          </select>
+        </div>
+
+        {/* Tur Selection */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Tur:</label>
+          <select 
+            className="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2" 
+            value={selectedTur} 
+            onChange={e => setSelectedTur(e.target.value)} 
+            disabled={!selectedYonalish}
+          >
+            <option value="">Turni tanlang</option>
+            {turlar.map(tur => (
+              <option key={tur.id} value={tur.id}>{tur.name_uz}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      {/* Fan Dastur List */}
+      <div className="bg-white shadow-md rounded-md p-6">
+        <h2 className="text-2xl text-center font-bold mb-4">Fan dasturlari ro'yxati</h2>
+        {fanDasturlar.length > 0 ? (
+          <ul className="space-y-2">
+            {fanDasturlar.map(fan => (
+              <li key={fan.id} className="bg-gray-100 rounded-md p-3 flex justify-between items-center">
+                <a href={fan.fayl} target="_blank" rel="noopener noreferrer" className="text-indigo-600 font-medium hover:underline">{fan.name_uz}</a>
+                <span className="text-gray-500">{fan.sana}</span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-gray-500 text-center">Ma'lumot topilmadi :(</p>
+        )}
       </div>
     </div>
   );
-}
+};
 
-export default FanDasturlariCom;
+export default MagFanDAsturlari;
