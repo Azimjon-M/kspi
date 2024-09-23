@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import TextTranslate from "../TextTranslate";
 import APIBFanDasturlari from '../../services/bFanDasturlari';
 import APIBFanDasturlariKurs from '../../services/bFanDasturlariKurs';
 import APIBFanDasturlariTur from '../../services/bFanDasturlariTur';
@@ -91,18 +92,18 @@ const FanDasturlariCom = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 md:min-h-[calc(100vh-565px)] lg:min-h-[calc(100vh-400px)]">
-      <h1 className="text-3xl font-bold text-center mb-8">Fan Dastur</h1>
+      <h1 className="text-3xl font-bold text-center mb-8"><TextTranslate id="fanDasturlari" /></h1>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
         {/* Kurs Selection */}
         <div>
-          <label className="block text-sm font-medium text-gray-700">Kurs:</label>
+          <label className="block text-sm font-medium text-gray-700"><TextTranslate id="selectKurs" />:</label>
           <select 
             className="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2"
             value={selectedKurs} 
             onChange={e => setSelectedKurs(e.target.value)}
           >
-            <option value="">Kursni tanlang</option>
+            <option value=""><TextTranslate id="inSelectKurs" /></option>
             {kurslar.map(kurs => (
               <option key={kurs.id} value={kurs.id}>{kurs.name_uz}</option>
             ))}
@@ -111,14 +112,14 @@ const FanDasturlariCom = () => {
 
         {/* Talim turi Selection */}
         <div>
-          <label className="block text-sm font-medium text-gray-700">Ta'lim turi:</label>
+          <label className="block text-sm font-medium text-gray-700"><TextTranslate id="selectTalimTur" />:</label>
           <select 
             className="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2"
             value={selectedTalimTur} 
             onChange={e => setSelectedTalimTur(e.target.value)}
             disabled={!selectedKurs}
           >
-            <option value="">Ta'lim turini tanlang</option>
+            <option value=""><TextTranslate id="inSelectTalimTur" /></option>
             {talimTurlar.map(talimTur => (
               <option key={talimTur.id} value={talimTur.id}>{talimTur.name_uz}</option>
             ))}
@@ -127,14 +128,14 @@ const FanDasturlariCom = () => {
 
         {/* Yonalish Selection */}
         <div>
-          <label className="block text-sm font-medium text-gray-700">Yo'nalish:</label>
+          <label className="block text-sm font-medium text-gray-700"><TextTranslate id="selectYonalish" />:</label>
           <select 
             className="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2" 
             value={selectedYonalish} 
             onChange={e => setSelectedYonalish(e.target.value)} 
             disabled={!selectedTalimTur}
           >
-            <option value="">Yo'nalishni tanlang</option>
+            <option value=""><TextTranslate id="inSelectYonalish" /></option>
             {yonalishlar.map(yonalish => (
               <option key={yonalish.id} value={yonalish.id}>{yonalish.name_uz}</option>
             ))}
@@ -143,14 +144,14 @@ const FanDasturlariCom = () => {
 
         {/* Tur Selection */}
         <div>
-          <label className="block text-sm font-medium text-gray-700">Tur:</label>
+          <label className="block text-sm font-medium text-gray-700"><TextTranslate id="selectTur" />:</label>
           <select 
             className="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2" 
             value={selectedTur} 
             onChange={e => setSelectedTur(e.target.value)} 
             disabled={!selectedYonalish}
           >
-            <option value="">Turni tanlang</option>
+            <option value=""><TextTranslate id="inSelectTur" /></option>
             {turlar.map(tur => (
               <option key={tur.id} value={tur.id}>{tur.name_uz}</option>
             ))}
@@ -160,7 +161,7 @@ const FanDasturlariCom = () => {
 
       {/* Fan Dastur List */}
       <div className="bg-white shadow-md rounded-md p-6">
-        <h2 className="text-2xl text-center font-bold mb-4">Fan dasturlari ro'yxati</h2>
+        <h2 className="text-2xl text-center font-bold mb-4"><TextTranslate id="fanDasturlariRoyxati" /></h2>
         {fanDasturlar.length > 0 ? (
           <ul className="space-y-2">
             {fanDasturlar.map(fan => (
@@ -171,7 +172,7 @@ const FanDasturlariCom = () => {
             ))}
           </ul>
         ) : (
-          <p className="text-gray-500 text-center">Ma'lumot topilmadi :(</p>
+          <p className="text-gray-500 text-center"><TextTranslate id="malumotTopilmadi" /> :(</p>
         )}
       </div>
     </div>
