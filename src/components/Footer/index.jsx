@@ -47,7 +47,7 @@ const Footer = () => {
                 </Link>
                 <Link
                     target="blank"
-                    to={"https://www.youtube.com/@qoqondpi296"}
+                    to={"https://www.youtube.com/channel/UC6ThR8cLnJmdWDGDz9PR85Q/featured"}
                     className="mr-4 group"
                 >
                     <PiYoutubeLogoFill className="h-6 lg:h-7 w-auto group-hover:text-[#FF0000] group-hover:bg-white rounded-[12px]" />
