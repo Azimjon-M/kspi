@@ -1,31 +1,59 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import crypto from "crypto-js";
+import APILogin from "../../services/login";
 
 const Login = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [attempts, setAttempts] = useState(0);
   const [error, setError] = useState("");
 
-  const hashedStaticPassword = crypto.SHA256("password123").toString();
-
+  const refreshToken = async () => {
+    try {
+      const refreshToken = localStorage.getItem("refreshToken");
+      const res = await APILogin.refreshPost({
+        refresh: refreshToken,
+      });
+      const token = res.data.access;
+      if (token) {
+        localStorage.setItem("token", token);
+        return true;
+      }
+      return false;
+    } catch (err) {
+      console.error(err);
+      return false;
+    }
+  };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const res = await APILogin.post({
+        username: name,
+        password: password,
+      })
+        .then().catch()
+      const token = res?.data?.access;
+      const refreshToken = res?.data?.refresh
 
-    if (attempts >= 3) {
-      setError("Siz ko'p marta noto'g'ri urindiz, iltimos keyinroq urinib ko'ring.");
-      return;
-    }
-
-    const hashedPassword = crypto.SHA256(password).toString();
-
-    if (name === "admin" && hashedPassword === hashedStaticPassword) {
-      navigate("/admin-virtual-qabulxona-sahifasi");
-    } else {
-      setAttempts(attempts + 1);
-      setError("Noto'g'ri foydalanuvchi nomi yoki parol.");
+      if (token) {
+        localStorage.setItem("token", token);
+        localStorage.setItem("refreshToken", refreshToken);
+        navigate("/admin-virtual-qabulxona");
+      } else {
+        setError("Incorrect credentials");
+      }
+    } catch (err) {
+      if (err.response && err.response.status === 401) {
+        const refreshed = await refreshToken();
+        if (refreshed) {
+          handleSubmit(e);
+          return;
+        }
+      }
+      console.error(err);
+      setError("Authentication failed");
     }
   };
 
@@ -80,5 +108,4 @@ const Login = () => {
     </div>
   );
 };
-
 export default Login;

@@ -24,7 +24,7 @@ const Root = () => {
                     })}
                 </Route>
                 <Route path="/login" element={<LoginPage />} />
-                <Route path="/admin-virtual-qabulxona-sahifasi" element={<AdminQabulxonaPage />} />
+                <Route path="/admin-virtual-qabulxona" element={<AdminQabulxonaPage />} />
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
         </div>

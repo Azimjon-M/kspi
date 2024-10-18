@@ -3,6 +3,12 @@ import APIVirtualQabul from "../../services/virQabulCom";
 
 function AdminQabulxona() {
   const [datas, setDatas] = useState([]);
+  const [isToken, setIsToken] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsToken(!!token);
+  }, []);
 
   const fechtData = async () => {
     try {
@@ -23,8 +29,14 @@ function AdminQabulxona() {
   };
 
   useEffect(() => {
-    fechtData();
-  }, []);
+    if (isToken) {
+      fechtData();
+    }
+  }, [isToken]);
+
+  if (!isToken) {
+    return <p className="text-center text-red-500 text-2xl">Siz tizimga kirmagansiz!</p>;
+  }
 
   return (
     <div className="max-w-7xl mx-auto p-5">
@@ -57,11 +69,8 @@ function AdminQabulxona() {
                       {data.telefon_nomer}
                     </p>
                     <p className="text-base inline-block text-slate-500">
-                      <span className="text-red-500 font-semibold">
-                        Email:{" "}
-                      </span>
+                      <span className="text-red-500 font-semibold">Email: </span>
                       {data.email}
-                      {/* Palonchini uylash */}
                     </p>
                   </div>
                   <div className="text-right">
