@@ -8,14 +8,17 @@ const axiosInstance = axios.create({
   },
 });
 
+// Tokenni qo'shish qismida faqat 'get' so'rovlarida so'ralmaydi
 axiosInstance.interceptors.request.use(async (request) => {
-  if (request.method !== 'get') {
+  // Agar request 'post' bo'lsa, token qo'shmaslik
+  if (request.method !== 'post') {
     const token = localStorage.getItem("token");
-    request.headers.Authorization = `Bearer ${token}`;
+    if (token) {
+      request.headers.Authorization = `Bearer ${token}`;
+    }
   }
   return request;
 });
-
 
 axiosInstance.interceptors.response.use(
   (response) => {
@@ -26,8 +29,6 @@ axiosInstance.interceptors.response.use(
       const refreshed = await refreshToken();
       if (refreshed) {
         // Refreshed successfully, retry the original request
-        const token = localStorage.getItem("token");
-        error.config.headers.Authorization = `Bearer ${token}`;
         return axiosInstance(error.config);
       }
     }
@@ -54,4 +55,3 @@ const refreshToken = async () => {
 };
 
 export default axiosInstance;
-

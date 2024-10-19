@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Breadcrumb from "../Breadcrumb";
 import TextTranslate from "../TextTranslate";
 import { Formik, useFormik } from "formik";
 import APIVirtualQabul from "../../services/virQabulCom";
 
 const VirQabulCom = () => {
-  
+  const [successMessage, setSuccessMessage] = useState("");
+
   const formik = useFormik({
     // Initial values
     initialValues: {
@@ -24,8 +25,10 @@ const VirQabulCom = () => {
       try {
         await APIVirtualQabul.postVirtualQabul(data);
         onSubmitProps.resetForm();
+        setSuccessMessage("Murojaatingiz muvaffaqiyatli yuborildi");
       } catch (error) {
         console.error("Xatolik yuz berdi", error);
+        setSuccessMessage("");
       }
     },
   });
@@ -48,6 +51,11 @@ const VirQabulCom = () => {
           <h2 className="py-2 text-lg font-bold lg:mb-10 text-center text-[#004269] dark:text-gray-400 sm:text-xl">
             <TextTranslate id="qabulxonaTaklif" />
           </h2>
+          {successMessage && (
+            <div className="mb-4 text-green-600 text-center text-2xl">
+              {successMessage}
+            </div>
+          )}
           <Formik>
             <form onSubmit={formik.handleSubmit} className="space-y-8">
               <div>
@@ -70,7 +78,7 @@ const VirQabulCom = () => {
               <div className="md:grid grid-cols-2 gap-4">
                 <div className="mb-6 md:mb-0">
                   <label
-                    htmlFor="telefon"
+                    htmlFor="telefon_nomer"
                     className="block mb-2 text-sm font-medium text-[#004269] dark:text-gray-300"
                   >
                     <TextTranslate id="qabulxonaTelefon" />
@@ -122,7 +130,7 @@ const VirQabulCom = () => {
               </div>
               <div className="sm:col-span-2">
                 <label
-                  htmlFor="message"
+                  htmlFor="xabar"
                   className="block mb-2 text-sm font-medium text-[#004269] dark:text-gray-400"
                 >
                   <TextTranslate id="qabulxonaXabar" />
