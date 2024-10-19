@@ -9,10 +9,13 @@ const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use(async (request) => {
-  const token = localStorage.getItem("token");
-  request.headers.Authorization = `Bearer ${token}`;
+  if (request.method !== 'get') {
+    const token = localStorage.getItem("token");
+    request.headers.Authorization = `Bearer ${token}`;
+  }
   return request;
 });
+
 
 axiosInstance.interceptors.response.use(
   (response) => {
