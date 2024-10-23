@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import APILogin from "../../services/login";
 
-const Login = () => {
+const LoginKorrupsiya = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -25,7 +25,7 @@ const Login = () => {
       return false;
     }
   };
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -33,15 +33,14 @@ const Login = () => {
         username: name,
         password: password,
       })
-        .then()
-        .catch();
+        .then().catch()
       const token = res?.data?.access;
-      const refreshToken = res?.data?.refresh;
+      const refreshToken = res?.data?.refresh
 
       if (token) {
         localStorage.setItem("token", token);
         localStorage.setItem("refreshToken", refreshToken);
-        navigate("/admin-virtual-qabulxona");
+        navigate("/korrupsiya-qabulxona");
       } else {
         setError("Incorrect credentials");
       }
@@ -109,4 +108,4 @@ const Login = () => {
     </div>
   );
 };
-export default Login;
+export default LoginKorrupsiya;

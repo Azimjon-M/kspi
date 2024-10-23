@@ -1,9 +1,17 @@
-import axiosInstance from "./index";
+import axiosInstance from ".";
 
-const ep = "faoliyat/xabar_berish/";
+const ep = "institut/korupsiyagaxabar/";
 
-const get = () => axiosInstance.get(ep);
+const getInstitutQabulxona = () => axiosInstance.get(ep);
 
-const KorHaqHabBer = { get };
+const postVirtualQabul = (item) => {
+    return axiosInstance.post(`${ep}`, item)
+}
+
+const delInstitutQabulxona = (id) => {
+    return axiosInstance.delete(`${ep}${id}/`);
+  };
+
+const KorHaqHabBer = {getInstitutQabulxona, postVirtualQabul, delInstitutQabulxona};
 
 export default KorHaqHabBer;
