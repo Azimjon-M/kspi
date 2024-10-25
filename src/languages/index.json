@@ -86,6 +86,10 @@
     "navDropFaoliyat_4": "Akademik litsey",
     "navDropFaoliyat_5": "Ilmiy faoliyat",
     "navDropFaoliyat_6": "Yoshlar bilan ishlash, ma'naviy va ma'rifiy yo'nalishdagi ishlar",
+    "navDropFaoliyat_7": "Korrupsyaga qarshi kurash",
+    "navDropFaoliyat_7_drop_1": "Normativ hujjatlar",
+    "navDropFaoliyat_7_drop_2": "Ichki idoraviy hujjatlar",
+    "navDropFaoliyat_7_drop_3": "Korrupsya haqida habar berish",
     "korrupsiyaQabulxona": "Korrupsiya haqida xabar berish",
 
     "navDropTuzilma_1": "Rektorat",
@@ -414,6 +418,10 @@
     "navDropFaoliyat_4": "АКАДЕМИЧЕСКИЙ ЛИЦЕЙ",
     "navDropFaoliyat_5": "НАУЧНАЯ ДЕЯТЕЛЬНОСТЬ",
     "navDropFaoliyat_6": "РАБОТА С МОЛОДЕЖЬЮ, ДУХОВНО-ПРОСВЕТИТЕЛЬСКОЕ НАПРАВЛЕНИЕ",
+    "navDropFaoliyat_7": "Борьба с коррупцией",
+    "navDropFaoliyat_7_drop_1": "Нормативные документы",
+    "navDropFaoliyat_7_drop_2": "Внутриведомственные документы",
+    "navDropFaoliyat_7_drop_3": "Сообщение о коррупции",
     "korrupsiyaQabulxona": "Сообщение о коррупции",
 
     "navDropTuzilma_1": "Ректорат",
@@ -741,6 +749,10 @@
     "navDropFaoliyat_4": "Academic lyceum",
     "navDropFaoliyat_5": "Scientific activity",
     "navDropFaoliyat_6": "Work with youth, spiritual and educational direction",
+    "navDropFaoliyat_7": "Fight against corruption",
+    "navDropFaoliyat_7_drop_1": "Regulatory documents",
+    "navDropFaoliyat_7_drop_2": "Internal departmental documents",
+    "navDropFaoliyat_7_drop_3": "Reporting corruption",
     "korrupsiyaQabulxona": "Reporting corruption",
 
     "navDropTuzilma_1": "Rectorate",
