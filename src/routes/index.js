@@ -37,6 +37,7 @@ import IlmiyFaolyat from "../pages/Faoliyat/IlmiyFaolyat";
 import JamoatchilikKengashiFaol from "../pages/Faoliyat/JamoatchilikKengashiFaol";
 import MadMarFaolyat from "../pages/Faoliyat/MadMarFaolyat";
 import OquvUslubiyFaolyat from "../pages/Faoliyat/OquvUslubiyFaolyat";
+import ProfessorlarFikri from "../pages/Faoliyat/XalqaroFaoliyat/ProfessorlarFikri";
 import YoshlarBnIshlashMvaM from "../pages/Faoliyat/YoshlarBnIshlashMvaM";
 import Vakansiyalar from "../pages/Vakansiyalar";
 import BarchaElonlar from "../pages/BarchaElonlar";
@@ -251,6 +252,11 @@ const routes = [
         id: ID,
         element: OquvUslubiyFaolyat,
         path: "/oquv-uslubiy",
+    },
+    {
+        id: ID,
+        element: ProfessorlarFikri,
+        path: "/professorlar-fikri",
     },
     {
         id: ID,
