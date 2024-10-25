@@ -26,6 +26,7 @@ function Navbar() {
     const [isActiveMenu, setIsActiveMenu] = useState(false);
     const [scrollY, setScrollY] = useState(false);
     const [isDropF, setIsDropF] = useState(false);
+    const [isDropFXal, setIsDropFXal] = useState(false);
 
     const noSearch = location.pathname === "/qidiruv";
 
@@ -85,6 +86,14 @@ function Navbar() {
 
     const onMouseLeave = () => {
         setIsDropF(false);
+    };
+
+    const onMouseEnterXal = () => {
+        setIsDropFXal(true);
+    };
+
+    const onMouseLeaveXal = () => {
+        setIsDropFXal(false);
     };
 
     // Mobile Handler main no scroll
@@ -379,6 +388,49 @@ function Navbar() {
                                                 <TextTranslate id="navDropFaoliyat_3" />
                                             </Link>
                                         </li>
+                                        {/* +++++++++++++++++ +++++++++++++++++++++++ ++++++++++++++++++ */}
+                                        <li className="text-[#004269] dark:text-white">
+                                            <div
+                                                onMouseEnter={onMouseEnterXal}
+                                                onMouseLeave={onMouseLeaveXal}
+                                                className="dropdown dropdown-hover"
+                                            >
+                                                <div
+                                                    tabIndex={19}
+                                                    role="button"
+                                                    className="text-inherit"
+                                                >
+                                                    Xalqaro faoliyat
+                                                </div>
+                                                <ul
+                                                    tabIndex={19}
+                                                    className={` ${
+                                                        !isDropFXal && "hidden"
+                                                    } translate-x-[174px] translate-y-[36px] dropdown-content z-10 menu p-2 shadow bg-base-100 rounded-box w-52`}
+                                                >
+                                                    <li className="text-[#004269] dark:text-white">
+                                                        <Link to="">
+                                                            Xalqaro hamkor tashkilotlar
+                                                        </Link>
+                                                    </li>
+                                                    <li className="text-[#004269] dark:text-white">
+                                                        <Link to="">
+                                                            Xalqaro bo'lim yangiliklari
+                                                        </Link>
+                                                    </li>
+                                                    <li className="text-[#004269] dark:text-white">
+                                                        <Link to="">
+                                                            Xalqaro bo'lim e'lonlari
+                                                        </Link>
+                                                    </li>
+                                                    <li className="text-[#004269] dark:text-white">
+                                                        <Link to="">
+                                                            Xorijlik professorlar fikri
+                                                        </Link>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
                                         <li className="text-[#004269] dark:text-white">
                                             <Link to="/akademik-litsey">
                                                 <TextTranslate id="navDropFaoliyat_4" />
@@ -405,7 +457,7 @@ function Navbar() {
                                                     role="button"
                                                     className="text-inherit"
                                                 >
-                                                    Karrupsyaga qarshi kurash
+                                                    <TextTranslate id="navDropFaoliyat_7" />
                                                 </div>
                                                 <ul
                                                     tabIndex={19}
@@ -415,19 +467,17 @@ function Navbar() {
                                                 >
                                                     <li className="text-[#004269] dark:text-white">
                                                         <Link to="/faoliyat/normativ-hujjatlar">
-                                                            Normativ hujjatlar
+                                                            <TextTranslate id="navDropFaoliyat_7_drop_1" />
                                                         </Link>
                                                     </li>
                                                     <li className="text-[#004269] dark:text-white">
                                                         <Link to="/faoliyat/ichki-idoraviy-hujjatlar">
-                                                            Ichki idoraviy
-                                                            hujjatlar
+                                                            <TextTranslate id="navDropFaoliyat_7_drop_2" />
                                                         </Link>
                                                     </li>
                                                     <li className="text-[#004269] dark:text-white">
                                                         <Link to="/faoliyat/korrupsya-haqida-habar-berish">
-                                                            Korrupsya haqida
-                                                            habar berish
+                                                            <TextTranslate id="navDropFaoliyat_7_drop_3" />
                                                         </Link>
                                                     </li>
                                                 </ul>
@@ -928,8 +978,7 @@ function Navbar() {
                                                         role="button"
                                                         className="text-inherit"
                                                     >
-                                                        Karrupsyaga qarshi
-                                                        kurash
+                                                        <TextTranslate id="navDropFaoliyat_7" />
                                                     </div>
                                                     <ul className="ms-4 md:ms-6">
                                                         <li className="text-white">
@@ -939,8 +988,7 @@ function Navbar() {
                                                                 }
                                                                 to="/faoliyat/normativ-hujjatlar"
                                                             >
-                                                                Normativ
-                                                                hujjatlar
+                                                                <TextTranslate id="navDropFaoliyat_7_drop_1" />
                                                             </Link>
                                                         </li>
                                                         <li className="text-white">
@@ -950,8 +998,7 @@ function Navbar() {
                                                                 }
                                                                 to="/faoliyat/ichki-idoraviy-hujjatlar"
                                                             >
-                                                                Ichki idoraviy
-                                                                hujjatlar
+                                                                <TextTranslate id="navDropFaoliyat_7_drop_2" />
                                                             </Link>
                                                         </li>
                                                         <li className="text-white">
@@ -961,8 +1008,7 @@ function Navbar() {
                                                                 }
                                                                 to="/faoliyat/korrupsya-haqida-habar-berish"
                                                             >
-                                                                Korrupsya haqida
-                                                                habar berish
+                                                                <TextTranslate id="navDropFaoliyat_7_drop_3" />
                                                             </Link>
                                                         </li>
                                                     </ul>
