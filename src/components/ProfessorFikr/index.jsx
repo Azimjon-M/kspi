@@ -1,4 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
+import TextTranslate from "../TextTranslate";
+import Breadcrumb from "../Breadcrumb";
 import KeenSlider from "keen-slider";
 import "keen-slider/keen-slider.min.css";
 
@@ -33,11 +35,20 @@ const ProfessorFikr = () => {
   }, []);
 
   return (
-    <section className="bg-gray-50 py-12">
+    <section className="bg-gray-50 px-5 py-3 md:px-10 lg:px-20 md:min-h-[calc(100vh-565px)] lg:min-h-[calc(100vh-400px)]">
+      <div className="border-b-2 border-[#004269] block w-full mb-5 ">
+        <Breadcrumb
+          steps={[
+            { text: <TextTranslate id="boshSahifa" />, link: "/" },
+            { text: <TextTranslate id="faoliyat" /> },
+            { text: <TextTranslate id="professorFikri" /> },
+          ]}
+        />
+      </div>
       <div className="max-w-5xl mx-auto px-4">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900">
-            Xorijlik professorlar fikri
+          <h2 className="text-3xl font-bold tracking-tight text-[#004269]">
+            <TextTranslate id="professorFikri" />
           </h2>
           <p className="mt-4 text-gray-700">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas
@@ -50,7 +61,7 @@ const ProfessorFikr = () => {
           <div className="keen-slider__slide p-6 bg-white shadow-lg rounded-lg">
             <blockquote className="flex flex-col justify-between h-full">
               <div>
-                <p className="mt-4 text-2xl font-bold text-blue-600">
+                <p className="mt-4 text-2xl font-bold text-[#004269]">
                   Hayot sdiocncksjodn ksjdn
                 </p>
                 <p className="mt-4 text-gray-700">
@@ -67,7 +78,7 @@ const ProfessorFikr = () => {
           <div className="keen-slider__slide p-6 bg-white shadow-lg rounded-lg">
             <blockquote className="flex flex-col justify-between h-full">
               <div>
-                <p className="mt-4 text-2xl font-bold text-blue-600">
+                <p className="mt-4 text-2xl font-bold text-[#004269]">
                   Stayin' Alive
                 </p>
                 <p className="mt-4 text-gray-700">
@@ -85,7 +96,7 @@ const ProfessorFikr = () => {
           <div className="keen-slider__slide p-6 bg-white shadow-lg rounded-lg">
             <blockquote className="flex flex-col justify-between h-full">
               <div>
-                <p className="mt-4 text-2xl font-bold text-blue-600">
+                <p className="mt-4 text-2xl font-bold text-[#004269]">
                   Stayin' Alive
                 </p>
                 <p className="mt-4 text-gray-700">
@@ -107,7 +118,7 @@ const ProfessorFikr = () => {
         <div className="flex justify-center mt-8 gap-4">
           <button
             onClick={() => sliderInstance && sliderInstance.prev()}
-            className="rounded-full border border-blue-600 p-3 text-blue-600 transition hover:bg-blue-600 hover:text-white"
+            className="rounded-full border border-[#004269] p-3 text-[#004269] transition hover:bg-[#004269] hover:text-white"
           >
             <svg
               className="h-5 w-5"
@@ -126,7 +137,7 @@ const ProfessorFikr = () => {
           </button>
           <button
             onClick={() => sliderInstance && sliderInstance.next()}
-            className="rounded-full border border-blue-600 p-3 text-blue-600 transition hover:bg-blue-600 hover:text-white"
+            className="rounded-full border border-[#004269] p-3 text-[#004269] transition hover:bg-[#004269] hover:text-white"
           >
             <svg
               className="h-5 w-5"

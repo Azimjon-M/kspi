@@ -318,7 +318,9 @@
     "tuzTg": "Telegram",
     "tuzTel": "Telefon",
     "tuzBio": "Biografia",
-    "tuzLav": "Lavozimi"
+    "tuzLav": "Lavozimi",
+    "faoliyat": "Faoliyat",
+    "professorFikri": "Xorijlik professorlar fikri"
   },
   "ru": {
     "saytTestRejimida": "Сайт находится в тестовом режиме!",
@@ -649,7 +651,9 @@
     "tuzTg": "Телеграм",
     "tuzTel": "Телефон",
     "tuzBio": "Биография",
-    "tuzLav": "Должность"
+    "tuzLav": "Должность",
+    "faoliyat": "Деятельность",
+    "professorFikri": "Мнение иностранных профессоров"
   },
   "en": {
     "saytTestRejimida": "The site is in test mode.!",
@@ -980,6 +984,8 @@
     "tuzTg": "Telegram",
     "tuzTel": "Phone",
     "tuzBio": "Biography",
-    "tuzLav": "Position"
+    "tuzLav": "Position",
+    "faoliyat": "Activity",
+    "professorFikri": "Opinions of foreign professors"
   }
 }
