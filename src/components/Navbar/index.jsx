@@ -27,6 +27,7 @@ function Navbar() {
     const [scrollY, setScrollY] = useState(false);
     const [isDropF, setIsDropF] = useState(false);
     const [isDropFXal, setIsDropFXal] = useState(false);
+    const [isDropIHuj, setIsDropIHuj] = useState(false);
 
     const noSearch = location.pathname === "/qidiruv";
 
@@ -94,6 +95,14 @@ function Navbar() {
 
     const onMouseLeaveXal = () => {
         setIsDropFXal(false);
+    };
+
+    const onMouseEnterHuj = () => {
+        setIsDropIHuj(true);
+    };
+
+    const onMouseLeaveHuj = () => {
+        setIsDropIHuj(false);
     };
 
     // Mobile Handler main no scroll
@@ -347,6 +356,49 @@ function Navbar() {
                                                 <TextTranslate id="navDropInstitut_5" />
                                             </Link>
                                         </li>
+                                        {/* +++++++++++++++ +++++++ Hujjatlar +++++++++ +++++++++++++++ */}
+                                        <li className="relative text-[#004269] z-[1] dark:text-white after:-z-[1] after:absolute after:top-[40%] after:right-2 after:rotate-[135deg] after:w-[6px] after:h-[6px] after:border-s-[2px] after:border-t-[2px] after:border-[#004269]">
+                                            <div 
+                                                onMouseEnter={onMouseEnterHuj}
+                                                onMouseLeave={onMouseLeaveHuj}
+                                                className="dropdown dropdown-hover"
+                                            >
+                                                <div
+                                                    tabIndex={19}
+                                                    role="button"
+                                                    className="text-inherit"
+                                                >
+                                                    Hujjatlar
+                                                </div>
+                                                <ul
+                                                    tabIndex={19}
+                                                    className={` ${
+                                                        !isDropIHuj && "hidden"
+                                                    } translate-x-[174px] translate-y-[36px] dropdown-content z-10 menu p-2 shadow bg-base-100 rounded-box w-52`}
+                                                >
+                                                    <li className="text-[#004269] dark:text-white">
+                                                        <Link to="/hujjatlar/o'zbekiston-respublikasi-prezidentining-farmonlar">
+                                                            O'zbekiston Respublikasi prezidentining farmonlar
+                                                        </Link>
+                                                    </li>
+                                                    <li className="text-[#004269] dark:text-white">
+                                                        <Link to="/hujjatlar/o'zbekiston-respublikasi-qonunlari">
+                                                            O'zbekiston Respublikasi Qonunlari
+                                                        </Link>
+                                                    </li>
+                                                    <li className="text-[#004269] dark:text-white">
+                                                        <Link to="/hujjatlar/o'zbekiston-respublikasi-vazirlar-mahkamasining-qarorlari">
+                                                            O'zbekiston Respublikasi Vazirlar Mahkamasining qarorlari
+                                                        </Link>
+                                                    </li>
+                                                    <li className="text-[#004269] dark:text-white">
+                                                        <Link to="/hujjatlar/institut-ichki-me'yoriy-huquqiy-hujjatlari">
+                                                            Institut ichki me'yoriy-huquqiy hujjatlari
+                                                        </Link>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>
@@ -389,7 +441,7 @@ function Navbar() {
                                             </Link>
                                         </li>
                                         {/* +++++++++++++++++ +++++++++++++++++++++++ ++++++++++++++++++ */}
-                                        <li className="text-[#004269] dark:text-white">
+                                        <li className="text-[#004269] z-[1] dark:text-white after:-z-[1] after:absolute after:top-[40%] after:right-2 after:rotate-[135deg] after:w-[6px] after:h-[6px] after:border-s-[2px] after:border-t-[2px] after:border-[#004269]">
                                             <div
                                                 onMouseEnter={onMouseEnterXal}
                                                 onMouseLeave={onMouseLeaveXal}
@@ -446,10 +498,10 @@ function Navbar() {
                                                 <TextTranslate id="navDropFaoliyat_6" />
                                             </Link>
                                         </li>
-                                        <li className="text-[#004269] dark:text-white">
+                                        <li className="text-[#004269] dark:text-white z-[1] after:-z-[1] after:absolute after:top-[45%] after:right-2 after:rotate-[135deg] after:w-[6px] after:h-[6px] after:border-s-[2px] after:border-t-[2px] after:border-[#004269]">
                                             <div
                                                 onMouseEnter={onMouseEnter}
-                                                onMouseLeave={onMouseLeave}
+                                                onMouseLeave={onMouseLeave} 
                                                 className="dropdown dropdown-hover"
                                             >
                                                 <div
@@ -895,6 +947,58 @@ function Navbar() {
                                                 >
                                                     <TextTranslate id="navDropInstitut_5" />
                                                 </Link>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <div
+                                                        role="button"
+                                                        className="text-inherit"
+                                                    >
+                                                        Hujjatlar:
+                                                    </div>
+                                                    <ul className="ms-4 md:ms-6">
+                                                        <li className="text-white">
+                                                            <Link
+                                                                onClick={
+                                                                    handleClickCloseMenu
+                                                                }
+                                                                to="/hujjatlar/o'zbekiston-respublikasi-prezidentining-farmonlar"
+                                                            >
+                                                                O'zbekiston Respublikasi prezidentining farmonlar
+                                                            </Link>
+                                                        </li>
+                                                        <li className="text-white">
+                                                            <Link
+                                                                onClick={
+                                                                    handleClickCloseMenu
+                                                                }
+                                                                to="/hujjatlar/o'zbekiston-respublikasi-qonunlari"
+                                                            >
+                                                                O'zbekiston Respublikasi Qonunlari
+                                                            </Link>
+                                                        </li>
+                                                        <li className="text-white">
+                                                            <Link
+                                                                onClick={
+                                                                    handleClickCloseMenu
+                                                                }
+                                                                to="/hujjatlar/o'zbekiston-respublikasi-vazirlar-mahkamasining-qarorlari"
+                                                            >
+                                                                O'zbekiston Respublikasi Vazirlar Mahkamasining qarorlari
+                                                            </Link>
+                                                        </li>
+                                                        <li className="text-white">
+                                                            <Link
+                                                                onClick={
+                                                                    handleClickCloseMenu
+                                                                }
+                                                                to="/hujjatlar/institut-ichki-me'yoriy-huquqiy-hujjatlari"
+                                                            >
+                                                                Institut ichki me'yoriy-huquqiy hujjatlari
+                                                            </Link>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </li>
                                         </ul>
                                     </div>
