@@ -461,17 +461,17 @@ function Navbar() {
                                                     } translate-x-[174px] translate-y-[36px] dropdown-content z-10 menu p-2 shadow bg-base-100 rounded-box w-52`}
                                                 >
                                                     <li className="text-[#004269] dark:text-white">
-                                                        <Link to="">
+                                                        <Link to="/xalqaro-hamkor-tashkilotlar">
                                                             Xalqaro hamkor tashkilotlar
                                                         </Link>
                                                     </li>
                                                     <li className="text-[#004269] dark:text-white">
-                                                        <Link to="">
+                                                        <Link to="/xalqaro-yangiliklar">
                                                             Xalqaro bo'lim yangiliklari
                                                         </Link>
                                                     </li>
                                                     <li className="text-[#004269] dark:text-white">
-                                                        <Link to="">
+                                                        <Link to="/xalqaro-elonlar">
                                                             Xalqaro bo'lim e'lonlari
                                                         </Link>
                                                     </li>

@@ -320,7 +320,10 @@
     "tuzBio": "Biografia",
     "tuzLav": "Lavozimi",
     "faoliyat": "Faoliyat",
-    "professorFikri": "Xorijlik professorlar fikri"
+    "professorFikri": "Xorijlik professorlar fikri",
+    "xalqaroYangiliklar": "Xalqaro bo'lim yangiliklari",
+    "xalqaroElonlar": "Xalqaro bo'lim e'lonlari",
+    "xalqaroHamkorlar": "Xalqaro hamkor tashkilotlar"
   },
   "ru": {
     "saytTestRejimida": "Сайт находится в тестовом режиме!",
@@ -653,7 +656,10 @@
     "tuzBio": "Биография",
     "tuzLav": "Должность",
     "faoliyat": "Деятельность",
-    "professorFikri": "Мнение иностранных профессоров"
+    "professorFikri": "Мнение иностранных профессоров",
+    "xalqaroYangiliklar": "Новости международного отдела",
+    "xalqaroElonlar": "Объявления международного отдела",
+    "xalqaroHamkorlar": "Международные партнерские организации"
   },
   "en": {
     "saytTestRejimida": "The site is in test mode.!",
@@ -986,6 +992,9 @@
     "tuzBio": "Biography",
     "tuzLav": "Position",
     "faoliyat": "Activity",
-    "professorFikri": "Opinions of foreign professors"
+    "professorFikri": "Opinions of foreign professors",
+    "xalqaroYangiliklar": "International department news",
+    "xalqaroElonlar": "International department announcements",
+    "xalqaroHamkorlar": "International partner organizations"
   }
 }
