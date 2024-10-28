@@ -22,11 +22,12 @@ const XalqaroYangiliklar = () => {
   const getData = useCallback(async () => {
     try {
       await APIYangilik.get().then((res) => {
-        const sortedData = res.data.sort((a, b) => {
+        const filteredData = res.data.filter((item) => item.xalqaro === true);
+        const sortedData = filteredData.sort((a, b) => {
           return new Date(b.sana) - new Date(a.sana);
         });
         setNews(sortedData);
-        setNewsOne(res.data.slice(pagesVisited, pagesVisited + itemsPerPage));
+        setNewsOne(filteredData.slice(pagesVisited, pagesVisited + itemsPerPage));
       });
     } catch (error) {
       console.error("Error fetching news:", error);

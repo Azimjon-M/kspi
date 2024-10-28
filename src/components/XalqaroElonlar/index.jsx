@@ -16,7 +16,8 @@ const XalqaroElonlar = () => {
     const fetchdata = async () => {
       try {
         const res = await APIElon.get();
-        const sortedData = res.data.sort((a, b) => {
+        const filteredData = res.data.filter((item) => item.xalqaro === true);
+        const sortedData = filteredData.sort((a, b) => {
           return new Date(b.sana) - new Date(a.sana);
         });
         setData(sortedData);
@@ -26,6 +27,7 @@ const XalqaroElonlar = () => {
     };
     fetchdata();
   }, []);
+  
 
   const formatDate = (dateString, Lang) => {
     const yearLang = { year_uz: "yil", year_ru: "год", year_en: "year" };
