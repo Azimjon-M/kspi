@@ -942,6 +942,59 @@ function Navbar() {
                                                     <TextTranslate id="navDropFaoliyat_3" />
                                                 </Link>
                                             </li>
+                                            {/* ++++++++ +++++++++++++++    MOBIL  ++++++++++++ */}
+                                            <li>
+                                                <div>
+                                                    <div
+                                                        role="button"
+                                                        className="text-inherit"
+                                                    >
+                                                        Xalqaro faoliyat:
+                                                    </div>
+                                                    <ul className="ms-4 md:ms-6">
+                                                        <li className="text-white">
+                                                            <Link
+                                                                onClick={
+                                                                    handleClickCloseMenu
+                                                                }
+                                                                to="/faoliyat/normativ-hujjatlar"
+                                                            >
+                                                                Xalqaro hamkor tashkilotlar
+                                                            </Link>
+                                                        </li>
+                                                        <li className="text-white">
+                                                            <Link
+                                                                onClick={
+                                                                    handleClickCloseMenu
+                                                                }
+                                                                to="/faoliyat/ichki-idoraviy-hujjatlar"
+                                                            >
+                                                                Xalqaro bo'lim yangiliklari
+                                                            </Link>
+                                                        </li>
+                                                        <li className="text-white">
+                                                            <Link
+                                                                onClick={
+                                                                    handleClickCloseMenu
+                                                                }
+                                                                to="/faoliyat/korrupsya-haqida-habar-berish"
+                                                            >
+                                                                Xalqaro bo'lim e'lonlari
+                                                            </Link>
+                                                        </li>
+                                                        <li className="text-white">
+                                                            <Link
+                                                                onClick={
+                                                                    handleClickCloseMenu
+                                                                }
+                                                                to="/faoliyat/korrupsya-haqida-habar-berish"
+                                                            >
+                                                                Xorijlik professorlar fikri
+                                                            </Link>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
                                             <li className="my-4 leading-4 text-white dark:text-white">
                                                 <Link
                                                     onClick={
@@ -978,7 +1031,7 @@ function Navbar() {
                                                         role="button"
                                                         className="text-inherit"
                                                     >
-                                                        <TextTranslate id="navDropFaoliyat_7" />
+                                                        <TextTranslate id="navDropFaoliyat_7" />:
                                                     </div>
                                                     <ul className="ms-4 md:ms-6">
                                                         <li className="text-white">
