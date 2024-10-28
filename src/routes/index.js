@@ -51,6 +51,11 @@ import IchkiIdoraviyHuj from "../pages/IchkiIdoraviyHuj";
 import KorrupsyaHaqHabBerish from "../pages/KorrupsyaHaqHabBerish";
 import AuthorPage from "../pages/Author";
 
+import HujjatORpf from "../pages/hujjatORpf";
+import HujjatORQ from "../pages/hujjatORQ";
+import HujjatORVMq from "../pages/hujjatORVMq";
+import HujjatIIHMh from "../pages/hujjatIIHMh";
+
 import ID from "../components/Id"
 
 // magistratura
@@ -111,6 +116,26 @@ const routes = [
         id: ID,
         element: InstitutHaqida,
         path: "/institut-haqida",
+    },
+    {
+        id: ID,
+        element: HujjatORpf,
+        path: "/hujjatlar/o'zbekiston-respublikasi-prezidentining-farmonlar",
+    },
+    {
+        id: ID,
+        element: HujjatORQ,
+        path: "/hujjatlar/o'zbekiston-respublikasi-qonunlari",
+    },
+    {
+        id: ID,
+        element: HujjatORVMq,
+        path: "/hujjatlar/o'zbekiston-respublikasi-vazirlar-mahkamasining-qarorlari",
+    },
+    {
+        id: ID,
+        element: HujjatIIHMh,
+        path: "/hujjatlar/institut-ichki-me'yoriy-huquqiy-hujjatlari",
     },
     //-------Tuzilma---------
     {
