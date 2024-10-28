@@ -1,5 +1,5 @@
 import React from 'react'
-import ProfessorFikr from '../../../../components/ProfessorFikr'
+import ProfessorFikr from '../../../../components/XalqaroProfessorFikr'
 
 const ProfessorlarFikri = () => {
   return (

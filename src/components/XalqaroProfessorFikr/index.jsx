@@ -4,7 +4,7 @@ import Breadcrumb from "../Breadcrumb";
 import KeenSlider from "keen-slider";
 import "keen-slider/keen-slider.min.css";
 
-const ProfessorFikr = () => {
+const XalqaroProfessorFikr = () => {
   const sliderContainerRef = useRef(null);
   const [sliderInstance, setSliderInstance] = useState(null);
 
@@ -46,8 +46,8 @@ const ProfessorFikr = () => {
         />
       </div>
       <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold tracking-tight text-[#004269]">
+        <div className="text-center my-1 md:my-3">
+          <h2 className="text-xl md:text-3xl font-bold my-2 text-[#004269] text-center">
             <TextTranslate id="professorFikri" />
           </h2>
           <p className="mt-4 text-gray-700">
@@ -316,4 +316,4 @@ const ProfessorFikr = () => {
   );
 };
 
-export default ProfessorFikr;
+export default XalqaroProfessorFikr;

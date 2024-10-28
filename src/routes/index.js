@@ -38,6 +38,9 @@ import JamoatchilikKengashiFaol from "../pages/Faoliyat/JamoatchilikKengashiFaol
 import MadMarFaolyat from "../pages/Faoliyat/MadMarFaolyat";
 import OquvUslubiyFaolyat from "../pages/Faoliyat/OquvUslubiyFaolyat";
 import ProfessorlarFikri from "../pages/Faoliyat/XalqaroFaoliyat/ProfessorlarFikri";
+import XalqaroHamkorlar from "../pages/Faoliyat/XalqaroFaoliyat/XalqaroHamkorlarPage";
+import XalqaroYangiliklar from "../pages/Faoliyat/XalqaroFaoliyat/XalqaroYangiliklarPage";
+import XalqaroElonlar from "../pages/Faoliyat/XalqaroFaoliyat/XalqaroElonlarPage"; 
 import YoshlarBnIshlashMvaM from "../pages/Faoliyat/YoshlarBnIshlashMvaM";
 import Vakansiyalar from "../pages/Vakansiyalar";
 import BarchaElonlar from "../pages/BarchaElonlar";
@@ -257,6 +260,21 @@ const routes = [
         id: ID,
         element: ProfessorlarFikri,
         path: "/professorlar-fikri",
+    },
+    {
+        id: ID,
+        element: XalqaroYangiliklar,
+        path: "/xalqaro-yangiliklar",
+    },
+    {
+        id: ID,
+        element: XalqaroElonlar,
+        path: "/xalqaro-elonlar",
+    },
+    {
+        id: ID,
+        element: XalqaroHamkorlar,
+        path: "/xalqaro-hamkor-tashkilotlar",
     },
     {
         id: ID,
