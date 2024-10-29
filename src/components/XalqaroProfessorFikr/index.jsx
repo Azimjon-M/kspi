@@ -109,7 +109,7 @@ const XalqaroProfessorFikr = () => {
                   <div className="md:w-1/3 lg:w-1/3 xl:ml-32 md:ml-20 md:mt-0 mt-4 flex flex-col justify-between">
                     <div>
                       <h1 className="text-2xl font-semibold xl:leading-loose text-gray-800">
-                        {item[`title_${isLang}`]}{item.title_uz}
+                        {item[`title_${isLang}`]}
                       </h1>
                       <p className="text-base font-medium leading-6 mt-4 text-gray-600">
                         {item[`fikr_${isLang}`]}
