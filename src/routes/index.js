@@ -45,6 +45,7 @@ import YoshlarBnIshlashMvaM from "../pages/Faoliyat/YoshlarBnIshlashMvaM";
 import Vakansiyalar from "../pages/Vakansiyalar";
 import BarchaElonlar from "../pages/BarchaElonlar";
 import ElonBatafsil from "../pages/ElonBatafsil";
+import XalqaroHamkorlarBatafsil from "../pages/Faoliyat/XalqaroFaoliyat/XalqaroHamkorlarBatafsil";
 import SearchPage from "../pages/Search";
 import NormativHuj from "../pages/NormativHuj";
 import IchkiIdoraviyHuj from "../pages/IchkiIdoraviyHuj";
@@ -275,6 +276,11 @@ const routes = [
         id: ID,
         element: XalqaroHamkorlar,
         path: "/xalqaro-hamkor-tashkilotlar",
+    },
+    {
+        id: ID,
+        element: XalqaroHamkorlarBatafsil,
+        path: "/xalqaro-hamkor-tashkilotlar/:id",
     },
     {
         id: ID,
