@@ -305,7 +305,7 @@ const routes = [
     {
         id: ID,
         element: XalqaroHamkorlarBatafsil,
-        path: "/xalqaro-hamkor-tashkilotlar/:id",
+        path: "/xalqaro-hamkor-tashkilotlar/:lang/:id",
     },
     {
         id: ID,
