@@ -24,17 +24,17 @@ const IchkiIdoraviyHuj = () => {
                     steps={[
                         { text: <TextTranslate id="boshSahifa" />, link: "/" },
                         {
-                            text: "Korrupsyaga qarshi kurash",
+                            text: <TextTranslate id="navDropFaoliyat_7" />,
                         },
                         {
-                            text: "Ichki idoraviy hujjatlar",
+                            text: <TextTranslate id="navDropFaoliyat_7_drop_2" />,
                         },
                     ]}
                 />
             </div>
             <div className="max-w-7xl mx-auto py-5">
                 <h1 className="text-2xl md:text-4xl font-bold text-[#004269] text-center">
-                    Ichki idoraviy hujjatlar
+                    <TextTranslate id="navDropFaoliyat_7_drop_2" />
                 </h1>
                 <div className="relative shadow-md overflow-x-auto sm:rounded-lg mx-5 mt-10">
                     <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
