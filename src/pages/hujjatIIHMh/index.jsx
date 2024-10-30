@@ -25,17 +25,17 @@ const HujjatIIHMh = () => {
                     steps={[
                         { text: <TextTranslate id="boshSahifa" />, link: "/" },
                         {
-                            text: "Hujjatlar",
+                            text: <TextTranslate id="navDropInstitut_6" />,
                         },
                         {
-                            text: "Institut ichki me'yoriy-huquqiy hujjatlari",
+                            text: <TextTranslate id="navDropInstitut_6_drop_4" />,
                         },
                     ]}
                 />
             </div>
             <div className="max-w-7xl mx-auto py-5">
                 <h1 className="text-2xl md:text-4xl font-bold text-[#004269] text-center">
-                    Institut ichki me'yoriy-huquqiy hujjatlari
+                    <TextTranslate id="navDropInstitut_6_drop_4" />
                 </h1>
                 <div className="relative shadow-md overflow-x-auto sm:rounded-lg mx-5 mt-10">
                     <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">

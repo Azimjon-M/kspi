@@ -25,17 +25,17 @@ const HujjatORQ = () => {
                     steps={[
                         { text: <TextTranslate id="boshSahifa" />, link: "/" },
                         {
-                            text: "Hujjatlar",
+                            text: <TextTranslate id="navDropInstitut_6" />,
                         },
                         {
-                            text: "O'zbekiston Respublikasi Qonunlari",
+                            text: <TextTranslate id="navDropInstitut_6_drop_2" />,
                         },
                     ]}
                 />
             </div>
             <div className="max-w-7xl mx-auto py-5">
                 <h1 className="text-2xl md:text-4xl font-bold text-[#004269] text-center">
-                    O'zbekiston Respublikasi Qonunlari
+                    <TextTranslate id="navDropInstitut_6_drop_2" />
                 </h1>
                 <div className="relative shadow-md overflow-x-auto sm:rounded-lg mx-5 mt-10">
                     <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
