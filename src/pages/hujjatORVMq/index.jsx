@@ -2,18 +2,18 @@ import React, { useEffect, useState } from "react";
 import Breadcrumb from "../../components/Breadcrumb";
 import TextTranslate from "../../components/TextTranslate";
 import { LuDownload } from "react-icons/lu";
-// import normativHuj from "../../services/normativHuj";
+import APIHujjatORVMq from "../../services/hujjatORVMq";
 import { useSelector } from "react-redux";
 
 const HujjatORVMq = () => {
-    const [data] = useState(null);
+    const [data, setData] = useState(null);
     const isLang = useSelector((state) => state.reducerLang.isLang);
 
     const getData = () => {
-        // normativHuj
-        //     .get()
-        //     .then((res) => setData(res.data))
-        //     .catch((err) => console.log(err));
+        APIHujjatORVMq
+            .get()
+            .then((res) => setData(res.data))
+            .catch((err) => console.log(err));
     };
     useEffect(() => {
         getData();
