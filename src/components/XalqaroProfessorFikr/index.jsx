@@ -77,7 +77,7 @@ const XalqaroProfessorFikr = () => {
           {/* Item */}
           {data &&
             data.map((item) => (
-              <div className="flex keen-slider__slide">
+              <div key={item.id} className="flex keen-slider__slide">
                 <div className="mt-6 md:mt-14 md:flex">
                   <div className="relative lg:w-1/2 sm:w-96 xl:h-96 h-80">
                     <img
