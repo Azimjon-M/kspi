@@ -358,7 +358,7 @@ function Navbar() {
                                         </li>
                                         {/* +++++++++++++++ +++++++ Hujjatlar +++++++++ +++++++++++++++ */}
                                         <li className="relative text-[#004269] z-[1] dark:text-white after:-z-[1] after:absolute after:top-[40%] after:right-2 after:rotate-[135deg] after:w-[6px] after:h-[6px] after:border-s-[2px] after:border-t-[2px] after:border-[#004269]">
-                                            <div 
+                                            <div
                                                 onMouseEnter={onMouseEnterHuj}
                                                 onMouseLeave={onMouseLeaveHuj}
                                                 className="dropdown dropdown-hover"
@@ -368,7 +368,7 @@ function Navbar() {
                                                     role="button"
                                                     className="text-inherit"
                                                 >
-                                                    Hujjatlar
+                                                    <TextTranslate id="navDropInstitut_6" />
                                                 </div>
                                                 <ul
                                                     tabIndex={19}
@@ -378,22 +378,22 @@ function Navbar() {
                                                 >
                                                     <li className="text-[#004269] dark:text-white">
                                                         <Link to="/hujjatlar/o'zbekiston-respublikasi-prezidentining-farmonlar">
-                                                            O'zbekiston Respublikasi prezidentining farmonlar
+                                                            <TextTranslate id="navDropInstitut_6_drop_1" />
                                                         </Link>
                                                     </li>
                                                     <li className="text-[#004269] dark:text-white">
                                                         <Link to="/hujjatlar/o'zbekiston-respublikasi-qonunlari">
-                                                            O'zbekiston Respublikasi Qonunlari
+                                                            <TextTranslate id="navDropInstitut_6_drop_2" />
                                                         </Link>
                                                     </li>
                                                     <li className="text-[#004269] dark:text-white">
                                                         <Link to="/hujjatlar/o'zbekiston-respublikasi-vazirlar-mahkamasining-qarorlari">
-                                                            O'zbekiston Respublikasi Vazirlar Mahkamasining qarorlari
+                                                            <TextTranslate id="navDropInstitut_6_drop_3" />
                                                         </Link>
                                                     </li>
                                                     <li className="text-[#004269] dark:text-white">
                                                         <Link to="/hujjatlar/institut-ichki-me'yoriy-huquqiy-hujjatlari">
-                                                            Institut ichki me'yoriy-huquqiy hujjatlari
+                                                            <TextTranslate id="navDropInstitut_6_drop_4" />
                                                         </Link>
                                                     </li>
                                                 </ul>
@@ -452,7 +452,7 @@ function Navbar() {
                                                     role="button"
                                                     className="text-inherit"
                                                 >
-                                                    Xalqaro faoliyat
+                                                    <TextTranslate id="navDropFaoliyat_04_xalqaro" /> ll
                                                 </div>
                                                 <ul
                                                     tabIndex={19}
@@ -462,22 +462,22 @@ function Navbar() {
                                                 >
                                                     <li className="text-[#004269] dark:text-white">
                                                         <Link to="/xalqaro-hamkor-tashkilotlar">
-                                                            Xalqaro hamkor tashkilotlar
+                                                            <TextTranslate id="navDropFaoliyat_04_xalqaro_drop1" />
                                                         </Link>
                                                     </li>
                                                     <li className="text-[#004269] dark:text-white">
                                                         <Link to="/xalqaro-yangiliklar">
-                                                            Xalqaro bo'lim yangiliklari
+                                                            <TextTranslate id="navDropFaoliyat_04_xalqaro_drop2" />
                                                         </Link>
                                                     </li>
                                                     <li className="text-[#004269] dark:text-white">
                                                         <Link to="/xalqaro-elonlar">
-                                                            Xalqaro bo'lim e'lonlari
+                                                            <TextTranslate id="navDropFaoliyat_04_xalqaro_drop3" />
                                                         </Link>
                                                     </li>
                                                     <li className="text-[#004269] dark:text-white">
                                                         <Link to="/professorlar-fikri">
-                                                            Xorijlik professorlar fikri
+                                                            <TextTranslate id="navDropFaoliyat_04_xalqaro_drop4" />
                                                         </Link>
                                                     </li>
                                                 </ul>
@@ -501,7 +501,7 @@ function Navbar() {
                                         <li className="text-[#004269] dark:text-white z-[1] after:-z-[1] after:absolute after:top-[45%] after:right-2 after:rotate-[135deg] after:w-[6px] after:h-[6px] after:border-s-[2px] after:border-t-[2px] after:border-[#004269]">
                                             <div
                                                 onMouseEnter={onMouseEnter}
-                                                onMouseLeave={onMouseLeave} 
+                                                onMouseLeave={onMouseLeave}
                                                 className="dropdown dropdown-hover"
                                             >
                                                 <div
@@ -954,7 +954,8 @@ function Navbar() {
                                                         role="button"
                                                         className="text-inherit"
                                                     >
-                                                        Hujjatlar:
+                                                        <TextTranslate id="navDropInstitut_6" />
+                                                        :
                                                     </div>
                                                     <ul className="ms-4 md:ms-6">
                                                         <li className="text-white">
@@ -964,7 +965,7 @@ function Navbar() {
                                                                 }
                                                                 to="/hujjatlar/o'zbekiston-respublikasi-prezidentining-farmonlar"
                                                             >
-                                                                O'zbekiston Respublikasi prezidentining farmonlar
+                                                                <TextTranslate id="navDropInstitut_6_drop_1" />
                                                             </Link>
                                                         </li>
                                                         <li className="text-white">
@@ -974,7 +975,7 @@ function Navbar() {
                                                                 }
                                                                 to="/hujjatlar/o'zbekiston-respublikasi-qonunlari"
                                                             >
-                                                                O'zbekiston Respublikasi Qonunlari
+                                                                <TextTranslate id="navDropInstitut_6_drop_2" />
                                                             </Link>
                                                         </li>
                                                         <li className="text-white">
@@ -984,7 +985,7 @@ function Navbar() {
                                                                 }
                                                                 to="/hujjatlar/o'zbekiston-respublikasi-vazirlar-mahkamasining-qarorlari"
                                                             >
-                                                                O'zbekiston Respublikasi Vazirlar Mahkamasining qarorlari
+                                                                <TextTranslate id="navDropInstitut_6_drop_3" />
                                                             </Link>
                                                         </li>
                                                         <li className="text-white">
@@ -994,7 +995,7 @@ function Navbar() {
                                                                 }
                                                                 to="/hujjatlar/institut-ichki-me'yoriy-huquqiy-hujjatlari"
                                                             >
-                                                                Institut ichki me'yoriy-huquqiy hujjatlari
+                                                                <TextTranslate id="navDropInstitut_6_drop_4" />
                                                             </Link>
                                                         </li>
                                                     </ul>
@@ -1053,7 +1054,7 @@ function Navbar() {
                                                         role="button"
                                                         className="text-inherit"
                                                     >
-                                                        Xalqaro faoliyat:
+                                                        <TextTranslate id="navDropFaoliyat_04_xalqaro" />:
                                                     </div>
                                                     <ul className="ms-4 md:ms-6">
                                                         <li className="text-white">
@@ -1063,7 +1064,7 @@ function Navbar() {
                                                                 }
                                                                 to="/faoliyat/normativ-hujjatlar"
                                                             >
-                                                                Xalqaro hamkor tashkilotlar
+                                                                <TextTranslate id="navDropFaoliyat_04_xalqaro_drop1" />
                                                             </Link>
                                                         </li>
                                                         <li className="text-white">
@@ -1073,7 +1074,7 @@ function Navbar() {
                                                                 }
                                                                 to="/faoliyat/ichki-idoraviy-hujjatlar"
                                                             >
-                                                                Xalqaro bo'lim yangiliklari
+                                                                <TextTranslate id="navDropFaoliyat_04_xalqaro_drop2" />
                                                             </Link>
                                                         </li>
                                                         <li className="text-white">
@@ -1083,7 +1084,7 @@ function Navbar() {
                                                                 }
                                                                 to="/faoliyat/korrupsya-haqida-habar-berish"
                                                             >
-                                                                Xalqaro bo'lim e'lonlari
+                                                                <TextTranslate id="navDropFaoliyat_04_xalqaro_drop3" />
                                                             </Link>
                                                         </li>
                                                         <li className="text-white">
@@ -1093,7 +1094,7 @@ function Navbar() {
                                                                 }
                                                                 to="/faoliyat/korrupsya-haqida-habar-berish"
                                                             >
-                                                                Xorijlik professorlar fikri
+                                                                <TextTranslate id="navDropFaoliyat_04_xalqaro_drop4" />
                                                             </Link>
                                                         </li>
                                                     </ul>
@@ -1135,7 +1136,8 @@ function Navbar() {
                                                         role="button"
                                                         className="text-inherit"
                                                     >
-                                                        <TextTranslate id="navDropFaoliyat_7" />:
+                                                        <TextTranslate id="navDropFaoliyat_7" />
+                                                        :
                                                     </div>
                                                     <ul className="ms-4 md:ms-6">
                                                         <li className="text-white">
