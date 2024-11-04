@@ -39,7 +39,7 @@ axiosInstance.interceptors.response.use(
 const refreshToken = async () => {
   try {
     const refreshToken = localStorage.getItem("refreshToken");
-    const res = await axios.post("http://kspiapi.kspi.uz/refresh/", {
+    const res = await axios.post("https://kspiapi.kspi.uz/api/token/refresh/", {
       refresh: refreshToken,
     });
     const token = res.data.access;

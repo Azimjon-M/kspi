@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import APIProfessorlarFikri from "../../services/xalqaroProfessorFikri";
 import TextTranslate from "../TextTranslate";
 import Breadcrumb from "../Breadcrumb";
-import KeenSlider from "keen-slider";
-import "keen-slider/keen-slider.min.css";
+import 'keen-slider/keen-slider.min.css'
+import KeenSlider from 'keen-slider'
 
 const XalqaroProfessorFikr = () => {
   const isLang = useSelector((state) => state.reducerLang.isLang);
