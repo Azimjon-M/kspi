@@ -40,10 +40,10 @@ const KorrupsiyaXabarBerish = () => {
           steps={[
             { text: <TextTranslate id="boshSahifa" />, link: "/" },
             {
-              text: "Korrupsiyaga qarshi kurash",
+              text: <TextTranslate id="navDropFaoliyat_7" />,
             },
             {
-              text: "Korrupsiya haqida xabar berish",
+              text: <TextTranslate id="navDropFaoliyat_7_drop_3" />,
             },
           ]}
         />
@@ -51,7 +51,7 @@ const KorrupsiyaXabarBerish = () => {
       <section className="bg-white dark:bg-gray-900">
         <div className="py-2 lg:py-6 px-4 mx-auto max-w-screen-md">
           <h1 className="text-xl md:text-3xl font-bold my-2 text-[#004269] text-center">
-            <TextTranslate id="korrupsiyaQabulxona" />
+            <TextTranslate id="navDropFaoliyat_7_drop_3" />
           </h1>
           {successMessage && (
             <div className="mb-4 text-green-600 text-center text-2xl">

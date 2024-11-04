@@ -2,18 +2,18 @@ import React, { useEffect, useState } from "react";
 import Breadcrumb from "../../components/Breadcrumb";
 import TextTranslate from "../../components/TextTranslate";
 import { LuDownload } from "react-icons/lu";
-// import normativHuj from "../../services/normativHuj";
+import APIHujjatORpf from "../../services/hujjatORpf";
 import { useSelector } from "react-redux";
 
 const HujjatORpf = () => {
-    const [data] = useState(null);
+    const [data, setData] = useState(null);
     const isLang = useSelector((state) => state.reducerLang.isLang);
 
     const getData = () => {
-        // normativHuj
-        //     .get()
-        //     .then((res) => setData(res.data))
-        //     .catch((err) => console.log(err));
+        APIHujjatORpf
+            .get()
+            .then((res) => setData(res.data))
+            .catch((err) => console.log(err));
     };
     useEffect(() => {
         getData();
@@ -25,17 +25,17 @@ const HujjatORpf = () => {
                     steps={[
                         { text: <TextTranslate id="boshSahifa" />, link: "/" },
                         {
-                            text: "Hujjatlar",
+                            text: <TextTranslate id="navDropInstitut_6" />,
                         },
                         {
-                            text: "O'zbekiston Respublikasi prezidentining farmonlar",
+                            text: <TextTranslate id="navDropInstitut_6_drop_1" />,
                         },
                     ]}
                 />
             </div>
             <div className="max-w-7xl mx-auto py-5">
                 <h1 className="text-2xl md:text-4xl font-bold text-[#004269] text-center">
-                    O'zbekiston Respublikasi prezidentining farmonlar
+                    <TextTranslate id="navDropInstitut_6_drop_1" />
                 </h1>
                 <div className="relative shadow-md overflow-x-auto sm:rounded-lg mx-5 mt-10">
                     <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
