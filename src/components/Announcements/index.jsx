@@ -7,7 +7,7 @@ import TextTranslate from "../TextTranslate";
 function Announcements() {
     const Lang = useSelector((state) => state.reducerLang.isLang);
     const [data, setData] = useState([]);
-
+    
     useEffect(() => {
         const getData = async () => {
             try {

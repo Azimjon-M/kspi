@@ -39,7 +39,7 @@ function Curriculum() {
             <div className="w-[200px]">
               <img
                 className="rounded-md w-full h-full object-fill"
-                src="https://www.talentcorp.com.my/clients/TalentCorp_2016_7A6571AE-D9D0-4175-B35D-99EC514F2D24/contentMS/img/YES_1.jpg"
+                src="https://static.imtihonlar.uz/crop/1/3/832__85_1367880221.jpg?t=1712574204"
                 alt=""
               />
             </div>
