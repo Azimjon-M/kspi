@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import APILogin from "../../services/login";
 
@@ -7,6 +7,31 @@ const Login = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [attemptCount, setAttemptCount] = useState(0);
+  const [captcha, setCaptcha] = useState("");
+  const [inputCaptcha, setInputCaptcha] = useState("");
+  const [showCaptcha, setShowCaptcha] = useState(false);
+
+  // useEffect orqali localStorage'dagi Captcha ni tekshirish
+  useEffect(() => {
+    const savedCaptcha = localStorage.getItem("captcha");
+    if (savedCaptcha) {
+      setCaptcha(savedCaptcha);
+      setShowCaptcha(true);
+    }
+  }, []);
+
+  // Yangi Captcha yaratish va localStorage'ga saqlash
+  const generateCaptcha = () => {
+    const chars =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let captchaText = "";
+    for (let i = 0; i < 6; i++) {
+      captchaText += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    setCaptcha(captchaText);
+    localStorage.setItem("captcha", captchaText); // Captcha ni localStorage ga saqlash
+  };
 
   const refreshToken = async () => {
     try {
@@ -28,13 +53,21 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Captcha ko'rsatilgan bo'lsa, uni tekshirish
+    if (showCaptcha && inputCaptcha !== captcha) {
+      setError("Captcha noto'g'ri kiritildi");
+      setInputCaptcha("");
+      generateCaptcha();
+      return;
+    }
+
     try {
       const res = await APILogin.post({
         username: name,
         password: password,
-      })
-        .then()
-        .catch();
+      });
+
       const token = res?.data?.access;
       const refreshToken = res?.data?.refresh;
 
@@ -42,19 +75,32 @@ const Login = () => {
         localStorage.setItem("token", token);
         localStorage.setItem("refreshToken", refreshToken);
         navigate("/admin-virtual-qabulxona");
+
+        setAttemptCount(0);
+        setShowCaptcha(false);
+        setError("");
+        localStorage.removeItem("captcha");
       } else {
-        setError("Incorrect credentials");
+        throw new Error("Login yoki parol noto'g'ri");
       }
     } catch (err) {
+      setError("Login yoki parol noto'g'ri");
+
       if (err.response && err.response.status === 401) {
         const refreshed = await refreshToken();
         if (refreshed) {
-          handleSubmit(e);
+          navigate("/admin-virtual-qabulxona");
           return;
         }
       }
-      console.error(err);
-      setError("Authentication failed");
+
+      const newAttemptCount = attemptCount + 1;
+      setAttemptCount(newAttemptCount);
+
+      if (newAttemptCount >= 2) {
+        setShowCaptcha(true);
+        generateCaptcha();
+      }
     }
   };
 
@@ -96,6 +142,26 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+
+        {showCaptcha && (
+          <div className="flex items-center gap-3 mb-6">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="captcha"
+            >
+              {captcha}
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              id="captcha"
+              type="text"
+              placeholder="Captcha ni kiriting"
+              value={inputCaptcha}
+              onChange={(e) => setInputCaptcha(e.target.value)}
+            />
+          </div>
+        )}
+
         <div className="flex items-center justify-center">
           <button
             type="submit"
@@ -109,4 +175,5 @@ const Login = () => {
     </div>
   );
 };
+
 export default Login;
