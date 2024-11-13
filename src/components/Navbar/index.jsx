@@ -238,7 +238,7 @@ function Navbar() {
                             </li>
                             <li className="py-[4px]">
                                 {/* O'zimizni Page */}
-                                <Link to="">
+                                <Link to="/ochiq-malumotlar">
                                     <TextTranslate id="hedOchiq-malumotlar" />
                                 </Link>
                             </li>

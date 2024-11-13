@@ -51,6 +51,7 @@ import NormativHuj from "../pages/NormativHuj";
 import IchkiIdoraviyHuj from "../pages/IchkiIdoraviyHuj";
 import KorrupsyaHaqHabBerish from "../pages/KorrupsyaHaqHabBerish";
 import AuthorPage from "../pages/Author";
+import OchiqMalumotlar from "../pages/OchiqMalumotlar";
 
 import HujjatORpf from "../pages/hujjatORpf";
 import HujjatORQ from "../pages/hujjatORQ";
@@ -75,6 +76,11 @@ const routes = [
         id: ID,
         element: New,
         path: "/yangiliklar/:id",
+    },
+    {
+        id: ID,
+        element: OchiqMalumotlar,
+        path: "/ochiq-malumotlar",
     },
     //-------Interactive xizmatlar---------
     {
