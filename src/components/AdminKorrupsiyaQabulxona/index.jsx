@@ -83,9 +83,13 @@ function AdminKorrupsiyaQabulxona() {
                     </span>
                     {data.telefon_nomer}
                   </p>
-                  <p className="text-base inline-block text-slate-500">
+                  <p className="text-base inline-block text-slate-500 mr-5">
                     <span className="text-red-500 font-semibold">Email: </span>
                     {data.email}
+                  </p>
+                  <p className="text-base inline-block text-slate-500">
+                    <span className="text-red-500 font-semibold">Vaqt: </span>
+                    {data.created_at}
                   </p>
                 </div>
                 <div className="text-right">
