@@ -69,7 +69,7 @@ const OchiqMalumotlarCom = () => {
                     </td>
                     <td className="px-2 md:px-6 py-4 mx-auto flex justify-center items-center">
                       <a
-                        href={item.fayl}
+                        href={item.fayl.startsWith('http://') ? item.fayl.replace('http://', 'https://') : item.fayl}
                         className="text-[#004269] dark:text-blue-500"
                         target="_blank"
                         rel="noopener noreferrer"
