@@ -95,7 +95,7 @@ function Announcements() {
                                             /^http:\/\//i,
                                             "https://"
                                         )}
-                                        className="h-full w-full object-cover object-center group-hover:scale-105 duration-300"
+                                        className="h-full w-full object-center group-hover:scale-105 duration-300"
                                         alt=""
                                     />
                                 </div>
