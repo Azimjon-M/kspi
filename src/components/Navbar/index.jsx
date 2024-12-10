@@ -452,7 +452,7 @@ function Navbar() {
                                                     role="button"
                                                     className="text-inherit"
                                                 >
-                                                    <TextTranslate id="navDropFaoliyat_04_xalqaro" /> ll
+                                                    <TextTranslate id="navDropFaoliyat_04_xalqaro" />
                                                 </div>
                                                 <ul
                                                     tabIndex={19}
