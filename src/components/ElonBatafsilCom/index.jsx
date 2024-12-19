@@ -29,8 +29,7 @@ function ElonBatafsilCom() {
   }, [id]);
 
   const formatDate = (dateString, Lang) => {
-
-    const yearLang = {year_uz: "yil", year_ru: "год", year_en: "year"};
+    const yearLang = { year_uz: "yil", year_ru: "год", year_en: "year" };
 
     const months = {
       uz: [
@@ -128,7 +127,11 @@ function ElonBatafsilCom() {
       <div className="max-w-7xl mx-auto grid md:grid-cols-3">
         <div className="relative md:-top-28 shadow-xl">
           <div className="h-96 border border-white">
-            <img src={data && data.rasm.replace(/^http:\/\//i, 'https://')} className="w-full h-full object-cover object-center" alt="" />
+            <img
+              src={data && data.rasm.replace(/^http:\/\//i, "https://")}
+              className="w-full h-full object-center"
+              alt=""
+            />
           </div>
           <div className="p-8 bg-white">
             <p className="flex items-start">
@@ -172,7 +175,20 @@ function ElonBatafsilCom() {
           <h1 className="text-3xl font-bold">
             <TextTranslate id="elonBatafsilTadbirTafsilotlari" />:
           </h1>
-          <p className="text-lg" dangerouslySetInnerHTML={{ __html: data && data[`detail_${Lang}`] }}></p>
+          <p
+            className="text-lg"
+            dangerouslySetInnerHTML={{ __html: data && data[`detail_${Lang}`] }}
+          ></p>
+          {/* {data?.fayl_1?.trim() && (
+            <a
+              href={data && data.fayl_1}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:underline"
+            >
+              Tanlov nizomi
+            </a>
+          )} */}
         </div>
       </div>
     </div>
