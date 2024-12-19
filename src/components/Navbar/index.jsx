@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import kspi_logo from "../../assets/icons/logo_kspi.png";
+import kspi_logo from "../../assets/icons/logoWinter.png";
 import { Link, useLocation } from "react-router-dom";
 import { AiOutlineSearch, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { useFormik } from "formik";
@@ -154,7 +154,7 @@ function Navbar() {
                         }  flex items-center gap-x-[10px] md:gap-x-[15px] xl:my-[15px] xl:ms-[40px]`}
                     >
                         <img
-                            className="w-[32px] sm:w-[36px] md:w-[45px] xl:w-[60px] 3xl:w-[70px] h-auto"
+                            className="w-[32px] sm:w-[36px] md:w-[45px] xl:w-[60px] 3xl:w-[70px] h-auto mb-2"
                             src={kspi_logo}
                             alt="icon"
                         />
