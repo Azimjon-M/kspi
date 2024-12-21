@@ -1,0 +1,51 @@
+/* Snow Container Styles */
+.snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 9999;
+    pointer-events: none;
+  }
+  
+  /* Snowflake Styles */
+  .snowflake {
+    position: absolute;
+    top: -5%; /* Yuqorida joylashadi */
+    left: 50%; /* Markazga joylashadi */
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    color: #9ae0fc; /* Qor rangi oq */
+    opacity: 0.8;
+    animation: snowflake-fall 5s linear infinite, snowflake-shake 3s ease-in-out infinite;
+  }
+  
+  @keyframes snowflake-fall {
+    0% {
+      top: -5%;
+    }
+    100% {
+      top: 110vh; /* Ekran pastiga tushadi */
+    }
+  }
+  
+  @keyframes snowflake-shake {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(20px); /* Chap-o‘ng harakat */
+    }
+  }
+  
+  /* Har xil snowflakes uchun delay */
+  .snowflake:nth-child(odd) {
+    animation-delay: 0.5s;
+  }
+  
+  .snowflake:nth-child(even) {
+    animation-delay: 1s;
+  }
+  
