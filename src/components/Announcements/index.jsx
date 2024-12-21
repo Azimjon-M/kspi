@@ -113,7 +113,7 @@ function Announcements() {
                                     </div>
                                 </div>
                                 <div className="px-3 py-3 md:px-6 md:py-0">
-                                    <span className="text-base uppercase font-semibold text-red-800">
+                                    <span className="text-base uppercase font-semibold text-red-800 line-clamp-1">
                                         {item && item[`field_${Lang}`]}
                                     </span>
                                     <h2 className="text-lg md:text-xl font-bold text-slate-600 line-clamp-4 md:my-2 group-hover:text-blue-500">

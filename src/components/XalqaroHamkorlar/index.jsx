@@ -4,6 +4,8 @@ import Breadcrumb from "../Breadcrumb";
 import { Link } from "react-router-dom";
 import APIXalqaroHamkorlar from "../../services/xalqaroHamkorlar";
 
+import XalqaroHamkorlarImage from "../../assets/images/XalqaroHamkorlar.png"
+
 // LanguageSection - Qayta ishlatiladigan til bo'limi
 const LanguageSection = memo(({ data, languageKey }) => (
   <dl className="max-w-md text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700">
@@ -64,12 +66,15 @@ const XalqaroHamkorlar = () => {
           ]}
         />
       </div>
-      <div className="text-center my-1 md:my-3">
+      <div className="max-w-7xl mx-auto">
+        <img src={XalqaroHamkorlarImage} alt="Xalqaro hamkorlarimiz" className="w-full object-cover shadow-2xl rounded-2xl" />
+      </div>
+      <div className="text-center mt-5 md:mt-10">
         <h2 className="text-xl md:text-3xl font-bold my-2 text-[#004269]">
           <TextTranslate id="xalqaroHamkorlar" />
         </h2>
       </div>
-      <div className="max-w-[1600px] mx-auto grid grid-cols-3">
+      <div className="max-w-[1600px] mx-auto mt-5 grid grid-cols-3">
         <LanguageSection data={data} languageKey="uz" />
         <LanguageSection data={data} languageKey="ru" />
         <LanguageSection data={data} languageKey="en" />
