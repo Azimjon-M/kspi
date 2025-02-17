@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import kspi_logo from "../../assets/icons/logoWinter.png";
+import kspi_logo from "../../assets/icons/logo_kspi.png";
 import { Link, useLocation } from "react-router-dom";
 import { AiOutlineSearch, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { useFormik } from "formik";
