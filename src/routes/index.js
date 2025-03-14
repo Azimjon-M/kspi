@@ -9,6 +9,8 @@ import Rekvizitlar from "../pages/Rekvizitlar";
 import InstitutTuzilmasi from "../pages/InstitutTuzilmasi";
 import InstitutKengashi from "../pages/InstitutKengashi";
 import InstitutHaqida from "../pages/InstitutHaqida";
+import YashilYangiliklar from "../pages/YashilUniversitet/Yangiliklar";
+import YashilRaqamlarda from "../pages/YashilUniversitet/Raqamlarda";
 import Rektorat from "../pages/Tuzilma/Rektorat";
 import Kafedralar from "../pages/Tuzilma/Kafedralar";
 import Markazlar from "../pages/Tuzilma/Markazlar";
@@ -40,7 +42,7 @@ import OquvUslubiyFaolyat from "../pages/Faoliyat/OquvUslubiyFaolyat";
 import ProfessorlarFikri from "../pages/Faoliyat/XalqaroFaoliyat/ProfessorlarFikri";
 import XalqaroHamkorlar from "../pages/Faoliyat/XalqaroFaoliyat/XalqaroHamkorlarPage";
 import XalqaroYangiliklar from "../pages/Faoliyat/XalqaroFaoliyat/XalqaroYangiliklarPage";
-import XalqaroElonlar from "../pages/Faoliyat/XalqaroFaoliyat/XalqaroElonlarPage"; 
+import XalqaroElonlar from "../pages/Faoliyat/XalqaroFaoliyat/XalqaroElonlarPage";
 import YoshlarBnIshlashMvaM from "../pages/Faoliyat/YoshlarBnIshlashMvaM";
 import Vakansiyalar from "../pages/Vakansiyalar";
 import BarchaElonlar from "../pages/BarchaElonlar";
@@ -58,311 +60,322 @@ import HujjatORQ from "../pages/hujjatORQ";
 import HujjatORVMq from "../pages/hujjatORVMq";
 import HujjatIIHMh from "../pages/hujjatIIHMh";
 
-import ID from "../components/Id"
+import ID from "../components/Id";
 
 // magistratura
 const routes = [
-    {
-        id: ID,
-        element: Main,
-        path: "/",
-    },
-    {
-        id: ID,
-        element: News,
-        path: "/yangiliklar",
-    },
-    {
-        id: ID,
-        element: New,
-        path: "/yangiliklar/:id",
-    },
-    {
-        id: ID,
-        element: OchiqMalumotlar,
-        path: "/ochiq-malumotlar",
-    },
-    //-------Interactive xizmatlar---------
-    {
-        id: ID,
-        element: VirQabulxona,
-        path: "/qabulxona",
-    },
-    {
-        id: ID,
-        element: VideoMaruzalar,
-        path: "/videomaruza",
-    },
-    {
-        id: ID,
-        element: Qabul,
-        path: "/qabul",
-    },
-    {
-        id: ID,
-        element: OnlineKuzatish,
-        path: "/kuzatish",
-    },
-    {
-        id: ID,
-        element: Rekvizitlar,
-        path: "/rekvizitlar",
-    },
-    //-------Institut---------
-    {
-        id: ID,
-        element: InstitutTuzilmasi,
-        path: "/institut-tuzilma",
-    },
-    {
-        id: ID,
-        element: InstitutKengashi,
-        path: "/institut-kengashi",
-    },
-    {
-        id: ID,
-        element: InstitutHaqida,
-        path: "/institut-haqida",
-    },
-    {
-        id: ID,
-        element: HujjatORpf,
-        path: "/hujjatlar/o'zbekiston-respublikasi-prezidentining-farmonlar",
-    },
-    {
-        id: ID,
-        element: HujjatORQ,
-        path: "/hujjatlar/o'zbekiston-respublikasi-qonunlari",
-    },
-    {
-        id: ID,
-        element: HujjatORVMq,
-        path: "/hujjatlar/o'zbekiston-respublikasi-vazirlar-mahkamasining-qarorlari",
-    },
-    {
-        id: ID,
-        element: HujjatIIHMh,
-        path: "/hujjatlar/institut-ichki-me'yoriy-huquqiy-hujjatlari",
-    },
-    //-------Tuzilma---------
-    {
-        id: ID,
-        element: Rektorat,
-        path: "/rektorat",
-    },
-    {
-        id: ID,
-        element: Markazlar,
-        path: "/markazlar",
-    },
-    {
-        id: ID,
-        element: Kafedralar,
-        path: "/kafedralar",
-    },
-    {
-        id: ID,
-        element: Fakultetlar,
-        path: "/fakultetlar",
-    },
-    {
-        id: ID,
-        element: Bolimlar,
-        path: "/bolimlar",
-    },
-    //-------Talabalar---------
-    {
-        id: ID,
-        element: Bakalavriyat,
-        path: "/bakalavriyat",
-    },
-    {
-        id: ID,
-        element: DTSvaMalaka,
-        path: "/dtsvaMalaka",
-    },
-    {
-        id: ID,
-        element: OquvRejalari,
-        path: "/oquvRejalari",
-    },
-    {
-        id: ID,
-        element: FanDasturlari,
-        path: "/fanDasturlari",
-    },
-    {
-        id: ID,
-        element: FanKatalogi,
-        path: "/fanKatalogi",
-    },
-    {
-        id: ID,
-        element: Magistratura,
-        path: "/magistratura",
-    },
-    {
-        id: ID,
-        element: MagistrDTSvaMalaka,
-        path: "/magistrDTSvaMalaka",
-    },
-    {
-        id: ID,
-        element: MagistrOquvRejalari,
-        path: "/magistrOquvRejalari",
-    },
-    {
-        id: ID,
-        element: MagistrFanDasturlari,
-        path: "/magistrFanDasturlari",
-    },
-    {
-        id: ID,
-        element: MagistrFanKatalogi,
-        path: "/magistrFanKatalogi",
-    },
-    {
-        id: ID,
-        element: TalabalarTurarJoyi,
-        path: "/talabalarTurarJoyi",
-    },
-    // Navbar Abiturient
-    {
-        id: ID,
-        element: AbiturientBakalavriat,
-        path: "/abiturient-bakalavriat",
-    },
-    {
-        id: ID,
-        element: OtishBallari,
-        path: "/abiturient-bakalavriat/o'tish-ballari",
-    },
-    {
-        id: ID,
-        element: QabulKvota,
-        path: "/abiturient-bakalavriat/qabul-kvotalari",
-    },
-    {
-        id: ID,
-        element: AbiturientMagistratura,
-        path: "/abiturient-magistratura",
-    },
-    {
-        id: ID,
-        element: AbiturientCallMarkaz,
-        path: "/call-markaz",
-    },
-    {
-        id: ID,
-        element: AbiturientMeyoriy,
-        path: "/abiturient-meyoriy",
-    },
-    {
-        id: ID,
-        element: AbiturientXorijiyTalaba,
-        path: "/abiturient-xorijiy-talabalar",
-    },
-    //-------Faoliyat---------
-    {
-        id: ID,
-        element: AkademikLitsey,
-        path: "/akademik-litsey",
-    },
-    {
-        id: ID,
-        element: IlmiyFaolyat,
-        path: "/ilmiy-faoliyat",
-    },
-    {
-        id: ID,
-        element: JamoatchilikKengashiFaol,
-        path: "/jamoatchilik",
-    },
-    {
-        id: ID,
-        element: MadMarFaolyat,
-        path: "/madaniy",
-    },
-    {
-        id: ID,
-        element: OquvUslubiyFaolyat,
-        path: "/oquv-uslubiy",
-    },
-    {
-        id: ID,
-        element: ProfessorlarFikri,
-        path: "/professorlar-fikri",
-    },
-    {
-        id: ID,
-        element: XalqaroYangiliklar,
-        path: "/xalqaro-yangiliklar",
-    },
-    {
-        id: ID,
-        element: XalqaroElonlar,
-        path: "/xalqaro-elonlar",
-    },
-    {
-        id: ID,
-        element: XalqaroHamkorlar,
-        path: "/xalqaro-hamkor-tashkilotlar",
-    },
-    {
-        id: ID,
-        element: XalqaroHamkorlarBatafsil,
-        path: "/xalqaro-hamkor-tashkilotlar/:lang/:id",
-    },
-    {
-        id: ID,
-        element: YoshlarBnIshlashMvaM,
-        path: "/yoshlar-ishlash",
-    },
-    {
-        id: ID,
-        element: Vakansiyalar,
-        path: "/vakansiyalar",
-    },
-    {
-        id: ID,
-        element: NormativHuj,
-        path: "/faoliyat/normativ-hujjatlar",
-    },
-    {
-        id: ID,
-        element: IchkiIdoraviyHuj,
-        path: "/faoliyat/ichki-idoraviy-hujjatlar",
-    },
-    {
-        id: ID,
-        element: KorrupsyaHaqHabBerish,
-        path: "/faoliyat/korrupsya-haqida-habar-berish",
-    },
-    // Barcha Elonlar
-    {
-        id: ID,
-        element: BarchaElonlar,
-        path: "/barchaElonlar",
-    },
+  {
+    id: ID,
+    element: Main,
+    path: "/",
+  },
+  {
+    id: ID,
+    element: News,
+    path: "/yangiliklar",
+  },
+  {
+    id: ID,
+    element: New,
+    path: "/yangiliklar/:id",
+  },
+  {
+    id: ID,
+    element: OchiqMalumotlar,
+    path: "/ochiq-malumotlar",
+  },
+  //-------Interactive xizmatlar---------
+  {
+    id: ID,
+    element: VirQabulxona,
+    path: "/qabulxona",
+  },
+  {
+    id: ID,
+    element: VideoMaruzalar,
+    path: "/videomaruza",
+  },
+  {
+    id: ID,
+    element: Qabul,
+    path: "/qabul",
+  },
+  {
+    id: ID,
+    element: OnlineKuzatish,
+    path: "/kuzatish",
+  },
+  {
+    id: ID,
+    element: Rekvizitlar,
+    path: "/rekvizitlar",
+  },
+  //-------Yashil Universitet---------
+  {
+    id: ID,
+    element: YashilYangiliklar,
+    path: "/yashil-univeritet/yangiliklar",
+  },
+  {
+    id: ID,
+    element: YashilRaqamlarda,
+    path: "/yashil-univeritet/raqamlarda",
+  },
+  //-------Institut---------
+  {
+    id: ID,
+    element: InstitutTuzilmasi,
+    path: "/institut-tuzilma",
+  },
+  {
+    id: ID,
+    element: InstitutKengashi,
+    path: "/institut-kengashi",
+  },
+  {
+    id: ID,
+    element: InstitutHaqida,
+    path: "/institut-haqida",
+  },
+  {
+    id: ID,
+    element: HujjatORpf,
+    path: "/hujjatlar/o'zbekiston-respublikasi-prezidentining-farmonlar",
+  },
+  {
+    id: ID,
+    element: HujjatORQ,
+    path: "/hujjatlar/o'zbekiston-respublikasi-qonunlari",
+  },
+  {
+    id: ID,
+    element: HujjatORVMq,
+    path: "/hujjatlar/o'zbekiston-respublikasi-vazirlar-mahkamasining-qarorlari",
+  },
+  {
+    id: ID,
+    element: HujjatIIHMh,
+    path: "/hujjatlar/institut-ichki-me'yoriy-huquqiy-hujjatlari",
+  },
+  //-------Tuzilma---------
+  {
+    id: ID,
+    element: Rektorat,
+    path: "/rektorat",
+  },
+  {
+    id: ID,
+    element: Markazlar,
+    path: "/markazlar",
+  },
+  {
+    id: ID,
+    element: Kafedralar,
+    path: "/kafedralar",
+  },
+  {
+    id: ID,
+    element: Fakultetlar,
+    path: "/fakultetlar",
+  },
+  {
+    id: ID,
+    element: Bolimlar,
+    path: "/bolimlar",
+  },
+  //-------Talabalar---------
+  {
+    id: ID,
+    element: Bakalavriyat,
+    path: "/bakalavriyat",
+  },
+  {
+    id: ID,
+    element: DTSvaMalaka,
+    path: "/dtsvaMalaka",
+  },
+  {
+    id: ID,
+    element: OquvRejalari,
+    path: "/oquvRejalari",
+  },
+  {
+    id: ID,
+    element: FanDasturlari,
+    path: "/fanDasturlari",
+  },
+  {
+    id: ID,
+    element: FanKatalogi,
+    path: "/fanKatalogi",
+  },
+  {
+    id: ID,
+    element: Magistratura,
+    path: "/magistratura",
+  },
+  {
+    id: ID,
+    element: MagistrDTSvaMalaka,
+    path: "/magistrDTSvaMalaka",
+  },
+  {
+    id: ID,
+    element: MagistrOquvRejalari,
+    path: "/magistrOquvRejalari",
+  },
+  {
+    id: ID,
+    element: MagistrFanDasturlari,
+    path: "/magistrFanDasturlari",
+  },
+  {
+    id: ID,
+    element: MagistrFanKatalogi,
+    path: "/magistrFanKatalogi",
+  },
+  {
+    id: ID,
+    element: TalabalarTurarJoyi,
+    path: "/talabalarTurarJoyi",
+  },
+  // Navbar Abiturient
+  {
+    id: ID,
+    element: AbiturientBakalavriat,
+    path: "/abiturient-bakalavriat",
+  },
+  {
+    id: ID,
+    element: OtishBallari,
+    path: "/abiturient-bakalavriat/o'tish-ballari",
+  },
+  {
+    id: ID,
+    element: QabulKvota,
+    path: "/abiturient-bakalavriat/qabul-kvotalari",
+  },
+  {
+    id: ID,
+    element: AbiturientMagistratura,
+    path: "/abiturient-magistratura",
+  },
+  {
+    id: ID,
+    element: AbiturientCallMarkaz,
+    path: "/call-markaz",
+  },
+  {
+    id: ID,
+    element: AbiturientMeyoriy,
+    path: "/abiturient-meyoriy",
+  },
+  {
+    id: ID,
+    element: AbiturientXorijiyTalaba,
+    path: "/abiturient-xorijiy-talabalar",
+  },
+  //-------Faoliyat---------
+  {
+    id: ID,
+    element: AkademikLitsey,
+    path: "/akademik-litsey",
+  },
+  {
+    id: ID,
+    element: IlmiyFaolyat,
+    path: "/ilmiy-faoliyat",
+  },
+  {
+    id: ID,
+    element: JamoatchilikKengashiFaol,
+    path: "/jamoatchilik",
+  },
+  {
+    id: ID,
+    element: MadMarFaolyat,
+    path: "/madaniy",
+  },
+  {
+    id: ID,
+    element: OquvUslubiyFaolyat,
+    path: "/oquv-uslubiy",
+  },
+  {
+    id: ID,
+    element: ProfessorlarFikri,
+    path: "/professorlar-fikri",
+  },
+  {
+    id: ID,
+    element: XalqaroYangiliklar,
+    path: "/xalqaro-yangiliklar",
+  },
+  {
+    id: ID,
+    element: XalqaroElonlar,
+    path: "/xalqaro-elonlar",
+  },
+  {
+    id: ID,
+    element: XalqaroHamkorlar,
+    path: "/xalqaro-hamkor-tashkilotlar",
+  },
+  {
+    id: ID,
+    element: XalqaroHamkorlarBatafsil,
+    path: "/xalqaro-hamkor-tashkilotlar/:lang/:id",
+  },
+  {
+    id: ID,
+    element: YoshlarBnIshlashMvaM,
+    path: "/yoshlar-ishlash",
+  },
+  {
+    id: ID,
+    element: Vakansiyalar,
+    path: "/vakansiyalar",
+  },
+  {
+    id: ID,
+    element: NormativHuj,
+    path: "/faoliyat/normativ-hujjatlar",
+  },
+  {
+    id: ID,
+    element: IchkiIdoraviyHuj,
+    path: "/faoliyat/ichki-idoraviy-hujjatlar",
+  },
+  {
+    id: ID,
+    element: KorrupsyaHaqHabBerish,
+    path: "/faoliyat/korrupsya-haqida-habar-berish",
+  },
+  // Barcha Elonlar
+  {
+    id: ID,
+    element: BarchaElonlar,
+    path: "/barchaElonlar",
+  },
 
-    // Elon Batafsil
-    {
-        id: ID,
-        element: ElonBatafsil,
-        path: "/elonBatafsil/:id",
-    },
-    // Search
-    {
-        id: ID,
-        element: SearchPage,
-        path: "/qidiruv",
-    },
-    //-------Authors---------
-    {
-        id: ID,
-        element: AuthorPage,
-        path: "/authors",
-    },
+  // Elon Batafsil
+  {
+    id: ID,
+    element: ElonBatafsil,
+    path: "/elonBatafsil/:id",
+  },
+  // Search
+  {
+    id: ID,
+    element: SearchPage,
+    path: "/qidiruv",
+  },
+  //-------Authors---------
+  {
+    id: ID,
+    element: AuthorPage,
+    path: "/authors",
+  },
 ];
 
 export default routes;

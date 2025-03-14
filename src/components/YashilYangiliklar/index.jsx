@@ -8,7 +8,7 @@ import Breadcrumb from "../Breadcrumb";
 import APIYangilik from "../../services/yangilik";
 import { useSelector } from "react-redux";
 
-const YashilYangiliklar = () => {
+const XalqaroYangiliklar = () => {
   const Lang = useSelector((state) => state.reducerLang.isLang);
   const [title, setTitle] = useState("");
 
@@ -22,14 +22,12 @@ const YashilYangiliklar = () => {
   const getData = useCallback(async () => {
     try {
       await APIYangilik.get().then((res) => {
-        const filteredData = res.data.filter((item) => item.yashil === true);
+        const filteredData = res.data.filter((item) => item.xalqaro === true);
         const sortedData = filteredData.sort((a, b) => {
           return new Date(b.sana) - new Date(a.sana);
         });
         setNews(sortedData);
-        setNewsOne(
-          filteredData.slice(pagesVisited, pagesVisited + itemsPerPage)
-        );
+        setNewsOne(filteredData.slice(pagesVisited, pagesVisited + itemsPerPage));
       });
     } catch (error) {
       console.error("Error fetching news:", error);
@@ -72,14 +70,14 @@ const YashilYangiliklar = () => {
         <Breadcrumb
           steps={[
             { text: <TextTranslate id="boshSahifa" />, link: "/" },
-            { text: <TextTranslate id="hedUniversitet-yashil" /> },
-            { text: <TextTranslate id="yashilYangiliklar" /> },
+            { text: <TextTranslate id="faoliyat" /> },
+            { text: <TextTranslate id="xalqaroYangiliklar" /> },
           ]}
         />
       </div>
       <div className="text-center my-1 md:my-3">
         <h2 className="text-xl md:text-3xl font-bold my-2 text-[#004269] text-center">
-          <TextTranslate id="yashilYangiliklar" />
+          <TextTranslate id="xalqaroYangiliklar" />
         </h2>
       </div>
       <div
@@ -146,4 +144,4 @@ const YashilYangiliklar = () => {
   );
 };
 
-export default YashilYangiliklar;
+export default XalqaroYangiliklar;
