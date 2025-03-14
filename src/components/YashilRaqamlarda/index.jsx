@@ -1,31 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "aos/dist/aos.css";
 import TextTranslate from "../TextTranslate";
 import Breadcrumb from "../Breadcrumb";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 const YashilRaqamlarda = () => {
-  const Lang = useSelector((state) => state.reducerLang.isLang);
-  const [title, setTitle] = useState("");
+  // const Lang = useSelector((state) => state.reducerLang.isLang);
+  // const [title, setTitle] = useState("");
 
-  useEffect(() => {
-    switch (Lang) {
-      case "uz":
-        setTitle("title_uz");
+  // useEffect(() => {
+  //   switch (Lang) {
+  //     case "uz":
+  //       setTitle("title_uz");
 
-        break;
-      case "ru":
-        setTitle("title_ru");
-        break;
-      case "en":
-        setTitle("title_en");
-        break;
+  //       break;
+  //     case "ru":
+  //       setTitle("title_ru");
+  //       break;
+  //     case "en":
+  //       setTitle("title_en");
+  //       break;
 
-      default:
-        setTitle("title_uz");
-        break;
-    }
-  }, [Lang]);
+  //     default:
+  //       setTitle("title_uz");
+  //       break;
+  //   }
+  // }, [Lang]);
 
   return (
     <section className="bg-gray-50 px-5 py-3 md:px-10 lg:px-20 md:min-h-[calc(100vh-565px)] lg:min-h-[calc(100vh-400px)]">
@@ -43,7 +43,7 @@ const YashilRaqamlarda = () => {
           <TextTranslate id="yashilRaqamlarda" />
         </h2>
       </div>
-      <div>Hozirda ma'lumot mavjud emas</div>
+      <div className="text-center italic font-medium text-red-500 md:text-lg">Hozirda ma'lumot mavjud emas!</div>
     </section>
   );
 };
