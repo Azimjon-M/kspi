@@ -2,18 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
+/* src/styles/fonts.css yoki src/assets/fonts/fonts.css */
+@font-face {
+  font-family: "Light";
+  src: url("./assets/fonts/DinPro/dinpro_condensedlight.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Regular";
+  src: url("./assets/fonts/DinPro/dinpro_condensedregular.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Medium";
+  src: url("./assets/fonts/DinPro/dinpro_condensedmedium.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Bold";
+  src: url("./assets/fonts/DinPro/dinpro_bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
-    background: #fff;
+  background: #fff;
 }
 
 ::-webkit-scrollbar {
-    width: 6px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #aaa;
+  background-color: #aaa;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #555;
+  background-color: #555;
 }

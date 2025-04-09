@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
-
+import Logo from "../../assets/icons/logo.png";
 import TextTranslate from "../TextTranslate";
 import APIYangilik from "../../services/yangilik";
 import { useSelector } from "react-redux";
@@ -10,8 +10,6 @@ import { useSelector } from "react-redux";
 const NewsHome = () => {
   const Lang = useSelector((state) => state.reducerLang.isLang);
   const [title, setTitle] = useState("");
-
-  const [firstNews, setFirstNews] = useState(null);
   const [news, setNews] = useState(null);
   useEffect(() => {
     Aos.init();
@@ -21,9 +19,9 @@ const NewsHome = () => {
           .then((res) => {
             const sortedData = res.data.sort((a, b) => {
               return new Date(b.sana) - new Date(a.sana);
-          });
-            setFirstNews(sortedData.slice(0, 1));
-            setNews(sortedData.slice(1, 5));
+            });
+
+            setNews(sortedData.slice(0, 6));
           })
           .catch((err) => {
             console.log(err);
@@ -32,6 +30,7 @@ const NewsHome = () => {
         console.log(error);
       }
     };
+
     loadPost();
   }, []);
 
@@ -53,116 +52,128 @@ const NewsHome = () => {
         break;
     }
   }, [Lang]);
+
+  const formatDate = (dateString, Lang) => {
+    const months = {
+      uz: [
+        "Yanvar",
+        "Fevral",
+        "Mart",
+        "Aprel",
+        "May",
+        "Iyun",
+        "Iyul",
+        "Avgust",
+        "Sentyabr",
+        "Oktyabr",
+        "Noyabr",
+        "Dekabr",
+      ],
+      ru: [
+        "Январь",
+        "Февраль",
+        "Март",
+        "Апрель",
+        "Май",
+        "Июнь",
+        "Июль",
+        "Август",
+        "Сентябрь",
+        "Октябрь",
+        "Ноябрь",
+        "Декабрь",
+      ],
+      en: [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ],
+    };
+
+    const date = new Date(dateString);
+    const month = months[Lang][date.getMonth()];
+
+    return `${month}`;
+  };
+
   return (
     <div className="px-5 py-16 md:px-10 lg:px-20 xl:px-0 max-w-7xl mx-auto">
       <div className="md:flex md:items-center justify-between">
         {/* News heading */}
         <div className="mx-auto my-1 md:my-3">
-          <h2 className="text-xl md:text-4xl font-bold text-[#004269]">
+          <h2 className="text-xl md:text-4xl font-semibold text-[#5f4fa1]">
             <TextTranslate id="newsHeading" />
           </h2>
         </div>
       </div>
       {/* News items */}
-
-      {/* First news */}
-      <div className="grid md:grid-cols-1 xl:grid-cols-2 overflow-hidden my-10">
-        {firstNews &&
-          firstNews.map((item, idx) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-stretch overflow-hidden">
+        {news &&
+          news.map((item, idx) => (
             <Link
-              className="inline-block"
+              className="inline-block mb-3"
               to={`/yangiliklar/${item.id}`}
               key={idx}
             >
               <div
-                className="p-4 max-w-sm md:max-w-3xl lg:max-w-4xl mx-auto group/item hover:cursor-pointer h-full"
-                data-aos="fade-right"
+                className="h-full md:p-4 max-w-sm lg:max-w-xs xl:max-w-md mx-auto group/item hover:cursor-pointer"
+                data-aos="fade-left"
               >
-                <div className="flex rounded-lg h-full shadow-md hover:shadow-lg flex-col group/edit">
-                  <div className="flex items-center mb-3 relative overflow-hidden">
+                <div className="relative flex h-full dark:bg-gray-800 shadow-md hover:shadow-lg flex-col group/edit border border-[#e5e5e5] overflow-hidden">
+                  <div className="absolute inset-0 group-hover/item:bg-[#5f4fa1]/50 duration-300"></div>
+                  <div className="flex items-center relative group-hover/item:-z-10">
                     <img
-                      className="w-full rounded group-hover/item:scale-105 ease-in duration-300 ..."
-                      src={item.rasm_1?.replace(/^http:\/\//i, 'https://')}
+                      className="w-full md:h-56 object-cover"
+                      src={item.rasm_1?.replace(/^http:\/\//i, "https://")}
                       alt="Sunset in the mountains"
                     />
-                    <div className="absolute top-0 left-3 h-12 w-12 bg-[#802323] text-center flex flex-col text-sm p-1 rounded-b-md">
-                      <span className="text-white">
-                        {item.sana.slice(8, 10)}.{item.sana.slice(5, 7)}
-                      </span>
-                      <span className="text-white">
-                        {item.sana.slice(0, 4)}
+                    <div className="absolute top-1 -left-1 h-8 w-24 bg-[#5f4fa1] text-center flex items-center px-2 shadow-[-4px_-4px_0px_rgba(95,79,161,0.698)] translate-x-1 translate-y-1">
+                      <img
+                        src={Logo}
+                        alt="Logo icon"
+                        width={22}
+                        className="mr-1"
+                      />
+                      <span className="text-white text-xs font-primaryRegular leading-3">
+                        Qo'qon davlat universiteti
                       </span>
                     </div>
-                    <div className="absolute bottom-0 border-[#004269] border-2 w-20 group-hover/edit:w-full ... ease-in duration-300 ..."></div>
                   </div>
                   {/* News title */}
-                  <div className="flex flex-col justify-between flex-grow px-2">
-                    <h2 className="leading-relaxed font-bold line-clamp-3 xl:line-clamp-5 text-base md:text-lg lg:text-xl xl:text-2xl text-[#004269] text-center dark:text-gray-300">
-                      {/* {item.title_uz} */}
-                      {item[title]}
-                    </h2>
-                    <div className="flex justify-center items-center">
-                      <div className="border-4 bg-[#004269] w-10 my-5"></div>
+                  <div className="grid grid-cols-5 px-1 py-2 bg-[#f2f2f2]">
+                    <div className="col-span-1 border-r border-[#707070]">
+                      <div className="text-center flex flex-col text-sm rounded-b-md">
+                        <span className="text-[#5f4fa1] text-lg">
+                          {item.sana.slice(8, 10)}
+                        </span>
+                        <span className="text-[#5f4fa1]">
+                          {/* {item.sana.slice(5, 7)} */}
+                          {formatDate(item.sana, Lang)}
+                        </span>
+                        <span className="text-[#5f4fa1]">
+                          {item.sana.slice(0, 4)}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="col-span-4 p-2">
+                      <h2 className="line-clamp-2 min-h-[3rem] leading-snug font-semibold text-base dark:text-gray-300 line">
+                        {item[title]}
+                      </h2>
                     </div>
                   </div>
                 </div>
               </div>
             </Link>
           ))}
-        {/* Remaining news */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-2 overflow-hidden">
-          {news &&
-            news.map((item, idx) => (
-
-              <Link
-                className="inline-block"
-                to={`/yangiliklar/${item.id}`}
-                key={idx}
-              >
-                <div
-                  className="p-4 max-w-sm lg:max-w-xs xl:max-w-md mx-auto group/item hover:cursor-pointer"
-                  data-aos="fade-left"
-                >
-                  <div className="flex rounded-lg h-full dark:bg-gray-800 shadow-md hover:shadow-lg flex-col group/edit">
-                    <div className="flex items-center mb-3 relative overflow-hidden">
-                      <img
-                        className="w-full md:h-56 lg:h-40 xl:h-44 object-cover rounded group-hover/item:scale-105 ease-in duration-300 ..."
-                        src={item.rasm_1?.replace(/^http:\/\//i, 'https://')}
-                        alt="Sunset in the mountains"
-                      />
-                      <div className="absolute top-0 left-3 h-12 w-12 bg-[#802323] text-center flex flex-col text-sm p-1 rounded-b-md">
-                        <span className="text-white">
-                          {item.sana.slice(8, 10)}.{item.sana.slice(5, 7)}
-                        </span>
-                        <span className="text-white">
-                          {item.sana.slice(0, 4)}
-                        </span>
-                      </div>
-                      <div className="absolute bottom-0 border-[#004269] border-2 w-10 group-hover/edit:w-full ... ease-in duration-300 ..."></div>
-                    </div>
-                    {/* News title */}
-                    <div className="flex flex-col justify-between flex-grow px-2">
-                      <h2 className="leading-relaxed font-bold line-clamp-3 xl:line-clamp-2 text-base text-[#004269] text-center dark:text-gray-300 line">
-                        {item[title]}
-                      </h2>
-                      <div className="flex justify-center items-center">
-                        <div className="border-4 bg-[#004269] w-10 my-5"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
-        </div>
-      </div>
-      {/* Barcha yangiliklarga o'tish */}
-      <div className="text-center my-2">
-        <Link
-          to="/yangiliklar"
-          className="text-lg md:text-2xl bg-slate-100 text-cyan-900 font-bold active:border border-slate-100 px-10 md:px-28 py-2 md:py-4 rounded-xl"
-        >
-          <TextTranslate id="newsToPage" />
-        </Link>
       </div>
     </div>
   );
