@@ -15,7 +15,6 @@ const Announcements = () => {
     loop: true,
     slides: {
       perView: 4,
-      spacing: 16,
     },
     breakpoints: {
       "(max-width: 1024px)": {
@@ -96,7 +95,6 @@ const Announcements = () => {
       months[Lang]?.[date.getMonth()] || ""
     } ${date.getFullYear()}`;
   };
-  console.log(announcements);
 
   return (
     <div className="bg-[#f5f5f5] py-5">
@@ -110,17 +108,17 @@ const Announcements = () => {
       <div ref={sliderRef} className="keen-slider">
         {announcements.map((item) => (
           <Link
-            to={`/yangiliklar/${item.id}`}
+            to={`/e'lonlar/${item.id}`}
             key={item.id}
             className="keen-slider__slide relative overflow-hidden group shadow hover:shadow-xl transition-all duration-300"
           >
             <img
               src={item.rasm?.replace(/^http:\/\//, "https://")}
-              alt={item.rasm}
+              alt={item[titleKey]}
               className="w-full h-96 object-cover"
             />
             <div className="absolute inset-0 bg-[#5f4fa1b1] opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-4 text-white">
-              <h3 className="text-sm md:text-lg xl:text-xl font-semibold line-clamp-2">
+              <h3 className="text-lg md:text-xl 2xl:text-2xl font-semibold line-clamp-2">
                 {item[titleKey]}
               </h3>
               <p className="text-xs mt-1">
