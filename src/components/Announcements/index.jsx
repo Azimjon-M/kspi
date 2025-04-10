@@ -108,7 +108,7 @@ const Announcements = () => {
       <div ref={sliderRef} className="keen-slider">
         {announcements.map((item) => (
           <Link
-            to={`/e'lonlar/${item.id}`}
+            to={`/elonBatafsil/${item.id}`}
             key={item.id}
             className="keen-slider__slide relative overflow-hidden group shadow hover:shadow-xl transition-all duration-300"
           >
