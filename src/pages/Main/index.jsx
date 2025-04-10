@@ -2,7 +2,7 @@ import React from "react";
 import Carousel from "../../components/Carousel";
 import Interactive from "../../components/Interactive";
 import NewsHome from "../../components/NewsHomeCom";
-import StudentOpinion from "../../components/StudentOpinion";
+// import StudentOpinion from "../../components/StudentOpinion";
 import Curriculum from "../../components/Curriculum";
 import ContactUs from "../../components/Contact";
 import Partners from "../../components/Partners";
@@ -23,7 +23,7 @@ const Main = () => {
             {/* <Statistics /> */}
             <NewsHome />
             <Announcements />
-            <StudentOpinion />
+            {/* <StudentOpinion /> */}
             <WarmThoughts />
             <Curriculum />
             <ExploreProgram />
