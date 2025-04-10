@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import TextTranslate from "../TextTranslate";
+// import TextTranslate from "../TextTranslate";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { IoPlayOutline, IoClose } from "react-icons/io5";
 import APIFikr from "../../services/fikr";
@@ -53,10 +53,7 @@ function WarmThoughts() {
 
   return (
     <div>
-      <div className="max-w-7xl mx-auto my-8 md:my-16">
-        <h1 className="text-xl md:text-3xl font-bold text-[#004269] text-center my-4">
-          <TextTranslate id="warmThoughtsTitile" />
-        </h1>
+      <div className="max-w-7xl mx-auto mb-8 md:mb-16">
         <div className="hidden md:block p-5 my-12">
           <div className="grid grid-cols-3 gap-2">
             {fikrlar &&
