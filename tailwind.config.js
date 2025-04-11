@@ -12,6 +12,7 @@ module.exports = {
         scroll: "scroll 30s linear infinite",
       },
       fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
         primaryLight: ["Light"],
         primaryRegular: ["Regular"],
         primaryMedium: ["Medium"],

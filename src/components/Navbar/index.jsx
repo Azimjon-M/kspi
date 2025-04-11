@@ -18,6 +18,7 @@ import flag_ru from "../../assets/icons/flag-ru.png";
 import flag_en from "../../assets/icons/flag-en.png";
 import TextTranslate from "../TextTranslate/index";
 import Dropdown from "../Dropdown";
+import LanguageDropdown from "../DropdownChangeLang";
 
 function Navbar() {
     const location = useLocation();
@@ -38,9 +39,12 @@ function Navbar() {
     const queryParams = new URLSearchParams(location.search);
     const query = queryParams.get("search") || "";
 
-    const data = { uz: flag_uz, ru: flag_ru, en: flag_en };
-
     const color = "#5f4fa1";
+    const languages = [
+        { id: "1", code: "Uz", flag: flag_uz },
+        { id: "2", code: "Ru", flag: flag_ru },
+        { id: "3", code: "En", flag: flag_en },
+    ];
 
     // search
     const formik = useFormik({
@@ -57,33 +61,34 @@ function Navbar() {
         },
     });
 
-    const handleClickSearch = () => {
-        if (isFocusedSearInp && formik.values.searchText) {
-            formik.handleSubmit();
-        } else {
-            setFocusedSearInp(!isFocusedSearInp);
-        }
-    };
-    const handleClickClose = () => {
-        setFocusedSearInp(false);
-    };
-    // Change Language log
-    const handleClickLang = (lang) => {
-        switch (lang) {
-            case "uz":
-                dispatch(setLangUz());
-                break;
-            case "ru":
-                dispatch(setLangRu());
-                break;
-            case "en":
-                dispatch(setLangEn());
-                break;
-            default:
-                dispatch(setLangUz());
-                break;
-        }
-    };
+    // const handleClickSearch = () => {
+    //     if (isFocusedSearInp && formik.values.searchText) {
+    //         formik.handleSubmit();
+    //     } else {
+    //         setFocusedSearInp(!isFocusedSearInp);
+    //     }
+    // };
+    // const handleClickClose = () => {
+    //     setFocusedSearInp(false);
+    // };
+    // // Change Language log
+    // const handleClickLang = (lang) => {
+    //     switch (lang) {
+    //         case "uz":
+    //             dispatch(setLangUz());
+    //             break;
+    //         case "ru":
+    //             dispatch(setLangRu());
+    //             break;
+    //         case "en":
+    //             dispatch(setLangEn());
+    //             break;
+    //         default:
+    //             dispatch(setLangUz());
+    //             break;
+    //     }
+    // };
+
     // Change Lang
     const handliTogleLang = (numb) => {
         switch (numb) {
@@ -154,6 +159,21 @@ function Navbar() {
         };
     }, []);
 
+    // const [isLang, setIsLang] = useState("1"); // Default til: Uz
+    //   const [togglerLangDrop, setTogglerLangDrop] = useState(false);
+
+    // Faol tilni aniqlash
+    const activeLang = languages.find((lang) => lang.id === isLang);
+
+    // Faol bo‘lmagan tillarni filtr qilish
+    const availableLanguages = languages.filter((lang) => lang.id !== isLang);
+
+    // Tilni o‘zgartirish funksiyasi
+    //   const handliTogleLang = (langId) => {
+    //     setIsLang(langId);
+    //     setTogglerLangDrop(false); // Til o‘zgartirilganda dropdown ni yopamiz
+    //   };
+
     return (
         <div
             className={`${scrollY && `sticky top-0 shadow-xl`} ${
@@ -168,97 +188,6 @@ function Navbar() {
                     <div className="w-full hidden xl:flex xl:justify-between text-white rounded-bl-lg ">
                         <div>Ijtimoiy tarmoqlar</div>
                         <div className="flex">
-                            <ul className="flex gap-x-[20px] text-[14px] font-medium 3xl:gap-x-[30px] 3xl:text-[16px]">
-                                <li className="py-[4px]">
-                                    <Link
-                                        target="_blank"
-                                        to="https://talaba.kspi.uz/dashboard/login"
-                                    >
-                                        <TextTranslate id="hedHemis-tizimi" />
-                                    </Link>
-                                </li>
-                                <li className="relative after:absolute after:top-[50%] after:translate-y-[-50%] after:right-[-12px] after:w-[7px] after:h-[7px] after:border-s-2 after:border-b-2 after:border-white after:rotate-[-45deg] cursor-pointer py-[4px] mr-3 3xl:after:w-[8px] 3xl:after:h-[8px] ">
-                                    <div className="dropdown dropdown-hover">
-                                        <div
-                                            tabIndex={0}
-                                            role="button"
-                                            className="text-inherit"
-                                        >
-                                            <TextTranslate id="hedInstitut-jurnali" />
-                                        </div>
-                                        <ul
-                                            tabIndex={0}
-                                            className="dropdown-content z-10 menu p-2 shadow bg-base-100 rounded-box w-52 text-[#004269] dark:text-white font-bold"
-                                        >
-                                            <li>
-                                                <Link
-                                                    target="_blank"
-                                                    to="https://journal.kspi.uz/"
-                                                >
-                                                    <TextTranslate id="hedDropInstitut-jurnali_1" />
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link
-                                                    target="_blank"
-                                                    to="http://wsrjournal.com/index.php/wsrj"
-                                                >
-                                                    <TextTranslate id="hedDropInstitut-jurnali_2" />
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                {/* Yashil Universitet */}
-                                <li className="relative after:absolute after:top-[50%] after:translate-y-[-50%] after:right-[-12px] after:w-[7px] after:h-[7px] after:border-s-2 after:border-b-2 after:border-white after:rotate-[-45deg] cursor-pointer py-[4px] mr-3 3xl:after:w-[8px] 3xl:after:h-[8px] ">
-                                    <div className="dropdown dropdown-hover">
-                                        <div
-                                            tabIndex={0}
-                                            role="button"
-                                            className="text-inherit"
-                                        >
-                                            <TextTranslate id="hedUniversitet-yashil" />
-                                        </div>
-                                        <ul
-                                            tabIndex={0}
-                                            className="dropdown-content z-10 menu p-2 shadow bg-base-100 rounded-box w-52 text-[#004269] dark:text-white font-bold"
-                                        >
-                                            <li>
-                                                <Link to="/yashil-univeritet/yangiliklar">
-                                                    <TextTranslate id="hedDropUniversitet-yashil_1" />
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link to="/yashil-univeritet/raqamlarda">
-                                                    <TextTranslate id="hedDropUniversitet-yashil_2" />
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li className="py-[4px]">
-                                    <Link
-                                        target="_blank"
-                                        to="https://conferences.kspi.uz/"
-                                    >
-                                        <TextTranslate id="hedKonferensyalar" />
-                                    </Link>
-                                </li>
-                                <li className="py-[4px]">
-                                    <Link
-                                        target="_blank"
-                                        to="https://my.edu.uz/"
-                                    >
-                                        <TextTranslate id="hedIkkinchi-talim" />
-                                    </Link>
-                                </li>
-                                <li className="py-[4px]">
-                                    {/* O'zimizni Page */}
-                                    <Link to="/ochiq-malumotlar">
-                                        <TextTranslate id="hedOchiq-malumotlar" />
-                                    </Link>
-                                </li>
-                            </ul>
                             {/* HEADER SEARCH FORM */}
                             {/* <div
                                 className={`${
@@ -305,113 +234,107 @@ function Navbar() {
                             </div> */}
                             {/* /HEADER SEARCH FORM */}
                             {/* Language */}
-                            <div
+                            <LanguageDropdown />
+                            {/* <div
                                 onMouseEnter={() => setTogglerLangDrop(true)}
                                 onMouseLeave={() => setTogglerLangDrop(false)}
                                 className="relative font-medium ms-4"
                             >
                                 <div>
-                                    <button className="btn btn-sm btn-ghost flex flex-nowrap px-2">
+                                    <button className="btn btn-sm btn-ghost flex items-center gap-x-2 px-2">
                                         <div className="w-[20px] h-[20px] overflow-hidden rounded-full">
                                             <img
                                                 className="w-full h-full"
-                                                src={data[isLang]}
-                                                alt="icon"
+                                                src={activeLang.flag}
+                                                alt={`${activeLang.code} flag`}
                                             />
                                         </div>
-                                        Til
+                                        <span className="text-[12px] font-thin">
+                                            {activeLang.code}
+                                        </span>
                                         <FaAngleRight
-                                            className={`${
+                                            className={`transition-transform duration-200 ${
                                                 togglerLangDrop
                                                     ? "rotate-[270deg]"
                                                     : "rotate-[90deg]"
-                                            }  text-[1rem] style-slide-nav`}
+                                            } style-slide-nav`}
                                         />
                                     </button>
                                 </div>
 
                                 <ul
                                     className={`${
-                                        togglerLangDrop ? "" : "hidden"
-                                    } z-50 font-medium absolute left-[50%] translate-x-[-50%] bg-gray-50 rounded-lg p-2`}
+                                        togglerLangDrop ? "block" : "hidden"
+                                    } z-50 font-medium absolute left-[50%] translate-x-[-50%] bg-gray-50 rounded-lg p-2 min-w-[100px]`}
                                 >
-                                    <button
-                                        onClick={() => handliTogleLang("1")}
-                                        className="text-black btn btn-sm btn-ghost"
-                                    >
-                                        <li className="flex items-center gap-x-2">
-                                            <div className="w-[20px] h-[20px] overflow-hidden rounded-full">
-                                                <img
-                                                    className="w-full h-full"
-                                                    src={flag_uz}
-                                                    alt="icon"
-                                                />
-                                            </div>
-                                            Uz
+                                    {availableLanguages.map((lang) => (
+                                        <li
+                                            key={lang.id}
+                                            className="flex items-center gap-x-2"
+                                        >
+                                            <button
+                                                onClick={() =>
+                                                    handliTogleLang(lang.id)
+                                                }
+                                                className="text-black btn btn-sm btn-ghost w-full flex items-center gap-x-2"
+                                            >
+                                                <div className="w-[20px] h-[20px] overflow-hidden rounded-full">
+                                                    <img
+                                                        className="w-full h-full"
+                                                        src={lang.flag}
+                                                        alt={`${lang.code} flag`}
+                                                    />
+                                                </div>
+                                                <span>{lang.code}</span>
+                                            </button>
                                         </li>
-                                    </button>
-                                    <button
-                                        onClick={() => handliTogleLang("2")}
-                                        className="text-black btn btn-sm btn-ghost"
-                                    >
-                                        <li className="flex items-center gap-x-2">
-                                            <div className="w-[20px] h-[20px] overflow-hidden rounded-full">
-                                                <img
-                                                    className="w-full h-full"
-                                                    src={flag_ru}
-                                                    alt="icon"
-                                                />
-                                            </div>
-                                            Ru
-                                        </li>
-                                    </button>
-                                    <button
-                                        onClick={() => handliTogleLang("3")}
-                                        className="text-black btn btn-sm btn-ghost"
-                                    >
-                                        <li className="flex items-center gap-x-2">
-                                            <div className="w-[20px] h-[20px] overflow-hidden rounded-full">
-                                                <img
-                                                    className="w-full h-full"
-                                                    src={flag_en}
-                                                    alt="icon"
-                                                />
-                                            </div>
-                                            En
-                                        </li>
-                                    </button>
+                                    ))}
                                 </ul>
-                            </div>
+                            </div> */}
                             {/* /Language */}
                             {/* Tizimlar Drop */}
-                            <Dropdown id="dropdown1" name="Tizimlar">
+                            <Dropdown
+                                id="dropdown1"
+                                name="Tizimlar"
+                                classForName="text-[12px] font-thin"
+                                classForAllChild=""
+                            >
                                 <li className="text-black">
                                     <Link
-                                        to=""
-                                        className="line-clamp-1 leading-7"
+                                        target="_blank"
+                                        to="https://talaba.kspi.uz/dashboard/login"
                                     >
-                                        Hello sdaihj asiojdaiosj doi
+                                        <TextTranslate id="hedHemis-tizimi" />
                                     </Link>
                                 </li>
                                 <li className="text-black">
                                     {/* Nested dropdown */}
                                     <Dropdown
                                         id="dropChild1"
-                                        name="HelloChild"
+                                        name={
+                                            <TextTranslate id="hedInstitut-jurnali" />
+                                        }
                                         isNested
                                         direction="left"
                                     >
                                         <li>
-                                            <Link to="">Hello child 1</Link>
+                                            <Link
+                                                target="_blank"
+                                                to="https://journal.kspi.uz/"
+                                            >
+                                                <TextTranslate id="hedDropInstitut-jurnali_1" />
+                                            </Link>
                                         </li>
                                         <li>
-                                            <Link to="">Hello child 2</Link>
-                                        </li>
-                                        <li>
-                                            <Link to="">Hello child 3</Link>
+                                            <Link
+                                                target="_blank"
+                                                to="http://wsrjournal.com/index.php/wsrj"
+                                            >
+                                                <TextTranslate id="hedDropInstitut-jurnali_2" />
+                                            </Link>
                                         </li>
                                         {/* Ichma-ich yana bir nested dropdown */}
-                                        <li>
+                                        {/* <li>
                                             <Dropdown
                                                 id="dropGrandChild1"
                                                 name="GrandChild"
@@ -429,23 +352,50 @@ function Navbar() {
                                                     </Link>
                                                 </li>
                                             </Dropdown>
-                                        </li>
+                                        </li> */}
                                     </Dropdown>
                                 </li>
                                 <li className="text-black">
                                     <Link
-                                        to=""
-                                        className="line-clamp-1 leading-7"
+                                        target="_blank"
+                                        to="https://conferences.kspi.uz/"
                                     >
-                                        Hello sdaihj asiojdaiosj doi
+                                        <TextTranslate id="hedKonferensyalar" />
                                     </Link>
                                 </li>
                                 <li className="text-black">
                                     <Link
-                                        to=""
-                                        className="line-clamp-1 leading-7"
+                                        target="_blank"
+                                        to="https://my.edu.uz/"
                                     >
-                                        Hello sdaihj asiojdaiosj doi
+                                        <TextTranslate id="hedIkkinchi-talim" />
+                                    </Link>
+                                </li>
+                                <li className="text-black">
+                                    {/* Nested dropdown */}
+                                    <Dropdown
+                                        id="dropChild1"
+                                        name={
+                                            <TextTranslate id="hedUniversitet-yashil" />
+                                        }
+                                        isNested
+                                        direction="left"
+                                    >
+                                        <li>
+                                            <Link to="/yashil-univeritet/yangiliklar">
+                                                <TextTranslate id="hedDropUniversitet-yashil_1" />
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/yashil-univeritet/raqamlarda">
+                                                <TextTranslate id="hedDropUniversitet-yashil_2" />
+                                            </Link>
+                                        </li>
+                                    </Dropdown>
+                                </li>
+                                <li className="text-black">
+                                    <Link to="/ochiq-malumotlar">
+                                        <TextTranslate id="hedOchiq-malumotlar" />
                                     </Link>
                                 </li>
                             </Dropdown>
@@ -956,7 +906,7 @@ function Navbar() {
                     } style-transition-02 md:flex md:flex-col overflow-auto absolute top-[59px] sm:top-[64px] md:top-[92px] left-0 w-full  bg-[#004269] text-white`}
                 >
                     {/* Language */}
-                    <div className="flex justify-end p-4 sm:p-6 md:p-8 lg:p-10">
+                    {/* <div className="flex justify-end p-4 sm:p-6 md:p-8 lg:p-10">
                         <div className="flex items-end gap-x-2 ms-8">
                             <img
                                 onClick={() => handleClickLang("uz")}
@@ -986,7 +936,7 @@ function Navbar() {
                                 alt="flag en"
                             />
                         </div>
-                    </div>
+                    </div> */}
                     {/* /Language */}
                     {/* Search */}
                     <div className={`${noSearch ? "hidden" : "md:hidden"}`}>

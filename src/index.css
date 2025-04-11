@@ -30,8 +30,10 @@
   font-style: normal;
 }
 
+
 body {
   background: #fff;
+  @apply font-poppins;
 }
 
 ::-webkit-scrollbar {
