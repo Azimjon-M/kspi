@@ -39,11 +39,11 @@ const ExploreProgram = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto my-5 md:my-16">
-      <h2 className="text-center text-4xl text-[#004269] mb-10 font-semibold">
+    <div className="bg-[#f5f5f5] py-5 md:pb-16">
+      <h2 className="text-center text-4xl text-[#5f4fa1] mb-10 font-semibold">
         <TextTranslate id="bizningDastur"/>
       </h2>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
         {data.map((item) => (
           <div
             className="card max-w-80 h-[450px] object-cover shadow-md hover:shadow-xl hover:-translate-y-1 mx-auto transition-transform ease-in-out duration-300 bg-white"
