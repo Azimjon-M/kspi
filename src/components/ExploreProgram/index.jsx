@@ -10,67 +10,63 @@ const ExploreProgram = () => {
   const data = [
     {
       id: 0,
-      title: <TextTranslate id="qoshma"/>,
-      content: <TextTranslate id="qoshmaTavsif"/>,
+      title: <TextTranslate id="qoshma" />,
+      content: <TextTranslate id="qoshmaTavsif" />,
       img: dasturUchun,
       link: "https://sinov.kspi.uz",
     },
     {
       id: 1,
-      title: <TextTranslate id="oqish"/>,
-      content: <TextTranslate id="oqishTavsif"/>,
+      title: <TextTranslate id="oqish" />,
+      content: <TextTranslate id="oqishTavsif" />,
       img: dasturUchun1,
       link: "https://transfer.edu.uz/uz",
     },
     {
       id: 2,
-      title: <TextTranslate id="magistratura"/>,
-      content: <TextTranslate id="magistraturaTavsif"/>,
+      title: <TextTranslate id="magistratura" />,
+      content: <TextTranslate id="magistraturaTavsif" />,
       img: bakalavr,
       link: "/abiturient-magistratura",
     },
     {
       id: 3,
-      title: <TextTranslate id="abiturient"/>,
-      content: <TextTranslate id="abiturientTavsif"/>,
+      title: <TextTranslate id="abiturient" />,
+      content: <TextTranslate id="abiturientTavsif" />,
       img: abiturient,
       link: "/abiturient-bakalavriat",
     },
   ];
 
   return (
-    <div className="bg-[#f5f5f5] py-5 md:pb-16">
-      <h2 className="text-center text-4xl text-[#5f4fa1] mb-10 font-semibold">
-        <TextTranslate id="bizningDastur"/>
+    <div className="bg-white p-4 md:pb-16">
+      <h2 className="text-center text-xl md:text-3xl text-[#5f4fa1] mb-10 font-semibold">
+        <TextTranslate id="bizningDastur" />
       </h2>
-      <div className="max-w-7xl mx-auto grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
-        {data.map((item) => (
-          <div
-            className="card max-w-80 h-[450px] object-cover shadow-md hover:shadow-xl hover:-translate-y-1 mx-auto transition-transform ease-in-out duration-300 bg-white"
-            key={item.id}
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-5">
+        {data.map((item, index) => (
+          <Link
+            href="#"
+            className={`${
+              index % 2 !== 0 ? "flex-row-reverse" : ""
+            } flex items-center max-w-[538px] h-[150px] md:h-[170px] lg:h-[210px] bg-[#f5f5f2] border border-gray-200 rounded-lg shadow-sm md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700`}
           >
-            <figure className="relative">
-              <img
-                className="h-[320px] object-cover object-center"
-                src={item.img}
-                alt="Shoes"
-              />
-              <div className="absolute bottom-0 w-full h-1 bg-[#004269]"></div>
-            </figure>
-            <div className="card-body p-5">
-              <h2 className="card-title text-[#004269]">{item.title}</h2>
-              <p className="line-clamp-2">{item.content}</p>
-              <div className="card-actions justify-start">
-                <Link
-                  to={item.link}
-                  className="border-[#004269] px-6 py-2 rounded-2xl text-white bg-[#004269]"
-                  target="blank"
-                >
-                  <TextTranslate id="batafsil" />
-                </Link>
-              </div>
+            <img
+              className={`object-cover w-[130px] md:w-[150px] lg:w-[187px] h-full ${
+                index % 2 !== 0 ? "rounded-r-lg" : "rounded-l-lg"
+              }`}
+              src={item.img}
+              alt={item.title}
+            />
+            <div className="w-full flex flex-col justify-between p-4 leading-normal">
+              <h5 className="mb-2 text-md lg:text-xl font-bold tracking-tight text-[#5f4fa1] dark:text-white">
+                {item.title}
+              </h5>
+              <p className="mb-3 text-sm md:text-md font-medium text-[#222222] dark:text-gray-400">
+                {item.content}
+              </p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
