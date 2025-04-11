@@ -78,7 +78,7 @@ const Announcements = () => {
 
   return (
     <div className="bg-[#f5f5f5] py-5 overflow-hidden">
-      <h1 className="text-2xl md:text-4xl font-semibold text-center text-[#5f4fa1] mb-3">
+      <h1 className="text-2xl md:text-3xl font-semibold text-center text-[#5f4fa1] mb-3">
         <TextTranslate id="elonTitle" />
       </h1>
       <div className="relative w-[100px] h-[3px] bg-[#5f4fa1] mx-auto mb-10 flex items-center justify-center">

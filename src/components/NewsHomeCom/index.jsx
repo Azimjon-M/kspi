@@ -110,7 +110,7 @@ const NewsHome = () => {
       <div className="md:flex md:items-center justify-between">
         {/* News heading */}
         <div className="mx-auto my-1 md:my-3">
-          <h2 className="text-xl md:text-4xl font-semibold text-[#5f4fa1]">
+          <h2 className="text-xl md:text-3xl font-semibold text-[#5f4fa1]">
             <TextTranslate id="newsHeading" />
           </h2>
         </div>
