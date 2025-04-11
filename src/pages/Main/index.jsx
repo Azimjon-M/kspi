@@ -8,7 +8,7 @@ import ContactUs from "../../components/Contact";
 import Partners from "../../components/Partners";
 import WarmThoughts from "../../components/WarmThoughts";
 import ChatIcon from "../../components/Chat";
-import Gallery from "../../components/Gallery";
+// import Gallery from "../../components/Gallery";
 // import Statistics from "../../components/Statistics";
 import AboutUs from "../../components/AboutUs";
 import ExploreProgram from "../../components/ExploreProgram";
@@ -27,7 +27,7 @@ const Main = () => {
       <WarmThoughts />
       {/* <Curriculum /> */}
       <ExploreProgram />
-      <Gallery />
+      {/* <Gallery /> */}
       <Partners />
       <ContactUs />
       <ChatIcon />

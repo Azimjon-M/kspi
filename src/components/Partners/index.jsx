@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import TextTranslate from "../TextTranslate";
+import React, { useEffect, useState } from "react";
+// import TextTranslate from "../TextTranslate";
 import styled, { keyframes } from "styled-components";
 import APIHamkor from "../../services/hamkorlar";
 
@@ -17,47 +17,38 @@ function Partners() {
   }, []);
 
   return (
-    <div className="max-w-8xl mx-auto py-10 bg-slate-100">
-      <h1 className="text-xl lg:text-4xl font-bold text-[#004269] text-center">
-        <TextTranslate id="hamkorlarimizTitle"/>
-      </h1>
+    <div className="mx-auto lg:py-8 xl:py-16 bg-[#5f4fa1]">
       <div>
         <Marquee>
           <MarqueeGroup>
-            {data && data.map((item, idx) => (
-              <ImageGroup className="w-[100px]" key={idx}>
-                <a href={item?.hamkor_url}>
-                  <Image
-                    className="w-[100px] h-[100px] bg-white"
-                    src={item?.hamkor_rasm}
-                  />
-                </a>
-              </ImageGroup>
-            ))}
+            {data &&
+              data.map((item, idx) => (
+                <ImageGroup key={idx}>
+                  <a href={item?.hamkor_url}>
+                    <Image src={item?.hamkor_rasm} />
+                  </a>
+                </ImageGroup>
+              ))}
           </MarqueeGroup>
           <MarqueeGroup>
-            {data && data.map((item, idx) => (
-              <ImageGroup className="w-[100px]" key={idx}>
-                <a href={item?.hamkor_url}>
-                  <Image
-                    className="w-[100px] h-[100px] bg-white"
-                    src={item?.hamkor_rasm}
-                  />
-                </a>
-              </ImageGroup>
-            ))}
+            {data &&
+              data.map((item, idx) => (
+                <ImageGroup key={idx}>
+                  <a href={item?.hamkor_url}>
+                    <Image src={item?.hamkor_rasm} />
+                  </a>
+                </ImageGroup>
+              ))}
           </MarqueeGroup>
           <MarqueeGroup>
-            {data && data.map((item, idx) => (
-              <ImageGroup className="w-[100px]" key={idx}>
-                <a href={item?.hamkor_url}>
-                  <Image
-                    className="w-[100px] h-[100px] bg-white"
-                    src={item?.hamkor_rasm}
-                  />
-                </a>
-              </ImageGroup>
-            ))}
+            {data &&
+              data.map((item, idx) => (
+                <ImageGroup key={idx}>
+                  <a href={item?.hamkor_url}>
+                    <Image src={item?.hamkor_rasm} />
+                  </a>
+                </ImageGroup>
+              ))}
           </MarqueeGroup>
         </Marquee>
       </div>
@@ -85,41 +76,47 @@ const MarqueeGroup = styled.div`
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  justify-content: space-around;
   white-space: nowrap;
-  width: 80%;
+  gap: 80px;
+  width: 100%;
 
   @media (max-width: 1400px) {
     width: 110%;
+    gap: 70px;
+    margin-right: 70px;
   }
 
   @media (max-width: 1024px) {
     width: 150%;
+    gap: 60px;
+    margin-right: 60px;
   }
 
   @media (max-width: 767px) {
     width: 180%;
+    gap: 40px;
+    margin-right: 40px;
   }
 
   @media (max-width: 467px) {
-    width: 220%;
+    width: 200%;
+    gap: 10px;
+    margin-right: 10px;
   }
 
   animation: ${scrollX} 15s linear infinite;
 `;
 const ImageGroup = styled.div`
-  display: grid;
-  place-items: center;
-  width: clamp(10rem, 1rem + 40vmin, 30rem);
-  padding: calc(clamp(10rem, 1rem + 30vmin, 30rem) / 10);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 125px;
+  width: auto;
 `;
 
 const Image = styled.img`
   object-fit: contain;
-  width: 100%;
-  height: 100%;
-  border-radius: 15rem;
-  aspect-ratio: 16/16;
-  padding: 5px;
+  width: auto;
+  height: 125px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0;
 `;

@@ -55,7 +55,7 @@ function WarmThoughts() {
     <div>
       <div className="max-w-7xl mx-auto mb-8 md:mb-16">
         <div className="hidden md:block p-5 my-12">
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-3 gap-5">
             {fikrlar &&
               fikrlar.map((fikr) => {
                 return (

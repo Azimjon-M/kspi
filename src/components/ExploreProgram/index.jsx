@@ -39,7 +39,7 @@ const ExploreProgram = () => {
   ];
 
   return (
-    <div className="bg-[#f5f5f5] py-5 md:py-16">
+    <div className="bg-[#f5f5f5] py-5 md:pb-16">
       <h2 className="text-center text-4xl text-[#5f4fa1] mb-10 font-semibold">
         <TextTranslate id="bizningDastur"/>
       </h2>
