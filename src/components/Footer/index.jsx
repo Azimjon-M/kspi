@@ -56,6 +56,41 @@ const Footer = () => {
                   <TextTranslate id="ishonchTelefon" />: +998 73 249 38 38
                 </Link>
               </li>
+              <ul>
+                {/* Biz bilan bog'lanish */}
+                <div className="flex justify-center md:justify-end mb-3 md:pr-10 z-0">
+                  <Link
+                    target="blank"
+                    to={"https://t.me/kspi_rector"}
+                    className="mr-4 group"
+                  >
+                    <FaTelegram className="h-6 lg:h-7 w-auto group-hover:bg-[#0088cc] rounded-full" />
+                  </Link>
+                  <Link
+                    target="blank"
+                    to={"https://www.instagram.com/kspi_uz/"}
+                    className="mr-4 group"
+                  >
+                    <FaSquareInstagram className="h-6 lg:h-7 w-auto group-hover:bg-[#690000] rounded-[3px]" />
+                  </Link>
+                  <Link
+                    target="blank"
+                    to={
+                      "https://www.youtube.com/channel/UC6ThR8cLnJmdWDGDz9PR85Q/featured"
+                    }
+                    className="mr-4 group"
+                  >
+                    <PiYoutubeLogoFill className="h-6 lg:h-7 w-auto group-hover:text-[#FF0000] group-hover:bg-white rounded-[12px]" />
+                  </Link>
+                  <Link
+                    target="blank"
+                    to={"https://www.facebook.com/kspi.uz.56"}
+                    className="mr-4 group"
+                  >
+                    <FaSquareFacebook className="h-6 lg:h-7 w-auto group-hover:bg-[#316FF6]" />
+                  </Link>
+                </div>
+              </ul>
             </ul>
           </div>
         </div>
