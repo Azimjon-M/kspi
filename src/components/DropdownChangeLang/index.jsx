@@ -68,7 +68,7 @@ const LanguageDropdown = () => {
         <div
             onMouseEnter={() => setTogglerLangDrop(true)}
             onMouseLeave={() => setTogglerLangDrop(false)}
-            className="relative font-medium ms-4"
+            className="relative font-medium mx-4"
         >
             {/* Dropdown ochuvchisi */}
             <div>

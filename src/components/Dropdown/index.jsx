@@ -6,6 +6,7 @@ const Dropdown = ({
     name,
     children,
     isNested = false,
+    isBtn = false,
     direction = "right",
     classForName = "",
     classForAllChild = ""
@@ -34,10 +35,10 @@ const Dropdown = ({
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            {/* Trigger elementi */}
-            <div className={`min-w-[130px] flex items-center cursor-pointer`}>
+            {/* Trigger elementi btn */}
+            <div className={`flex justify-end items-center cursor-pointer`}>
                 {isNested ? (
-                    <div className="w-full flex items-center justify-between">
+                    <div className="min-w-[130px] flex items-center justify-between">
                         <span className={`text-black line-clamp-1 leading-7 ${classForAllChild}`}>
                             {name}
                         </span>
@@ -48,14 +49,15 @@ const Dropdown = ({
                         />
                     </div>
                 ) : (
-                    <span className="btn btn-sm btn-ghost">
+                    <span className={`${isBtn ? "btn btn-sm btn-ghost px-1" : ""} flex items-center p-0`}>
                         <span className={classForName}>
                             {name}
                         </span>
                         <FaAngleDown
-                            className={`transition-transform duration-200 ${
-                                isOpen ? "rotate-180" : ""
-                            }`}
+                            className={`transition-transform duration-300 
+                                ${isOpen && "rotate-180"} 
+                                ${!isBtn && "w-[16px] h-[16px] ms-1"}
+                            `}
                         />
                     </span>
                 )}
@@ -72,7 +74,7 @@ const Dropdown = ({
                         ? direction === "left"
                             ? "right-full top-0 mr-2 w-52" // Child dropdown uchun kenglik qo‘shildi
                             : "left-full top-0 ml-2 w-52" // Child dropdown uchun kenglik qo‘shildi
-                        : "mt-2 w-44 right-0"
+                        : `mt-2 w-44 ${isBtn ? "right-0" : "left-1/2 -translate-x-1/2"}`
                 }`}
             >
                 <ul className="menu p-2">{children}</ul>
