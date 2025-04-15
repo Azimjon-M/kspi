@@ -69,17 +69,17 @@ function Navbar() {
         },
     });
 
-    // const handleClickSearch = () => {
-    //     if (isFocusedSearInp && formik.values.searchText) {
-    //         formik.handleSubmit();
-    //     } else {
-    //         setFocusedSearInp(!isFocusedSearInp);
-    //     }
-    // };
-    // const handleClickClose = () => {
-    //     setFocusedSearInp(false);
-    // };
-    // // Change Language log
+    const handleClickSearch = () => {
+        if (isFocusedSearInp && formik.values.searchText) {
+            formik.handleSubmit();
+        } else {
+            setFocusedSearInp(!isFocusedSearInp);
+        }
+    };
+    const handleClickClose = () => {
+        setFocusedSearInp(false);
+    };
+    // Change Language log
     // const handleClickLang = (lang) => {
     //     switch (lang) {
     //         case "uz":
@@ -98,22 +98,22 @@ function Navbar() {
     // };
 
     // Change Lang
-    const handliTogleLang = (numb) => {
-        switch (numb) {
-            case "1":
-                dispatch(setLangUz());
-                break;
-            case "2":
-                dispatch(setLangRu());
-                break;
-            case "3":
-                dispatch(setLangEn());
-                break;
-            default:
-                dispatch(setLangUz());
-                break;
-        }
-    };
+    // const handliTogleLang = (numb) => {
+    //     switch (numb) {
+    //         case "1":
+    //             dispatch(setLangUz());
+    //             break;
+    //         case "2":
+    //             dispatch(setLangRu());
+    //             break;
+    //         case "3":
+    //             dispatch(setLangEn());
+    //             break;
+    //         default:
+    //             dispatch(setLangUz());
+    //             break;
+    //     }
+    // };
 
     const handleClickCloseMenu = () => {
         setIsActiveMenu(false);
@@ -215,51 +215,6 @@ function Navbar() {
                         {/* /Ijtimoi Tarmoqlar */}
 
                         <div className="flex">
-                            {/* HEADER SEARCH FORM */}
-                            {/* <div
-                                className={`${
-                                    noSearch && "hidden"
-                                } flex items-center justify-center`}
-                            >
-                                <form onSubmit={formik.handleSubmit}>
-                                    <label
-                                        className="w-auto h-full flex items-center cursor-pointer"
-                                        htmlFor="searchText"
-                                    >
-                                        <input
-                                            className={`${
-                                                isFocusedSearInp
-                                                    ? "w-[200px] border-b-[3px] border-white ms-4"
-                                                    : "w-[0px] -z-50"
-                                            } style-transition-01 h-full focus:outline-none bg-inherit px-2`}
-                                            placeholder="text..."
-                                            onChange={formik.handleChange}
-                                            value={formik.values.searchText}
-                                            type="text"
-                                            id="searchText"
-                                        />
-                                        <AiOutlineSearch
-                                            onClick={() => handleClickSearch()}
-                                            className={`${
-                                                isFocusedSearInp &&
-                                                !formik.values.searchText.trim()
-                                                    ? "hidden"
-                                                    : "inline-block"
-                                            } text-[25px]`}
-                                        />
-                                        <AiOutlineClose
-                                            onClick={() => handleClickClose()}
-                                            className={`${
-                                                !isFocusedSearInp ||
-                                                formik.values.searchText.trim()
-                                                    ? "hidden"
-                                                    : "inline-block"
-                                            } text-[25px] text-white`}
-                                        />
-                                    </label>
-                                </form>
-                            </div> */}
-                            {/* /HEADER SEARCH FORM */}
                             {/* Language */}
                             <LanguageDropdown />
                             {/* /Language */}
@@ -699,6 +654,52 @@ function Navbar() {
                                             </ul>
                                         </div>
                                     </li>
+                                    {/* HEADER SEARCH FORM */}
+                                    <div
+                                        className={`${
+                                            noSearch && "hidden"
+                                        } flex items-center justify-center`}
+                                    >
+                                        <form onSubmit={formik.handleSubmit}>
+                                            <label
+                                                className="w-auto h-full flex items-center cursor-pointer"
+                                                htmlFor="searchText"
+                                            >
+                                                <input
+                                                    className={`${
+                                                        isFocusedSearInp
+                                                            ? "w-[200px] border-b-[3px] border-white"
+                                                            : "w-[0px] -z-50"
+                                                    } style-transition-01 h-full focus:outline-none bg-inherit`}
+                                                    placeholder="text..."
+                                                    onChange={formik.handleChange}
+                                                    value={formik.values.searchText}
+                                                    type="text"
+                                                    id="searchText"
+                                                />
+                                                <AiOutlineSearch
+                                                    onClick={() => handleClickSearch()}
+                                                    className={`${
+                                                        isFocusedSearInp &&
+                                                        !formik.values.searchText.trim()
+                                                            ? "hidden"
+                                                            : "inline-block"
+                                                    } text-[25px]`}
+                                                />
+                                                <AiOutlineClose
+                                                    onClick={() => handleClickClose()}
+                                                    className={`${
+                                                        !isFocusedSearInp ||
+                                                        formik.values.searchText.trim()
+                                                            ? "hidden"
+                                                            : "inline-block"
+                                                    } text-[25px] text-white`}
+                                                />
+                                            </label>
+                                        </form>
+                                    </div>
+                                    {/* /HEADER SEARCH FORM */}
+                                    {/* Language */}
                                 </ul>
                             </div>
                             {/* /Desktop nav Links */}
