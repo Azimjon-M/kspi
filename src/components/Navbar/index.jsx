@@ -354,7 +354,7 @@ function Navbar() {
                         </Link>
                         {/* /Emblema QDPI */}
                         {/* Right Nav Section: Header, Navigatons, mobile version */}
-                        <div className="w-full flex items-end justify-center pe-[20px] text-white">
+                        <div className="w-full flex items-end justify-center text-white">
                             {/* Desktop nav Links */}
                             <div className="hidden w-full h-full xl:flex xl:items-center xl:justify-end">
                                 <ul
