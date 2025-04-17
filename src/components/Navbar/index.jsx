@@ -346,8 +346,8 @@ function Navbar() {
                                     alt="icon"
                                 />
                                 <p
-                                    className={`font-primaryMedium text-[white] hidden sm:inline-block text-[11px] leading-4  font-bold sm:text-[13px] md:text-[18px] xl:leading-6 xl:text-[20px]`}
-                                >
+
+>
                                     <TextTranslate id="navLogo" />
                                 </p>
                             </div>
@@ -527,132 +527,102 @@ function Navbar() {
                                             </li>
                                         </Dropdown>
                                     </li>
-                                    <li
-                                        className={`relative after:absolute after:top-[50%] after:translate-y-[-50%] after:right-[-15px] after:w-[8px] after:h-[8px] after:border-s-2 after:border-b-2 after:rotate-[-45deg] 3xl:after:w-[10px] 3xl:after:h-[10px]`}
-                                    >
-                                        <div className="dropdown dropdown-hover">
-                                            <div
-                                                tabIndex={4}
-                                                role="button"
-                                                className="text-inherit"
-                                            >
-                                                <TextTranslate id="navTuzilma" />
-                                            </div>
-                                            <ul
-                                                tabIndex={4}
-                                                className="dropdown-content z-10 menu p-2 shadow bg-base-100 rounded-box w-52"
-                                            >
-                                                <li className="text-[#004269] dark:text-white">
-                                                    <Link to="/rektorat">
-                                                        <TextTranslate id="navDropTuzilma_1" />
-                                                    </Link>
-                                                </li>
-                                                <li className="text-[#004269] dark:text-white">
-                                                    <Link to="/fakultetlar">
-                                                        <TextTranslate id="navDropTuzilma_2" />
-                                                    </Link>
-                                                </li>
-                                                <li className="text-[#004269] dark:text-white">
-                                                    <Link to="/kafedralar">
-                                                        <TextTranslate id="navDropTuzilma_3" />
-                                                    </Link>
-                                                </li>
-                                                <li className="text-[#004269] dark:text-white">
-                                                    <Link to="/bolimlar">
-                                                        <TextTranslate id="navDropTuzilma_4" />
-                                                    </Link>
-                                                </li>
-                                                <li className="text-[#004269] dark:text-white">
-                                                    <Link to="/markazlar">
-                                                        <TextTranslate id="navDropTuzilma_5" />
-                                                    </Link>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                    <li>
+                                        <Dropdown
+                                            id="dropdown1"
+                                            name={<TextTranslate id="navTuzilma" />}
+                                            classForName="font-thin"
+                                        >
+                                            <li className="text-black bg-white">
+                                                <Link to="/rektorat">
+                                                    <TextTranslate id="navDropTuzilma_1" />
+                                                </Link>
+                                            </li>
+                                            <li className="text-black bg-white">
+                                                <Link to="/fakultetlar">
+                                                    <TextTranslate id="navDropTuzilma_2" />
+                                                </Link>
+                                            </li>
+                                            <li className="text-black bg-white">
+                                                <Link to="/kafedralar">
+                                                    <TextTranslate id="navDropTuzilma_3" />
+                                                </Link>
+                                            </li>
+                                            <li className="text-black bg-white">
+                                                <Link to="/bolimlar">
+                                                    <TextTranslate id="navDropTuzilma_4" />
+                                                </Link>
+                                            </li>
+                                            <li className="text-black bg-white">
+                                                <Link to="/markazlar">
+                                                    <TextTranslate id="navDropTuzilma_5" />
+                                                </Link>
+                                            </li>
+                                        </Dropdown>
                                     </li>
-                                    <li
-                                        className={`relative after:absolute after:top-[50%] after:translate-y-[-50%] after:right-[-15px] after:w-[8px] after:h-[8px] after:border-s-2 after:border-b-2 after:rotate-[-45deg] 3xl:after:w-[10px] 3xl:after:h-[10px]`}
-                                    >
-                                        <div className="dropdown dropdown-hover">
-                                            <div
-                                                tabIndex={5}
-                                                role="button"
-                                                className="text-inherit"
-                                            >
-                                                <TextTranslate id="navTalabalar" />
-                                            </div>
-                                            <ul
-                                                tabIndex={5}
-                                                className="dropdown-content z-10 menu p-2 shadow bg-base-100 rounded-box w-52"
-                                            >
-                                                <li className="text-[#004269] dark:text-white">
-                                                    <Link to="/bakalavriyat">
-                                                        <TextTranslate id="navDropTalabalar_1" />
-                                                    </Link>
-                                                </li>
-                                                <li className="text-[#004269] dark:text-white">
-                                                    <Link to="/magistratura">
-                                                        <TextTranslate id="navDropTalabalar_2" />
-                                                    </Link>
-                                                </li>
-                                                <li className="text-[#004269] dark:text-white">
-                                                    <Link to="/talabalarTurarJoyi">
-                                                        <TextTranslate id="navDropTalabalar_3" />
-                                                    </Link>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                    <li>
+                                        <Dropdown
+                                            id="dropdown1"
+                                            name={<TextTranslate id="navTalabalar" />}
+                                            classForName="font-thin"
+                                        >
+                                            <li className="text-black bg-white">
+                                                <Link to="/bakalavriyat">
+                                                    <TextTranslate id="navDropTalabalar_1" />
+                                                </Link>
+                                            </li>
+                                            <li className="text-black bg-white">
+                                                <Link to="/magistratura">
+                                                    <TextTranslate id="navDropTalabalar_2" />
+                                                </Link>
+                                            </li>
+                                            <li className="text-black bg-white">
+                                                <Link to="/talabalarTurarJoyi">
+                                                    <TextTranslate id="navDropTalabalar_3" />
+                                                </Link>
+                                            </li>
+                                        </Dropdown>
                                     </li>
-                                    <li
-                                        className={`relative after:absolute after:top-[50%] after:translate-y-[-50%] after:right-[-15px] after:w-[8px] after:h-[8px] after:border-s-2 after:border-b-2 after:rotate-[-45deg] 3xl:after:w-[10px] 3xl:after:h-[10px]`}
-                                    >
-                                        <div className="dropdown dropdown-hover">
-                                            <div
-                                                tabIndex={6}
-                                                role="button"
-                                                className="text-inherit"
-                                            >
-                                                <TextTranslate id="navAbiturient" />
-                                            </div>
-                                            <ul
-                                                tabIndex={6}
-                                                className="dropdown-content z-10 menu p-2 shadow bg-base-100 rounded-box w-52"
-                                            >
-                                                <li className="text-[#004269] dark:text-white">
-                                                    <Link to="/abiturient-bakalavriat">
-                                                        <TextTranslate id="navDropAbiturient_1" />
-                                                    </Link>
-                                                </li>
-                                                <li className="text-[#004269] dark:text-white">
-                                                    <Link to="/abiturient-magistratura">
-                                                        <TextTranslate id="navDropAbiturient_2" />
-                                                    </Link>
-                                                </li>
-                                                <li className="text-[#004269] dark:text-white">
-                                                    <Link to="/abiturient-xorijiy-talabalar">
-                                                        <TextTranslate id="navDropAbiturient_3" />
-                                                    </Link>
-                                                </li>
-                                                <li className="text-[#004269] dark:text-white">
-                                                    <Link to="/call-markaz">
-                                                        <TextTranslate id="navDropAbiturient_4" />
-                                                    </Link>
-                                                </li>
-                                                <li className="text-[#004269] dark:text-white">
-                                                    <Link to="/abiturient-meyoriy">
-                                                        <TextTranslate id="navDropAbiturient_5" />
-                                                    </Link>
-                                                </li>
-                                                <li className="text-[#004269] dark:text-white">
-                                                    <Link
-                                                        to="https://xtqabul.kspi.uz/"
-                                                        target="blank"
-                                                    >
-                                                        <TextTranslate id="navDropAbiturient_6" />
-                                                    </Link>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                    <li>
+                                        <Dropdown
+                                            id="dropdown1"
+                                            name={<TextTranslate id="navAbiturient" />}
+                                            classForName="font-thin"
+                                        >
+                                            <li className="text-black bg-white">
+                                                <Link to="/abiturient-bakalavriat">
+                                                    <TextTranslate id="navDropAbiturient_1" />
+                                                </Link>
+                                            </li>
+                                            <li className="text-black bg-white">
+                                                <Link to="/abiturient-magistratura">
+                                                    <TextTranslate id="navDropAbiturient_2" />
+                                                </Link>
+                                            </li>
+                                            <li className="text-black bg-white">
+                                                <Link to="/abiturient-xorijiy-talabalar">
+                                                    <TextTranslate id="navDropAbiturient_3" />
+                                                </Link>
+                                            </li>
+                                            <li className="text-black bg-white">
+                                                <Link to="/call-markaz">
+                                                    <TextTranslate id="navDropAbiturient_4" />
+                                                </Link>
+                                            </li>
+                                            <li className="text-black bg-white">
+                                                <Link to="/abiturient-meyoriy">
+                                                    <TextTranslate id="navDropAbiturient_5" />
+                                                </Link>
+                                            </li>
+                                            <li className="text-black bg-white">
+                                                <Link
+                                                    to="https://xtqabul.kspi.uz/"
+                                                    target="blank"
+                                                >
+                                                    <TextTranslate id="navDropAbiturient_6" />
+                                                </Link>
+                                            </li>
+                                        </Dropdown>
                                     </li>
                                     {/* HEADER SEARCH FORM */}
                                     <div
