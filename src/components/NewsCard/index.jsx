@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Breadcrumb from "../Breadcrumb";
 import APIYangilik from "../../services/yangilik";
 // Import Swiper React components
@@ -21,13 +21,16 @@ const NewsCard = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const { id } = useParams();
   const [news, setNews] = useState(null);
+  const [lastNews, setLastNews] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadNews = async () => {
       try {
         const res = await APIYangilik.getById(id);
+        const resLastNews = await APIYangilik.get();
         setNews(res.data);
+        setLastNews(resLastNews.data.slice(-3).reverse());
         setLoading(false);
       } catch (error) {
         console.error("Error fetching news data:", error);
@@ -42,8 +45,8 @@ const NewsCard = () => {
   }
 
   return (
-    <div className="md:px-5 xl:px-10 md:min-h-[calc(100vh-565px)] lg:min-h-[calc(100vh-400px)]">
-      <div className="border-b-2 border-[#004269] block w-full">
+    <div className="max-w-7xl mx-auto md:px-5 xl:px-10 md:min-h-[calc(100vh-565px)] lg:min-h-[calc(100vh-400px)]">
+      <div className="border-b-2 border-[#5f4fa1] block w-full">
         <Breadcrumb
           steps={[
             { text: <TextTranslate id="boshSahifa" />, link: "/" },
@@ -53,10 +56,10 @@ const NewsCard = () => {
         />
       </div>
 
-      <div className="py-5 max-w-7xl mx-auto">
-        <div className="col-span-3">
+      <div className="py-5 grid grid-cols-4">
+        <div className="col-span-4 lg:col-span-3 px-4">
           {/* TITLE */}
-          <h2 className="text-xl text-[#004269] lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold text-center mb-5">
+          <h2 className="text-xl text-[#5f4fa1] lg:text-2xl xl:text-2xl font-bold text-center mb-5">
             {news && news[`title_${Lang}`]}
           </h2>
 
@@ -172,7 +175,7 @@ const NewsCard = () => {
           <h2
             className={`${
               news && news.subtitle_uz ? "" : "hidden"
-            } text-lg text-[#004269] xl:text-2xl 2xl:text-3xl font-bold text-center mt-3 mb-5`}
+            } text-lg text-[#004269] xl:text-2xl font-semibold text-center mt-3 mb-5`}
           >
             {news && news[`subtitle_${Lang}`]}
           </h2>
@@ -232,6 +235,28 @@ const NewsCard = () => {
                 )}
               </div>
             </div>
+          </div>
+        </div>
+        <div className="col-span-1 hidden lg:block">
+          <h2 className="text-lg md:text-xl font-medium pl-3 mb-3">
+            <TextTranslate id="latest_news" />
+          </h2>
+          <div className="pl-3">
+            {lastNews?.map((item) => (
+              <div key={item.id} className="mb-3 group">
+                <Link to={`/yangiliklar/${item.id}`} className="">
+                  <img src={item.rasm_1} alt="" className="rounded-t" />
+                  <div className="bg-slate-200 group-hover:bg-[#5f4fa1]/50 transition-all duration-300 rounded-b">
+                    <h3 className="text-sm xl:text-md font-semibold p-2">
+                      {item[`title_${Lang}`]}
+                    </h3>
+                    <span className="flex justify-end text-[#222]/70 italic mr-2">
+                      {item.sana}
+                    </span>
+                  </div>
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
       </div>

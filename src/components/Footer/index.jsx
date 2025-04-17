@@ -167,7 +167,7 @@ const Footer = () => {
             <span className="font-primaryRegular">
               Sayt ishlab chiqaruvchi:
             </span>
-            <div className="flex items-center">
+            <span className="flex items-center">
               <img
                 className="w-[24px] h-[24px] ms-2 me-[2px]"
                 src={Logo}
@@ -176,7 +176,7 @@ const Footer = () => {
               <span className="max-w-[78px] text-xs font-primaryBold leading-3 mr-1">
                 Qo'qon davlat universiteti
               </span>
-            </div>
+            </span>
             <span className="font-primaryMedium text-sm">IT PARK</span>
           </p>
         </div>
