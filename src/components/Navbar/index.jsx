@@ -11,16 +11,20 @@ import {
 } from "../../redux/moduls/language/action/";
 import { useNavigate } from "react-router-dom";
 
-import { FaAngleRight } from "react-icons/fa";
-
 import flag_uz from "../../assets/icons/flag-uz.png";
 import flag_ru from "../../assets/icons/flag-ru.png";
 import flag_en from "../../assets/icons/flag-en.png";
-import testIcon from "../../assets/icons/ItPark.png";
+
+import { LiaTelegram } from "react-icons/lia";
+import { FaInstagram } from "react-icons/fa6";
+import { AiOutlineYoutube } from "react-icons/ai";
+import { CiFacebook } from "react-icons/ci";
 
 import TextTranslate from "../TextTranslate/index";
 import Dropdown from "../Dropdown";
 import LanguageDropdown from "../DropdownChangeLang";
+
+import SearchBar from "../SearchBar";
 
 function Navbar() {
     const location = useLocation();
@@ -49,9 +53,10 @@ function Navbar() {
     ];
 
     const ijtimoiyTarmoqlar = [
-        { id: "1", name: "", link: "", icon: testIcon },
-        { id: "2", name: "", link: "", icon: testIcon },
-        { id: "3", name: "", link: "", icon: testIcon },
+        { id: "1", name: "Telegram", link: "", icon: <LiaTelegram /> },
+        { id: "2", name: "Instagram", link: "", icon: <FaInstagram /> },
+        { id: "3", name: "Youtube", link: "", icon: <AiOutlineYoutube /> },
+        { id: "4", name: "Facebook", link: "", icon: <CiFacebook /> },
     ];
 
     // search
@@ -59,26 +64,17 @@ function Navbar() {
         initialValues: {
             searchText: query ? query : "",
         },
-        onSubmit: (values) => {
+        onSubmit: (values, {resetForm}) => {
             if (values.searchText.length > 1) {
                 if (values.searchText !== query) {
                     navigate(`/qidiruv?search=${values.searchText}`);
+                    resetForm();
                 }
             }
             setIsActiveMenu(false);
         },
     });
 
-    const handleClickSearch = () => {
-        if (isFocusedSearInp && formik.values.searchText) {
-            formik.handleSubmit();
-        } else {
-            setFocusedSearInp(!isFocusedSearInp);
-        }
-    };
-    const handleClickClose = () => {
-        setFocusedSearInp(false);
-    };
     // Change Language log
     // const handleClickLang = (lang) => {
     //     switch (lang) {
@@ -119,29 +115,29 @@ function Navbar() {
         setIsActiveMenu(false);
     };
 
-    const onMouseEnter = () => {
-        setIsDropF(true);
-    };
+    // const onMouseEnter = () => {
+    //     setIsDropF(true);
+    // };
 
-    const onMouseLeave = () => {
-        setIsDropF(false);
-    };
+    // const onMouseLeave = () => {
+    //     setIsDropF(false);
+    // };
 
-    const onMouseEnterXal = () => {
-        setIsDropFXal(true);
-    };
+    // const onMouseEnterXal = () => {
+    //     setIsDropFXal(true);
+    // };
 
-    const onMouseLeaveXal = () => {
-        setIsDropFXal(false);
-    };
+    // const onMouseLeaveXal = () => {
+    //     setIsDropFXal(false);
+    // };
 
-    const onMouseEnterHuj = () => {
-        setIsDropIHuj(true);
-    };
+    // const onMouseEnterHuj = () => {
+    //     setIsDropIHuj(true);
+    // };
 
-    const onMouseLeaveHuj = () => {
-        setIsDropIHuj(false);
-    };
+    // const onMouseLeaveHuj = () => {
+    //     setIsDropIHuj(false);
+    // };
 
     // Mobile Handler main no scroll
     useEffect(() => {
@@ -171,10 +167,10 @@ function Navbar() {
     //   const [togglerLangDrop, setTogglerLangDrop] = useState(false);
 
     // Faol tilni aniqlash
-    const activeLang = languages.find((lang) => lang.id === isLang);
+    // const activeLang = languages.find((lang) => lang.id === isLang);
 
     // Faol bo‘lmagan tillarni filtr qilish
-    const availableLanguages = languages.filter((lang) => lang.id !== isLang);
+    // const availableLanguages = languages.filter((lang) => lang.id !== isLang);
 
     // Tilni o‘zgartirish funksiyasi
     //   const handliTogleLang = (langId) => {
@@ -189,80 +185,93 @@ function Navbar() {
             } left-0 flex flex-col items-center w-full h-auto z-50 px-4 py-2 bg-[${color}] sm:px-4 md:px-8 md:py-4 xl:px-0 xl:py-0`}
         >
             {/* Max W */}
-            <div className="w-full flex justify-between max-w-7xl px-4">
+            <div className="w-full flex max-w-7xl px-4">
                 {/* Navbar */}
-                <nav className="w-full flex flex-col h-[100px!important]">
-                    {/* Header */}
-                    <div className="w-full hidden xl:flex xl:justify-between text-white rounded-bl-lg ">
-                        {/* Ijtimoi Tarmoqlar */}
-                        <div className="flex items-center gap-1">
-                            {ijtimoiyTarmoqlar.map((item) => (
-                                <Link
-                                    key={item.id}
-                                    title={item.name}
-                                    to={item.link}
-                                >
-                                    <div className="bg-[#ffffff40] z-0 p-[5px] rounded-md hover:bg-white">
-                                        <img
-                                            className="w-[15px] h-[15px] z-10"
-                                            src={testIcon}
-                                            alt="ijtimoiy tarmoq"
-                                        />
-                                    </div>
-                                </Link>
-                            ))}
+                <nav className="w-full flex justify-between h-[100px!important]">
+                    {/* Emblema QDPI */}
+                    <Link to="/">
+                        <div
+                            className={`h-full flex items-center gap-x-[10px] md:gap-x-[15px]`}
+                        >
+                            <img
+                                className="w-[32px] sm:w-[36px] md:w-[45px] xl:w-[60px] 2xl:w-[60px] h-auto"
+                                src={kspi_logo}
+                                alt="icon"
+                            />
+                            <p className="xl:w-[150px] text-[22px] text-[white] leading-6">
+                                <TextTranslate id="navLogo" />
+                            </p>
                         </div>
-                        {/* /Ijtimoi Tarmoqlar */}
-
-                        <div className="flex">
-                            {/* Language */}
-                            <LanguageDropdown />
-                            {/* /Language */}
-                            {/* Tizimlar Drop */}
-                            <div>
-                                <Dropdown
-                                    id="dropdown1"
-                                    name="Tizimlar"
-                                    classForName="text-[12px] font-thin"
-                                    classForAllChild=""
-                                    isBtn
-                                >
-                                    <li className="text-black">
-                                        <Link
-                                            target="_blank"
-                                            to="https://talaba.kspi.uz/dashboard/login"
-                                        >
-                                            <TextTranslate id="hedHemis-tizimi" />
-                                        </Link>
-                                    </li>
-                                    <li className="text-black">
-                                        {/* Nested dropdown */}
-                                        <Dropdown
-                                            id="dropChild1"
-                                            name={
-                                                <TextTranslate id="hedInstitut-jurnali" />
-                                            }
-                                            isNested
-                                            direction="left"
-                                        >
-                                            <li>
-                                                <Link
-                                                    target="_blank"
-                                                    to="https://journal.kspi.uz/"
-                                                >
-                                                    <TextTranslate id="hedDropInstitut-jurnali_1" />
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link
-                                                    target="_blank"
-                                                    to="http://wsrjournal.com/index.php/wsrj"
-                                                >
-                                                    <TextTranslate id="hedDropInstitut-jurnali_2" />
-                                                </Link>
-                                            </li>
-                                            {/* Ichma-ich yana bir nested dropdown */}
-                                            {/* <li>
+                    </Link>
+                    {/* /Emblema QDPI */}
+                    {/* Navbar: logo, Naviations */}
+                    <div className="flex flex-col h-full">
+                        {/* Header */}
+                        <div className="w-full hidden xl:flex justify-end text-white rounded-bl-lg">
+                            {/* Ijtimoi Tarmoqlar */}
+                            <div className="flex items-center gap-1">
+                                {ijtimoiyTarmoqlar.map((item) => (
+                                    <Link
+                                        key={item.id}
+                                        title={item.name}
+                                        to={item.link}
+                                    >
+                                        <div className="bg-[#ffffff40] z-0 p-[5px] rounded-md hover:bg-white hover:text-black">
+                                            {item.icon}
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+                            {/* /Ijtimoi Tarmoqlar */}
+                            <div className="flex">
+                                {/* Language */}
+                                <LanguageDropdown />
+                                {/* /Language */}
+                                {/* Tizimlar Drop */}
+                                <div>
+                                    <Dropdown
+                                        id="dropdown1"
+                                        name="Tizimlar"
+                                        classForName="text-[12px] font-thin"
+                                        classForAllChild=""
+                                        isBtn
+                                    >
+                                        <li className="text-black">
+                                            <Link
+                                                target="_blank"
+                                                to="https://talaba.kspi.uz/dashboard/login"
+                                            >
+                                                <TextTranslate id="hedHemis-tizimi" />
+                                            </Link>
+                                        </li>
+                                        <li className="text-black">
+                                            {/* Nested dropdown */}
+                                            <Dropdown
+                                                id="dropChild1"
+                                                name={
+                                                    <TextTranslate id="hedInstitut-jurnali" />
+                                                }
+                                                isNested
+                                                direction="left"
+                                            >
+                                                <li>
+                                                    <Link
+                                                        target="_blank"
+                                                        to="https://journal.kspi.uz/"
+                                                    >
+                                                        <TextTranslate id="hedDropInstitut-jurnali_1" />
+                                                    </Link>
+                                                </li>
+                                                <li>
+                                                    <Link
+                                                        target="_blank"
+                                                        to="http://wsrjournal.com/index.php/wsrj"
+                                                    >
+                                                        <TextTranslate id="hedDropInstitut-jurnali_2" />
+                                                    </Link>
+                                                </li>
+                                                {/* Ichma-ich yana bir nested dropdown */}
+                                                {/* <li>
                                                 <Dropdown
                                                     id="dropGrandChild1"
                                                     name="GrandChild"
@@ -281,84 +290,64 @@ function Navbar() {
                                                     </li>
                                                 </Dropdown>
                                             </li> */}
-                                        </Dropdown>
-                                    </li>
-                                    <li className="text-black">
-                                        <Link
-                                            target="_blank"
-                                            to="https://conferences.kspi.uz/"
-                                        >
-                                            <TextTranslate id="hedKonferensyalar" />
-                                        </Link>
-                                    </li>
-                                    <li className="text-black">
-                                        <Link
-                                            target="_blank"
-                                            to="https://my.edu.uz/"
-                                        >
-                                            <TextTranslate id="hedIkkinchi-talim" />
-                                        </Link>
-                                    </li>
-                                    <li className="text-black">
-                                        {/* Nested dropdown */}
-                                        <Dropdown
-                                            id="dropChild1"
-                                            name={
-                                                <TextTranslate id="hedUniversitet-yashil" />
-                                            }
-                                            isNested
-                                            direction="left"
-                                        >
-                                            <li>
-                                                <Link to="/yashil-univeritet/yangiliklar">
-                                                    <TextTranslate id="hedDropUniversitet-yashil_1" />
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link to="/yashil-univeritet/raqamlarda">
-                                                    <TextTranslate id="hedDropUniversitet-yashil_2" />
-                                                </Link>
-                                            </li>
-                                        </Dropdown>
-                                    </li>
-                                    <li className="text-black">
-                                        <Link to="/ochiq-malumotlar">
-                                            <TextTranslate id="hedOchiq-malumotlar" />
-                                        </Link>
-                                    </li>
-                                </Dropdown>
-                            </div>
+                                            </Dropdown>
+                                        </li>
+                                        <li className="text-black">
+                                            <Link
+                                                target="_blank"
+                                                to="https://conferences.kspi.uz/"
+                                            >
+                                                <TextTranslate id="hedKonferensyalar" />
+                                            </Link>
+                                        </li>
+                                        <li className="text-black">
+                                            <Link
+                                                target="_blank"
+                                                to="https://my.edu.uz/"
+                                            >
+                                                <TextTranslate id="hedIkkinchi-talim" />
+                                            </Link>
+                                        </li>
+                                        <li className="text-black">
+                                            {/* Nested dropdown */}
+                                            <Dropdown
+                                                id="dropChild1"
+                                                name={
+                                                    <TextTranslate id="hedUniversitet-yashil" />
+                                                }
+                                                isNested
+                                                direction="left"
+                                            >
+                                                <li>
+                                                    <Link to="/yashil-univeritet/yangiliklar">
+                                                        <TextTranslate id="hedDropUniversitet-yashil_1" />
+                                                    </Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/yashil-univeritet/raqamlarda">
+                                                        <TextTranslate id="hedDropUniversitet-yashil_2" />
+                                                    </Link>
+                                                </li>
+                                            </Dropdown>
+                                        </li>
+                                        <li className="text-black">
+                                            <Link to="/ochiq-malumotlar">
+                                                <TextTranslate id="hedOchiq-malumotlar" />
+                                            </Link>
+                                        </li>
+                                    </Dropdown>
+                                </div>
 
-                            {/* /Tizimlar Drop */}
+                                {/* /Tizimlar Drop */}
+                            </div>
                         </div>
-                    </div>
-                    {/* /Header */}
-                    {/* Navbar: logo, Naviations */}
-                    <div className="flex justify-between">
-                        {/* Emblema QDPI */}
-                        <Link to="/">
-                            <div
-                                className={`flex items-center gap-x-[10px] md:gap-x-[15px]`}
-                            >
-                                <img
-                                    className="w-[32px] sm:w-[36px] md:w-[45px] xl:w-[60px] 2xl:w-[60px] h-auto mb-2"
-                                    src={kspi_logo}
-                                    alt="icon"
-                                />
-                                <p
-
->
-                                    <TextTranslate id="navLogo" />
-                                </p>
-                            </div>
-                        </Link>
-                        {/* /Emblema QDPI */}
-                        {/* Right Nav Section: Header, Navigatons, mobile version */}
-                        <div className="w-full flex items-end justify-center text-white">
+                        {/* /Header */}
+                        {/* Right Nav Navigatons, mobile version */}
+                        <div className="w-full flex items-center justify-center h-full text-white">
                             {/* Desktop nav Links */}
                             <div className="hidden w-full h-full xl:flex xl:items-center xl:justify-end">
                                 <ul
-                                    className={`flex items-center gap-x-8 text-[14px]`}
+                                    className={`flex items-center gap-x-8 text-[16px]`}
                                 >
                                     <li className="-mr-2">
                                         <Link to="/yangiliklar">
@@ -368,30 +357,32 @@ function Navbar() {
                                     <li>
                                         <Dropdown
                                             id="dropdown1"
-                                            name={<TextTranslate id="navInstitut" />}
+                                            name={
+                                                <TextTranslate id="navInstitut" />
+                                            }
                                             classForName="font-thin"
                                         >
-                                            <li  className="text-black bg-white">
+                                            <li className="text-black bg-white">
                                                 <Link to="/institut-kengashi">
                                                     <TextTranslate id="navDropInstitut_1" />
                                                 </Link>
                                             </li>
-                                            <li  className="text-black bg-white">
+                                            <li className="text-black bg-white">
                                                 <Link to="/institut-haqida">
                                                     <TextTranslate id="navDropInstitut_2" />
                                                 </Link>
                                             </li>
-                                            <li  className="text-black bg-white">
+                                            <li className="text-black bg-white">
                                                 <Link to="/institut-tuzilma">
                                                     <TextTranslate id="navDropInstitut_3" />
                                                 </Link>
                                             </li>
-                                            <li  className="text-black bg-white">
+                                            <li className="text-black bg-white">
                                                 <Link to="/rekvizitlar">
                                                     <TextTranslate id="navDropInstitut_4" />
                                                 </Link>
                                             </li>
-                                            <li  className="text-black bg-white">
+                                            <li className="text-black bg-white">
                                                 <Link to="/qabulxona">
                                                     <TextTranslate id="navDropInstitut_5" />
                                                 </Link>
@@ -433,7 +424,9 @@ function Navbar() {
                                     <li>
                                         <Dropdown
                                             id="dropdown1"
-                                            name={<TextTranslate id="navFaoliyat" />}
+                                            name={
+                                                <TextTranslate id="navFaoliyat" />
+                                            }
                                             classForName="font-thin"
                                         >
                                             <li className="text-black bg-white">
@@ -530,7 +523,9 @@ function Navbar() {
                                     <li>
                                         <Dropdown
                                             id="dropdown1"
-                                            name={<TextTranslate id="navTuzilma" />}
+                                            name={
+                                                <TextTranslate id="navTuzilma" />
+                                            }
                                             classForName="font-thin"
                                         >
                                             <li className="text-black bg-white">
@@ -563,7 +558,9 @@ function Navbar() {
                                     <li>
                                         <Dropdown
                                             id="dropdown1"
-                                            name={<TextTranslate id="navTalabalar" />}
+                                            name={
+                                                <TextTranslate id="navTalabalar" />
+                                            }
                                             classForName="font-thin"
                                         >
                                             <li className="text-black bg-white">
@@ -586,7 +583,9 @@ function Navbar() {
                                     <li>
                                         <Dropdown
                                             id="dropdown1"
-                                            name={<TextTranslate id="navAbiturient" />}
+                                            name={
+                                                <TextTranslate id="navAbiturient" />
+                                            }
                                             classForName="font-thin"
                                         >
                                             <li className="text-black bg-white">
@@ -624,52 +623,8 @@ function Navbar() {
                                             </li>
                                         </Dropdown>
                                     </li>
-                                    {/* HEADER SEARCH FORM */}
-                                    <div
-                                        className={`${
-                                            noSearch && "hidden"
-                                        } flex items-center justify-center`}
-                                    >
-                                        <form onSubmit={formik.handleSubmit}>
-                                            <label
-                                                className="w-auto h-full flex items-center cursor-pointer"
-                                                htmlFor="searchText"
-                                            >
-                                                <input
-                                                    className={`${
-                                                        isFocusedSearInp
-                                                            ? "w-[200px] border-b-[3px] border-white"
-                                                            : "w-[0px] -z-50"
-                                                    } style-transition-01 h-full focus:outline-none bg-inherit`}
-                                                    placeholder="text..."
-                                                    onChange={formik.handleChange}
-                                                    value={formik.values.searchText}
-                                                    type="text"
-                                                    id="searchText"
-                                                />
-                                                <AiOutlineSearch
-                                                    onClick={() => handleClickSearch()}
-                                                    className={`${
-                                                        isFocusedSearInp &&
-                                                        !formik.values.searchText.trim()
-                                                            ? "hidden"
-                                                            : "inline-block"
-                                                    } text-[25px]`}
-                                                />
-                                                <AiOutlineClose
-                                                    onClick={() => handleClickClose()}
-                                                    className={`${
-                                                        !isFocusedSearInp ||
-                                                        formik.values.searchText.trim()
-                                                            ? "hidden"
-                                                            : "inline-block"
-                                                    } text-[25px] text-white`}
-                                                />
-                                            </label>
-                                        </form>
-                                    </div>
-                                    {/* /HEADER SEARCH FORM */}
-                                    {/* Language */}
+                                    {/* SearchBar */}
+                                    <SearchBar />
                                 </ul>
                             </div>
                             {/* /Desktop nav Links */}
@@ -734,7 +689,7 @@ function Navbar() {
                             </div>
                             {/* /mobil, ipad menu / search btn */}
                         </div>
-                        {/* / Right Nav Section: Header, Navigatons, mobile version */}
+                        {/* / Right Nav Navigatons, mobile version */}
                     </div>
                     {/* /Navbar: logo, Naviations */}
                 </nav>

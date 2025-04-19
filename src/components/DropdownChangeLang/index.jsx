@@ -12,50 +12,44 @@ import {
 
 // Tillarni obyekt sifatida saqlaymiz
 const languages = [
-    { id: "1", code: "Uz", flag: flag_uz },
-    { id: "2", code: "Ru", flag: flag_ru },
-    { id: "3", code: "En", flag: flag_en },
+    { code: "uz", label: "Uzb", flag: flag_uz },
+    { code: "ru", label: "Rus", flag: flag_ru },
+    { code: "en", label: "Eng", flag: flag_en },
 ];
 
 const LanguageDropdown = () => {
     const [togglerLangDrop, setTogglerLangDrop] = useState(false);
 
     // Redux store dan faol tilni olamiz
-    const isLang = useSelector((state) => state.reducerLang.isLang) || "1"; // Default "1" (Uz)
+    const isLang = useSelector((state) => state.reducerLang.isLang);
     const dispatch = useDispatch();
 
     // `isLang` ni tekshirish va agar noto‘g‘ri bo‘lsa, default qiymat qo‘yish
     useEffect(() => {
-        const validLang = languages.some((lang) => lang.id === isLang);
+        const validLang = languages.some((lang) => lang.code === isLang);
         if (!validLang) {
-            dispatch(setLangUz()); // Default "Uz" ga o‘zgartiramiz
+            dispatch(setLangUz()); // Default "uz" ga o‘zgartiramiz
         }
     }, [isLang, dispatch]);
 
     // Faol tilni aniqlash, agar topilmasa default tilni qaytarish
     const activeLang =
-        languages.find((lang) => lang.id === isLang) || languages[0];
+        languages.find((lang) => lang.code === isLang) || languages[0];
 
     // Faol bo‘lmagan tillarni filtr qilish
-    const availableLanguages = languages.filter((lang) => lang.id !== isLang);
+    const availableLanguages = languages.filter((lang) => lang.code !== isLang);
 
     // Tilni o‘zgartirish funksiyasi
-    const handliTogleLang = (numb) => {
-        switch (numb) {
-            case "1":
+    const handleToggleLang = (code) => {
+        switch (code) {
+            case "uz":
                 dispatch(setLangUz());
-        console.log(numb);
-
                 break;
-            case "2":
+            case "ru":
                 dispatch(setLangRu());
-        console.log(numb);
-
                 break;
-            case "3":
+            case "en":
                 dispatch(setLangEn());
-        console.log(numb);
-
                 break;
             default:
                 dispatch(setLangUz());
@@ -63,6 +57,11 @@ const LanguageDropdown = () => {
         }
         setTogglerLangDrop(false); // Til o‘zgartirilganda dropdown ni yopamiz
     };
+
+    // Debug uchun isLang o‘zgarishini kuzatish
+    useEffect(() => {
+        console.log("Current language:", isLang);
+    }, [isLang]);
 
     return (
         <div
@@ -77,11 +76,11 @@ const LanguageDropdown = () => {
                         <img
                             className="w-full h-full"
                             src={activeLang.flag}
-                            alt={`${activeLang.code} flag`}
+                            alt={`${activeLang.label} flag`}
                         />
                     </div>
                     <span className="text-[12px] font-thin">
-                        {activeLang.code}
+                        {activeLang.label}
                     </span>
                     <FaAngleRight
                         className={`transition-transform duration-200 ${
@@ -100,19 +99,22 @@ const LanguageDropdown = () => {
                 } z-50 font-medium absolute left-[50%] translate-x-[-50%] bg-gray-50 rounded-lg p-2 min-w-[140px]`}
             >
                 {availableLanguages.map((lang) => (
-                    <li key={lang.id} className="flex items-center w-full gap-x-2">
+                    <li
+                        key={lang.code}
+                        className="flex items-center w-full gap-x-2"
+                    >
                         <button
-                            onClick={() => handliTogleLang(lang.id)}
+                            onClick={() => handleToggleLang(lang.code)}
                             className="text-black btn btn-sm btn-ghost w-full flex justify-start items-center gap-x-2"
                         >
                             <div className="w-[20px] h-[20px] overflow-hidden rounded-full">
                                 <img
                                     className="w-full h-full"
                                     src={lang.flag}
-                                    alt={`${lang.code} flag`}
+                                    alt={`${lang.label} flag`}
                                 />
                             </div>
-                            <span>{lang.code}</span>
+                            <span>{lang.label}</span>
                         </button>
                     </li>
                 ))}
