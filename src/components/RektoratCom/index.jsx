@@ -20,43 +20,29 @@ const Rektorat = () => {
     getDataRekLav();
   }, []);
 
-  // 4 tadan guruhlash funksiyasi
-  const chunkArray = (arr, size) => {
-    const chunks = [];
-    for (let i = 0; i < arr.length; i += size) {
-      chunks.push(arr.slice(i, i + size));
-    }
-    return chunks;
-  };
-
   return (
     <div className="max-w-7xl mx-auto px-3 lg:pb-8 pb-4 py-4">
       <h1 className="text-[24px] font-bold my-8 text-[#000]">Rahbariyat</h1>
 
       {/* Har 4 ta element alohida divda */}
-      {chunkArray(dataRekLav, 4).map((group, groupIndex) => (
-        <Link
-          key={groupIndex}
-        //   to="/:rektor"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full gap-4 mb-10 shadow-lg"
-        >
-          {group.map((item) => (
-            <div
-              key={item.id}
-              className="md:border-r p-4 flex flex-col items-center md:min-h-[250px]"
-            >
-              <img
-                src={Logo}
-                alt="University logo"
-                className="mb-4 w-[107px]"
-              />
-              <p className="text-center text-lg font-semibold text-[#5f4fa1]">
-                {item[`name_${isLang}`]}
-              </p>
-            </div>
-          ))}
-        </Link>
-      ))}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {dataRekLav.map((lavozim) => (
+          <Link
+            key={lavozim.id}
+            //   to="/:rektor"
+            className="w-[309px] h-[329px] p-2 bg-[#191932] rounded-[10px] flex flex-col items-center"
+          >
+            <img
+              src={Logo}
+              alt="University logo"
+              className="mt-[20px] mb-4 w-[157px] h-auto"
+            />
+            <p className="text-center text-lg font-semibold text-[#fff]">
+              {lavozim[`name_${isLang}`]}
+            </p>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };
