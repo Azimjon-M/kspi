@@ -95,7 +95,7 @@ function Navbar() {
                                 src={kspi_logo}
                                 alt="icon"
                             />
-                            <p className="xl:w-[150px] text-[22px] text-[white] leading-6">
+                            <p className="font-primaryMedium xl:w-[150px] text-[26px] text-[white] leading-6">
                                 <TextTranslate id="navLogo" />
                             </p>
                         </div>
