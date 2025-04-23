@@ -61,6 +61,7 @@ import HujjatORVMq from "../pages/hujjatORVMq";
 import HujjatIIHMh from "../pages/hujjatIIHMh";
 
 import ID from "../components/Id";
+import RektoratRahbar from "../components/RektoratRahbar";
 
 // magistratura
 const routes = [
@@ -162,6 +163,11 @@ const routes = [
     id: ID,
     element: Rektorat,
     path: "/rektorat",
+  },
+  {
+    id: ID,
+    element: RektoratRahbar,
+    path: "/rektorat/rahbar",
   },
   {
     id: ID,
