@@ -1,18 +1,18 @@
 const initialState = {
     isLang: "uz",
 };
-
 const reducerLang = (state = initialState, { type }) => {
     switch (type) {
         case "uz":
-            return { isLang: (state.isLang = "uz") };
+            return { ...state, isLang: "uz" };
         case "ru":
-            return { isLang: (state.isLang = "ru") };
+            return { ...state, isLang: "ru" };
         case "en":
-            return { isLang: (state.isLang = "en") };
+            return { ...state, isLang: "en" };
+        case "xt":
+            return { ...state, isLang: "xt" };
         default:
-            return { isLang: (state.isLang = "uz") };
+            return { ...state, isLang: "uz" };
     }
 };
-
-export default reducerLang; 
+export default reducerLang;

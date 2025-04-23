@@ -4,17 +4,21 @@ import { FaAngleRight } from "react-icons/fa";
 import flag_uz from "../../assets/icons/flag-uz.png";
 import flag_ru from "../../assets/icons/flag-ru.png";
 import flag_en from "../../assets/icons/flag-en.png";
+import flag_xt from "../../assets/icons/flag-xt.png";
 import {
     setLangUz,
     setLangRu,
     setLangEn,
+    setLangXt,
 } from "../../redux/moduls/language/action/";
+import TextTranslate from "../TextTranslate/index";
 
 // Tillarni obyekt sifatida saqlaymiz
 const languages = [
-    { code: "uz", label: "Uzb", flag: flag_uz },
-    { code: "ru", label: "Rus", flag: flag_ru },
-    { code: "en", label: "Eng", flag: flag_en },
+    { code: "uz", label: "hedLangUz", flag: flag_uz },
+    { code: "ru", label: "hedLangRu", flag: flag_ru },
+    { code: "en", label: "hedLangEn", flag: flag_en },
+    { code: "xt", label: "hedLangXt", flag: flag_xt },
 ];
 
 const LanguageDropdown = () => {
@@ -28,6 +32,7 @@ const LanguageDropdown = () => {
     useEffect(() => {
         const validLang = languages.some((lang) => lang.code === isLang);
         if (!validLang) {
+            console.log("Invalid language, setting to uz");
             dispatch(setLangUz()); // Default "uz" ga o‘zgartiramiz
         }
     }, [isLang, dispatch]);
@@ -50,6 +55,10 @@ const LanguageDropdown = () => {
                 break;
             case "en":
                 dispatch(setLangEn());
+                break;
+            case "xt":
+                console.log("xt sihladi!");
+                dispatch(setLangXt());
                 break;
             default:
                 dispatch(setLangUz());
@@ -75,12 +84,12 @@ const LanguageDropdown = () => {
                     <div className="w-[20px] h-[20px] overflow-hidden rounded-full">
                         <img
                             className="w-full h-full"
-                            src={activeLang.flag}
-                            alt={`${activeLang.label} flag`}
+                            src={activeLang?.flag}
+                            alt={`${activeLang?.label} flag`}
                         />
                     </div>
                     <span className="text-[12px] font-thin">
-                        {activeLang.label}
+                        <TextTranslate id={activeLang?.label} />
                     </span>
                     <FaAngleRight
                         className={`transition-transform duration-200 ${
@@ -96,25 +105,26 @@ const LanguageDropdown = () => {
             <ul
                 className={`${
                     togglerLangDrop ? "block" : "hidden"
-                } z-50 font-medium absolute left-[50%] translate-x-[-50%] bg-gray-50 rounded-lg p-2 min-w-[140px]`}
+                } z-50 font-medium absolute left-[50%] translate-x-[-50%] bg-gray-50 rounded-lg p-2 min-w-[160px]`}
             >
-                {availableLanguages.map((lang) => (
+                {availableLanguages?.map((lang) => (
                     <li
-                        key={lang.code}
+                        key={lang?.code}
                         className="flex items-center w-full gap-x-2"
                     >
                         <button
-                            onClick={() => handleToggleLang(lang.code)}
+                            onClick={() => handleToggleLang(lang?.code)}
                             className="text-black btn btn-sm btn-ghost w-full flex justify-start items-center gap-x-2"
                         >
                             <div className="w-[20px] h-[20px] overflow-hidden rounded-full">
                                 <img
                                     className="w-full h-full"
-                                    src={lang.flag}
-                                    alt={`${lang.label} flag`}
+                                    src={lang?.flag}
+                                    alt={`${lang?.label} flag`}
                                 />
                             </div>
-                            <span>{lang.label}</span>
+                            <TextTranslate id={lang?.label} />{" "}
+                            {/* Bu yerda o'zgartirish */}
                         </button>
                     </li>
                 ))}

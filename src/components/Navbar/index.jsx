@@ -3,54 +3,26 @@ import kspi_logo from "../../assets/icons/logo.png";
 import { Link, useLocation } from "react-router-dom";
 import { AiOutlineSearch, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { useFormik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
-import {
-    setLangUz,
-    setLangRu,
-    setLangEn,
-} from "../../redux/moduls/language/action/";
 import { useNavigate } from "react-router-dom";
-
-import flag_uz from "../../assets/icons/flag-uz.png";
-import flag_ru from "../../assets/icons/flag-ru.png";
-import flag_en from "../../assets/icons/flag-en.png";
-
 import { LiaTelegram } from "react-icons/lia";
 import { FaInstagram } from "react-icons/fa6";
 import { AiOutlineYoutube } from "react-icons/ai";
 import { CiFacebook } from "react-icons/ci";
-
 import TextTranslate from "../TextTranslate/index";
 import Dropdown from "../Dropdown";
 import LanguageDropdown from "../DropdownChangeLang";
-
 import SearchBar from "../SearchBar";
 
 function Navbar() {
     const location = useLocation();
     const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const isLang = useSelector((state) => state.reducerLang.isLang);
-
-    const [isFocusedSearInp, setFocusedSearInp] = useState(false);
     const [isActiveMenu, setIsActiveMenu] = useState(false);
     const [scrollY, setScrollY] = useState(false);
-    const [isDropF, setIsDropF] = useState(false);
-    const [isDropFXal, setIsDropFXal] = useState(false);
-    const [isDropIHuj, setIsDropIHuj] = useState(false);
-    const [togglerLangDrop, setTogglerLangDrop] = useState(false);
-
     const noSearch = location.pathname === "/qidiruv";
-
     const queryParams = new URLSearchParams(location.search);
     const query = queryParams.get("search") || "";
 
     const color = "#5f4fa1";
-    const languages = [
-        { id: "1", code: "Uz", flag: flag_uz },
-        { id: "2", code: "Ru", flag: flag_ru },
-        { id: "3", code: "En", flag: flag_en },
-    ];
 
     const ijtimoiyTarmoqlar = [
         { id: "1", name: "Telegram", link: "", icon: <LiaTelegram /> },
@@ -75,69 +47,9 @@ function Navbar() {
         },
     });
 
-    // Change Language log
-    // const handleClickLang = (lang) => {
-    //     switch (lang) {
-    //         case "uz":
-    //             dispatch(setLangUz());
-    //             break;
-    //         case "ru":
-    //             dispatch(setLangRu());
-    //             break;
-    //         case "en":
-    //             dispatch(setLangEn());
-    //             break;
-    //         default:
-    //             dispatch(setLangUz());
-    //             break;
-    //     }
-    // };
-
-    // Change Lang
-    // const handliTogleLang = (numb) => {
-    //     switch (numb) {
-    //         case "1":
-    //             dispatch(setLangUz());
-    //             break;
-    //         case "2":
-    //             dispatch(setLangRu());
-    //             break;
-    //         case "3":
-    //             dispatch(setLangEn());
-    //             break;
-    //         default:
-    //             dispatch(setLangUz());
-    //             break;
-    //     }
-    // };
-
     const handleClickCloseMenu = () => {
         setIsActiveMenu(false);
     };
-
-    // const onMouseEnter = () => {
-    //     setIsDropF(true);
-    // };
-
-    // const onMouseLeave = () => {
-    //     setIsDropF(false);
-    // };
-
-    // const onMouseEnterXal = () => {
-    //     setIsDropFXal(true);
-    // };
-
-    // const onMouseLeaveXal = () => {
-    //     setIsDropFXal(false);
-    // };
-
-    // const onMouseEnterHuj = () => {
-    //     setIsDropIHuj(true);
-    // };
-
-    // const onMouseLeaveHuj = () => {
-    //     setIsDropIHuj(false);
-    // };
 
     // Mobile Handler main no scroll
     useEffect(() => {
@@ -162,21 +74,6 @@ function Navbar() {
             window.removeEventListener("scroll", handleScroll);
         };
     }, []);
-
-    // const [isLang, setIsLang] = useState("1"); // Default til: Uz
-    //   const [togglerLangDrop, setTogglerLangDrop] = useState(false);
-
-    // Faol tilni aniqlash
-    // const activeLang = languages.find((lang) => lang.id === isLang);
-
-    // Faol bo‘lmagan tillarni filtr qilish
-    // const availableLanguages = languages.filter((lang) => lang.id !== isLang);
-
-    // Tilni o‘zgartirish funksiyasi
-    //   const handliTogleLang = (langId) => {
-    //     setIsLang(langId);
-    //     setTogglerLangDrop(false); // Til o‘zgartirilganda dropdown ni yopamiz
-    //   };
 
     return (
         <div
@@ -228,7 +125,7 @@ function Navbar() {
                                 <LanguageDropdown />
                                 {/* /Language */}
                                 {/* Tizimlar Drop */}
-                                <div>
+                                <div className="z-40">
                                     <Dropdown
                                         id="dropdown1"
                                         name="Tizimlar"
@@ -347,7 +244,7 @@ function Navbar() {
                             {/* Desktop nav Links */}
                             <div className="hidden w-full h-full xl:flex xl:items-center xl:justify-end">
                                 <ul
-                                    className={`flex items-center gap-x-8 text-[16px]`}
+                                    className={`flex items-center gap-x-8 text-[16px] z-30`}
                                 >
                                     <li className="-mr-2">
                                         <Link to="/yangiliklar">
