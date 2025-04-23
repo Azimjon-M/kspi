@@ -7,3 +7,7 @@ export const setLangRu = () => {
 export const setLangEn = () => {
     return { type: "en" };
 };
+export const setLangXt = () => {
+    return { type: "xt" };
+};
+
