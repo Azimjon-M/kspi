@@ -62,6 +62,7 @@ import HujjatIIHMh from "../pages/hujjatIIHMh";
 
 import ID from "../components/Id";
 import RektoratRahbar from "../components/RektoratRahbar";
+import FakultetDetails from "../components/FakultetDetails";
 
 // magistratura
 const routes = [
@@ -179,10 +180,17 @@ const routes = [
     element: Kafedralar,
     path: "/kafedralar",
   },
+  // Fakultetlar
   {
     id: ID,
     element: Fakultetlar,
     path: "/fakultetlar",
+  },
+  // Fakultet Batafsil
+  {
+    id: ID,
+    element: FakultetDetails,
+    path: "/fakultetlar/:id",
   },
   {
     id: ID,
